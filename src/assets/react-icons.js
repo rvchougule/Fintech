@@ -54,3 +54,14 @@ import { PiPottedPlantFill } from "react-icons/pi";
 import { FaMoneyCheck } from "react-icons/fa";
 
 export { BiSolidUserRectangle, HiShieldCheck, PiPottedPlantFill, FaMoneyCheck };
+
+// company Profile
+import {
+  FaHome,
+  FaUser,
+  FaBullhorn,
+  FaNewspaper,
+  FaPhone,
+} from "react-icons/fa";
+
+export { FaHome, FaUser, FaBullhorn, FaNewspaper, FaPhone };
