@@ -51,8 +51,8 @@ const menuItems = [
     label: "Agent List",
     component: "",
     subItems: [
-      { label: "AEPS", component: "" },
-      { label: "UTI", component: "" },
+      { label: "AEPS", component: "/statement/aeps" },
+      { label: "UTI", component: "/statement/uti" },
     ],
   },
   {

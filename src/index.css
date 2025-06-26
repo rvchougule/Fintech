@@ -115,6 +115,10 @@
     @apply rounded-md cursor-pointer font-medium px-4 py-2;
   }
 
+  .btn-24 {
+    @apply w-24 px-3 py-1 mx-2 rounded font-bold;
+  }
+
   /* background */
   .bg-darkBlue {
     background-color: var(--color-darkBlue);

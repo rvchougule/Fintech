@@ -12,6 +12,8 @@ import { ModalProvider } from "./contexts/ModelContext";
 import { SchemeManager } from "./pages/super/resources_tab/SchemeManger";
 import { CompanyProfile } from "./pages/super/resources_tab/CompanyProfile";
 import { CompanyManger } from "./pages/super/resources_tab/CompanyManger";
+import SuperAEPS from "./pages/super/agenet_list/SuperAEPS";
+import SuperUTI from "./pages/super/agenet_list/SuperUTI";
 
 // admin
 
@@ -38,6 +40,16 @@ const App = () => {
         {
           path: "/resources/company-profile",
           Component: CompanyProfile,
+        },
+        // Agent List
+
+        {
+          path: "/statement/aeps",
+          Component: SuperAEPS,
+        },
+        {
+          path: "/statement/uti",
+          Component: SuperUTI,
         },
       ],
     },

@@ -1,16 +1,9 @@
 import { useEffect, useState } from "react";
-
-import { companyManagerData, UsersData } from "../../../assets/assets";
-import { SuperModal } from "../../../components/super/SuperModel";
-import FilterField from "../../../components/FilterField";
 import FilterBar from "../../../components/FilterBar";
 
-export const CompanyManger = () => {
-  // All modals open CLose State
-  const [isModal, setIsModal] = useState({
-    AddNew: false,
-  });
+import { AEPSData } from "../../../assets/assets";
 
+const SuperAEPS = () => {
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -18,16 +11,6 @@ export const CompanyManger = () => {
     userId: "",
     status: "",
   });
-
-  //modales state
-  const [company, setCompany] = useState({
-    name: "",
-    website: "",
-    senderid: "",
-    smsuser: "",
-    smspwd: "",
-  });
-  const [editingCompany, setEditingCompany] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
@@ -43,13 +26,6 @@ export const CompanyManger = () => {
       [name]: value,
     }));
   };
-  //Modal input handler
-  const handlemodalInputChange = (name, value) => {
-    setCompany((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
   useEffect(() => {
     applyFilters();
@@ -61,18 +37,18 @@ export const CompanyManger = () => {
 
   // filters function
   const applyFilters = () => {
-    let data = [...companyManagerData];
+    let data = [...AEPSData];
 
     if (filters.searchValue) {
       data = data.filter((d) =>
-        d.name.toLowerCase().includes(String(filters.searchValue).toLowerCase())
+        d.userDetails.name
+          .toLowerCase()
+          .includes(String(filters.searchValue).toLowerCase())
       );
     }
 
     if (filters.userId) {
-      data = data.filter((d) =>
-        d.userId?.toLowerCase().includes(String(filters.userId).toLowerCase())
-      );
+      data = data.filter((d) => d.userDetails.id == filters.userId);
     }
 
     if (filters.status) {
@@ -101,18 +77,6 @@ export const CompanyManger = () => {
     }
 
     return Array.from({ length: end - start + 1 }, (_, i) => start + i);
-  };
-
-  // handle toggle
-  const handleToggle = (indexInDisplay) => {
-    const actualIndex = (currentPage - 1) * pageSize + indexInDisplay;
-    const updated = [...filteredData];
-
-    updated[actualIndex].status =
-      updated[actualIndex].status === "active" ? "inactive" : "active";
-
-    setFilteredData(updated);
-    paginateData();
   };
 
   const fields = [
@@ -151,80 +115,73 @@ export const CompanyManger = () => {
       value: filters.status || "",
       onChange: (val) => handleInputChange("status", val),
       options: [
-        { label: "active", value: "active" },
-        { label: "inactive", value: "inactive" },
+        { label: "success", value: "success" },
+        { label: "pending", value: "pending" },
+        { label: "failed", value: "failed" },
+        { label: "approved", value: "approved" },
+        { label: "rejected", value: "rejected" },
       ],
     },
   ];
-
-  // utility for modal handlings
-
-  const openAddModal = () => {
-    setEditingCompany(null);
-    setCompany("");
-    setIsModal((prev) => ({ ...prev, AddNew: true }));
-  };
-
-  const openEditModal = (entry) => {
-    setEditingCompany(entry);
-    setCompany(entry);
-    setIsModal((prev) => ({ ...prev, AddNew: true }));
-  };
 
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-          Company Manager
+          AEPS Agent List
         </h2>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
       <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
-        <div className="flex justify-between items-center mb-4">
-          <div></div>
-          <button
-            className="bg-[#22C55E] hover:bg-[#16a34a] text-white btn-md "
-            onClick={openAddModal}
-          >
-            + Add New
-          </button>
-        </div>
-
         <div className="overflow-x-auto">
           <table className="w-full table-auto text-left text-sm">
             <thead>
               <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">
                 <th className="px-4 py-3">#</th>
-                <th className="px-4 py-3">Name</th>
-                <th className="px-4 py-3">Domain</th>
+                <th className="px-4 py-3">User Details</th>
+                <th className="px-4 py-3">Agent Details</th>
+                <th className="px-4 py-3">Details</th>
                 <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Action</th>
               </tr>
             </thead>
             <tbody>
               {displayData.map((entry, index) => (
                 <tr key={index} className="border-t border-[#3F425D]">
-                  <td className="px-4 py-3">{entry.id}</td>
-                  <td className="px-4 py-3">{entry.name}</td>
-                  <td className="px-4 py-3">{entry.website}</td>
                   <td className="px-4 py-3">
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={entry.status == "active" ? true : false}
-                        onChange={() => handleToggle(index)}
-                        className="sr-only peer"
-                      />
-                      <div className="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full peer-checked:after:border-white"></div>
-                    </label>
+                    <div className="">{entry.id}</div>
+                    <div className="">{entry.dateTime}</div>
+                  </td>
+                  <td className="px-4 py-3">
+                    <p>{entry?.userDetails?.name}</p>
+                    <p>{entry?.userDetails?.id}</p>
+                    <p>{entry?.userDetails?.role}</p>
+                  </td>
+                  <td className="px-4 py-3">
+                    <p>Agent ID -{entry?.agentDetails?.agentId}</p>
+                    <p>Agent Name -{entry?.agentDetails?.agentName}</p>
+                  </td>
+                  <td className="px-4 py-3">
+                    <p>Mobile - {entry?.details?.mobile}</p>
+                    <p>KYC Name - {entry?.details?.kycName}</p>
                   </td>
                   <td className="px-4 py-3 space-x-2">
                     <button
-                      className="btn-secondary"
-                      onClick={() => openEditModal(entry)}
+                      className={`px-3 py-2  w-24 rounded font-semibold text-white capitalize ${
+                        entry.status === "success"
+                          ? "bg-green-500"
+                          : entry.status === "pending"
+                          ? "bg-yellow-500"
+                          : entry.status === "failed"
+                          ? "bg-red-600"
+                          : entry.status === "approved"
+                          ? "bg-blue-500"
+                          : entry.status === "rejected"
+                          ? "bg-gray-500"
+                          : "bg-slate-400"
+                      }`}
                     >
-                      Edit
+                      {entry.status}
                     </button>
                   </td>
                 </tr>
@@ -275,76 +232,8 @@ export const CompanyManger = () => {
           </div>
         </div>
       </div>
-
-      {/* Add/Edit New Modal */}
-      {isModal["AddNew"] && (
-        <SuperModal
-          onClose={() => {
-            setIsModal((prev) => ({ ...prev, AddNew: false }));
-            setEditingCompany(null);
-            setCompany("");
-          }}
-        >
-          <div className="mb-4 text-lg font-semibold text-center">
-            {editingCompany ? "Edit Company" : "Add Company"}
-          </div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-
-              // close modal
-              setIsModal((prev) => ({ ...prev, AddNew: false }));
-              setEditingCompany(null);
-              setCompany("");
-            }}
-          >
-            <div className=" flex flex-col space-y-4">
-              <FilterField
-                name="name"
-                type="text"
-                placeholder="Name"
-                value={company?.name}
-                onChange={handlemodalInputChange}
-              />
-              <FilterField
-                name="website"
-                type="text"
-                placeholder="Website"
-                value={company?.website}
-                onChange={handlemodalInputChange}
-              />
-              <FilterField
-                name="senderid"
-                type="text"
-                placeholder="Sender ID"
-                value={company?.senderid}
-                onChange={handlemodalInputChange}
-              />
-              <FilterField
-                name="smsuser"
-                type="text"
-                placeholder="SMS User"
-                value={company?.smsuser}
-                onChange={handlemodalInputChange}
-              />
-              <FilterField
-                name="smspwd"
-                type="text"
-                placeholder="SMS PWD"
-                value={company?.smspwd}
-                onChange={handlemodalInputChange}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="border-1 bg-secondary px-4 py-2 rounded-md font-bold my-3 w-full text-white cursor-pointer"
-            >
-              {editingCompany ? "Update" : "Add"}
-            </button>
-          </form>
-        </SuperModal>
-      )}
     </div>
   );
 };
+
+export default SuperAEPS;

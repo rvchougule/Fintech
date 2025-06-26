@@ -1,4 +1,4 @@
-import FilterField from "../../../components/FilterField";
+import FilterField from "./FilterField";
 
 const FilterBar = ({ fields, onSearch }) => {
   return (

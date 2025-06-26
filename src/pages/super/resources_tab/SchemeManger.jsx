@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import FilterBar from "./FilterBar";
+
 import { fetchedCommissionData, UsersData } from "../../../assets/assets";
 import { SuperModal } from "../../../components/super/SuperModel";
 import FilterField from "../../../components/FilterField";
 import CommissionTable from "../../../components/super/resource_tab/CommisonTable";
 import { CommissionEditableForm } from "../../../components/super/resource_tab/CommissionEditableForm";
 import CommissionDropdown from "../../../components/super/resource_tab/CommissionDropdown";
+import FilterBar from "../../../components/FilterBar";
 
 const commissionDropdownOptions = [
   { label: "Mobile Recharge", modalKey: "MobileRecharge" },

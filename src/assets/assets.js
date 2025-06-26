@@ -181,3 +181,99 @@ export const UsersData = addCommissionToUsers(
 import companyManagerData from "./data/CompanyManager.json";
 
 export { companyManagerData };
+
+// agent list
+// aeps
+
+export const AEPSData = [
+  {
+    id: 1,
+    dateTime: "16 Jul 24 - 05:25 PM",
+    userDetails: {
+      name: "jerrypothula nandini",
+      id: 16,
+      role: "Retailer",
+    },
+    agentDetails: {
+      agentId: "UVGJB15474722",
+      agentName: "JERRYPOTHULA",
+    },
+    details: {
+      mobile: "9533666656",
+      kycName: "JERRYPOTHULA NANDINI",
+    },
+    status: "success",
+  },
+  {
+    id: 2,
+    dateTime: "16 Jul 24 - 03:45 PM",
+    userDetails: {
+      name: "rahul verma",
+      id: 17,
+      role: "Distributor",
+    },
+    agentDetails: {
+      agentId: "RVJBK24548755",
+      agentName: "RAHUL",
+    },
+    details: {
+      mobile: "9876543210",
+      kycName: "RAHUL VERMA",
+    },
+    status: "pending",
+  },
+  {
+    id: 3,
+    dateTime: "15 Jul 24 - 11:10 AM",
+    userDetails: {
+      name: "priya shah",
+      id: 18,
+      role: "Retailer",
+    },
+    agentDetails: {
+      agentId: "PSYKU98457422",
+      agentName: "PRIYA",
+    },
+    details: {
+      mobile: "9123456780",
+      kycName: "PRIYA SHAH",
+    },
+    status: "approved",
+  },
+  {
+    id: 4,
+    dateTime: "14 Jul 24 - 09:00 AM",
+    userDetails: {
+      name: "anil kumar",
+      id: 19,
+      role: "MD",
+    },
+    agentDetails: {
+      agentId: "ANKUM84738291",
+      agentName: "ANIL",
+    },
+    details: {
+      mobile: "9988776655",
+      kycName: "ANIL KUMAR",
+    },
+    status: "failed",
+  },
+  {
+    id: 5,
+    dateTime: "14 Jul 24 - 07:45 PM",
+    userDetails: {
+      name: "meena singh",
+      id: 20,
+      role: "Retailer",
+    },
+    agentDetails: {
+      agentId: "MSING24857945",
+      agentName: "MEENA",
+    },
+    details: {
+      mobile: "9001122334",
+      kycName: "MEENA SINGH",
+    },
+    status: "rejected",
+  },
+];
