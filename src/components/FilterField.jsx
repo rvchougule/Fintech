@@ -15,7 +15,7 @@ const FilterField = ({
   const showFloatingLabel = isFocused || (!!value && value !== "");
 
   return (
-    <div className="relative group w-full">
+    <div className="relative group w-full max-w-40">
       {/* Floating Label */}
       <label
         className={`absolute left-3 transition-all duration-200 px-1 pointer-events-none z-10 ${
@@ -68,7 +68,7 @@ const FilterField = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder=" "
-          className="bg-transparent border border-gray-500 text-gray-700 dark:text-white dark:bg-darkBlue rounded-md px-3 py-2 w-full placeholder-transparent"
+          className="bg-transparent border border-gray-500 text-gray-700 dark:text-white dark:bg-darkBlue rounded-md px-3 py-2 w-full  placeholder-transparent"
         />
       )}
     </div>

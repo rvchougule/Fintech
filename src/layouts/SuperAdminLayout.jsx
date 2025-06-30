@@ -9,7 +9,7 @@ export const SuperAdminLayout = () => {
         <Sidebar />
         <div className="w-full">
           <Header />
-          <main className="overflow-hidden">
+          <main className="overflow-hidden max-w-[calc(100vw-14rem)]">
             <Outlet />
           </main>
         </div>

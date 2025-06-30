@@ -39,11 +39,11 @@ const menuItems = [
     label: "Fund",
     component: "",
     subItems: [
-      { label: "Transfer/Return", component: "" },
-      { label: "Request", component: "" },
-      { label: "Request Report", component: "" },
-      { label: "CS Fund Report", component: "" },
-      { label: "All Fund Report", component: "" },
+      { label: "Transfer/Return", component: "fund/tr" },
+      { label: "Request", component: "fund/requestview" },
+      { label: "Request Report", component: "fund/requestviewall" },
+      { label: "CC Fund Report", component: "fund/ccrequest" },
+      { label: "All Fund Report", component: "fund/statement" },
     ],
   },
   {

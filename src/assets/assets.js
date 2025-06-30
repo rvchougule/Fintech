@@ -277,3 +277,104 @@ export const AEPSData = [
     status: "rejected",
   },
 ];
+
+// fund
+
+// transfer/return
+export const transferReturn = [
+  {
+    id: 16,
+    kycStatus: "Kyc Success",
+    dateTime: "25 Jun 25 - 11:49 PM",
+    name: "jerrypothula nandini",
+    mobile: "9533666656",
+    role: "Retailer",
+    parent: {
+      name: "kishore babu bandaru",
+      id: 12,
+      mobile: "8309207889",
+      role: "Distributor",
+    },
+    companyProfile: "01/04/2023\nnkpay4all.com/",
+    wallet: {
+      main: 597574.03,
+      locked: 0,
+    },
+  },
+  {
+    id: 14,
+    kycStatus: "Kyc Success",
+    dateTime: "01 Jun 25 - 06:23 PM",
+    name: "MASTER001",
+    mobile: "1234567892",
+    role: "Master Distributor",
+    parent: {
+      name: "whitelabel001",
+      id: 13,
+      mobile: "1234567891",
+      role: "Whitelable",
+    },
+    companyProfile: "01/04/2023\nnkpay4all.com/",
+    wallet: {
+      main: 0,
+      locked: 0,
+    },
+  },
+  {
+    id: 13,
+    kycStatus: "Kyc Success",
+    dateTime: "25 Jun 25 - 11:35 PM",
+    name: "whitelabel001",
+    mobile: "1234567891",
+    role: "Whitelable",
+    parent: {
+      name: "BANDARU KISHORE BABU",
+      id: 1,
+      mobile: "7997991899",
+      role: "Admin",
+    },
+    companyProfile: "01/04/2023\nnkpay4all.com/",
+    wallet: {
+      main: 0,
+      locked: 0,
+    },
+  },
+  {
+    id: 12,
+    kycStatus: "Kyc Success",
+    dateTime: "01 Jun 25 - 06:23 PM",
+    name: "kishore babu bandaru",
+    mobile: "8309207889",
+    role: "Distributor",
+    parent: {
+      name: "MASTER001",
+      id: 14,
+      mobile: "1234567892",
+      role: "Master Distributor",
+    },
+    companyProfile: "NK TAX CONSULTANCY\nlogin.phonesepay.in",
+    wallet: {
+      main: 100,
+      locked: 0,
+    },
+  },
+  {
+    id: 2,
+    kycStatus: "Kyc Success",
+    dateTime: "28 Aug 24 - 10:11 AM",
+    name: "Test",
+    mobile: "1234567899",
+    role: "Master Distributor",
+    parent: {
+      name: "Distributer",
+      id: 3,
+      mobile: "7208822571",
+      role: "Distributor",
+    },
+    companyProfile: "NK TAX CONSULTANCY\nlogin.phonesepay.in",
+    wallet: {
+      main: 119,
+      locked: 0,
+    },
+  },
+];

@@ -14,6 +14,11 @@ import { CompanyProfile } from "./pages/super/resources_tab/CompanyProfile";
 import { CompanyManger } from "./pages/super/resources_tab/CompanyManger";
 import SuperAEPS from "./pages/super/agenet_list/SuperAEPS";
 import SuperUTI from "./pages/super/agenet_list/SuperUTI";
+import { TransferReturn } from "./pages/super/fund/TransferReturn";
+import { Request } from "./pages/super/fund/Request";
+import { RequestReport } from "./pages/super/fund/RequestReport";
+import { CCFundReport } from "./pages/super/fund/CCFundReport";
+import { AllFundReport } from "./pages/super/fund/AllFundReport";
 
 // admin
 
@@ -50,6 +55,29 @@ const App = () => {
         {
           path: "/statement/uti",
           Component: SuperUTI,
+        },
+
+        // Fund
+
+        {
+          path: "fund/tr",
+          Component: TransferReturn,
+        },
+        {
+          path: "fund/requestview",
+          Component: Request,
+        },
+        {
+          path: "fund/requestviewall",
+          Component: RequestReport,
+        },
+        {
+          path: "fund/ccrequest",
+          Component: CCFundReport,
+        },
+        {
+          path: "fund/statement",
+          Component: AllFundReport,
         },
       ],
     },
