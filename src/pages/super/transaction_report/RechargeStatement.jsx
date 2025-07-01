@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import FilterBar from "../../../components/FilterBar";
+import { useState } from "react";
 import PaginatedTable from "../../../components/PaginatedTable";
+import FilterBar from "../../../components/FilterBar";
 import { sampleData } from "../../../assets/assets";
 
-export const AllFundReport = () => {
+export const RechargeStatement = () => {
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -109,31 +109,43 @@ export const AllFundReport = () => {
       value: filters.status || "",
       onChange: (val) => handleInputChange("status", val),
       options: [
+        { label: "completed", value: "completed" },
         { label: "success", value: "success" },
         { label: "pending", value: "pending" },
         { label: "failed", value: "failed" },
-        { label: "approved", value: "approved" },
-        { label: "rejected", value: "rejected" },
+        { label: "reversed", value: "reversed" },
+        { label: "Refunded", value: "Refunded" },
       ],
     },
     {
-      name: "product",
+      name: "Product",
       type: "select",
-      placeholder: "Select Product",
+      placeholder: "Select Operator",
       value: filters.product || "",
       onChange: (val) => handleInputChange("product", val),
       options: [
-        { label: "Transfer", value: "Transfer" },
-        { label: "Return", value: "Return" },
-        { label: "Request", value: "Request" },
+        { label: "Select Operator", value: "" },
+        { label: "BSNL TOPUP", value: "BSNL TOPUP" },
+        { label: "BSNL VALIDITY", value: "BSNL VALIDITY" },
+        { label: "JIORECH", value: "JIORECH" },
+        { label: "VI", value: "VI" },
+        { label: "AIRTEL", value: "AIRTEL" },
+        { label: "Tata Sky", value: "Tata Sky" },
+        { label: "Dish TV", value: "Dish TV" },
+        { label: "Videocon D2H", value: "Videocon D2H" },
+        {
+          label: "Sun Direct TV (With Validation)",
+          value: "Sun Direct TV (With Validation)",
+        },
+        { label: "Airtel DTH", value: "Airtel DTH" },
       ],
     },
   ];
 
   const columns = [
-    { header: "#", accessor: "id" },
+    { header: "Order Id", accessor: "id" },
     {
-      header: "Requested By",
+      header: "User Details",
       accessor: "requestedBy",
       render: (row) => (
         <div>
@@ -144,7 +156,7 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "DEPOSIT BANK DETAILS",
+      header: "Transaction Details",
       accessor: "depositDetails",
       render: (row) => (
         <div>
@@ -155,7 +167,7 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "REFERENCE DETAILS",
+      header: "Reference Details",
       accessor: "referenceDetails",
       render: (row) => (
         <div>
@@ -165,21 +177,11 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "AMOUNT",
-      accessor: "wallet",
-      render: (row) => (
-        <div>
-          <p>Main: ₹{row.wallet.main}</p>
-          <p>Locked: ₹{row.wallet.locked}</p>
-        </div>
-      ),
-    },
-    {
-      header: "Remark",
+      header: "Amount/Commission",
       accessor: "remark",
     },
     {
-      header: "Action",
+      header: "Status",
       accessor: "action",
       render: (row) => (
         <span
@@ -200,7 +202,7 @@ export const AllFundReport = () => {
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-            Fund Request
+            Recharge Statement
           </h2>
           <div className="">
             <button className="btn-24 text-adminOffWhite bg-accentRed ">

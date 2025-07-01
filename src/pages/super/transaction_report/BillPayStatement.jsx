@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { sampleData } from "../../../assets/assets";
 import FilterBar from "../../../components/FilterBar";
 import PaginatedTable from "../../../components/PaginatedTable";
-import { sampleData } from "../../../assets/assets";
 
-export const AllFundReport = () => {
+export const BillPayStatement = () => {
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -112,8 +112,8 @@ export const AllFundReport = () => {
         { label: "success", value: "success" },
         { label: "pending", value: "pending" },
         { label: "failed", value: "failed" },
-        { label: "approved", value: "approved" },
-        { label: "rejected", value: "rejected" },
+        { label: "reversed", value: "reversed" },
+        { label: "refunded", value: "refunded" },
       ],
     },
     {
@@ -123,17 +123,81 @@ export const AllFundReport = () => {
       value: filters.product || "",
       onChange: (val) => handleInputChange("product", val),
       options: [
-        { label: "Transfer", value: "Transfer" },
-        { label: "Return", value: "Return" },
-        { label: "Request", value: "Request" },
+        { label: "Select Biller", value: "" },
+        {
+          label: "Adani Electricity Mumbai Limited",
+          value: "Adani Electricity Mumbai Limited",
+        },
+        {
+          label: "Ajmer Vidyut Vitran Nigam Limited (AVVNL)",
+          value: "Ajmer Vidyut Vitran Nigam Limited (AVVNL)",
+        },
+        {
+          label: "Assam Power Distribution Company Ltd (NON-RAPDR)",
+          value: "Assam Power Distribution Company Ltd (NON-RAPDR)",
+        },
+        {
+          label: "Assam Power Distribution Company Ltd-Smart Prepaid Recharge",
+          value: "Assam Power Distribution Company Ltd-Smart Prepaid Recharge",
+        },
+        {
+          label: "Bangalore Electricity Supply Co. Ltd (BESCOM)",
+          value: "Bangalore Electricity Supply Co. Ltd (BESCOM)",
+        },
+        { label: "B.E.S.T Mumbai", value: "B.E.S.T Mumbai" },
+        {
+          label: "Bharatpur Electricity Services Ltd. (BESL)",
+          value: "Bharatpur Electricity Services Ltd. (BESL)",
+        },
+        {
+          label: "Bikaner Electricity Supply Limited (BkESL)",
+          value: "Bikaner Electricity Supply Limited (BkESL)",
+        },
+        {
+          label: "BSES Rajdhani Power Limited",
+          value: "BSES Rajdhani Power Limited",
+        },
+        {
+          label: "BSES Rajdhani Prepaid Meter Recharge",
+          value: "BSES Rajdhani Prepaid Meter Recharge",
+        },
+        {
+          label: "BSES Yamuna Power Limited",
+          value: "BSES Yamuna Power Limited",
+        },
+        { label: "CESC Limited", value: "CESC Limited" },
+        {
+          label: "Chamundeshwari Electricity Supply Corp Ltd (CESCOM)",
+          value: "Chamundeshwari Electricity Supply Corp Ltd (CESCOM)",
+        },
+        {
+          label: "Chhattisgarh State Power Distribution Co. Ltd",
+          value: "Chhattisgarh State Power Distribution Co. Ltd",
+        },
+        {
+          label:
+            "Dadra and Nagar Haveli and Daman and Diu Power Distribution Corporation Limited",
+          value:
+            "Dadra and Nagar Haveli and Daman and Diu Power Distribution Corporation Limited",
+        },
+        {
+          label:
+            "Dakshinanchal Vidyut Vitran Nigam Limited (DVVNL)(Postpaid and Smart Prepaid Meter Recharge)",
+          value:
+            "Dakshinanchal Vidyut Vitran Nigam Limited (DVVNL)(Postpaid and Smart Prepaid Meter Recharge)",
+        },
+        {
+          label: "Dakshin Gujarat Vij Company Limited (DGVCL)",
+          value: "Dakshin Gujarat Vij Company Limited (DGVCL)",
+        },
       ],
     },
   ];
 
   const columns = [
-    { header: "#", accessor: "id" },
+    { header: "Order Id", accessor: "id" },
     {
-      header: "Requested By",
+      header: "User Details",
       accessor: "requestedBy",
       render: (row) => (
         <div>
@@ -144,7 +208,7 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "DEPOSIT BANK DETAILS",
+      header: "Transaction DETAILS",
       accessor: "depositDetails",
       render: (row) => (
         <div>
@@ -155,7 +219,7 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "REFERENCE DETAILS",
+      header: "Biller Details",
       accessor: "referenceDetails",
       render: (row) => (
         <div>
@@ -165,7 +229,7 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "AMOUNT",
+      header: "Reference Details",
       accessor: "wallet",
       render: (row) => (
         <div>
@@ -175,11 +239,11 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "Remark",
+      header: "Amount/Commission",
       accessor: "remark",
     },
     {
-      header: "Action",
+      header: "Status",
       accessor: "action",
       render: (row) => (
         <span
@@ -200,7 +264,7 @@ export const AllFundReport = () => {
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-            Fund Request
+            Bill Payment Statement
           </h2>
           <div className="">
             <button className="btn-24 text-adminOffWhite bg-accentRed ">

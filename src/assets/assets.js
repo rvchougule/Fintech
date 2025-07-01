@@ -378,3 +378,76 @@ export const transferReturn = [
     },
   },
 ];
+
+// All fund sample
+export const sampleData = [
+  {
+    id: 1,
+    requestedBy: {
+      name: "Rohan Chougule",
+      mobile: "9876543210",
+      role: "Agent",
+    },
+    depositDetails: {
+      bankName: "HDFC Bank",
+      accountNo: "1234567890",
+      ifsc: "HDFC0001234",
+    },
+    referenceDetails: {
+      transactionId: "TXN123456",
+      dateTime: "2025-06-30 14:45",
+    },
+    wallet: {
+      main: 15000,
+      locked: 2000,
+    },
+    remark: "Requested for client transfer",
+    action: "success",
+  },
+  {
+    id: 2,
+    requestedBy: {
+      name: "Priya Sharma",
+      mobile: "9988776655",
+      role: "Parent",
+    },
+    depositDetails: {
+      bankName: "ICICI Bank",
+      accountNo: "9876543210",
+      ifsc: "ICIC0005678",
+    },
+    referenceDetails: {
+      transactionId: "TXN789456",
+      dateTime: "2025-06-29 11:20",
+    },
+    wallet: {
+      main: 8000,
+      locked: 1000,
+    },
+    remark: "Refund for order",
+    action: "failed",
+  },
+  {
+    id: 3,
+    requestedBy: {
+      name: "Amit Verma",
+      mobile: "9123456780",
+      role: "Sub Agent",
+    },
+    depositDetails: {
+      bankName: "Axis Bank",
+      accountNo: "4567891230",
+      ifsc: "UTIB0003344",
+    },
+    referenceDetails: {
+      transactionId: "TXN456123",
+      dateTime: "2025-06-28 09:10",
+    },
+    wallet: {
+      main: 12000,
+      locked: 3000,
+    },
+    remark: "Transfer failed",
+    action: "success",
+  },
+];

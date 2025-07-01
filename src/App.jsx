@@ -19,6 +19,18 @@ import { Request } from "./pages/super/fund/Request";
 import { RequestReport } from "./pages/super/fund/RequestReport";
 import { CCFundReport } from "./pages/super/fund/CCFundReport";
 import { AllFundReport } from "./pages/super/fund/AllFundReport";
+import { AllAEPSTransaction } from "./pages/super/transaction_report/AllAEPSTransaction";
+import { CommissionStatement } from "./pages/super/transaction_report/CommissionStatement";
+import { BillPayStatement } from "./pages/super/transaction_report/BillPayStatement";
+import { VerificationStatement } from "./pages/super/transaction_report/VerificationStatement";
+import { AffiliateStatement } from "./pages/super/transaction_report/AffiliateStatement";
+import { MicroATMStatement } from "./pages/super/transaction_report/MicroATMStatement";
+import { RechargeStatement } from "./pages/super/transaction_report/RechargeStatement";
+import { UTIPancardStatement } from "./pages/super/transaction_report/UTIPancardStatement";
+import { CreditCardPayment } from "./pages/super/transaction_report/CreditCardPayment";
+import { MainWallet } from "./pages/super/wallet_history/MainWallet";
+import { AEPSWallet } from "./pages/super/wallet_history/AEPSWallet";
+import { CommissionWallet } from "./pages/super/wallet_history/CommissionWallet";
 
 // admin
 
@@ -78,6 +90,58 @@ const App = () => {
         {
           path: "fund/statement",
           Component: AllFundReport,
+        },
+
+        // transaction report
+        {
+          path: "statement/aeps-txn",
+          Component: AllAEPSTransaction,
+        },
+        {
+          path: "statement/commision",
+          Component: CommissionStatement,
+        },
+        {
+          path: "statement/bill-pay",
+          Component: BillPayStatement,
+        },
+        {
+          path: "statement/verification",
+          Component: VerificationStatement,
+        },
+        {
+          path: "statement/affiliate",
+          Component: AffiliateStatement,
+        },
+        {
+          path: "statement/micro-atm",
+          Component: MicroATMStatement,
+        },
+        {
+          path: "statement/recharge",
+          Component: RechargeStatement,
+        },
+        {
+          path: "statement/uti-pancard",
+          Component: UTIPancardStatement,
+        },
+        {
+          path: "statement/credit",
+          Component: CreditCardPayment,
+        },
+
+        // Wallet History
+        {
+          path: "statement/account",
+          Component: MainWallet,
+        },
+        {
+          path: "statement/aeps-wallet",
+          Component: AEPSWallet,
+        },
+        {
+          path: "statement/commission-wallet",
+          Component: CommissionWallet,
         },
       ],
     },

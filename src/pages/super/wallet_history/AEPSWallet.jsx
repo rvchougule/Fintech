@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import FilterBar from "../../../components/FilterBar";
+import React, { useState } from "react";
 import PaginatedTable from "../../../components/PaginatedTable";
-import { sampleData } from "../../../assets/assets";
+import FilterBar from "../../../components/FilterBar";
 
-export const AllFundReport = () => {
+export const AEPSWallet = () => {
+  const Data = [];
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -23,7 +23,7 @@ export const AllFundReport = () => {
 
   // filters function
   const applyFilters = () => {
-    let data = [...sampleData];
+    let data = [...Data];
 
     // Filter by Search: requestedBy.name or mobile
     if (filters.searchValue) {
@@ -102,96 +102,48 @@ export const AllFundReport = () => {
       value: filters.userId || "",
       onChange: (val) => handleInputChange("userId", val),
     },
-    {
-      name: "status",
-      type: "select",
-      placeholder: "Select Status",
-      value: filters.status || "",
-      onChange: (val) => handleInputChange("status", val),
-      options: [
-        { label: "success", value: "success" },
-        { label: "pending", value: "pending" },
-        { label: "failed", value: "failed" },
-        { label: "approved", value: "approved" },
-        { label: "rejected", value: "rejected" },
-      ],
-    },
-    {
-      name: "product",
-      type: "select",
-      placeholder: "Select Product",
-      value: filters.product || "",
-      onChange: (val) => handleInputChange("product", val),
-      options: [
-        { label: "Transfer", value: "Transfer" },
-        { label: "Return", value: "Return" },
-        { label: "Request", value: "Request" },
-      ],
-    },
   ];
 
   const columns = [
     { header: "#", accessor: "id" },
     {
-      header: "Requested By",
+      header: "Refrences Details",
       accessor: "requestedBy",
-      render: (row) => (
-        <div>
-          <p>{row.requestedBy.name}</p>
-          <p>{row.requestedBy.mobile}</p>
-          <p>{row.requestedBy.role}</p>
-        </div>
-      ),
+      render: (row) => <></>,
     },
     {
-      header: "DEPOSIT BANK DETAILS",
+      header: "Order ID",
       accessor: "depositDetails",
-      render: (row) => (
-        <div>
-          <p>{row.depositDetails.bankName}</p>
-          <p>{row.depositDetails.accountNo}</p>
-          <p>{row.depositDetails.ifsc}</p>
-        </div>
-      ),
+      render: (row) => <div></div>,
     },
     {
-      header: "REFERENCE DETAILS",
+      header: "Transaction Details",
       accessor: "referenceDetails",
-      render: (row) => (
-        <div>
-          <p>{row.referenceDetails.transactionId}</p>
-          <p>{row.referenceDetails.dateTime}</p>
-        </div>
-      ),
+      render: (row) => <div></div>,
     },
     {
-      header: "AMOUNT",
-      accessor: "wallet",
-      render: (row) => (
-        <div>
-          <p>Main: ₹{row.wallet.main}</p>
-          <p>Locked: ₹{row.wallet.locked}</p>
-        </div>
-      ),
-    },
-    {
-      header: "Remark",
+      header: "TXN Type",
       accessor: "remark",
     },
     {
-      header: "Action",
-      accessor: "action",
-      render: (row) => (
-        <span
-          className={`px-2 py-1 rounded text-xs font-medium ${
-            row.action === "success"
-              ? "bg-green-200 text-green-800"
-              : "bg-red-200 text-red-800"
-          }`}
-        >
-          {row.action}
-        </span>
-      ),
+      header: "ST Type",
+      accessor: "remark",
+    },
+    {
+      header: "Status",
+      accessor: "remark",
+    },
+    {
+      header: "Opening Bal.",
+      accessor: "remark",
+    },
+    {
+      header: "Amount",
+      accessor: "remark",
+    },
+    {
+      header: "Closing Bal.",
+      accessor: "remark",
     },
   ];
 
@@ -200,7 +152,7 @@ export const AllFundReport = () => {
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-            Fund Request
+            AEPS Wallet Statement
           </h2>
           <div className="">
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
@@ -215,7 +167,7 @@ export const AllFundReport = () => {
       </div>
 
       <PaginatedTable
-        data={sampleData}
+        data={Data}
         filters={filters}
         onSearch={applyFilters}
         columns={columns}

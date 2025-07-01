@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import FilterBar from "../../../components/FilterBar";
+import React, { useState } from "react";
 import PaginatedTable from "../../../components/PaginatedTable";
 import { sampleData } from "../../../assets/assets";
+import FilterBar from "../../../components/FilterBar";
 
-export const AllFundReport = () => {
+export const CommissionStatement = () => {
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -123,9 +123,9 @@ export const AllFundReport = () => {
       value: filters.product || "",
       onChange: (val) => handleInputChange("product", val),
       options: [
-        { label: "Transfer", value: "Transfer" },
-        { label: "Return", value: "Return" },
-        { label: "Request", value: "Request" },
+        { label: "Select transacton", value: "" },
+        { label: "Move to Wallet", value: "Move to Wallet" },
+        { label: "Move to Bank", value: "Move to Bank" },
       ],
     },
   ];
@@ -133,7 +133,7 @@ export const AllFundReport = () => {
   const columns = [
     { header: "#", accessor: "id" },
     {
-      header: "Requested By",
+      header: "User Details",
       accessor: "requestedBy",
       render: (row) => (
         <div>
@@ -144,7 +144,7 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "DEPOSIT BANK DETAILS",
+      header: "Settlement DETAILS",
       accessor: "depositDetails",
       render: (row) => (
         <div>
@@ -155,7 +155,7 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "REFERENCE DETAILS",
+      header: "Txn Details",
       accessor: "referenceDetails",
       render: (row) => (
         <div>
@@ -165,7 +165,7 @@ export const AllFundReport = () => {
       ),
     },
     {
-      header: "AMOUNT",
+      header: "Description",
       accessor: "wallet",
       render: (row) => (
         <div>
@@ -179,7 +179,7 @@ export const AllFundReport = () => {
       accessor: "remark",
     },
     {
-      header: "Action",
+      header: "Status",
       accessor: "action",
       render: (row) => (
         <span
@@ -200,16 +200,8 @@ export const AllFundReport = () => {
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-            Fund Request
+            Commission Settlement Details
           </h2>
-          <div className="">
-            <button className="btn-24 text-adminOffWhite bg-accentRed ">
-              Refresh
-            </button>
-            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
-              Export{" "}
-            </button>
-          </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
