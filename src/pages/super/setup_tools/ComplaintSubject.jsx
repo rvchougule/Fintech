@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PaginatedTable from "../../../components/PaginatedTable";
 import FilterBar from "../../../components/FilterBar";
 import { SuperModal } from "../../../components/super/SuperModel";
-import BankDetailsForm from "../../../components/super/setup_tools/BankDetailsForm";
 import AddSubjectForm from "../../../components/super/setup_tools/AddSubjectForm";
 
 const data = [];

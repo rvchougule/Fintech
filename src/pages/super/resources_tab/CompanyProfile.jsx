@@ -150,8 +150,8 @@ export function CompanyProfile() {
       {/* comapany details */}
       {activeTab === "details" && (
         <div className="grid grid-cols-3 gap-4">
-          {companyDetailFields.map((field) => (
-            <div className="flex flex-col space-y-3">
+          {companyDetailFields.map((field, index) => (
+            <div className="flex flex-col space-y-3" key={index}>
               <label className="dark:text-slate-400">{field.label}</label>
               <input
                 key={field.id}

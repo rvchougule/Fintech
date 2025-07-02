@@ -119,6 +119,10 @@
     @apply w-24 px-3 py-1 mx-2 rounded font-bold;
   }
 
+  .btn {
+    @apply px-3 py-1 mx-2 rounded font-bold;
+  }
+
   /* background */
   .bg-darkBlue {
     background-color: var(--color-darkBlue);

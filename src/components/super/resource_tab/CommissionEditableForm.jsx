@@ -27,14 +27,14 @@ export const CommissionEditableForm = ({ serviceKey, commission, onClose }) => {
           </thead>
           <tbody>
             {serviceData.map((row, i) => (
-              <tr key={i} className="text-white">
+              <tr key={i} className="dark:text-white">
                 <td className="py-2 px-4 border border-gray-700">
                   {row.provider}
                 </td>
                 <td className="py-2 px-4 border border-gray-700">
                   <select
                     defaultValue={row.type}
-                    className="w-full bg-darkBlue text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
+                    className="w-full dark:bg-darkBlue dark:text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
                   >
                     <option value="">Select Type</option>
                     <option value="Percent">Percent (%)</option>
@@ -45,28 +45,28 @@ export const CommissionEditableForm = ({ serviceKey, commission, onClose }) => {
                   <input
                     type="text"
                     defaultValue={row.whitelable}
-                    className="w-full bg-darkBlue text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
+                    className="w-full dark:bg-darkBlue dark:text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
                   />
                 </td>
                 <td className="py-2 px-4 border border-gray-700">
                   <input
                     type="text"
                     defaultValue={row.md}
-                    className="w-full bg-darkBlue text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
+                    className="w-full dark:bg-darkBlue dark:text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
                   />
                 </td>
                 <td className="py-2 px-4 border border-gray-700">
                   <input
                     type="text"
                     defaultValue={row.distributor}
-                    className="w-full bg-darkBlue text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
+                    className="w-full dark:bg-darkBlue dark:text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
                   />
                 </td>
                 <td className="py-2 px-4 border border-gray-700">
                   <input
                     type="text"
                     defaultValue={row.retailer}
-                    className="w-full bg-darkBlue text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
+                    className="w-full dark:bg-darkBlue dark:text-white ring-1 ring-gray-600 rounded-md px-3 py-2 focus:outline-none"
                   />
                 </td>
               </tr>
@@ -79,7 +79,7 @@ export const CommissionEditableForm = ({ serviceKey, commission, onClose }) => {
         <button
           type="button"
           onClick={onClose}
-          className="bg-[#7C5CFC] hover:bg-[#6938EF] text-white px-6 py-2 rounded-md font-medium"
+          className="bg-[#7C5CFC] hover:bg-[#6938EF] dark:text-white px-6 py-2 rounded-md font-medium"
         >
           Submit
         </button>

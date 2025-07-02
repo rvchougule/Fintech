@@ -1,4 +1,3 @@
-// components/PaginatedTable.jsx
 import { useEffect, useState } from "react";
 
 const PaginatedTable = ({
@@ -8,24 +7,23 @@ const PaginatedTable = ({
   pageSize = 10,
   maxVisiblePages = 5,
   onSearch = () => {},
+  currentPage,
+  setCurrentPage,
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filteredData, setFilteredData] = useState(data);
   const [displayData, setDisplayData] = useState([]);
 
   useEffect(() => {
-    const data = onSearch();
-    setFilteredData(data);
+    const filtered = onSearch();
     setCurrentPage(1);
   }, [filters]);
 
   useEffect(() => {
     const start = (currentPage - 1) * pageSize;
     const end = start + pageSize;
-    setDisplayData(filteredData.slice(start, end));
-  }, [filteredData, currentPage, pageSize]);
+    setDisplayData(data.slice(start, end));
+  }, [data, currentPage, pageSize]);
 
-  const totalPages = Math.ceil(filteredData.length / pageSize);
+  const totalPages = Math.ceil(data.length / pageSize);
 
   const getPaginationRange = () => {
     let start = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1);
@@ -38,91 +36,87 @@ const PaginatedTable = ({
   };
 
   return (
-    <>
-      {/* Table */}
-      <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
-        <div className="">
-          <div className="overflow-x-auto">
-            <table className="w-full table-auto text-left text-sm">
-              <thead>
-                <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">
-                  {columns.map((col, idx) => (
-                    <th key={idx} className="px-4 py-3">
-                      {col.header}
-                    </th>
+    <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
+      <div className="overflow-x-auto">
+        <table className="w-full table-auto text-left text-sm">
+          <thead>
+            <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">
+              {columns.map((col, idx) => (
+                <th key={idx} className="px-4 py-3">
+                  {col.header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {displayData.length > 0 ? (
+              displayData.map((row, rowIndex) => (
+                <tr key={rowIndex} className="border-b">
+                  {columns.map((col, colIndex) => (
+                    <td key={colIndex} className="px-4 py-2">
+                      {col.render
+                        ? col.render(row, rowIndex)
+                        : row[col.accessor]}
+                    </td>
                   ))}
                 </tr>
-              </thead>
-              <tbody>
-                {displayData.length > 0 ? (
-                  displayData.map((row, rowIndex) => (
-                    <tr key={rowIndex} className="border-b">
-                      {columns.map((col, colIndex) => (
-                        <td key={colIndex} className="px-4 py-2">
-                          {col.render ? col.render(row) : row[col.accessor]}
-                        </td>
-                      ))}
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td
-                      colSpan={columns.length}
-                      className="text-center py-4 text-gray-500 font-semibold w-full border-b-1 border-b-slate-400"
-                    >
-                      No Rows Found
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Pagination */}
-          <div className="mt-4 flex justify-between items-center text-sm text-gray-300  pt-2">
-            <p>
-              Showing{" "}
-              {Math.min((currentPage - 1) * pageSize + 1, filteredData.length)}{" "}
-              to {Math.min(currentPage * pageSize, filteredData.length)} of{" "}
-              {filteredData.length} entries
-            </p>
-            <div className="flex items-center space-x-2">
-              <button
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}
-                className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
-              >
-                ←
-              </button>
-
-              {getPaginationRange().map((pageNum) => (
-                <button
-                  key={pageNum}
-                  onClick={() => setCurrentPage(pageNum)}
-                  className={`px-3 py-1 rounded ${
-                    currentPage === pageNum
-                      ? "bg-secondary text-white"
-                      : "bg-[#1F2235] text-gray-500"
-                  }`}
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="text-center py-4 text-gray-500 font-semibold w-full border-b-1 border-b-slate-400"
                 >
-                  {pageNum}
-                </button>
-              ))}
+                  No Rows Found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
 
-              <button
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
-                disabled={currentPage === totalPages}
-                className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
-              >
-                →
-              </button>
-            </div>
-          </div>
+      {/* Pagination */}
+      <div className="mt-4 flex justify-between items-center text-sm text-gray-300 pt-2">
+        <p>
+          Showing {Math.min((currentPage - 1) * pageSize + 1, data.length)} to{" "}
+          {Math.min(currentPage * pageSize, data.length)} of {data.length}{" "}
+          entries
+        </p>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
+          >
+            ←
+          </button>
+
+          {getPaginationRange().map((pageNum) => (
+            <button
+              key={pageNum}
+              onClick={() => setCurrentPage(pageNum)}
+              className={`px-3 py-1 rounded ${
+                currentPage === pageNum
+                  ? "bg-secondary text-white"
+                  : "bg-[#1F2235] text-gray-500"
+              }`}
+            >
+              {pageNum}
+            </button>
+          ))}
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
+          >
+            →
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

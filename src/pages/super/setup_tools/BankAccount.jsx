@@ -3,6 +3,7 @@ import PaginatedTable from "../../../components/PaginatedTable";
 import FilterBar from "../../../components/FilterBar";
 import { SuperModal } from "../../../components/super/SuperModel";
 import BankDetailsForm from "../../../components/super/setup_tools/BankDetailsForm";
+import { ToggleButton } from "../../../components/utility/ToggleButton";
 
 const data = [
   {
@@ -59,24 +60,24 @@ export const BankAccount = () => {
     let filtered = [...data];
 
     // Optional: Handle future filter logic
-    if (filters.userId) {
-      filtered = filtered.filter((d) =>
-        String(d.id).includes(String(filters.userId))
-      );
-    }
+    // if (filters.userId) {
+    //   filtered = filtered.filter((d) =>
+    //     String(d.id).includes(String(filters.userId))
+    //   );
+    // }
 
-    if (filters.searchValue) {
-      const val = filters.searchValue.toLowerCase();
-      filtered = filtered.filter((d) =>
-        d.productName.toLowerCase().includes(val)
-      );
-    }
+    // if (filters.searchValue) {
+    //   const val = filters.searchValue.toLowerCase();
+    //   filtered = filtered.filter((d) =>
+    //     d.productName.toLowerCase().includes(val)
+    //   );
+    // }
 
-    if (filters.status) {
-      filtered = filtered.filter((d) =>
-        filters.status === "active" ? d.status : !d.status
-      );
-    }
+    // if (filters.status) {
+    //   filtered = filtered.filter((d) =>
+    //     filters.status === "active" ? d.status : !d.status
+    //   );
+    // }
 
     setFilteredData(filtered);
     setCurrentPage(1);
@@ -172,21 +173,7 @@ export const BankAccount = () => {
       header: "Status",
       accessor: "status",
       render: (row, idx) => (
-        <label className="relative inline-flex items-center cursor-pointer">
-          <input
-            type="checkbox"
-            checked={row.status}
-            onChange={() => handleToggle(idx)}
-            className="sr-only peer"
-          />
-          <div
-            className="w-11 h-5 border-2 border-slate-500 rounded-full transition-all duration-300 
-    peer-checked:bg-secondary relative
-    after:content-[''] after:absolute after:top-[2px] after:left-[2px] 
-    after:bg-slate-400 after:rounded-full after:h-3 after:w-3 
-    after:transition-all peer-checked:after:translate-x-[20px] peer-checked:after:bg-white"
-          ></div>
-        </label>
+        <ToggleButton row={row} onchange={() => handleToggle(idx)} />
       ),
     },
     {

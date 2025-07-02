@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PaginatedTable from "../../../components/PaginatedTable";
 import FilterBar from "../../../components/FilterBar";
 
@@ -138,7 +138,7 @@ export const MobileUserLogout = () => {
       </div>
 
       <PaginatedTable
-        data={Data}
+        data={filteredData}
         filters={filters}
         onSearch={applyFilters}
         columns={columns}

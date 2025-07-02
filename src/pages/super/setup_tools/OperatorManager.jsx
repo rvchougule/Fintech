@@ -82,24 +82,24 @@ export const OperatorManager = () => {
     let filtered = [...data];
 
     // Optional: Handle future filter logic
-    if (filters.userId) {
-      filtered = filtered.filter((d) =>
-        String(d.id).includes(String(filters.userId))
-      );
-    }
+    // if (filters.userId) {
+    //   filtered = filtered.filter((d) =>
+    //     String(d.id).includes(String(filters.userId))
+    //   );
+    // }
 
-    if (filters.searchValue) {
-      const val = filters.searchValue.toLowerCase();
-      filtered = filtered.filter((d) =>
-        d.productName.toLowerCase().includes(val)
-      );
-    }
+    // if (filters.searchValue) {
+    //   const val = filters.searchValue.toLowerCase();
+    //   filtered = filtered.filter((d) =>
+    //     d.productName.toLowerCase().includes(val)
+    //   );
+    // }
 
-    if (filters.status) {
-      filtered = filtered.filter((d) =>
-        filters.status === "active" ? d.status : !d.status
-      );
-    }
+    // if (filters.status) {
+    //   filtered = filtered.filter((d) =>
+    //     filters.status === "active" ? d.status : !d.status
+    //   );
+    // }
 
     setFilteredData(filtered);
     setCurrentPage(1);

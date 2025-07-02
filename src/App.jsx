@@ -17,8 +17,6 @@ import SuperUTI from "./pages/super/agenet_list/SuperUTI";
 import { TransferReturn } from "./pages/super/fund/TransferReturn";
 import { Request } from "./pages/super/fund/Request";
 import { RequestReport } from "./pages/super/fund/RequestReport";
-import { CCFundReport } from "./pages/super/fund/CCFundReport";
-import { AllFundReport } from "./pages/super/fund/AllFundReport";
 import { AllAEPSTransaction } from "./pages/super/transaction_report/AllAEPSTransaction";
 import { CommissionStatement } from "./pages/super/transaction_report/CommissionStatement";
 import { BillPayStatement } from "./pages/super/transaction_report/BillPayStatement";
@@ -31,6 +29,14 @@ import { CreditCardPayment } from "./pages/super/transaction_report/CreditCardPa
 import { MainWallet } from "./pages/super/wallet_history/MainWallet";
 import { AEPSWallet } from "./pages/super/wallet_history/AEPSWallet";
 import { CommissionWallet } from "./pages/super/wallet_history/CommissionWallet";
+import { MatchingPercentage } from "./pages/super/matching_percentage/MatchingPercentage";
+import { MobileUserLogout } from "./pages/super/setup_tools/MobileUserLogout";
+import { APIManager } from "./pages/super/setup_tools/APIManager";
+import { BankAccount } from "./pages/super/setup_tools/BankAccount";
+import { ComplaintSubject } from "./pages/super/setup_tools/ComplaintSubject";
+import { OperatorManager } from "./pages/super/setup_tools/OperatorManager";
+import { PortalSetting } from "./pages/super/setup_tools/PortalSetting";
+import { QuickLinks } from "./pages/super/setup_tools/QuickLinks";
 
 // admin
 
@@ -83,14 +89,6 @@ const App = () => {
           path: "fund/requestviewall",
           Component: RequestReport,
         },
-        {
-          path: "fund/ccrequest",
-          Component: CCFundReport,
-        },
-        {
-          path: "fund/statement",
-          Component: AllFundReport,
-        },
 
         // transaction report
         {
@@ -142,6 +140,40 @@ const App = () => {
         {
           path: "statement/commission-wallet",
           Component: CommissionWallet,
+        },
+        // Matching Percentage
+        {
+          path: "matchingpercent",
+          Component: MatchingPercentage,
+        },
+        // Setup tools
+        {
+          path: "setup/token",
+          Component: MobileUserLogout,
+        },
+        {
+          path: "setup/api",
+          Component: APIManager,
+        },
+        {
+          path: "setup/bank",
+          Component: BankAccount,
+        },
+        {
+          path: "setup/complaintsub",
+          Component: ComplaintSubject,
+        },
+        {
+          path: "setup/operator",
+          Component: OperatorManager,
+        },
+        {
+          path: "setup/portalsettings",
+          Component: PortalSetting,
+        },
+        {
+          path: "setup/links",
+          Component: QuickLinks,
         },
       ],
     },

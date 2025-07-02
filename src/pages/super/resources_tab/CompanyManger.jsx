@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-
-import { companyManagerData, UsersData } from "../../../assets/assets";
+import { companyManagerData } from "../../../assets/assets";
 import { SuperModal } from "../../../components/super/SuperModel";
 import FilterField from "../../../components/FilterField";
 import FilterBar from "../../../components/FilterBar";
+import { ToggleButton } from "../../../components/utility/ToggleButton";
+import PaginatedTable from "../../../components/PaginatedTable";
+import CompanyForm from "../../../components/super/resource_tab/CompanyForm";
 
 export const CompanyManger = () => {
   // All modals open CLose State
@@ -31,7 +33,6 @@ export const CompanyManger = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
-  const [displayData, setDisplayData] = useState([]);
 
   const pageSize = 10;
   const maxVisiblePages = 5;
@@ -54,10 +55,6 @@ export const CompanyManger = () => {
   useEffect(() => {
     applyFilters();
   }, [filters]);
-
-  useEffect(() => {
-    paginateData();
-  }, [filteredData, currentPage]);
 
   // filters function
   const applyFilters = () => {
@@ -82,37 +79,14 @@ export const CompanyManger = () => {
     setCurrentPage(1);
   };
 
-  const paginateData = () => {
-    const start = (currentPage - 1) * pageSize;
-    const end = start + pageSize;
-    setDisplayData(filteredData.slice(start, end));
-  };
-
-  const totalPages = Math.ceil(filteredData.length / pageSize);
-
-  // Pagination
-  const getPaginationRange = () => {
-    let start = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1);
-    let end = start + maxVisiblePages - 1;
-
-    if (end > totalPages) {
-      end = totalPages;
-      start = Math.max(end - maxVisiblePages + 1, 1);
-    }
-
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
-  };
-
   // handle toggle
   const handleToggle = (indexInDisplay) => {
     const actualIndex = (currentPage - 1) * pageSize + indexInDisplay;
     const updated = [...filteredData];
 
-    updated[actualIndex].status =
-      updated[actualIndex].status === "active" ? "inactive" : "active";
+    updated[actualIndex].status = !updated[actualIndex].status;
 
     setFilteredData(updated);
-    paginateData();
   };
 
   const fields = [
@@ -171,6 +145,37 @@ export const CompanyManger = () => {
     setIsModal((prev) => ({ ...prev, AddNew: true }));
   };
 
+  const columns = [
+    {
+      header: "#",
+      accessor: "id",
+    },
+    {
+      header: "Name",
+      accessor: "name",
+    },
+    {
+      header: "Domain",
+      accessor: "website",
+    },
+    {
+      header: "Status",
+      accessor: "status",
+      render: (row, idx) => (
+        <ToggleButton row={row} onchange={() => handleToggle(idx)} />
+      ),
+    },
+    {
+      header: "Action",
+      accessor: "action",
+      render: (row) => (
+        <button className="btn-secondary" onClick={() => openEditModal(row)}>
+          Edit
+        </button>
+      ),
+    },
+  ];
+
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
@@ -191,89 +196,15 @@ export const CompanyManger = () => {
           </button>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto text-left text-sm">
-            <thead>
-              <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">
-                <th className="px-4 py-3">#</th>
-                <th className="px-4 py-3">Name</th>
-                <th className="px-4 py-3">Domain</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {displayData.map((entry, index) => (
-                <tr key={index} className="border-t border-[#3F425D]">
-                  <td className="px-4 py-3">{entry.id}</td>
-                  <td className="px-4 py-3">{entry.name}</td>
-                  <td className="px-4 py-3">{entry.website}</td>
-                  <td className="px-4 py-3">
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={entry.status == "active" ? true : false}
-                        onChange={() => handleToggle(index)}
-                        className="sr-only peer"
-                      />
-                      <div className="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full peer-checked:after:border-white"></div>
-                    </label>
-                  </td>
-                  <td className="px-4 py-3 space-x-2">
-                    <button
-                      className="btn-secondary"
-                      onClick={() => openEditModal(entry)}
-                    >
-                      Edit
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-4 flex justify-between items-center text-sm text-gray-300">
-          <p>
-            Showing{" "}
-            {Math.min((currentPage - 1) * pageSize + 1, filteredData.length)} to{" "}
-            {Math.min(currentPage * pageSize, filteredData.length)} of{" "}
-            {filteredData.length} entries
-          </p>
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
-            >
-              ←
-            </button>
-
-            {getPaginationRange().map((pageNum) => (
-              <button
-                key={pageNum}
-                onClick={() => setCurrentPage(pageNum)}
-                className={`px-3 py-1 rounded ${
-                  currentPage === pageNum
-                    ? "bg-secondary text-white"
-                    : "bg-[#1F2235] text-gray-500"
-                }`}
-              >
-                {pageNum}
-              </button>
-            ))}
-
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
-            >
-              →
-            </button>
-          </div>
-        </div>
+        <PaginatedTable
+          data={filteredData}
+          filters={filters}
+          onSearch={applyFilters}
+          columns={columns}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          pageSize={pageSize}
+        />
       </div>
 
       {/* Add/Edit New Modal */}
@@ -285,64 +216,12 @@ export const CompanyManger = () => {
             setCompany("");
           }}
         >
-          <div className="mb-4 text-lg font-semibold text-center">
-            {editingCompany ? "Edit Company" : "Add Company"}
-          </div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-
-              // close modal
-              setIsModal((prev) => ({ ...prev, AddNew: false }));
-              setEditingCompany(null);
-              setCompany("");
-            }}
-          >
-            <div className=" flex flex-col space-y-4">
-              <FilterField
-                name="name"
-                type="text"
-                placeholder="Name"
-                value={company?.name}
-                onChange={handlemodalInputChange}
-              />
-              <FilterField
-                name="website"
-                type="text"
-                placeholder="Website"
-                value={company?.website}
-                onChange={handlemodalInputChange}
-              />
-              <FilterField
-                name="senderid"
-                type="text"
-                placeholder="Sender ID"
-                value={company?.senderid}
-                onChange={handlemodalInputChange}
-              />
-              <FilterField
-                name="smsuser"
-                type="text"
-                placeholder="SMS User"
-                value={company?.smsuser}
-                onChange={handlemodalInputChange}
-              />
-              <FilterField
-                name="smspwd"
-                type="text"
-                placeholder="SMS PWD"
-                value={company?.smspwd}
-                onChange={handlemodalInputChange}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="border-1 bg-secondary px-4 py-2 rounded-md font-bold my-3 w-full text-white cursor-pointer"
-            >
-              {editingCompany ? "Update" : "Add"}
-            </button>
-          </form>
+          <CompanyForm
+            editingCompany={editingCompany}
+            setEditingCompany={setEditingCompany}
+            setIsModal={setIsModal}
+            setCompany={setCompany}
+          />
         </SuperModal>
       )}
     </div>
