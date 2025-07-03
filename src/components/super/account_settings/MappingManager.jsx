@@ -40,7 +40,7 @@ const MappingManager = () => {
           type="text"
           placeholder="Test(1234567899)(Master Distribu)"
           {...register("parentMember")}
-          className="w-full px-3 py-2 rounded dark:bg-[#1e293b] dark:text-white border border-gray-600"
+          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
         {errors.parentMember && (
           <p className="text-sm text-red-500 mt-1">
@@ -59,7 +59,7 @@ const MappingManager = () => {
           placeholder="Enter 4–6 digit PIN"
           {...register("securityPin")}
           onInput={(e) => (e.target.value = e.target.value.replace(/\D/g, ""))}
-          className="w-full px-3 py-2 rounded dark:bg-[#1e293b] dark:text-white border border-gray-600"
+          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
         {errors.securityPin && (
           <p className="text-sm text-red-500 mt-1">

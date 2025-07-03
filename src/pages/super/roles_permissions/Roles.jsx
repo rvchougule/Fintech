@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PaginatedTable from "../../../components/PaginatedTable";
 import FilterBar from "../../../components/FilterBar";
 import { SuperModal } from "../../../components/super/SuperModel";
-import AddSubjectForm from "../../../components/super/setup_tools/AddSubjectForm";
 import { IoIosArrowDown } from "react-icons/io";
 import RoleForm from "../../../components/super/roles_permissions/RoleForm";
 import RoleSchemeForm from "../../../components/super/roles_permissions/RoleSchemeForm";
+import { CheckBoxPermissionForm } from "../../../components/super/roles_permissions/CheckBoxPermissionForm";
 const data = [
   {
     id: 6,
@@ -218,7 +218,7 @@ export const Roles = () => {
 
       {isPermissionModal && (
         <SuperModal onClose={() => setIsPermissionModal(false)}>
-          <h1 className="bg-darkBlue">Permission Modal</h1>
+          <CheckBoxPermissionForm />
         </SuperModal>
       )}
     </div>

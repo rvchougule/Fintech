@@ -1,33 +1,58 @@
-import React, { useState } from "react";
-import ProfileForm from "../../../components/super/setup_tools/ProfileForm";
-import pagesConfig from "../../../assets/data/pagesConfig";
+import { PortalSettingsCardForm } from "../../../components/super/setup_tools/PortalSettingsCardForm";
 
 export const PortalSetting = () => {
-  const [activePage, setActivePage] = useState("Profile Details");
+  const cardData = [
+    {
+      title: "Wallet Settlement Type",
+      label: "Settlement Type",
+      placeholder: "Auto",
+    },
+    {
+      title: "Bank Settlement Type",
+      label: "Settlement Type",
+      placeholder: "Auto",
+    },
+    { title: "Bank Settlement Charge", label: "Charge", placeholder: "5" },
+    {
+      title: "Bank Settlement Charge Upto 25000",
+      label: "Charge",
+      placeholder: "5",
+    },
+    {
+      title: "Login with OTP",
+      label: "Login Type",
+      placeholder: "Without Otp",
+    },
+    {
+      title: "Sending mail id for OTP",
+      label: "Mail Id",
+      placeholder: "support@phonepays.in",
+    },
+    {
+      title: "Sending mailer name id for otp",
+      label: "Mailer Name",
+      placeholder: "NK Tax Consultancy-Phone",
+    },
+    { title: "Transaction Id Code", label: "Code", placeholder: "PSP" },
+    { title: "Main Wallet Locked Amount", label: "Amount", placeholder: "0" },
+    {
+      title: "Aeps Bank Settlement Locked Amount",
+      label: "Amount",
+      placeholder: "0",
+    },
+  ];
 
   return (
-    <div className="min-h-screen dark:bg-gray-800 dark:text-white p-4">
-      <h1 className="text-2xl mb-4 font-bold">My Profile</h1>
-
-      <div className="flex flex-wrap gap-2 mb-6">
-        {Object.keys(pagesConfig).map((page) => (
-          <button
-            key={page}
-            onClick={() => setActivePage(page)}
-            className={`px-4 py-2 rounded ${
-              activePage === page
-                ? "bg-secondary"
-                : "dark:bg-gray-800 hover:bg-slate-600"
-            }`}
-          >
-            {page}
-          </button>
+    <div className="h-[90vh] 2xl:max-w-[80%]  p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      <div className="grid grid-cols-3 items-center gap-4">
+        {cardData.map((card, index) => (
+          <PortalSettingsCardForm
+            key={index}
+            title={card.title}
+            label={card.label}
+            placeholder={card.placeholder}
+          />
         ))}
-      </div>
-
-      <hr className="my-4 dark:border-gray-600" />
-      <div className="p-4 dark:bg-gray-800 rounded">
-        <ProfileForm config={pagesConfig[activePage]} />
       </div>
     </div>
   );
