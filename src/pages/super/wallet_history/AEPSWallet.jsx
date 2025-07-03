@@ -12,6 +12,9 @@ export const AEPSWallet = () => {
     status: "",
     product: "",
   });
+  const [filteredData, setFilteredData] = useState([...Data]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 10;
 
   // ✅ Generic input handler
   const handleInputChange = (name, value) => {
@@ -69,6 +72,9 @@ export const AEPSWallet = () => {
         return true;
       });
     }
+
+    setFilteredData(data);
+    setCurrentPage(1);
 
     return data;
   };
@@ -171,6 +177,9 @@ export const AEPSWallet = () => {
         filters={filters}
         onSearch={applyFilters}
         columns={columns}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pageSize={pageSize}
       />
     </div>
   );

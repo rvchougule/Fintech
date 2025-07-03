@@ -37,6 +37,9 @@ import { ComplaintSubject } from "./pages/super/setup_tools/ComplaintSubject";
 import { OperatorManager } from "./pages/super/setup_tools/OperatorManager";
 import { PortalSetting } from "./pages/super/setup_tools/PortalSetting";
 import { QuickLinks } from "./pages/super/setup_tools/QuickLinks";
+import { Roles } from "./pages/super/roles_permissions/Roles";
+import { Permissions } from "./pages/super/roles_permissions/Permissions";
+import AccountPortalSettings from "./pages/super/account_settings/AccountPortalSettings";
 
 // admin
 
@@ -174,6 +177,22 @@ const App = () => {
         {
           path: "setup/links",
           Component: QuickLinks,
+        },
+
+        // Roles and Permission
+        {
+          path: "tools/roles",
+          Component: Roles,
+        },
+        {
+          path: "tools/permissions",
+          Component: Permissions,
+        },
+
+        // account settings
+        {
+          path: "profile/view",
+          Component: AccountPortalSettings,
         },
       ],
     },

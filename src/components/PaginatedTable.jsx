@@ -37,7 +37,7 @@ const PaginatedTable = ({
 
   return (
     <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
-      <div className="overflow-x-auto">
+      <div className="relative overflow-visible">
         <table className="w-full table-auto text-left text-sm">
           <thead>
             <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">

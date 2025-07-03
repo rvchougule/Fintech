@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PaginatedTable from "../../../components/PaginatedTable";
 import FilterBar from "../../../components/FilterBar";
 import { SuperModal } from "../../../components/super/SuperModel";

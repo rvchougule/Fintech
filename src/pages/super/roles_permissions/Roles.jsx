@@ -2,61 +2,33 @@ import React, { useState } from "react";
 import PaginatedTable from "../../../components/PaginatedTable";
 import FilterBar from "../../../components/FilterBar";
 import { SuperModal } from "../../../components/super/SuperModel";
-import APIManagerForm from "../../../components/super/setup_tools/APIManagerForm";
-import { ToggleButton } from "../../../components/utility/ToggleButton";
-
+import AddSubjectForm from "../../../components/super/setup_tools/AddSubjectForm";
+import { IoIosArrowDown } from "react-icons/io";
+import RoleForm from "../../../components/super/roles_permissions/RoleForm";
+import RoleSchemeForm from "../../../components/super/roles_permissions/RoleSchemeForm";
 const data = [
   {
-    id: 62,
-    productName: "CC-Payments",
-    displayName: "CC-Payments",
-    apiCode: "ccpayment",
-    credentials: "Api Credentials",
-    status: true,
+    id: 6,
+    name: "SUPER DICISIBUTOR",
+    displayName: "SUP DIST",
+    lastUpdated: "07 Jul 24 - 06:42 PM",
   },
   {
-    id: 61,
-    productName: "Air Pay Pg",
-    displayName: "Air Pay",
-    apiCode: "airpay",
-    credentials: "Api Credentials",
-    status: true,
+    id: 5,
+    name: "whitelable",
+    displayName: "Whitelable",
+    lastUpdated: "01 Jan 70 - 05:30 AM",
   },
   {
-    id: 60,
-    productName: "Load Wallet",
-    displayName: "Load Wallet",
-    apiCode: "fund",
-    credentials: "Api Credentials",
-    status: true,
+    id: 4,
+    name: "retailer",
+    displayName: "Retailer",
+    lastUpdated: "29 Jul 18 - 01:07 PM",
   },
-  {
-    id: 9,
-    productName: "Iyda Verification",
-    displayName: "Iyda Verification",
-    apiCode: "iydaVerification",
-    credentials: "Api Credentials",
-    status: true,
-  },
-  {
-    id: 8,
-    productName: "Iyda MATM SDK",
-    displayName: "Iyda MATM SDK",
-    apiCode: "iydaMatmSdk",
-    credentials: "Api Credentials",
-    status: true,
-  },
-  {
-    id: 7,
-    productName: "Iyda PAN Card",
-    displayName: "Iyda PAN Card",
-    apiCode: "iydaPANCard",
-    credentials: "Api Credentials",
-    status: true,
-  },
+  // ... and so on
 ];
 
-export const APIManager = () => {
+export const Roles = () => {
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -121,11 +93,13 @@ export const APIManager = () => {
     setEditData(row);
     setEditModal(true);
   };
+  const handleAddClick = () => {
+    setEditData(null);
+    setEditModal(true);
+  };
 
-  const handleFormSubmit = (formData) => {
-    console.log("Edited Data:", formData);
-    setEditModal(false);
-    // 🚀 Update your backend/state here
+  const handleSubmitData = (data) => {
+    console.log("Form Data Submitted:", data);
   };
 
   const fields = [
@@ -157,46 +131,49 @@ export const APIManager = () => {
       value: filters.userId || "",
       onChange: (val) => handleInputChange("userId", val),
     },
-    {
-      name: "status",
-      type: "select",
-      placeholder: "Select Status",
-      value: filters.status || "",
-      onChange: (val) => handleInputChange("status", val),
-      options: [
-        { label: "Select Status", value: "" },
-        { label: "Active", value: "active" },
-        { label: "De-active", value: "de-active" },
-      ],
-    },
   ];
+
+  const [isSchemeModal, setIsSchemeModal] = useState(false);
+  const [isPermissionModal, setIsPermissionModal] = useState(false);
+
+  const handlePermissionClick = () => {
+    setIsPermissionModal(true);
+  };
+  const handleSchemeClick = () => {
+    setIsSchemeModal(true);
+  };
 
   const columns = [
     { header: "#", accessor: "id" },
-    { header: "Product Name", accessor: "productName" },
+    { header: "Name", accessor: "name" },
     { header: "Display Name", accessor: "displayName" },
-    { header: "API Code", accessor: "apiCode" },
-    {
-      header: "Credentials",
-      accessor: "credentials",
-      render: (row) => (
-        <span className="text-blue-500 cursor-pointer">{row.credentials}</span>
-      ),
-    },
-    {
-      header: "Status",
-      accessor: "status",
-      render: (row, idx) => (
-        <ToggleButton row={row} onchange={() => handleToggle(idx)} />
-      ),
-    },
+    { header: "Last Updated", accessor: "lastUpdated" },
     {
       header: "Action",
       accessor: "action",
       render: (row) => (
-        <button className="btn-md bg-secondary" onClick={handleEditClick}>
-          Edit
-        </button>
+        <div className="relative group">
+          <button className="flex gap-2  items-center btn-md bg-secondary px-4 py-1 text-white rounded hover:bg-secondary/80 transition">
+            More{" "}
+            <span className="ml-1">
+              <IoIosArrowDown />
+            </span>
+          </button>
+          <div className="absolute z-50 hidden group-hover:block bg-darkBlue text-white mt-1 rounded shadow-lg">
+            <button
+              className="block px-4 py-2 text-sm hover:bg-secondary/80 w-full text-left"
+              onClick={handlePermissionClick}
+            >
+              Permission
+            </button>
+            <button
+              className="block px-4 py-2 text-sm hover:bg-secondary/80 w-full text-left"
+              onClick={handleSchemeClick}
+            >
+              Scheme
+            </button>
+          </div>
+        </div>
       ),
     },
   ];
@@ -206,12 +183,17 @@ export const APIManager = () => {
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-            API Manager
+            Role List
           </h2>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
-
+      <div className="flex justify-between mb-4">
+        <div className=""></div>
+        <button className="btn bg-accentGreen" onClick={handleAddClick}>
+          + Add New
+        </button>
+      </div>
       <PaginatedTable
         data={filteredData}
         filters={filters}
@@ -224,7 +206,19 @@ export const APIManager = () => {
 
       {editModal && (
         <SuperModal onClose={() => setEditModal(false)}>
-          <APIManagerForm initialData={editData} onSubmit={handleFormSubmit} />
+          <RoleForm onSubmitForm={handleSubmitData} />
+        </SuperModal>
+      )}
+
+      {isSchemeModal && (
+        <SuperModal onClose={() => setIsSchemeModal(false)}>
+          <RoleSchemeForm />
+        </SuperModal>
+      )}
+
+      {isPermissionModal && (
+        <SuperModal onClose={() => setIsPermissionModal(false)}>
+          <h1 className="bg-darkBlue">Permission Modal</h1>
         </SuperModal>
       )}
     </div>

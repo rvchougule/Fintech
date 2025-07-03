@@ -24,7 +24,7 @@ export default function CommissionTable({
             className={`px-4 py-2 rounded-t-md text-sm font-medium ${
               selectedService === service
                 ? "bg-[#7C5CFC] text-white"
-                : "bg-transparent text-gray-400 hover:text-white"
+                : "bg-transparent text-gray-400 hover:text-secondary"
             }`}
           >
             {service}

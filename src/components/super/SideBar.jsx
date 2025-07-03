@@ -35,6 +35,15 @@ const menuItems = [
     ],
   },
   {
+    icon: <RiFileListLine />,
+    label: "Resources",
+    subItems: [
+      { label: "Scheme Manager", component: "/resources/scheme-manager" },
+      { label: "Company", component: "/resources/company" },
+      { label: "Company Profile", component: "/resources/company-profile" },
+    ],
+  },
+  {
     icon: <FaMoneyBillAlt />,
     label: "Fund",
     component: "",
@@ -106,24 +115,15 @@ const menuItems = [
     icon: <FiSettings />,
     label: "Account Setting",
     component: "",
-    subItems: [{ label: "Profile Setting", component: "" }],
+    subItems: [{ label: "Profile Setting", component: "profile/view" }],
   },
   {
     icon: <FaUsersCog />,
     label: "Roles & Permissions",
     component: "",
     subItems: [
-      { label: "Roles", component: "" },
-      { label: "Permission", component: "" },
-    ],
-  },
-  {
-    icon: <RiFileListLine />,
-    label: "Resources",
-    subItems: [
-      { label: "Scheme Manager", component: "/resources/scheme-manager" },
-      { label: "Company", component: "/resources/company" },
-      { label: "Company Profile", component: "/resources/company-profile" },
+      { label: "Roles", component: "tools/roles" },
+      { label: "Permission", component: "tools/permissions" },
     ],
   },
 ];

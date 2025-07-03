@@ -12,7 +12,9 @@ export const CommissionWallet = () => {
     status: "",
     product: "",
   });
-
+  const [filteredData, setFilteredData] = useState([...Data]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 10;
   // ✅ Generic input handler
   const handleInputChange = (name, value) => {
     setFilters((prev) => ({
@@ -69,6 +71,9 @@ export const CommissionWallet = () => {
         return true;
       });
     }
+
+    setFilteredData(data);
+    setCurrentPage(1);
 
     return data;
   };
@@ -183,6 +188,9 @@ export const CommissionWallet = () => {
         filters={filters}
         onSearch={applyFilters}
         columns={columns}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pageSize={pageSize}
       />
     </div>
   );
