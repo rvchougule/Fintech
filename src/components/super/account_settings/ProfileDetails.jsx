@@ -53,7 +53,7 @@ const ProfileDetails = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl"
     >
       <div>
         <label className="block text-sm mb-1">Name</label>

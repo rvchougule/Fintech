@@ -40,6 +40,14 @@ import { QuickLinks } from "./pages/super/setup_tools/QuickLinks";
 import { Roles } from "./pages/super/roles_permissions/Roles";
 import { Permissions } from "./pages/super/roles_permissions/Permissions";
 import AccountPortalSettings from "./pages/super/account_settings/AccountPortalSettings";
+import { Admin } from "./pages/super/members/Admin";
+import { WhiteLabel } from "./pages/super/members/WhiteLabel";
+import { MasterDistributor } from "./pages/super/members/MasterDistributor";
+import { Distributor } from "./pages/super/members/Distributor";
+import { Retail } from "./pages/super/members/Retail";
+import { Customer } from "./pages/super/members/Customer";
+import WhitelabelLayout from "./components/super/members/whitelabel/WhitelabelLayout";
+import CreateWhitelabel from "./components/super/members/whitelabel/CreateWhiteLabel";
 
 // admin
 
@@ -193,6 +201,42 @@ const App = () => {
         {
           path: "profile/view",
           Component: AccountPortalSettings,
+        },
+
+        // members
+        {
+          path: "members/admin",
+          Component: Admin,
+        },
+        {
+          path: "members/whitelabel",
+          Component: WhitelabelLayout,
+          children: [
+            {
+              index: true,
+              Component: WhiteLabel,
+            },
+            {
+              path: "create",
+              Component: CreateWhitelabel,
+            },
+          ],
+        },
+        {
+          path: "members/mds",
+          Component: MasterDistributor,
+        },
+        {
+          path: "members/ds",
+          Component: Distributor,
+        },
+        {
+          path: "members/retail",
+          Component: Retail,
+        },
+        {
+          path: "members/customer",
+          Component: Customer,
         },
       ],
     },

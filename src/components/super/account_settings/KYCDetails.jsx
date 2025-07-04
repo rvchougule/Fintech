@@ -134,6 +134,21 @@ const KYCDetails = () => {
           {errors.passportPhoto?.message}
         </p>
 
+        {!previewUrl && (
+          <div class=" dark:text-white p-4 rounded-md text-sm w-fit">
+            <p class="font-semibold text-base">Note :-</p>
+            <ul class="list-disc list-inside space-y-1 mt-1">
+              <li>
+                Image will be uploaded only once, Kindly upload the proper image
+              </li>
+              <li>
+                Size: <span class="font-medium">60px X 80px</span> (passport
+                size)
+              </li>
+            </ul>
+          </div>
+        )}
+
         {previewUrl && (
           <div className="mt-2 w-24 h-24 rounded border border-gray-400 overflow-hidden">
             <img

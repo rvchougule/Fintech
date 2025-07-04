@@ -3,7 +3,7 @@ export const ToggleButton = ({ row, onchange = () => {} }) => {
     <label className="relative inline-flex items-center cursor-pointer">
       <input
         type="checkbox"
-        checked={row.status}
+        checked={row?.status}
         onChange={onchange}
         className="sr-only peer"
       />

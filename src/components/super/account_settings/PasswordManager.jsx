@@ -5,7 +5,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 // Yup validation schema
 const schema = yup.object().shape({
-  oldPassword: yup.string().required("Old password is required"),
   newPassword: yup
     .string()
     .min(6, "New password must be at least 6 characters")
@@ -39,19 +38,6 @@ const PasswordManager = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl"
     >
-      {/* Old Password */}
-      <div>
-        <label className="block text-sm mb-1">Old Password</label>
-        <input
-          type="password"
-          {...register("oldPassword")}
-          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
-        />
-        <p className="text-red-500 text-xs mt-1">
-          {errors.oldPassword?.message}
-        </p>
-      </div>
-
       {/* New Password */}
       <div>
         <label className="block text-sm mb-1 ">New Password</label>

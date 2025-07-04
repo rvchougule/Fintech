@@ -116,11 +116,11 @@
   }
 
   .btn-24 {
-    @apply w-24 px-3 py-1 mx-2 rounded font-bold;
+    @apply w-24 px-3 py-1 mx-2 rounded font-bold cursor-pointer;
   }
 
   .btn {
-    @apply px-3 py-1 mx-2 rounded font-bold;
+    @apply px-3 py-1 mx-2 rounded font-bold cursor-pointer;
   }
 
   /* background */

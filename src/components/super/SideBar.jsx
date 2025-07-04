@@ -26,12 +26,12 @@ const menuItems = [
     label: "Member",
     component: "",
     subItems: [
-      { label: "Admin", component: "" },
-      { label: "White Label", component: "" },
-      { label: "Master Distributor", component: "" },
-      { label: "Distributor", component: "" },
-      { label: "Retail", component: "" },
-      { label: "User", component: "" },
+      { label: "Admin", component: "members/admin" },
+      { label: "White Label", component: "members/whitelabel" },
+      { label: "Master Distributor", component: "members/mds" },
+      { label: "Distributor", component: "members/ds" },
+      { label: "Retail", component: "members/retail" },
+      { label: "Customer", component: "members/customer" },
     ],
   },
   {

@@ -42,7 +42,7 @@ const BankDetails = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl"
     >
       {/* Account Number */}
       <div>
@@ -111,7 +111,7 @@ const BankDetails = () => {
       </div>
 
       {/* Submit Button */}
-      <div className="md:col-span-2">
+      <div className="md:col-span-3">
         <button
           type="submit"
           className="px-6 py-2 bg-secondary text-white rounded hover:bg-violet-600 transition"
