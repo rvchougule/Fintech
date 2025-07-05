@@ -5,12 +5,13 @@ import { SuperModal } from "../../../components/super/SuperModel";
 import { ToggleButton } from "../../../components/utility/ToggleButton";
 import { FiRepeat, FiSettings, FiUserPlus, FiShield } from "react-icons/fi";
 import ActionDropdown from "../../../components/utility/ActionDropDown";
-import FundActionForm from "../../../components/super/members/whitelabel/FundActionForm";
+import FundActionForm from "../../../components/super/members/utility_components/FundActionForm";
 import SchemeManager from "../../../components/super/members/whitelabel/SchemeManager";
 import StockTableForm from "../../../components/super/members/whitelabel/StockTableForm";
-import { CheckBoxPermissionForm } from "../../../components/super/members/CheckBoxPermissionForm";
-import KycStatusForm from "../../../components/super/members/whitelabel/KycManager";
+import { CheckBoxPermissionForm } from "../../../components/super/members/utility_components/CheckBoxPermissionForm";
+import KycStatusForm from "../../../components/super/members/utility_components/KycManager";
 import { Link } from "react-router";
+import ProfileSettings from "../../../components/super/members/utility_components/ProfileSettings";
 
 const data = [
   {
@@ -266,6 +267,56 @@ export const WhiteLabel = () => {
     },
   ];
 
+  const user = {
+    Profile_Details: {
+      name: "BANDARU KISHORE BABU",
+      mobile: "7997991899",
+      state: "Telangana",
+      city: "HYDERABAD",
+      gender: "",
+      pinCode: "500089",
+      email: "support@phonepays.in",
+      securityPin: "",
+      address: "7-15/62,PLOT NO 62,ROAD NO 4.SI",
+    },
+    KYC_Profile: {
+      shopName: "",
+      gstNumber: "",
+      aadharNumber: "",
+      panNumber: "",
+      securityPin: "",
+      passportPhoto: "",
+    },
+    Password_Manager: {
+      newPassword: "",
+      confirmPassword: "",
+      securityPin: "",
+    },
+    Pin_Manager: {
+      newPin: "",
+      confirmPin: "",
+      otp: "",
+    },
+    Bank_Details: {
+      accountNUmber: "",
+      bankName: "",
+      ifscCode: "",
+      securityPin: "",
+    },
+    Cetificate_Manager: {
+      cmo: "",
+      coo: "",
+    },
+    Role_Manager: {
+      membersRole: "",
+      securityPin: "",
+    },
+    Mapping_Manager: {
+      parentMember: "",
+      securityPin: "",
+    },
+  };
+
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
@@ -273,6 +324,14 @@ export const WhiteLabel = () => {
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
             Whitelabel List
           </h2>
+          <div className="">
+            <button className="btn-24 text-adminOffWhite bg-accentRed ">
+              Refresh
+            </button>
+            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
+              Export{" "}
+            </button>
+          </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
@@ -323,6 +382,7 @@ export const WhiteLabel = () => {
 
           {/* Kyc_Manager */}
           {editModal == "Kyc_Manager" && <KycStatusForm />}
+          {editModal == "View_Profile" && <ProfileSettings user={user} />}
         </SuperModal>
       )}
     </div>

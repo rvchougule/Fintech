@@ -19,7 +19,7 @@ const schema = yup.object().shape({
     .required("OTP is required"),
 });
 
-const PinManager = () => {
+const PinManager = ({ initialData }) => {
   const [otpSent, setOtpSent] = useState(false);
 
   const {
@@ -27,6 +27,7 @@ const PinManager = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues: initialData,
     resolver: yupResolver(schema),
   });
 

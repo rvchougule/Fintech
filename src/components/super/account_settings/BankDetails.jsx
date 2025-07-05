@@ -23,13 +23,14 @@ const schema = yup.object().shape({
     .required("Security PIN is required"),
 });
 
-const BankDetails = () => {
+const BankDetails = ({ initialData }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
+    defaultValues: initialData,
     resolver: yupResolver(schema),
   });
 

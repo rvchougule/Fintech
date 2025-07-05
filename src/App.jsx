@@ -46,8 +46,13 @@ import { MasterDistributor } from "./pages/super/members/MasterDistributor";
 import { Distributor } from "./pages/super/members/Distributor";
 import { Retail } from "./pages/super/members/Retail";
 import { Customer } from "./pages/super/members/Customer";
-import WhitelabelLayout from "./components/super/members/whitelabel/WhitelabelLayout";
+import WhitelabelLayout from "./layouts/members/WhitelabelLayout";
 import CreateWhitelabel from "./components/super/members/whitelabel/CreateWhiteLabel";
+import MDLayout from "./layouts/members/MDLayout";
+import DSLayout from "./layouts/members/DSLayout";
+import CustomerLayout from "./layouts/members/CustomerLayout";
+import RetailerLayout from "./layouts/members/RetailerLayout";
+import CreateMDS from "./components/super/members/mds/CreateMDS";
 
 // admin
 
@@ -224,19 +229,59 @@ const App = () => {
         },
         {
           path: "members/mds",
-          Component: MasterDistributor,
+          Component: MDLayout,
+          children: [
+            {
+              index: true,
+              Component: MasterDistributor,
+            },
+            {
+              path: "create",
+              Component: CreateMDS,
+            },
+          ],
         },
         {
           path: "members/ds",
-          Component: Distributor,
+          Component: DSLayout,
+          children: [
+            {
+              index: true,
+              Component: Distributor,
+            },
+            {
+              path: "create",
+              Component: CreateWhitelabel,
+            },
+          ],
         },
         {
           path: "members/retail",
           Component: Retail,
+          children: [
+            {
+              index: true,
+              Component: RetailerLayout,
+            },
+            {
+              path: "create",
+              Component: CreateWhitelabel,
+            },
+          ],
         },
         {
           path: "members/customer",
-          Component: Customer,
+          Component: CustomerLayout,
+          children: [
+            {
+              index: true,
+              Component: Customer,
+            },
+            {
+              path: "create",
+              Component: CreateWhitelabel,
+            },
+          ],
         },
       ],
     },

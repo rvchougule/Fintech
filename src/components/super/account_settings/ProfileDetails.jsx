@@ -25,7 +25,7 @@ const schema = yup.object().shape({
   address: yup.string().required("Address is required"),
 });
 
-const ProfileDetails = () => {
+const ProfileDetails = ({ initialData }) => {
   const {
     register,
     handleSubmit,
@@ -33,15 +33,7 @@ const ProfileDetails = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: "BANDARU KISHORE BABU",
-      mobile: "7997991899",
-      state: "Telangana",
-      city: "HYDERABAD",
-      gender: "",
-      pinCode: "500089",
-      email: "support@phonepays.in",
-      securityPin: "",
-      address: "7-15/62,PLOT NO 62,ROAD NO 4.SI",
+      ...initialData,
     },
   });
 

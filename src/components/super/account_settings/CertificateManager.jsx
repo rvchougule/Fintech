@@ -9,13 +9,14 @@ const schema = yup.object().shape({
   coo: yup.string().required("COO Name is required"),
 });
 
-const CertificateManager = () => {
+const CertificateManager = ({ initialData }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
+    defaultValues: initialData,
     resolver: yupResolver(schema),
   });
 

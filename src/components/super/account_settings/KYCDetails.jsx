@@ -29,8 +29,10 @@ const schema = yup.object().shape({
     }),
 });
 
-const KYCDetails = () => {
-  const [previewUrl, setPreviewUrl] = useState(null);
+const KYCDetails = ({ initialData }) => {
+  const [previewUrl, setPreviewUrl] = useState(
+    initialData.passportPhoto || null
+  );
 
   const {
     register,
@@ -38,6 +40,7 @@ const KYCDetails = () => {
     setValue,
     formState: { errors },
   } = useForm({
+    defaultValues: initialData,
     resolver: yupResolver(schema),
   });
 

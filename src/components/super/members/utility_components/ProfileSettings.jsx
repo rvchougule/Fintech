@@ -1,14 +1,14 @@
 import { useState } from "react";
-import BankDetails from "../../../components/super/account_settings/BankDetails";
-import CertificateManager from "../../../components/super/account_settings/CertificateManager";
-import KYCDetails from "../../../components/super/account_settings/KYCDetails";
-import MappingManager from "../../../components/super/account_settings/MappingManager";
-import PasswordManager from "../../../components/super/account_settings/PasswordManager";
-import PinManager from "../../../components/super/account_settings/PinManager";
-import ProfileDetails from "../../../components/super/account_settings/ProfileDetails";
-import RoleManager from "../../../components/super/account_settings/RoleManager";
+import BankDetails from "../../../../components/super/account_settings/BankDetails";
+import CertificateManager from "../../../../components/super/account_settings/CertificateManager";
+import KYCDetails from "../../../../components/super/account_settings/KYCDetails";
+import MappingManager from "../../../../components/super/account_settings/MappingManager";
+import PasswordManager from "../../../../components/super/account_settings/PasswordManager";
+import PinManager from "../../../../components/super/account_settings/PinManager";
+import ProfileDetails from "../../../../components/super/account_settings/ProfileDetails";
+import RoleManager from "../../../../components/super/account_settings/RoleManager";
 
-const AccountPortalSettings = () => {
+const ProfileSettings = ({ user }) => {
   const [activePage, setActivePage] = useState("Profile Details");
 
   const pages = [
@@ -22,55 +22,56 @@ const AccountPortalSettings = () => {
     "Mapping Manager",
   ];
 
-  const user = {
-    Profile_Details: {
-      name: "BANDARU KISHORE BABU",
-      mobile: "7997991899",
-      state: "Telangana",
-      city: "HYDERABAD",
-      gender: "",
-      pinCode: "500089",
-      email: "support@phonepays.in",
-      securityPin: "",
-      address: "7-15/62,PLOT NO 62,ROAD NO 4.SI",
-    },
-    KYC_Profile: {
-      shopName: "",
-      gstNumber: "",
-      aadharNumber: "",
-      panNumber: "",
-      securityPin: "",
-      passportPhoto: "",
-    },
-    Password_Manager: {
-      newPassword: "",
-      confirmPassword: "",
-      securityPin: "",
-    },
-    Pin_Manager: {
-      newPin: "",
-      confirmPin: "",
-      otp: "",
-    },
-    Bank_Details: {
-      accountNUmber: "",
-      bankName: "",
-      ifscCode: "",
-      securityPin: "",
-    },
-    Cetificate_Manager: {
-      cmo: "",
-      coo: "",
-    },
-    Role_Manager: {
-      membersRole: "",
-      securityPin: "",
-    },
-    Mapping_Manager: {
-      parentMember: "",
-      securityPin: "",
-    },
-  };
+  //   const user = {
+  //     Profile_Details: {
+  //       name: "BANDARU KISHORE BABU",
+  //       mobile: "7997991899",
+  //       state: "Telangana",
+  //       city: "HYDERABAD",
+  //       gender: "",
+  //       pinCode: "500089",
+  //       email: "support@phonepays.in",
+  //       securityPin: "",
+  //       address: "7-15/62,PLOT NO 62,ROAD NO 4.SI",
+  //     },
+  //     KYC_Profile: {
+  //       shopName: "",
+  //       gstNumber: "",
+  //       aadharNumber: "",
+  //       panNumber: "",
+  //       securityPin: "",
+  //       passportPhoto: "",
+  //     },
+  //     Password_Manager: {
+  //       newPassword: "",
+  //       confirmPassword: "",
+  //       securityPin: "",
+  //     },
+  //     Pin_Manager: {
+  //       newPin: "",
+  //       confirmPin: "",
+  //       otp: "",
+  //     },
+  //     Bank_Details: {
+  //       accountNUmber: "",
+  //       bankName: "",
+  //       ifscCode: "",
+  //       securityPin: "",
+  //     },
+  //     Cetificate_Manager: {
+  //       cmo: "",
+  //       coo: "",
+  //     },
+  //     Role_Manager: {
+  //       membersRole: "",
+  //       securityPin: "",
+  //     },
+  //     Mapping_Manager: {
+  //       parentMember: "",
+  //       securityPin: "",
+  //     },
+  //   };
+
   const renderPageContent = () => {
     switch (activePage) {
       case "Profile Details":
@@ -120,4 +121,4 @@ const AccountPortalSettings = () => {
   );
 };
 
-export default AccountPortalSettings;
+export default ProfileSettings;

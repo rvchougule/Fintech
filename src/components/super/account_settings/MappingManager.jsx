@@ -12,13 +12,14 @@ const schema = yup.object().shape({
     .required("Security PIN is required"),
 });
 
-const MappingManager = () => {
+const MappingManager = ({ initialData }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
+    defaultValues: initialData,
     resolver: yupResolver(schema),
   });
 

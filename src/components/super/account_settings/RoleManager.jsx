@@ -12,13 +12,14 @@ const schema = yup.object().shape({
     .required("Security PIN is required"),
 });
 
-const RoleManager = () => {
+const RoleManager = ({ initialData }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
+    defaultValues: initialData,
     resolver: yupResolver(schema),
   });
 
