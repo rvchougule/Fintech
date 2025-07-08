@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
-import { SuperModal } from "../../../components/super/SuperModel";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
+import { SuperModal } from "../../../components/utility/SuperModel";
 import AddSubjectForm from "../../../components/super/setup_tools/AddSubjectForm";
 import PermissionForm from "../../../components/super/roles_permissions/PermissionForm";
 

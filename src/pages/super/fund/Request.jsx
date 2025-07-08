@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import FilterBar from "../../../components/FilterBar";
-import PaginatedTable from "../../../components/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 
 export const Request = () => {
   const Data = [];

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import FilterBar from "../../../components/FilterBar";
+import FilterBar from "../../../components/utility/FilterBar";
 import { transferReturn as TRData } from "../../../assets/assets";
-import PaginatedTable from "../../../components/PaginatedTable";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 export const TransferReturn = () => {
   const [filters, setFilters] = useState({
     fromDate: "",

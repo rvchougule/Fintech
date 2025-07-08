@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { sampleData } from "../../../assets/assets";
-import FilterBar from "../../../components/FilterBar";
-import PaginatedTable from "../../../components/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 
 export const AllAEPSTransaction = () => {
   const [filters, setFilters] = useState({

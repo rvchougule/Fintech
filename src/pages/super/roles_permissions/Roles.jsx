@@ -1,7 +1,7 @@
 import { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
-import { SuperModal } from "../../../components/super/SuperModel";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
+import { SuperModal } from "../../../components/utility/SuperModel";
 import { IoIosArrowDown } from "react-icons/io";
 import RoleForm from "../../../components/super/roles_permissions/RoleForm";
 import RoleSchemeForm from "../../../components/super/roles_permissions/RoleSchemeForm";

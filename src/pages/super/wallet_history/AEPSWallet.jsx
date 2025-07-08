@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
 
 export const AEPSWallet = () => {
   const Data = [];

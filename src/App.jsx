@@ -53,6 +53,7 @@ import DSLayout from "./layouts/members/DSLayout";
 import CustomerLayout from "./layouts/members/CustomerLayout";
 import RetailerLayout from "./layouts/members/RetailerLayout";
 import CreateMDS from "./components/super/members/mds/CreateMDS";
+import CreateRetailerBYDs from "./components/super/members/ds/CreateRetailerBYDs";
 
 // admin
 
@@ -251,7 +252,7 @@ const App = () => {
             },
             {
               path: "create",
-              Component: CreateWhitelabel,
+              Component: CreateRetailerBYDs,
             },
           ],
         },

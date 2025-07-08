@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 import { sampleData } from "../../../assets/assets";
-import FilterBar from "../../../components/FilterBar";
+import FilterBar from "../../../components/utility/FilterBar";
 
 export const CommissionStatement = () => {
   const [filters, setFilters] = useState({

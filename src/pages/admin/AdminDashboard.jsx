@@ -13,7 +13,7 @@ import {
 import { useModal } from "../../hooks/useModel";
 import { AdminModal } from "../../components/admin/AdminModel";
 import { useState } from "react";
-import { CustomDatePicker } from "../../components/CustomDatePicker";
+import { CustomDatePicker } from "../../components/utility/CustomDatePicker";
 
 const serviceCards = [
   {
