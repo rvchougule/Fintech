@@ -4,8 +4,19 @@ import { FaUser } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
+<<<<<<< HEAD
 
 export { TiThMenu, IoSettingsSharp, FaUser, FaBell, FaSearch, FaFileInvoiceDollar };
+=======
+import { FaRegSquare } from "react-icons/fa";
+import { FaRegAddressCard } from "react-icons/fa6";
+
+//Fi links
+import { FiLink } from "react-icons/fi";
+
+export { TiThMenu, IoSettingsSharp, FaUser, FaBell, FaSearch, FaFileInvoiceDollar, FaRegSquare, FaRegAddressCard};
+export { FiLink };
+>>>>>>> origin/feature/vighnesh/whitelabel
 
 import { FaWallet, FaTools, FaUsersCog, FaCogs } from "react-icons/fa";
 import {
@@ -54,9 +65,19 @@ import { HiShieldCheck } from "react-icons/hi";
 import { PiPottedPlantFill } from "react-icons/pi";
 import { FaMoneyCheck } from "react-icons/fa";
 
+<<<<<<< HEAD
 export { BiSolidUserRectangle, HiShieldCheck, PiPottedPlantFill, FaMoneyCheck };
 
 // company Profile
 import { FaHome, FaBullhorn, FaNewspaper, FaPhone } from "react-icons/fa";
 
 export { FaHome, FaBullhorn, FaNewspaper, FaPhone };
+=======
+
+export { BiSolidUserRectangle, HiShieldCheck, PiPottedPlantFill, FaMoneyCheck };
+
+// company Profile
+import { FaHome, FaBullhorn, FaNewspaper, FaPhone, } from "react-icons/fa";
+
+export { FaHome, FaBullhorn, FaNewspaper, FaPhone, };
+>>>>>>> origin/feature/vighnesh/whitelabel

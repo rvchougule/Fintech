@@ -7,7 +7,10 @@
   font-family: "Inter", system-ui;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/feature/vighnesh/whitelabel
 @theme {
   --color-primary: #35669a;
   --color-secondary: #7776de;
@@ -57,7 +60,10 @@
   --breakpoint-3xl: 120rem;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/feature/vighnesh/whitelabel
 .body {
   overflow-x: hidden;
 }

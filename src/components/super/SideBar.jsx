@@ -3,6 +3,8 @@ import { Link } from "react-router";
 
 import { IoIosArrowDown, IoIosArrowForward } from "../../assets/react-icons";
 import { HiOutlineClipboardList } from "react-icons/hi";
+import { HiIdentification } from "react-icons/hi2";
+import { HiOutlineEnvelope } from "react-icons/hi2";
 
 import {
   FaUser,
@@ -17,11 +19,74 @@ import {
   FaPercent,
   BiSolidMessage,
   FaFileInvoiceDollar,
+  FiLink,
+  FaRegSquare,
+  FaRegAddressCard,
 } from "../../assets/react-icons";
 
 import { Logo } from "../../assets/assets";
 
 const menuItems = [
+  {
+    icon: <FaFileInvoiceDollar />,
+    label: "Utility Recharge",
+    component: "",
+    subItems: [
+      { label: "Mobile", component: "" },
+      { label: "DTH", component: "" },
+    ],
+  },
+  {
+    icon: <HiOutlineClipboardList />,
+    label: "Bill Payment",
+    component: "",
+    subItems: [
+      { label: "Electricity", component: "/Bill-Payment/electricity" },
+      { label: "Postpaid", component: "" },
+      { label: "Water", component: "" },
+      { label: "Broadband", component: "" },
+      { label: "LPG Gas", component: "" },
+      { label: "Piped Gas", component: "" },
+      { label: "Landline", component: "" },
+      { label: "Education Fees", component: "" },
+      { label: "Loan Repayment", component: "" },
+      { label: "Insurance", component: "" },
+      { label: "Rental", component: "" },
+      { label: "Donation", component: "" },
+      { label: "Subscription", component: "" },
+      { label: "Hospital", component: "" },
+      { label: "Clubs and Associations", component: "" },
+      { label: "Municipal Services", component: "" },
+      { label: "Municipal Taxes", component: "" },
+      { label: "Housing Society", component: "" },
+      { label: "Life Insurance", component: "" },
+      { label: "Cable TV", component: "" },
+      { label: "Credit Card", component: "" },
+      { label: "Recurring Deposit", component: "" },
+    ],
+  },
+  {
+    icon: <FaRegAddressCard />,
+    label: "Pan Card",
+    component: "",
+    subItems: [{ label: "UTI", component: "" }],
+  },
+  {
+    icon: <FaFileInvoiceDollar />,
+    label: "Banking Service",
+    component: "",
+    subItems: [
+      { label: "AEPS", component: "" },
+      { label: "Payout", component: "" },
+    ],
+  },
+  {
+    icon: <FiLink />,
+    label: "Service Links",
+    component: "",
+    subItems: [{ label: "Aadhaar Update", component: "" }],
+  },
+
   {
     icon: <FaUser />,
     label: "Member",
@@ -31,7 +96,7 @@ const menuItems = [
       { label: "White Label", component: "members/whitelabel" },
       { label: "Master Distributor", component: "members/mds" },
       { label: "Distributor", component: "members/ds" },
-      { label: "Retail", component: "members/retail" },
+      { label: "Retailer", component: "members/retail" },
       { label: "Customer", component: "members/customer" },
     ],
   },
@@ -44,22 +109,16 @@ const menuItems = [
       { label: "Company Profile", component: "/resources/company-profile" },
     ],
   },
-// 
-  {
-    icon: <FaFileInvoiceDollar/>,
-    label: "Utility Recharge",
-    subItems:[
-      {label:"Mobile Recharge", component: "utility/mobile-recharge"},
-      {label:"DTH Recharge", component: "utility/dth-recharge"},
-    ]
-  },
   {
     icon: <FaMoneyBillAlt />,
     label: "Fund",
     component: "",
     subItems: [
+      { label: "Load Main Wallet", component: "" },
+      { label: "Request Report", component: "fund/requestview" },
+      { label: "CC Fund Report", component: "" },
+      { label: "All Fund Report", component: "" },
       { label: "Transfer/Return", component: "fund/tr" },
-      { label: "Request", component: "fund/requestview" },
       { label: "Request Report", component: "fund/requestviewall" },
     ],
   },
@@ -68,9 +127,21 @@ const menuItems = [
     label: "Agent List",
     component: "",
     subItems: [
-      { label: "AEPS", component: "/statement/aeps" },
+      { label: "AePS", component: "/statement/aeps" },
       { label: "UTI", component: "/statement/uti" },
     ],
+  },
+  {
+    icon: <FaRegSquare />,
+    label: "Affiliate",
+    component: "",
+    subItems: [{ label: "Affiliate Service", component: "" }],
+  },
+  {
+    icon: <FaRegSquare />,
+    label: "Commision",
+    component: "",
+    subItems: [{ label: "Request", component: "" }],
   },
   {
     icon: <HiOutlineDocumentReport />,
@@ -91,8 +162,6 @@ const menuItems = [
       { label: "Credit Card Payment", component: "statement/credit" },
     ],
   },
-
-
   {
     icon: <FaWallet />,
     label: "Wallet History",
@@ -103,8 +172,6 @@ const menuItems = [
       { label: "Commision Wallet", component: "statement/commission-wallet" },
     ],
   },
-
-
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },
   {
     icon: <FaPercent />,

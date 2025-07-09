@@ -76,7 +76,11 @@ const PaginatedTable = ({
       </div>
 
       {/* Pagination */}
+<<<<<<< HEAD
       <div className="mt-4 flex justify-between items-center text-sm dark:text-gray-300 pt-2">
+=======
+      <div className="mt-4 flex justify-between items-center text-sm text-gray-300 pt-2">
+>>>>>>> origin/feature/vighnesh/whitelabel
         <p>
           Showing {Math.min((currentPage - 1) * pageSize + 1, data.length)} to{" "}
           {Math.min(currentPage * pageSize, data.length)} of {data.length}{" "}
