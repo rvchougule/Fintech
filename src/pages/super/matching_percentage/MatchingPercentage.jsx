@@ -56,7 +56,7 @@ export const MatchingPercentage = () => {
       data = data.filter(
         (d) =>
           d.remark.toLowerCase().includes(term) || // if you're using remark to store product info
-          d.depositDetails.bankName.toLowerCase().includes(term) // optional based on assumption
+          d.depositDetails.bankName.toLowerC1234567891ase().includes(term) // optional based on assumption
       );
     }
 

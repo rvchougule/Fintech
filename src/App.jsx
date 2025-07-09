@@ -6,9 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { SuperAdminLayout } from "./layouts/SuperAdminLayout";
 import Dashboard from "./pages/super/Dashboard";
 import { SignIN } from "./pages/SignIn";
-import { AdminLayout } from "./layouts/AdminLayout";
-import { AdminDashboard } from "./pages/admin/AdminDashboard";
-import { ModalProvider } from "./contexts/ModelContext";
 import { SchemeManager } from "./pages/super/resources_tab/SchemeManger";
 import { CompanyProfile } from "./pages/super/resources_tab/CompanyProfile";
 import { CompanyManger } from "./pages/super/resources_tab/CompanyManger";
@@ -53,6 +50,7 @@ import DSLayout from "./layouts/members/DSLayout";
 import CustomerLayout from "./layouts/members/CustomerLayout";
 import RetailerLayout from "./layouts/members/RetailerLayout";
 import CreateMDS from "./components/super/members/mds/CreateMDS";
+import Electricity from "./pages/super/Bill_payment/Electricity";
 
 // admin
 
@@ -67,6 +65,17 @@ const App = () => {
           path: "/",
           Component: Dashboard,
         },
+
+        // Bill Payment
+        {
+          path: "/Bill-Payment/electricity",
+          Component: Electricity,
+        },
+        // {
+        //   path: "/resources/company",
+        //   Component: p,
+        // },
+
         // resources
         {
           path: "/resources/scheme-manager",
@@ -285,21 +294,7 @@ const App = () => {
         },
       ],
     },
-    // admin
-    {
-      path: "/ad/",
-      element: (
-        <ModalProvider>
-          <AdminLayout />
-        </ModalProvider>
-      ),
-      children: [
-        {
-          path: "/ad/",
-          Component: AdminDashboard,
-        },
-      ],
-    },
+
     // sign up
     {
       path: "/signin",
