@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentForm from "../../../components/super/bill_payment/PaymentForm";
 
-const Electricity = () => {
+const Housingsociety = () => {
   // Yup validation schema
   const validationSchema = Yup.object().shape({
     operator: Yup.string().required("Select an Operator."),
@@ -33,7 +33,7 @@ const Electricity = () => {
   };
   const formFields = [
     {
-      label: "Electricity Operator",
+      label: "Housingsociety Operator",
       type: "select",
       name: "operator",
       placeholder: "Select Operator",
@@ -59,11 +59,11 @@ const Electricity = () => {
         <PaymentForm
           title="Bill Payment"
           formFields={formFields}
-          onsubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       }
     </div>
   );
 };
 
-export default Electricity;
+export default Housingsociety;

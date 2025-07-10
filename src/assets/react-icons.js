@@ -1,5 +1,6 @@
 import { TiThMenu } from "react-icons/ti";
 import { IoSettingsSharp } from "react-icons/io5";
+//Fa Links
 import { FaUser } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
@@ -18,14 +19,13 @@ export {
 
 import { FaRegSquare } from "react-icons/fa";
 import { FaRegAddressCard } from "react-icons/fa6";
+import { FaHandshake } from "react-icons/fa6";
+import { FaHandHoldingDollar } from "react-icons/fa6";
 
 //Fi links
 import { FiLink } from "react-icons/fi";
 
-export {
-  FaRegSquare,
-  FaRegAddressCard,
-};
+export { TiThMenu, IoSettingsSharp, FaUser, FaBell, FaSearch, FaFileInvoiceDollar, FaRegSquare, FaRegAddressCard, FaHandshake,FaHandHoldingDollar};
 export { FiLink };
 
 import { FaWallet, FaTools, FaUsersCog, FaCogs } from "react-icons/fa";
@@ -40,10 +40,6 @@ import { FiSettings } from "react-icons/fi";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { IoMdSettings } from "react-icons/io";
 import { RiFileListLine } from "react-icons/ri";
-import { FaHome } from "react-icons/fa";
-import { FaNewspaper } from "react-icons/fa6";
-import { FaPhone } from "react-icons/fa";
-
 
 export {
   FiSettings,
