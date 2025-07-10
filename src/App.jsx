@@ -75,6 +75,11 @@ import Creditcard from "./pages/super/Bill_payment/Creditcard";
 import Recurringdeposit from "./pages/super/Bill_payment/Recurringdeposit";
 import AepsRegistrationForm from "./pages/super/bankingservices/AepsRegistrationForm";
 
+import MobileRechargeForm from "./pages/super/utilit_recharge/MobileRechargeForm";
+import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
+import Uti from "./pages/super/PanCard/Uti";
+import CommissionRequest from "./components/super/commition/CommissionRequest";
+
 // admin
 
 const App = () => {
@@ -94,7 +99,7 @@ const App = () => {
           path: "/billpay/electricity",
           Component: Electricity,
         },
-         
+
         {
           path: "/billpay/postpaid",
           Component: Postpaid,
@@ -107,7 +112,7 @@ const App = () => {
           path: "/billpay/dashboard",
           Component: Billpayment_dashboard,
         },
-         
+
         {
           path: "/billpay/lpggas",
           Component: Lpggas,
@@ -140,12 +145,12 @@ const App = () => {
           path: "/billpay/rental",
           Component: Rental,
         },
-         
+
         {
           path: "/billpay/donation",
           Component: Donation,
         },
-         
+
         {
           path: "/billpay/subscription",
           Component: Subscription,
@@ -162,7 +167,7 @@ const App = () => {
           path: "/billpay/municipalservices",
           Component: Municipalservices,
         },
-         
+
         {
           path: "/billpay/municipaltaxes",
           Component: Municipaltaxes,
@@ -175,29 +180,27 @@ const App = () => {
           path: "/billpay/lifeinsurance",
           Component: Lifeinsurance,
         },
-         
+
         {
           path: "/billpay/cabletv",
           Component: Cabletv,
         },
-         
+
         {
           path: "/billpay/creditcard",
           Component: Creditcard,
         },
-         
+
         {
           path: "/billpay/recurringdeposit",
           Component: Recurringdeposit,
         },
-         
 
         //Banking Services
         {
           path: "/bankingservices/aepsRegistrationForm",
           Component: AepsRegistrationForm,
         },
-        
 
         // resources
         {
