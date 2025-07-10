@@ -51,6 +51,29 @@ import CustomerLayout from "./layouts/members/CustomerLayout";
 import RetailerLayout from "./layouts/members/RetailerLayout";
 import CreateMDS from "./components/super/members/mds/CreateMDS";
 import Electricity from "./pages/super/Bill_payment/Electricity";
+import Postpaid from "./pages/super/Bill_payment/Postpaid";
+import Water from "./pages/super/Bill_payment/Water";
+import Billpayment_dashboard from "./pages/super/Bill_payment/Billpayment_Dashboard";
+import Lpggas from "./pages/super/Bill_payment/Lpggas";
+import Pipedgas from "./pages/super/Bill_payment/Pipedgas";
+import Landline from "./pages/super/Bill_payment/Landline";
+import Educationfees from "./pages/super/Bill_payment/Educationfees";
+import Fastag from "./pages/super/Bill_payment/Fastag";
+import Loanrepayment from "./pages/super/Bill_payment/Loanrepayment";
+import Insurance from "./pages/super/Bill_payment/Insurance";
+import Rental from "./pages/super/Bill_payment/Rental";
+import Donation from "./pages/super/Bill_payment/Donation";
+import Subscription from "./pages/super/Bill_payment/Subscription";
+import Hospital from "./pages/super/Bill_payment/Hospital";
+import Clubsandassociations from "./pages/super/Bill_payment/Clubsandassociations";
+import Municipalservices from "./pages/super/Bill_payment/Municipalservices";
+import Municipaltaxes from "./pages/super/Bill_payment/Municipaltaxes";
+import Housingsociety from "./pages/super/Bill_payment/Housingsociety";
+import Lifeinsurance from "./pages/super/Bill_payment/Lifeinsurance";
+import Cabletv from "./pages/super/Bill_payment/Cabletv";
+import Creditcard from "./pages/super/Bill_payment/Creditcard";
+import Recurringdeposit from "./pages/super/Bill_payment/Recurringdeposit";
+import AepsRegistrationForm from "./pages/super/bankingservices/AepsRegistrationForm";
 
 // admin
 
@@ -68,13 +91,113 @@ const App = () => {
 
         // Bill Payment
         {
-          path: "/Bill-Payment/electricity",
+          path: "/billpay/electricity",
           Component: Electricity,
         },
-        // {
-        //   path: "/resources/company",
-        //   Component: p,
-        // },
+         
+        {
+          path: "/billpay/postpaid",
+          Component: Postpaid,
+        },
+        {
+          path: "/billpay/water",
+          Component: Water,
+        },
+        {
+          path: "/billpay/dashboard",
+          Component: Billpayment_dashboard,
+        },
+         
+        {
+          path: "/billpay/lpggas",
+          Component: Lpggas,
+        },
+        {
+          path: "/billpay/gas",
+          Component: Pipedgas,
+        },
+        {
+          path: "/billpay/landline",
+          Component: Landline,
+        },
+        {
+          path: "/billpay/educationfees",
+          Component: Educationfees,
+        },
+        {
+          path: "/billpay/fastag",
+          Component: Fastag,
+        },
+        {
+          path: "/billpay/loanrepayment",
+          Component: Loanrepayment,
+        },
+        {
+          path: "/billpay/insurance",
+          Component: Insurance,
+        },
+        {
+          path: "/billpay/rental",
+          Component: Rental,
+        },
+         
+        {
+          path: "/billpay/donation",
+          Component: Donation,
+        },
+         
+        {
+          path: "/billpay/subscription",
+          Component: Subscription,
+        },
+        {
+          path: "/billpay/hospital",
+          Component: Hospital,
+        },
+        {
+          path: "/billpay/clubsandassociations",
+          Component: Clubsandassociations,
+        },
+        {
+          path: "/billpay/municipalservices",
+          Component: Municipalservices,
+        },
+         
+        {
+          path: "/billpay/municipaltaxes",
+          Component: Municipaltaxes,
+        },
+        {
+          path: "/billpay/housingsociety",
+          Component: Housingsociety,
+        },
+        {
+          path: "/billpay/lifeinsurance",
+          Component: Lifeinsurance,
+        },
+         
+        {
+          path: "/billpay/cabletv",
+          Component: Cabletv,
+        },
+         
+        {
+          path: "/billpay/creditcard",
+          Component: Creditcard,
+        },
+         
+        {
+          path: "/billpay/recurringdeposit",
+          Component: Recurringdeposit,
+        },
+         
+
+        //Banking Services
+        {
+          path: "/bankingservices/aepsRegistrationForm",
+          Component: AepsRegistrationForm,
+        },
+        
 
         // resources
         {
