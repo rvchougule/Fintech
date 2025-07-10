@@ -4,19 +4,29 @@ import { FaUser } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
-<<<<<<< HEAD
+import { FaBullhorn } from "react-icons/fa6";
 
-export { TiThMenu, IoSettingsSharp, FaUser, FaBell, FaSearch, FaFileInvoiceDollar };
-=======
+export {
+  TiThMenu,
+  IoSettingsSharp,
+  FaUser,
+  FaBell,
+  FaSearch,
+  FaFileInvoiceDollar,
+  FaBullhorn,
+};
+
 import { FaRegSquare } from "react-icons/fa";
 import { FaRegAddressCard } from "react-icons/fa6";
 
 //Fi links
 import { FiLink } from "react-icons/fi";
 
-export { TiThMenu, IoSettingsSharp, FaUser, FaBell, FaSearch, FaFileInvoiceDollar, FaRegSquare, FaRegAddressCard};
+export {
+  FaRegSquare,
+  FaRegAddressCard,
+};
 export { FiLink };
->>>>>>> origin/feature/vighnesh/whitelabel
 
 import { FaWallet, FaTools, FaUsersCog, FaCogs } from "react-icons/fa";
 import {
@@ -30,6 +40,10 @@ import { FiSettings } from "react-icons/fi";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { IoMdSettings } from "react-icons/io";
 import { RiFileListLine } from "react-icons/ri";
+import { FaHome } from "react-icons/fa";
+import { FaNewspaper } from "react-icons/fa6";
+import { FaPhone } from "react-icons/fa";
+
 
 export {
   FiSettings,
@@ -45,6 +59,9 @@ export {
   FaClipboardList,
   FaCommentDots,
   FaPercent,
+  FaHome,
+  FaNewspaper,
+  FaPhone,
 };
 
 import { FaUserTie } from "react-icons/fa";
@@ -65,19 +82,5 @@ import { HiShieldCheck } from "react-icons/hi";
 import { PiPottedPlantFill } from "react-icons/pi";
 import { FaMoneyCheck } from "react-icons/fa";
 
-<<<<<<< HEAD
 export { BiSolidUserRectangle, HiShieldCheck, PiPottedPlantFill, FaMoneyCheck };
 
-// company Profile
-import { FaHome, FaBullhorn, FaNewspaper, FaPhone } from "react-icons/fa";
-
-export { FaHome, FaBullhorn, FaNewspaper, FaPhone };
-=======
-
-export { BiSolidUserRectangle, HiShieldCheck, PiPottedPlantFill, FaMoneyCheck };
-
-// company Profile
-import { FaHome, FaBullhorn, FaNewspaper, FaPhone, } from "react-icons/fa";
-
-export { FaHome, FaBullhorn, FaNewspaper, FaPhone, };
->>>>>>> origin/feature/vighnesh/whitelabel

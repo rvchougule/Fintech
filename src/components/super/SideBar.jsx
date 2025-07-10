@@ -32,8 +32,8 @@ const menuItems = [
     label: "Utility Recharge",
     component: "",
     subItems: [
-      { label: "Mobile", component: "" },
-      { label: "DTH", component: "" },
+      { label: "Mobile Recharge", component: "utility/mobile-recharge" },
+      { label: "DTH Recharge", component: "utility/dth-recharge" },
     ],
   },
   {
@@ -69,7 +69,7 @@ const menuItems = [
     icon: <FaRegAddressCard />,
     label: "Pan Card",
     component: "",
-    subItems: [{ label: "UTI", component: "" }],
+    subItems: [{ label: "UTI", component: "Pancard/Uti" }],
   },
   {
     icon: <FaFileInvoiceDollar />,
@@ -141,7 +141,7 @@ const menuItems = [
     icon: <FaRegSquare />,
     label: "Commision",
     component: "",
-    subItems: [{ label: "Request", component: "" }],
+    subItems: [{ label: "Request", component: "commition/CommissionRequest" }],
   },
   {
     icon: <HiOutlineDocumentReport />,
@@ -217,15 +217,15 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="bg-primary dark:bg-darkBlue w-64 h-screen text-white flex flex-col px-4 py-6">
+    <div className="bg-primary dark:bg-darkBlue w-64 xl:w-80 2xl:w-80 3xl:w-120 h-screen text-white flex flex-col px-4 py-6">
       <h1 className="text-2xl font-bold mb-6">
-        <img src={Logo} className="w-20 mx-auto " />
+        <img src={Logo} className="w-20 2xl:w-30 3xl:w-50 mx-auto " />
       </h1>
       <Link
         to="/"
         className="flex items-center gap-3 text-white font-extrabold mb-1 hover:bg-white hover:text-[#3B74A5] px-3 py-2 rounded cursor-pointer transition-colors"
       >
-        <HiOutlineClipboardList className="text-xl" />
+        <HiOutlineClipboardList className="text-xl " />
         Dashboard
       </Link>
 
