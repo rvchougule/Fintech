@@ -65,7 +65,7 @@ const menuItems = [
   {
     icon: <HiOutlineDocumentReport />,
     label: "Transaction Report",
-    component: "",
+    component: "/statement/transaction-history",
     subItems: [
       {
         label: "All AEPS Transaction",

@@ -29,7 +29,7 @@ const schema = yup.object().shape({
 const states = ["Maharashtra", "Gujarat", "Karnataka", "Tamil Nadu"];
 const schemes = ["Retailor-A", "NK Tax Consultancy", "Default"];
 
-const CreateCutsomerBYRetailer = ({ onSubmit }) => {
+const CreateRetailerBYDs = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -266,4 +266,4 @@ const CreateCutsomerBYRetailer = ({ onSubmit }) => {
   );
 };
 
-export default CreateCutsomerBYRetailer;
+export default CreateRetailerBYDs;

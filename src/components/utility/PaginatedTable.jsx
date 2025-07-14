@@ -7,8 +7,8 @@ const PaginatedTable = ({
   pageSize = 10,
   maxVisiblePages = 5,
   onSearch = () => {},
-  currentPage,
-  setCurrentPage,
+  currentPage = 1,
+  setCurrentPage = () => {},
 }) => {
   const [displayData, setDisplayData] = useState([]);
 
@@ -37,8 +37,9 @@ const PaginatedTable = ({
 
   return (
     <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
-      <div className="relative overflow-visible">
-        <table className="w-full table-auto text-left text-sm">
+      {/* Table Wrapper with overflow fix */}
+      <div className="relative overflow-x-auto">
+        <table className="min-w-[1000px] w-full table-auto text-left text-sm">
           <thead>
             <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">
               {columns.map((col, idx) => (

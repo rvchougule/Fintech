@@ -54,6 +54,8 @@ import CustomerLayout from "./layouts/members/CustomerLayout";
 import RetailerLayout from "./layouts/members/RetailerLayout";
 import CreateMDS from "./components/super/members/mds/CreateMDS";
 import CreateRetailerBYDs from "./components/super/members/ds/CreateRetailerBYDs";
+import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
+import CreateCutsomerBYRetailer from "./components/super/members/ds/CreateRetailerBYDs";
 
 // admin
 
@@ -108,6 +110,11 @@ const App = () => {
         },
 
         // transaction report
+
+        {
+          path: "statement/transaction-history",
+          Component: TransactionHistory, //transaction history
+        },
         {
           path: "statement/aeps-txn",
           Component: AllAEPSTransaction,
@@ -266,7 +273,7 @@ const App = () => {
             },
             {
               path: "create",
-              Component: CreateWhitelabel,
+              Component: CreateCutsomerBYRetailer,
             },
           ],
         },
@@ -286,21 +293,7 @@ const App = () => {
         },
       ],
     },
-    // admin
-    {
-      path: "/ad/",
-      element: (
-        <ModalProvider>
-          <AdminLayout />
-        </ModalProvider>
-      ),
-      children: [
-        {
-          path: "/ad/",
-          Component: AdminDashboard,
-        },
-      ],
-    },
+
     // sign up
     {
       path: "/signin",
