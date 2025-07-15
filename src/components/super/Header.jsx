@@ -8,7 +8,7 @@ export default function Header() {
   const [isWalletOpen, setIsWalletOpen] = useState(false);
   const { isSuperDarkMode, toggleSuperTheme } = useDarkTheme();
   return (
-    <header className=" text-black dark:text-adminOffWhite flex justify-between items-center px-6 py-3 rounded-t-lg ">
+    <header className="shadow-sm bg-white dark:bg-transparent text-black dark:text-adminOffWhite flex justify-between items-center px-6 py-3 rounded-t-lg ">
       {/* Left: Welcome text */}
       <h2 className="text-sm font-bold">WELCOME TO NK TAX CONSULTANCY</h2>
 

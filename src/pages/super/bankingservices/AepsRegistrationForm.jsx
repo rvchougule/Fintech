@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FilterField from "../../../components/FilterField";
 
@@ -139,13 +139,11 @@ const AepsRegistrationForm = () => {
         <div className="text-left mt-6">
           <button
             type="submit"
-            className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300 cursor-pointer"
+            className="bg-[#7776DE] hover:bg-purple-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300 cursor-pointer"
           >
             Submit
           </button>
         </div>
-
-        <ToastContainer />
       </form>
     </div>
   );
