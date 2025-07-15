@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const inputFields = [
@@ -49,21 +49,21 @@ const AepsRegistrationForm = () => {
   });
 
   return (
-    <div className="min-h-screen flex justify-center  bg-white px-4">
+    <div className=" dark:bg-darkBlue min-h-100 flex justify-center screen-lg:justify-center lg:pt-2 lg:pl-6 lg:h-120 xl:justify-start xl:h-180 xl:pl-12 xl:pt-10 2xl:h-220 shadow rounded  px-4">
       <form
         onSubmit={formik.handleSubmit}
-        className="w-full max-w-3xl bg-white p-6 rounded-lg shadow"
+        className="dark:bg-darkBlue w-full max-w-3xl h-110 mt-2 bg-white p-5 rounded-lg shadow-sm"
       >
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+        <h2 className="text-2xl dark:text-white font-semibold text-gray-800 mb-6 rounded">
           AePS Service Registration
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="dark:text-white grid grid-cols-1 md:grid-cols-3 gap-6">
           {inputFields.map((field) => (
             <div key={field.name}>
               <label
                 htmlFor={field.name}
-                className="block text-gray-700 mb-1 font-medium"
+                className="block text-gray-700 mb-1 font-medium dark:text-white"
               >
                 {field.label} <span className="text-red-500">*</span>
               </label>
@@ -75,7 +75,7 @@ const AepsRegistrationForm = () => {
                 value={formik.values[field.name]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full border border-gray-300 rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-purple-400 dark:text-white"
               />
               {formik.touched[field.name] && formik.errors[field.name] && (
                 <p className="text-red-500 text-sm mt-1">
@@ -87,7 +87,7 @@ const AepsRegistrationForm = () => {
 
           {/* Location Type Dropdown */}
           <div>
-            <label className="block text-gray-700 mb-1 font-medium">
+            <label className="block text-gray-700 mb-1 font-medium dark:text-white">
               Location Type <span className="text-red-500">*</span>
             </label>
             <select
@@ -113,13 +113,11 @@ const AepsRegistrationForm = () => {
         <div className=" text-center">
           <button
             type="submit"
-            className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300 cursor-pointer"
+            className="bg-[#7776DE] hover:bg-purple-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300 cursor-pointer"
           >
             Submit
           </button>
         </div>
-
-        <ToastContainer />
       </form>
     </div>
   );

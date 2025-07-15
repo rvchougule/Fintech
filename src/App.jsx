@@ -74,6 +74,8 @@ import Cabletv from "./pages/super/Bill_payment/Cabletv";
 import Creditcard from "./pages/super/Bill_payment/Creditcard";
 import Recurringdeposit from "./pages/super/Bill_payment/Recurringdeposit";
 import AepsRegistrationForm from "./pages/super/bankingservices/AepsRegistrationForm";
+import Payout from "./pages/super/bankingservices/Payout";
+import Affiliateservices from "./pages/super/affiliate/affiliateservices";
 
 // admin
 
@@ -197,6 +199,10 @@ const App = () => {
           path: "/bankingservices/aepsRegistrationForm",
           Component: AepsRegistrationForm,
         },
+        {
+          path: "/bankingservices/payout",
+          Component: Payout,
+        },
         
 
         // resources
@@ -222,6 +228,14 @@ const App = () => {
           path: "/statement/uti",
           Component: SuperUTI,
         },
+        {
+          path: "/affiliate/affiliateservices",
+          Component: Affiliateservices ,
+        },
+
+
+        // Affiliate
+
 
         // Fund
 

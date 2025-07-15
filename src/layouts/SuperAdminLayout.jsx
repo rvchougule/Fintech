@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 export const SuperAdminLayout = () => {
   return (
     <>
-      <section className=" max-h-[100vh] flex w-full dark:bg-darkBlue/95">
+      <section className=" max-h-[100vh] flex w-full dark:bg-darkBlue/95 bg-secondaryOne">
         <Sidebar />
         <div className="w-full">
           <Header />

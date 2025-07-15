@@ -23,7 +23,7 @@ const PaymentForm = ({ title, formFields, onsubmit }) => {
 
   return (
     <div className="flex justify-between w-full gap-4 p-1">
-      <div className="w-full  bg-white dark:bg-darkBlue max-w-1/2 rounded p-2 rounded">
+      <div className="w-full  bg-white dark:bg-darkBlue max-w-1/2 rounded p-2  rounded shadow-xl">
         <form onSubmit={handleSubmit(handleSubmit)}>
           <h1 className="text-xl px-3 py-1 font-semibold pt-3">{title}</h1>
 
@@ -86,7 +86,7 @@ const PaymentForm = ({ title, formFields, onsubmit }) => {
         </form>
       </div>
 
-      <div className="w-1/2 h-100 bg-white dark:bg-darkBlue rounded flex justify-center items-center">
+      <div className="w-1/2 h-100 bg-white dark:bg-darkBlue rounded flex justify-center items-center shadow-xl">
         <span>Image</span>
       </div>
     </div>

@@ -58,7 +58,10 @@ const menuItems = [
       { label: "Donation", component: "/billpay/donation" },
       { label: "Subscription", component: "/billpay/subscription" },
       { label: "Hospital", component: "/billpay/hospital" },
-      { label: "Clubs and Associations", component: "/billpay/clubsandassociations" },
+      {
+        label: "Clubs and Associations",
+        component: "/billpay/clubsandassociations",
+      },
       { label: "Municipal Services", component: "/billpay/municipalservices" },
       { label: "Municipal Taxes", component: "/billpay/municipaltaxes" },
       { label: "Housing Society", component: "/billpay/housingsociety" },
@@ -80,7 +83,7 @@ const menuItems = [
     component: "",
     subItems: [
       { label: "AEPS", component: "/bankingservices/aepsRegistrationForm" },
-      { label: "Payout", component: "" },
+      { label: "Payout", component: "/bankingservices/payout" },
     ],
   },
   {
@@ -117,7 +120,7 @@ const menuItems = [
     label: "Fund",
     component: "",
     subItems: [
-      { label: "Request Report", component: "fund/requestview" },      
+      { label: "Request Report", component: "fund/requestview" },
       { label: "Transfer/Return", component: "fund/tr" },
       { label: "Request Report", component: "fund/requestviewall" },
     ],
@@ -132,10 +135,12 @@ const menuItems = [
     ],
   },
   {
-    icon: <FaHandshake/>,
+    icon: <FaHandshake />,
     label: "Affiliate",
     component: "",
-    subItems: [{ label: "Affiliate Service", component: "" }],
+    subItems: [
+      { label: "Affiliate Service", component: "/affiliate/affiliateservices" },
+    ],
   },
   {
     icon: <FaHandHoldingDollar />,
@@ -217,31 +222,31 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="bg-primary dark:bg-darkBlue w-64 h-screen text-white flex flex-col px-4 py-6">
+    <div className="bg-primary dark:bg-darkBlue w-64 h-screen text-white flex flex-col px-4 py-6 2xl:w-150 text-3xl ">
       <h1 className="text-2xl font-bold mb-6">
-        <img src={Logo} className="w-20 mx-auto " />
+        <img src={Logo} className="w-20 mx-auto 2xl:w-40  2xl:text-[80px] " />
       </h1>
       <Link
         to="/"
         className="flex items-center gap-3 text-white font-extrabold mb-1 hover:bg-white hover:text-[#3B74A5] px-3 py-2 rounded cursor-pointer transition-colors"
       >
-        <HiOutlineClipboardList className="text-xl" />
+        <HiOutlineClipboardList className="text-xl 2xl:text-[80px]" />
         Dashboard
       </Link>
 
-      <ul className="space-y-1 overflow-y-auto flex-1 min-h-0 scrollbar-thin">
+      <ul className="space-y-1 overflow-y-auto flex-1 min-h-0 scrollbar-thin ">
         {menuItems.map((item, idx) => (
           <li key={idx}>
             <div
               onClick={() => item.subItems && toggleDropdown(item.label)}
-              className="flex items-center justify-between text-sm hover:bg-white hover:text-[#3B74A5] px-3 py-2 rounded cursor-pointer transition-colors"
+              className="flex items-center justify-between text-sm hover:bg-white hover:text-[#3B74A5] px-3 py-2 rounded cursor-pointer transition-colors  2xl:text-4xl font-semibold"
             >
               <Link
                 to={item?.component}
                 onClick={(e) => (!item.component ? e.preventDefault() : null)}
-                className="flex items-center gap-3 flex-1"
+                className="flex items-center gap-3 flex-1  2xl:text-[30px] "
               >
-                <span className="text-lg">{item.icon}</span>
+                <span className="text-lg  2xl:text-4xl">{item.icon}</span>
                 <span>{item.label}</span>
               </Link>
               {item.subItems && (
@@ -257,11 +262,11 @@ export default function Sidebar() {
 
             {/* Submenu */}
             {item.subItems && openDropdown === item.label && (
-              <ul className="ml-6 mt-1 space-y-2 transition-all duration-300 border-l border-white/20 pl-3">
+              <ul className="ml-6 mt-1 space-y-2 transition-all duration-300 border-l border-white/20 pl-3 ">
                 {item.subItems.map((sub, subIdx) => (
                   <li
                     key={subIdx}
-                    className="text-sm px-2 py-1 rounded hover:bg-white hover:text-[#3B74A5] transition-colors cursor-pointer"
+                    className="text-sm px-2 py-1 rounded hover:bg-white hover:text-[#3B74A5] transition-colors cursor-pointer  2xl:text-[30px]"
                   >
                     <Link to={sub?.component}>{sub.label}</Link>
                   </li>
