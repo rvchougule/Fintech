@@ -13,6 +13,17 @@ import KycStatusForm from "../../../components/super/members/utility_components/
 import { Link } from "react-router";
 import ProfileSettings from "../../../components/super/members/utility_components/ProfileSettings";
 
+import {
+  FiFileText, // For BillPayment
+  FiSmartphone, // For Recharge
+  FiUserCheck, // For AEPS
+  FiSend, // For Money Transfer
+  FiCreditCard, // For UTI Pancard
+  FiBarChart2, // For Account Statement
+  FiDatabase, // For AEPS Wallet
+  FiTrendingUp, // For Commission Wallet
+} from "react-icons/fi";
+
 const data = [
   {
     id: 13,
@@ -154,6 +165,7 @@ export const WhiteLabel = () => {
     },
   ];
 
+  // actions for the dropdown action
   const actions = [
     {
       label: "Fund Transfer / Return",
@@ -184,6 +196,50 @@ export const WhiteLabel = () => {
       label: "Kyc Manager",
       icon: <FiShield />,
       onClick: (row) => handleEditClick("Kyc_Manager", row),
+    },
+  ];
+
+  // Report of user roles
+  const reports = [
+    {
+      label: "BillPayment",
+      icon: <FiFileText />,
+      onClick: (row) => handleEditClick("billpayment", row),
+    },
+    {
+      label: "Recharge",
+      icon: <FiSmartphone />,
+      onClick: (row) => handleEditClick("recharge", row),
+    },
+    {
+      label: "AEPS",
+      icon: <FiUserCheck />,
+      onClick: (row) => handleEditClick("aeps", row),
+    },
+    {
+      label: "Money Transfer",
+      icon: <FiSend />,
+      onClick: (row) => handleEditClick("money_transfer", row),
+    },
+    {
+      label: "UTI Pancard",
+      icon: <FiCreditCard />,
+      onClick: (row) => handleEditClick("uti_pancard", row),
+    },
+    {
+      label: "Account Statement",
+      icon: <FiBarChart2 />,
+      onClick: (row) => handleEditClick("account_statement", row),
+    },
+    {
+      label: "AEPS Wallet",
+      icon: <FiDatabase />,
+      onClick: (row) => handleEditClick("aeps_wallet", row),
+    },
+    {
+      label: "Commission Wallet",
+      icon: <FiTrendingUp />,
+      onClick: (row) => handleEditClick("commission_wallet", row),
     },
   ];
 
@@ -261,7 +317,7 @@ export const WhiteLabel = () => {
       render: (row) => (
         <div className="flex flex-col gap-2">
           <ActionDropdown items={actions} row={row} />
-          <button className="btn bg-secondary">Reports</button>
+          <ActionDropdown items={reports} row={row} buttonLabel="Reports" />
         </div>
       ),
     },
