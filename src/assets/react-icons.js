@@ -1,51 +1,22 @@
-import { TiThMenu } from "react-icons/ti";
-import { IoSettingsSharp } from "react-icons/io5";
-//Fa Links
-import { FaUser } from "react-icons/fa";
-import { FaBell } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
-import { FaFileInvoiceDollar } from "react-icons/fa6";
-import { FaBullhorn } from "react-icons/fa6";
+// Ti, Io, Fa, Fi, Hi, Bi, Pi, Ri icon imports
 
-export {
-  TiThMenu,
-  IoSettingsSharp,
+// Ti Icons
+import { TiThMenu } from "react-icons/ti";
+
+// Io Icons
+import { IoSettingsSharp } from "react-icons/io5";
+import { IoMdSettings } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { FaHome } from "react-icons/fa";
+
+// Fa Icons
+import {
   FaUser,
   FaBell,
   FaSearch,
   FaFileInvoiceDollar,
   FaBullhorn,
-};
-
-import { FaRegSquare } from "react-icons/fa";
-import { FaRegAddressCard } from "react-icons/fa6";
-import { FaHandshake } from "react-icons/fa6";
-import { FaHandHoldingDollar } from "react-icons/fa6";
-
-//Fi links
-import { FiLink } from "react-icons/fi";
-
-export { TiThMenu, IoSettingsSharp, FaUser, FaBell, FaSearch, FaFileInvoiceDollar, FaRegSquare, FaRegAddressCard, FaHandshake,FaHandHoldingDollar};
-export { FiLink };
-
-import { FaWallet, FaTools, FaUsersCog, FaCogs } from "react-icons/fa";
-import {
-  FaMoneyBillAlt,
-  FaListAlt,
-  FaClipboardList,
-  FaCommentDots,
-  FaPercent,
-} from "react-icons/fa";
-import { FiSettings } from "react-icons/fi";
-import { HiOutlineDocumentReport } from "react-icons/hi";
-import { IoMdSettings } from "react-icons/io";
-import { RiFileListLine } from "react-icons/ri";
-
-export {
-  FiSettings,
-  HiOutlineDocumentReport,
-  IoMdSettings,
-  RiFileListLine,
+  FaRegSquare,
   FaWallet,
   FaTools,
   FaUsersCog,
@@ -55,28 +26,90 @@ export {
   FaClipboardList,
   FaCommentDots,
   FaPercent,
+  FaRegAddressCard,
+  FaHandshake,
+  FaUserTie,
+  FaSun,
+  FaUserCircle,
+  FaMoneyCheck,
+} from "react-icons/fa";
+
+// Fa6 Icons (for unavailable icons in older sets)
+import { FaHandHoldingDollar } from "react-icons/fa6";
+
+// Fi Icons
+import { FiLink, FiSettings } from "react-icons/fi";
+
+// Hi Icons
+import { HiOutlineDocumentReport, HiShieldCheck } from "react-icons/hi";
+
+// Ri Icons
+import { RiFileListLine } from "react-icons/ri";
+
+// Bi Icons
+import { BiSolidMessage, BiSolidUserRectangle } from "react-icons/bi";
+
+// Pi Icons
+import { PiPottedPlantFill } from "react-icons/pi";
+
+// Export all icons
+export {
+  // Ti
+  TiThMenu,
+
+  // Io
+  IoSettingsSharp,
+  IoMdSettings,
+  IoIosArrowDown,
+  IoIosArrowForward,
+
+  // Fa
+  FaUser,
+  FaBell,
+  FaSearch,
+  FaFileInvoiceDollar,
+  FaBullhorn,
+  FaRegSquare,
+  FaWallet,
+  FaTools,
+  FaUsersCog,
+  FaCogs,
+  FaMoneyBillAlt,
+  FaListAlt,
+  FaClipboardList,
+  FaCommentDots,
+  FaPercent,
+  FaRegAddressCard,
+  FaHandshake,
+  FaUserTie,
+  FaSun,
+  FaUserCircle,
+  FaMoneyCheck,
+
+  // Fa6
+  FaHandHoldingDollar,
+
+  // Fi
+  FiLink,
+  FiSettings,
+
+  // Hi
+  HiOutlineDocumentReport,
+  HiShieldCheck,
+
+  // Ri
+  RiFileListLine,
+
+  // Bi
+  BiSolidMessage,
+  BiSolidUserRectangle,
+
+  // Pi
+  PiPottedPlantFill,
   FaHome,
-  FaNewspaper,
-  FaPhone,
 };
 
-import { FaUserTie } from "react-icons/fa";
-import { FaSun, FaUserCircle } from "react-icons/fa";
-import { BiSolidMessage } from "react-icons/bi";
+import { FaNewspaper } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
 
-export { FaUserTie, FaSun, FaUserCircle, BiSolidMessage };
-
-// arrows
-import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
-
-export { IoIosArrowDown, IoIosArrowForward };
-
-// serviceCards icons
-import { BiSolidUserRectangle } from "react-icons/bi";
-import { HiShieldCheck } from "react-icons/hi";
-import { PiPottedPlantFill } from "react-icons/pi";
-import { FaMoneyCheck } from "react-icons/fa";
-
-export { BiSolidUserRectangle, HiShieldCheck, PiPottedPlantFill, FaMoneyCheck };
-
+export { FaNewspaper, FaPhone };

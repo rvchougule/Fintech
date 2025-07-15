@@ -78,7 +78,7 @@ import AepsRegistrationForm from "./pages/super/bankingservices/AepsRegistration
 import MobileRechargeForm from "./pages/super/utilit_recharge/MobileRechargeForm";
 import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
 import Uti from "./pages/super/PanCard/Uti";
-import CommissionRequest from "./components/super/commition/CommissionRequest";
+import CommissionRequest from "./pages/super/commision/CommisionRequest";
 
 // admin
 
@@ -431,6 +431,12 @@ const App = () => {
         {
           path: "utility/dth-recharge",
           Component: dthRecharge,
+        },
+
+        // Commission  request
+        {
+          path: "commission/request",
+          Component: CommissionRequest,
         },
       ],
     },

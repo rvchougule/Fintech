@@ -8,6 +8,7 @@ const FilterField = ({
   value,
   onChange,
   options = [],
+  width = "max-w-40",
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef(null);
@@ -15,7 +16,7 @@ const FilterField = ({
   const showFloatingLabel = isFocused || (!!value && value !== "");
 
   return (
-    <div className="relative group w-full max-w-40">
+    <div className={`relative group w-full ${width}`}>
       {/* Floating Label */}
       <label
         className={`absolute left-3 transition-all duration-200 px-1 pointer-events-none z-10 ${

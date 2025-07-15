@@ -184,7 +184,7 @@ export function CompanyProfile() {
       {activeTab === "logo" && (
         <div>
           <div
-            className={`border-2 border-dashed rounded-xl p-20 bg-white text-gray-400 flex items-center justify-center transition-colors duration-200 ${
+            className={`border-2 border-dashed rounded-xl p-20 bg-white dark:text-gray-400 flex items-center justify-center transition-colors duration-200 ${
               isDragging ? "border-secondary bg-[#f6f3ff]" : "border-gray-400"
             }`}
             onDrop={handleDrop}

@@ -178,7 +178,7 @@ export const SchemeManager = () => {
       render: (row) => (
         <div className="space-x-2">
           <button className="btn-secondary" onClick={openEditModal}>
-            Edit
+          Edit
           </button>
           <button
             className="btn-secondary"

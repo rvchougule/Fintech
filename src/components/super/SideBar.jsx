@@ -58,7 +58,10 @@ const menuItems = [
       { label: "Donation", component: "/billpay/donation" },
       { label: "Subscription", component: "/billpay/subscription" },
       { label: "Hospital", component: "/billpay/hospital" },
-      { label: "Clubs and Associations", component: "/billpay/clubsandassociations" },
+      {
+        label: "Clubs and Associations",
+        component: "/billpay/clubsandassociations",
+      },
       { label: "Municipal Services", component: "/billpay/municipalservices" },
       { label: "Municipal Taxes", component: "/billpay/municipaltaxes" },
       { label: "Housing Society", component: "/billpay/housingsociety" },
@@ -117,7 +120,7 @@ const menuItems = [
     label: "Fund",
     component: "",
     subItems: [
-      { label: "Request Report", component: "fund/requestview" },      
+      { label: "Request Report", component: "fund/requestview" },
       { label: "Transfer/Return", component: "fund/tr" },
       { label: "Request Report", component: "fund/requestviewall" },
     ],
@@ -132,7 +135,7 @@ const menuItems = [
     ],
   },
   {
-    icon: <FaHandshake/>,
+    icon: <FaHandshake />,
     label: "Affiliate",
     component: "",
     subItems: [{ label: "Affiliate Service", component: "" }],
@@ -141,7 +144,7 @@ const menuItems = [
     icon: <FaHandHoldingDollar />,
     label: "Commision",
     component: "",
-    subItems: [{ label: "Request", component: "commition/CommissionRequest" }],
+    subItems: [{ label: "Request", component: "commission/request" }],
   },
   {
     icon: <HiOutlineDocumentReport />,
