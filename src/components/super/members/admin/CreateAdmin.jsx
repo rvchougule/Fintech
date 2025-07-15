@@ -29,7 +29,7 @@ const schema = yup.object().shape({
 const states = ["Maharashtra", "Gujarat", "Karnataka", "Tamil Nadu"];
 const schemes = ["Retailor-A", "NK Tax Consultancy", "Default"];
 
-const CreateCutsomerBYRetailer = ({ onSubmit }) => {
+const CreateAdmin = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -215,7 +215,7 @@ const CreateCutsomerBYRetailer = ({ onSubmit }) => {
         <div className="col-span-2">
           <div className="flex gap-2">
             <Link
-              to="/members/retail"
+              to="/members/admin"
               className="mt-4 bg-accentRed text-white btn-md"
             >
               Cancel
@@ -233,4 +233,4 @@ const CreateCutsomerBYRetailer = ({ onSubmit }) => {
   );
 };
 
-export default CreateCutsomerBYRetailer;
+export default CreateAdmin;

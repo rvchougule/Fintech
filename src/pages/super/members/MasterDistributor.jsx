@@ -336,7 +336,7 @@ export const MasterDistributor = () => {
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-2">
         <div className=""></div>
         <Link to="create" className="btn-24 bg-accentGreen">
           Add New

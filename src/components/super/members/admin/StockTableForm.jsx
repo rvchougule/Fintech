@@ -3,7 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const stockTypes = [
-  { label: "Master Id", name: "master" },
+  { label: "Admin", name: "admin" },
+  { label: "Master Distributor Id", name: "mds" },
   { label: "Distributor Id", name: "distributor" },
   { label: "Retailer Id", name: "retailer" },
 ];

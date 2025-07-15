@@ -10,7 +10,7 @@ export default function Header() {
   const { isSuperDarkMode, toggleSuperTheme } = useDarkTheme();
   const [profile, setProfile] = useState(false);
   return (
-    <header className=" text-black dark:text-adminOffWhite flex justify-between items-center px-6 py-3 rounded-t-lg ">
+    <header className=" text-black bg-white dark:bg-transparent dark:text-adminOffWhite flex justify-between items-center px-6 py-3 rounded-t-lg shadow-sm ">
       {/* Left: Welcome text */}
       <h2 className="text-sm font-bold">WELCOME TO NK TAX CONSULTANCY</h2>
 

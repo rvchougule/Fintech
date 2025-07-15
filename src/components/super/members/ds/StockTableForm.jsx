@@ -66,13 +66,13 @@ const StockRowForm = ({ label, name, onSubmitRow }) => {
           </tr>
         </thead>
         <tbody>
-          <tr className="text-white">
+          <tr className="dark:text-white">
             <td className="p-2">{label}</td>
             <td className="p-2">
               <input
                 {...register(name)}
                 placeholder="En"
-                className="px-3 py-1 bg-transparent border border-gray-600 rounded-md w-full text-white"
+                className="px-3 py-1 bg-transparent border border-gray-600 rounded-md w-full dark:text-white"
               />
               {errors[name] && (
                 <p className="text-red-400 text-xs mt-1">

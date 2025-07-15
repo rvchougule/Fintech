@@ -6,9 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { SuperAdminLayout } from "./layouts/SuperAdminLayout";
 import Dashboard from "./pages/super/Dashboard";
 import { SignIN } from "./pages/SignIn";
-import { AdminLayout } from "./layouts/AdminLayout";
-import { AdminDashboard } from "./pages/admin/AdminDashboard";
-import { ModalProvider } from "./contexts/ModelContext";
 import { SchemeManager } from "./pages/super/resources_tab/SchemeManger";
 import { CompanyProfile } from "./pages/super/resources_tab/CompanyProfile";
 import { CompanyManger } from "./pages/super/resources_tab/CompanyManger";
@@ -55,7 +52,9 @@ import RetailerLayout from "./layouts/members/RetailerLayout";
 import CreateMDS from "./components/super/members/mds/CreateMDS";
 import CreateRetailerBYDs from "./components/super/members/ds/CreateRetailerBYDs";
 import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
-import CreateCutsomerBYRetailer from "./components/super/members/ds/CreateRetailerBYDs";
+import CreateAdmin from "./components/super/members/admin/CreateAdmin";
+import MemberAdminLayout from "./layouts/members/MemberAdminLayout";
+import CreateCutsomerBYRetailer from "./components/super/members/retailer/CreateCustomerBYRetailer";
 
 // admin
 
@@ -219,7 +218,17 @@ const App = () => {
         // members
         {
           path: "members/admin",
-          Component: Admin,
+          Component: MemberAdminLayout,
+          children: [
+            {
+              index: true,
+              Component: Admin,
+            },
+            {
+              path: "create",
+              Component: CreateAdmin,
+            },
+          ],
         },
         {
           path: "members/whitelabel",
@@ -265,11 +274,11 @@ const App = () => {
         },
         {
           path: "members/retail",
-          Component: Retail,
+          Component: RetailerLayout,
           children: [
             {
               index: true,
-              Component: RetailerLayout,
+              Component: Retail,
             },
             {
               path: "create",
@@ -285,10 +294,10 @@ const App = () => {
               index: true,
               Component: Customer,
             },
-            {
-              path: "create",
-              Component: CreateWhitelabel,
-            },
+            // {
+            //   path: "create",
+            //   Component: CreateWhitelabel,
+            // },
           ],
         },
       ],

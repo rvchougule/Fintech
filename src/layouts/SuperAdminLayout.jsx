@@ -5,7 +5,7 @@ import Header from "../components/super/Header";
 export const SuperAdminLayout = () => {
   return (
     <>
-      <section className=" max-h-[100vh] flex w-full dark:bg-darkBlue/95">
+      <section className=" max-h-[100vh] overflow-hidden flex w-full bg-secondaryOne dark:bg-darkBlue/95">
         <Sidebar />
         <div className="w-full">
           <Header />

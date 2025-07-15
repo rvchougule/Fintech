@@ -11,7 +11,7 @@ import KycStatusForm from "../../../components/super/members/utility_components/
 import { Link } from "react-router";
 import ProfileSettings from "../../../components/super/members/utility_components/ProfileSettings";
 import StockTableForm from "../../../components/super/members/ds/StockTableForm";
-import SchemeManager from "../../../components/super/members/ds/SchemeManager";
+import SchemeManager from "../../../components/super/members/customer/SchemeManager";
 
 const data = [
   {
@@ -336,7 +336,7 @@ export const Distributor = () => {
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-2">
         <div className=""></div>
         <Link to="create" className="btn-24 bg-accentGreen">
           Add New
