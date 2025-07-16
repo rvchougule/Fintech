@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
 import FilterBar from "../../../components/utility/FilterBar";
 import { sampleData } from "../../../assets/assets";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
 export const VerificationStatement = () => {
   const [filters, setFilters] = useState({
@@ -20,6 +21,10 @@ export const VerificationStatement = () => {
       [name]: value,
     }));
   };
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFilteredData] = useState([]);
+  const pageSize = 10;
 
   // filters function
   const applyFilters = () => {
@@ -70,7 +75,8 @@ export const VerificationStatement = () => {
       });
     }
 
-    return data;
+    setFilteredData(data);
+    setCurrentPage(1);
   };
 
   const fields = [
@@ -171,6 +177,36 @@ export const VerificationStatement = () => {
     },
   ];
 
+  const handleExport = () => {
+    const exportData = filteredData.map((item) => ({
+      ID: item.id || "N/A",
+
+      // Requester Info
+      "Requested By": item.requestedBy?.name || "N/A",
+      "Requester Mobile": item.requestedBy?.mobile || "N/A",
+      "Requester Role": item.requestedBy?.role || "N/A",
+
+      // Bank/Deposit Info
+      "Bank Name": item.depositDetails?.bankName || "N/A",
+      "Account No": item.depositDetails?.accountNo || "N/A",
+      IFSC: item.depositDetails?.ifsc || "N/A",
+
+      // Reference Info
+      "Transaction ID": item.referenceDetails?.transactionId || "N/A",
+      "Transaction Date": item.referenceDetails?.dateTime || "N/A",
+
+      // Wallet Info
+      "Main Wallet": item.wallet?.main || 0,
+      "Locked Wallet": item.wallet?.locked || 0,
+
+      // Additional
+      Remark: item.remark || "N/A",
+      Action: item.action || "N/A",
+    }));
+
+    return exportData;
+  };
+
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
@@ -182,19 +218,24 @@ export const VerificationStatement = () => {
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
-              Export{" "}
-            </button>
+            <ExcelExportButton
+              buttonLabel="Export"
+              fileName="verification-statement.xlsx"
+              data={handleExport()}
+            />
           </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
       <PaginatedTable
-        data={sampleData}
+        data={filteredData}
         filters={filters}
         onSearch={applyFilters}
         columns={columns}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pageSize={pageSize}
       />
     </div>
   );
