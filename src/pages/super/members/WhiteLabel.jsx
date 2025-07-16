@@ -23,6 +23,7 @@ import {
   FiDatabase, // For AEPS Wallet
   FiTrendingUp, // For Commission Wallet
 } from "react-icons/fi";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
 const data = [
   {
@@ -373,6 +374,35 @@ export const WhiteLabel = () => {
     },
   };
 
+  const handleExport = () => {
+    const exportData = filteredData.map((item) => ({
+      Id: item.id,
+      Date: item.date,
+      Name: item.username,
+      Email: item.email || "N/A",
+      Mobile: item.mobile,
+      "Role Name": item.type,
+      "Main Balance": item.mainBalance,
+      "Aeps Balance": item.aepsBalance,
+      Parent: item.parentName,
+      Company: item.website,
+      Status: item.status ? "Active" : "Inactive",
+      address: user.Profile_Details.address,
+      City: user.Profile_Details.city,
+      State: user.Profile_Details.state,
+      Pincode: user.Profile_Details.pinCode,
+      Shopname: user.KYC_Profile.shopName || "N/A",
+      "Gst Tin": user.KYC_Profile.gstNumber || "N/A",
+      Pancard: user.KYC_Profile.panNumber || "N/A",
+      "Aadhar Card": user.KYC_Profile.aadharNumber || "N/A",
+      Account: user.Bank_Details.accountNUmber || "N/A",
+      Bank: user.Bank_Details.bankName || "N/A",
+      Ifsc: user.Bank_Details.ifscCode || "N/A",
+    }));
+
+    return exportData;
+  };
+
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8  dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
@@ -384,9 +414,11 @@ export const WhiteLabel = () => {
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
-              Export{" "}
-            </button>
+            <ExcelExportButton
+              buttonLabel="Export"
+              fileName="whitelable.xlsx"
+              data={handleExport()}
+            />
           </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />

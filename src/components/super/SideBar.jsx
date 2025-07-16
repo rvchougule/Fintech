@@ -3,6 +3,8 @@ import { Link } from "react-router";
 
 import { IoIosArrowDown, IoIosArrowForward } from "../../assets/react-icons";
 import { HiOutlineClipboardList } from "react-icons/hi";
+import { HiIdentification } from "react-icons/hi2";
+import { HiOutlineEnvelope } from "react-icons/hi2";
 
 import {
   FaUser,
@@ -16,40 +18,98 @@ import {
   FaListAlt,
   FaPercent,
   BiSolidMessage,
+  FaFileInvoiceDollar,
+  FiLink,
+  FaRegSquare,
+  FaRegAddressCard,
+  FaHandshake,
+  FaHandHoldingDollar,
 } from "../../assets/react-icons";
 
 import { Logo } from "../../assets/assets";
 
 const menuItems = [
   {
+    icon: <FaFileInvoiceDollar />,
+    label: "Utility Recharge",
+    component: "",
+    subItems: [
+      { label: "Mobile Recharge", component: "utility/mobile-recharge" },
+      { label: "DTH Recharge", component: "utility/dth-recharge" },
+    ],
+  },
+  {
+    icon: <HiOutlineClipboardList />,
+    label: "Bill Payment",
+    component: "",
+    subItems: [
+      { label: "Electricity", component: "/billpay/electricity" },
+      { label: "Postpaid", component: "/billpay/postpaid" },
+      { label: "Water", component: "/billpay/water" },
+      { label: "Broadband", component: "/billpay/dashboard" },
+      { label: "LPG Gas", component: "/billpay/lpggas" },
+      { label: "Piped Gas", component: "/billpay/gas" },
+      { label: "Landline", component: "/billpay/landline" },
+      { label: "Education Fees", component: "/billpay/educationfees" },
+      { label: "Fastag", component: "/billpay/fastag" },
+      { label: "Loan Repayment", component: "/billpay/loanrepayment" },
+      { label: "Insurance", component: "/billpay/insurance" },
+      { label: "Rental", component: "/billpay/rental" },
+      { label: "Donation", component: "/billpay/donation" },
+      { label: "Subscription", component: "/billpay/subscription" },
+      { label: "Hospital", component: "/billpay/hospital" },
+      {
+        label: "Clubs and Associations",
+        component: "/billpay/clubsandassociations",
+      },
+      { label: "Municipal Services", component: "/billpay/municipalservices" },
+      { label: "Municipal Taxes", component: "/billpay/municipaltaxes" },
+      { label: "Housing Society", component: "/billpay/housingsociety" },
+      { label: "Life Insurance", component: "/billpay/lifeinsurance" },
+      { label: "Cable TV", component: "/billpay/cabletv" },
+      { label: "Credit Card", component: "/billpay/creditcard" },
+      { label: "Recurring Deposit", component: "/billpay/recurringdeposit" },
+    ],
+  },
+  {
+    icon: <FaRegAddressCard />,
+    label: "Pan Card",
+    component: "",
+    subItems: [{ label: "UTI", component: "Pancard/Uti" }],
+  },
+  {
+    icon: <FaFileInvoiceDollar />,
+    label: "Banking Service",
+    component: "",
+    subItems: [
+      { label: "AEPS", component: "/bankingservices/aepsRegistrationForm" },
+      { label: "Payout", component: "/bankingservices/payout" },
+    ],
+  },
+  {
+    icon: <FiLink />,
+    label: "Service Links",
+    component: "",
+    subItems: [{ label: "Aadhaar Update", component: "" }],
+  },
+
+  {
     icon: <FaUser />,
     label: "Member",
     component: "",
     subItems: [
-      { label: "Admin", component: "members/admin" },
-      { label: "White Label", component: "members/whitelabel" },
-      { label: "Master Distributor", component: "members/mds" },
-      { label: "Distributor", component: "members/ds" },
-      { label: "Retail", component: "members/retail" },
+     
+      { label: "Retailer", component: "members/retail" },
       { label: "Customer", component: "members/customer" },
     ],
   },
-  {
-    icon: <RiFileListLine />,
-    label: "Resources",
-    subItems: [
-      { label: "Scheme Manager", component: "/resources/scheme-manager" },
-      { label: "Company", component: "/resources/company" },
-      { label: "Company Profile", component: "/resources/company-profile" },
-    ],
-  },
+ 
   {
     icon: <FaMoneyBillAlt />,
     label: "Fund",
     component: "",
     subItems: [
-      { label: "Transfer/Return", component: "fund/tr" },
-      { label: "Request", component: "fund/requestview" },
+     
       { label: "Request Report", component: "fund/requestviewall" },
     ],
   },
@@ -58,14 +118,28 @@ const menuItems = [
     label: "Agent List",
     component: "",
     subItems: [
-      { label: "AEPS", component: "/statement/aeps" },
-      { label: "UTI", component: "/statement/uti" },
+      { label: "AePS", component: "/statement/aeps" },
+      
     ],
+  },
+  {
+    icon: <FaHandshake />,
+    label: "Affiliate",
+    component: "",
+    subItems: [
+      { label: "Affiliate Service", component: "/affiliate/affiliateservices" },
+    ],
+  },
+  {
+    icon: <FaHandHoldingDollar />,
+    label: "Commision",
+    component: "",
+    subItems: [{ label: "Request", component: "commission/request" }],
   },
   {
     icon: <HiOutlineDocumentReport />,
     label: "Transaction Report",
-    component: "/statement/transaction-history",
+    component: "",
     subItems: [
       {
         label: "All AEPS Transaction",
@@ -92,40 +166,15 @@ const menuItems = [
     ],
   },
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },
-  {
-    icon: <FaPercent />,
-    label: "Matching Percent",
-    component: "matchingpercent",
-  },
-  {
-    icon: <FaCogs />,
-    label: "Setup Tools",
-    component: "",
-    subItems: [
-      { label: "Mobile User Logout", component: "setup/token" },
-      { label: "API Manager", component: "setup/api" },
-      { label: "Bank Account", component: "setup/bank" },
-      { label: "Complaint Subject", component: "setup/complaintsub" },
-      { label: "Operator Manager", component: "setup/operator" },
-      { label: "Portal Setting", component: "setup/portalsettings" },
-      { label: "Quick Links", component: "setup/links" },
-    ],
-  },
+ 
+ 
   {
     icon: <FiSettings />,
     label: "Account Setting",
     component: "",
     subItems: [{ label: "Profile Setting", component: "profile/view" }],
   },
-  {
-    icon: <FaUsersCog />,
-    label: "Roles & Permissions",
-    component: "",
-    subItems: [
-      { label: "Roles", component: "tools/roles" },
-      { label: "Permission", component: "tools/permissions" },
-    ],
-  },
+
 ];
 
 export default function Sidebar() {

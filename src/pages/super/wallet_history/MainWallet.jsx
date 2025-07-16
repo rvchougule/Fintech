@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
 import FilterBar from "../../../components/utility/FilterBar";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
 export const MainWallet = () => {
   const Data = [];
@@ -74,7 +75,6 @@ export const MainWallet = () => {
     }
     setFilteredData(data);
     setCurrentPage(1);
-    return data;
   };
 
   const fields = [
@@ -184,6 +184,40 @@ export const MainWallet = () => {
     },
   ];
 
+  const handleExport = () => {
+    const exportData = filteredData.map((item) => ({
+      "#": item.id || "N/A",
+
+      // Refrences Details
+      "Requested By": item.requestedBy?.name || "N/A",
+      "Requester Mobile": item.requestedBy?.mobile || "N/A",
+      "Requester Role": item.requestedBy?.role || "N/A",
+
+      // Product Details
+      "Bank Name": item.depositDetails?.bankName || "N/A",
+      "Account No": item.depositDetails?.accountNo || "N/A",
+      IFSC: item.depositDetails?.ifsc || "N/A",
+
+      // Provider
+      "Transaction ID": item.referenceDetails?.transactionId || "N/A",
+      "Transaction Date": item.referenceDetails?.dateTime || "N/A",
+
+      // Repeated Remark Fields
+      Txnid: item.remark || "N/A",
+      "Order ID": item.remark || "N/A",
+      Number: item.remark || "N/A",
+      "ST_Type / TXN_Type": item.remark || "N/A",
+      Status: item.remark || "N/A",
+      "Opening Bal.": item.remark || "N/A",
+      Amount: item.remark || "N/A",
+      Charge: item.action || "N/A",
+      "Commission/Profit": item.remark || "N/A",
+      "Closing Bal.": item.action || "N/A",
+    }));
+
+    return exportData;
+  };
+
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
@@ -195,16 +229,18 @@ export const MainWallet = () => {
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
-              Export{" "}
-            </button>
+            <ExcelExportButton
+              buttonLabel="Export"
+              fileName="verification-statement.xlsx"
+              data={handleExport()}
+            />
           </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
       <PaginatedTable
-        data={Data}
+        data={filteredData}
         filters={filters}
         onSearch={applyFilters}
         columns={columns}

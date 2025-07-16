@@ -142,7 +142,7 @@ export const ComplaintSubject = () => {
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-2">
         <div className=""></div>
         <button className="btn bg-accentGreen" onClick={handleAddClick}>
           + Add New

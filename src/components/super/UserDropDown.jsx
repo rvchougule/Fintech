@@ -16,8 +16,8 @@ const UserDropdown = () => {
         </div>
         <div>
           <h4 className="font-semibold">Hello BANDARU</h4>
-          <p className="text-sm text-gray-300 dark:text-gray-500">Admin</p>
-          <p className="text-sm text-gray-300 dark:text-gray-500">UserId -1</p>
+          <p className="text-sm text-gray-300 dark:text-gray-500">Distributor</p>
+          <p className="text-sm text-gray-300 dark:text-gray-500">UserId-12</p>
         </div>
       </div>
 
