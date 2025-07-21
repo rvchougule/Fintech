@@ -1,3 +1,4 @@
+
 import FilterField from "./FilterField";
 
 const FilterBar = ({ fields, onSearch }) => {
@@ -16,8 +17,8 @@ const FilterBar = ({ fields, onSearch }) => {
           </div>
         ))}
 
-        <button className="bg-[#7A5AF8] text-white btn-md" onClick={onSearch}>
-          Search
+        <button className="bg-[#7A5AF8] text-white btn-md " onClick={onSearch}>
+         Search
         </button>
       </div>
     </div>

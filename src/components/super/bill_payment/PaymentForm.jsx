@@ -72,7 +72,7 @@ const PaymentForm = ({ title, formFields, onsubmit }) => {
           <div className="flex justify-center space-x-2 mt-4">
             <button
               type="button"
-              className="bg-secondary shadow-md hover:bg-secondary-dark text-white px-5 py-1 rounded cursor-pointer"
+              className="bg-indigo-500 shadow-md hover:bg-secondary-dark text-white px-5 py-1 rounded cursor-pointer"
             >
               Fetch
             </button>

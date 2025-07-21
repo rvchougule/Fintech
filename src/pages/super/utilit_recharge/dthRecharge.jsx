@@ -135,7 +135,7 @@ const dthRecharge = () => {
             <div className="col-span-1 md:col-span-4 flex gap-4 justify-center mt-2">
               <button
                 type="submit"
-                className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-2 rounded-md shadow "
+                className="bg-indigo-500 hover:bg-secondary text-white font-semibold px-6 py-2 rounded-md shadow "
               >
                 Pay Now
               </button>

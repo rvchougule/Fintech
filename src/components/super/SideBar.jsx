@@ -139,10 +139,9 @@ const menuItems = [
   {
     icon: <HiOutlineDocumentReport />,
     label: "Transaction Report",
-    component: "",
+    component: "/statement/transaction-history",
     subItems: [
-      {label: "All AEPS Transaction", component: "statement/aeps-txn",},
-      // { label: "Commision Statement", component: "statement/commision" },
+      {label: "All AEPS Transaction", component: "statement/aeps-txn"},
       { label: "Bill Pay Statement", component: "statement/bill-pay" },
       { label: "Payout Statement", component: "statement/money" },
       { label: "Verification Statement", component: "statement/verification" },
@@ -153,6 +152,7 @@ const menuItems = [
       { label: "Credit Card Payment", component: "statement/credit" },
     ],
   },
+  
   {
     icon: <FaWallet />,
     label: "Wallet History",

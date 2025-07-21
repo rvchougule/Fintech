@@ -6,7 +6,7 @@ const modalRoot = document.getElementById("portal");
 export const SuperModal = ({ children, onClose }) => {
   return ReactDOM.createPortal(
     <div
-      className="fixed inset-0 bg-slate-50/70  flex items-center justify-center z-50  "
+      className="fixed inset-0 bg-slate-50/70  flex items-center justify-center z-50 "
       onClick={onClose}
     >
       <div

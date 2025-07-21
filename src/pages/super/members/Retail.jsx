@@ -3,7 +3,10 @@ import PaginatedTable from "../../../components/utility/PaginatedTable";
 import FilterBar from "../../../components/utility/FilterBar";
 import { SuperModal } from "../../../components/utility/SuperModel";
 import { ToggleButton } from "../../../components/utility/ToggleButton";
-import { FiRepeat, FiSettings, FiUserPlus, FiShield } from "react-icons/fi";
+import { FiRepeat, FiRefreshCcw ,FiSettings, FiUserPlus, FiShield } from "react-icons/fi";
+import { BiRefresh } from "react-icons/bi";
+import { FaDownload } from "react-icons/fa";
+import { IoRefreshCircle } from "react-icons/io5";
 import ActionDropdown from "../../../components/utility/ActionDropDown";
 import FundActionForm from "../../../components/super/members/utility_components/FundActionForm";
 import { CheckBoxPermissionForm } from "../../../components/super/members/utility_components/CheckBoxPermissionForm";
@@ -407,12 +410,21 @@ export const Retail = () => {
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
             Retailer List
           </h2>
-          <div className="">
-            <button className="btn-24 text-adminOffWhite bg-accentRed ">
-              Refresh
+          <div className="flex">
+            <button className="btn text-adminOffWhite bg-accentRed flex text-white  items-center ">
+              
+              <span>Refresh</span>
+              <span>
+                <BiRefresh size={26} />
+              </span>
             </button>
-            <ExcelExportButton
-              buttonLabel="Export"
+
+            <ExcelExportButton 
+              buttonLabel={
+                <span className="flex items-center  text-adminOffWhite gap-1">
+                  <FaDownload size={16} /> Export
+                </span>
+              }
               fileName="retail.xlsx"
               data={handleExport()}
             />
@@ -423,7 +435,7 @@ export const Retail = () => {
 
       <div className="flex items-center justify-between mb-2">
         <div className=""></div>
-        <Link to="create" className="btn-24 bg-accentGreen">
+        <Link to="create" className="btn-24  text-black bg-accentGreen">
           Add New
         </Link>
       </div>
