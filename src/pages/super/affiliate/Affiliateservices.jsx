@@ -20,7 +20,7 @@ import { AiFillFileText, AiOutlineEye } from "react-icons/ai";
 
 const Affiliateservices = () => {
   return (
-    <div className="h-[85vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-darkBlue/70 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       {/* Section 1: Banking and Finance */}
       <div className="bg-white rounded-md p-4 mb-4 shadow-sm dark:text-white dark:bg-darkBlue/70">
         <p className="font-semibold text-gray-800 text-xl mb-4 dark:text-white">

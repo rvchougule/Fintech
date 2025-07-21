@@ -6,13 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { SuperAdminLayout } from "./layouts/SuperAdminLayout";
 import Dashboard from "./pages/super/Dashboard";
 import { SignIN } from "./pages/SignIn";
-import { SchemeManager } from "./pages/super/resources_tab/SchemeManger";
-import { CompanyProfile } from "./pages/super/resources_tab/CompanyProfile";
-import { CompanyManger } from "./pages/super/resources_tab/CompanyManger";
 import SuperAEPS from "./pages/super/agent_list/SuperAEPS";
-import SuperUTI from "./pages/super/agent_list/SuperUTI";
-import { TransferReturn } from "./pages/super/fund/TransferReturn";
-import { Request } from "./pages/super/fund/Request";
 import { RequestReport } from "./pages/super/fund/RequestReport";
 import { AllAEPSTransaction } from "./pages/super/transaction_report/AllAEPSTransaction";
 import { CommissionStatement } from "./pages/super/transaction_report/CommissionStatement";
@@ -37,19 +31,16 @@ import { QuickLinks } from "./pages/super/setup_tools/QuickLinks";
 import { Roles } from "./pages/super/roles_permissions/Roles";
 import { Permissions } from "./pages/super/roles_permissions/Permissions";
 import AccountPortalSettings from "./pages/super/account_settings/AccountPortalSettings";
-import { Admin } from "./pages/super/members/Admin";
-import { WhiteLabel } from "./pages/super/members/WhiteLabel";
-import { MasterDistributor } from "./pages/super/members/MasterDistributor";
-import { Distributor } from "./pages/super/members/Distributor";
 import { Retail } from "./pages/super/members/Retail";
-import { Customer } from "./pages/super/members/Customer";
-import WhitelabelLayout from "./layouts/members/WhitelabelLayout";
-import CreateWhitelabel from "./components/super/members/whitelabel/CreateWhiteLabel";
-import MDLayout from "./layouts/members/MDLayout";
 import DSLayout from "./layouts/members/DSLayout";
-import CustomerLayout from "./layouts/members/CustomerLayout";
 import RetailerLayout from "./layouts/members/RetailerLayout";
 import CreateMDS from "./components/super/members/mds/CreateMDS";
+import CreateRetailerBYDs from "./components/super/members/ds/CreateRetailerBYDs";
+import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
+
+
+import CreateCutsomerBYRetailer from "./components/super/members/retailer/CreateCustomerBYRetailer";
+
 import Electricity from "./pages/super/Bill_payment/Electricity";
 import Postpaid from "./pages/super/Bill_payment/Postpaid";
 import Water from "./pages/super/Bill_payment/Water";
@@ -76,11 +67,11 @@ import Recurringdeposit from "./pages/super/Bill_payment/Recurringdeposit";
 import AepsRegistrationForm from "./pages/super/bankingservices/AepsRegistrationForm";
 import Payout from "./pages/super/bankingservices/Payout";
 import Affiliateservices from "./pages/super/affiliate/affiliateservices";
-
 import MobileRechargeForm from "./pages/super/utilit_recharge/MobileRechargeForm";
 import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
 import Uti from "./pages/super/PanCard/Uti";
 import CommissionRequest from "./pages/super/commision/CommisionRequest";
+import CardPayment from "./pages/super/bankingservices/CardPayment";
 
 // admin
 
@@ -96,6 +87,21 @@ const App = () => {
           Component: Dashboard,
         },
 
+        //  UTILITY
+        {
+          path: "utility/mobile-recharge",
+          Component: MobileRechargeForm,
+        },
+        {
+          path: "utility/dth-recharge",
+          Component: dthRecharge,
+        },
+
+        // Commission  request
+        {
+          path: "commission/request",
+          Component: CommissionRequest,
+        },
         // Bill Payment
         {
           path: "/billpay/electricity",
@@ -207,56 +213,42 @@ const App = () => {
           path: "/bankingservices/payout",
           Component: Payout,
         },
-        
+        {
+          path:"/bankingservices/CardPayment",
+          Component:CardPayment,
+        },
+        // affiliate
+        {
+          path: "/affiliate/affiliateservices",
+          Component: Affiliateservices,
+        },
 
+        //PanCard
+        {
+          path: "Pancard/Uti",
+          Component: Uti,
+        },
         // resources
-        {
-          path: "/resources/scheme-manager",
-          Component: SchemeManager,
-        },
-        {
-          path: "/resources/company",
-          Component: CompanyManger,
-        },
-        {
-          path: "/resources/company-profile",
-          Component: CompanyProfile,
-        },
+       
         // Agent List
 
         {
           path: "/statement/aeps",
           Component: SuperAEPS,
         },
-        {
-          path: "/statement/uti",
-          Component: SuperUTI,
-        },
-        {
-          path: "/affiliate/affiliateservices",
-          Component: Affiliateservices ,
-        },
-
-
-        // Affiliate
-
 
         // Fund
-
-        {
-          path: "fund/tr",
-          Component: TransferReturn,
-        },
-        {
-          path: "fund/requestview",
-          Component: Request,
-        },
         {
           path: "fund/requestviewall",
           Component: RequestReport,
         },
 
         // transaction report
+
+        {
+          path: "statement/transaction-history",
+          Component: TransactionHistory, //transaction history
+        },
         {
           path: "statement/aeps-txn",
           Component: AllAEPSTransaction,
@@ -359,103 +351,27 @@ const App = () => {
         },
 
         // members
-        {
-          path: "members/admin",
-          Component: Admin,
-        },
-        {
-          path: "members/whitelabel",
-          Component: WhitelabelLayout,
-          children: [
-            {
-              index: true,
-              Component: WhiteLabel,
-            },
-            {
-              path: "create",
-              Component: CreateWhitelabel,
-            },
-          ],
-        },
-        {
-          path: "members/mds",
-          Component: MDLayout,
-          children: [
-            {
-              index: true,
-              Component: MasterDistributor,
-            },
-            {
-              path: "create",
-              Component: CreateMDS,
-            },
-          ],
-        },
-        {
-          path: "members/ds",
-          Component: DSLayout,
-          children: [
-            {
-              index: true,
-              Component: Distributor,
-            },
-            {
-              path: "create",
-              Component: CreateWhitelabel,
-            },
-          ],
-        },
+       
+      
+       
         {
           path: "members/retail",
-          Component: Retail,
+          Component: RetailerLayout,
           children: [
             {
               index: true,
-              Component: RetailerLayout,
+              Component: Retail,
             },
             {
               path: "create",
-              Component: CreateWhitelabel,
+              Component: CreateCutsomerBYRetailer,
             },
           ],
         },
-        {
-          path: "members/customer",
-          Component: CustomerLayout,
-          children: [
-            {
-              index: true,
-              Component: Customer,
-            },
-            {
-              path: "create",
-              Component: CreateWhitelabel,
-            },
-          ],
-        },
-        //PanCard
-        {
-          path: "Pancard/Uti",
-          Component: Uti,
-        },
-        //  UTILITY
-        {
-          path: "utility/mobile-recharge",
-          Component: MobileRechargeForm,
-        },
-        {
-          path: "utility/dth-recharge",
-          Component: dthRecharge,
-        },
-
-        // Commission  request
-        {
-          path: "commission/request",
-          Component: CommissionRequest,
-        },
+        
       ],
     },
-
+   
     // sign up
     {
       path: "/signin",

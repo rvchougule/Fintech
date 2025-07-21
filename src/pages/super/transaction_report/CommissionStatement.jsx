@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 import { sampleData } from "../../../assets/assets";
-import FilterBar from "../../../components/FilterBar";
+import FilterBar from "../../../components/utility/FilterBar";
 
 export const CommissionStatement = () => {
   const [filters, setFilters] = useState({
@@ -98,7 +98,7 @@ export const CommissionStatement = () => {
     {
       name: "userId",
       type: "text",
-      placeholder: "Agent/Parent",
+      placeholder: "Agent/Parent Id",
       value: filters.userId || "",
       onChange: (val) => handleInputChange("userId", val),
     },
@@ -116,18 +116,7 @@ export const CommissionStatement = () => {
         { label: "rejected", value: "rejected" },
       ],
     },
-    {
-      name: "product",
-      type: "select",
-      placeholder: "Select Product",
-      value: filters.product || "",
-      onChange: (val) => handleInputChange("product", val),
-      options: [
-        { label: "Select transacton", value: "" },
-        { label: "Move to Wallet", value: "Move to Wallet" },
-        { label: "Move to Bank", value: "Move to Bank" },
-      ],
-    },
+   
   ];
 
   const columns = [
@@ -196,12 +185,20 @@ export const CommissionStatement = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-            Commission Settlement Details
+            PayOut Statement
           </h2>
+          <div className="">
+            <button className="btn-24 text-adminOffWhite bg-accentRed ">
+              Refresh
+            </button>
+            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
+              Export{" "}
+            </button>
+          </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>

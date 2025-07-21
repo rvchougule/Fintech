@@ -63,7 +63,7 @@ const FormField = ({ label, name, type = "text", placeholder, formik }) => (
       onBlur={formik.handleBlur}
       value={formik.values[name]}
       placeholder={placeholder}
-      className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-400"
+      className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 "
     />
     {formik.touched[name] && formik.errors[name] && (
       <p className="text-red-500 text-sm mt-1">{formik.errors[name]}</p>
@@ -86,7 +86,7 @@ const SelectField = ({ label, name, options, formik }) => (
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       value={formik.values[name]}
-      className="w-full  border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-400 dark:text-black  dark:bg-gray   dark:text-gray-400  "
+      className="w-full  border rounded-lg px-4 py-2 outline-none focus:ring-2  dark:text-black  dark:bg-gray   dark:text-gray-400  "
     >
       <option className="dark:bg-darkBlue dark:text-white">
         Select {label}

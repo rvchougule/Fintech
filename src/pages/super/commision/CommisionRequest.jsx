@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
 
 const CommissionRequest = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -88,7 +88,9 @@ const CommissionRequest = () => {
   };
 
   return (
-    <div className=" m-7 shadow-sm dark:text-white max-w-[90%] 2xl:max-w-[80%] mx-auto px-8 py-4 pb-6 dark:bg-darkBlue/70 rounded-2xl overflow-hidden overflow-y-auto">
+
+   <div className="min-h-screen dark:bg-darkBlue bg-gray-100"> 
+    <div className=" m-3 shadow-sm dark:text-white max-w-[90%] 2xl:max-w-[80%] mx-auto px-8 py-4 pb-6 dark:bg-darkBlue bg-white rounded-2xl overflow-hidden overflow-y-auto">
       <h2 className="text-lg font-semibold mb-6">
         Commission Settlement Details
       </h2>
@@ -102,7 +104,7 @@ const CommissionRequest = () => {
           <h2 className="text-lg font-semibold">
             Commission Settlement Details
           </h2>
-          <button className="bg-secondary text-white px-4 py-2 rounded font-medium hover:opacity-90 transition mt-2 sm:mt-0">
+          <button className="bg-accentPurple text-white px-4 py-2 rounded font-medium hover:opacity-90 transition mt-2 sm:mt-0">
             +New Request
           </button>
         </div>
@@ -116,6 +118,7 @@ const CommissionRequest = () => {
         />
       </div>
     </div>
+   </div> 
   );
 };
 

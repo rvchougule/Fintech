@@ -84,6 +84,7 @@ const menuItems = [
     subItems: [
       { label: "AEPS", component: "/bankingservices/aepsRegistrationForm" },
       { label: "Payout", component: "/bankingservices/payout" },
+      { label: "Card Payment", component:"bankingservices/CardPayment"},
     ],
   },
   {
@@ -98,31 +99,21 @@ const menuItems = [
     label: "Member",
     component: "",
     subItems: [
-      { label: "Admin", component: "members/admin" },
-      { label: "White Label", component: "members/whitelabel" },
-      { label: "Master Distributor", component: "members/mds" },
-      { label: "Distributor", component: "members/ds" },
-      { label: "Retailer", component: "members/retail" },
-      { label: "Customer", component: "members/customer" },
+     
+     
+      { label: "Customer",component:"members/Customer"},
+      
     ],
   },
-  {
-    icon: <RiFileListLine />,
-    label: "Resources",
-    subItems: [
-      { label: "Scheme Manager", component: "/resources/scheme-manager" },
-      { label: "Company", component: "/resources/company" },
-      { label: "Company Profile", component: "/resources/company-profile" },
-    ],
-  },
+ 
   {
     icon: <FaMoneyBillAlt />,
     label: "Fund",
     component: "",
     subItems: [
-      { label: "Request Report", component: "fund/requestview" },
-      { label: "Transfer/Return", component: "fund/tr" },
-      { label: "Request Report", component: "fund/requestviewall" },
+     
+      { label: "Request Report", component:"fund/requestviewall"  },
+      
     ],
   },
   {
@@ -131,7 +122,7 @@ const menuItems = [
     component: "",
     subItems: [
       { label: "AePS", component: "/statement/aeps" },
-      { label: "UTI", component: "/statement/uti" },
+      
     ],
   },
   {
@@ -157,7 +148,7 @@ const menuItems = [
         label: "All AEPS Transaction",
         component: "statement/aeps-txn",
       },
-      { label: "Commision Statement", component: "statement/commision" },
+      { label: "PayOut Statement", component: "statement/commision" },
       { label: "Bill Pay Statement", component: "statement/bill-pay" },
       { label: "Verification Statement", component: "statement/verification" },
       { label: "Affilate Statement ", component: "statement/affiliate" },
@@ -178,40 +169,14 @@ const menuItems = [
     ],
   },
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },
-  {
-    icon: <FaPercent />,
-    label: "Matching Percent",
-    component: "matchingpercent",
-  },
-  {
-    icon: <FaCogs />,
-    label: "Setup Tools",
-    component: "",
-    subItems: [
-      { label: "Mobile User Logout", component: "setup/token" },
-      { label: "API Manager", component: "setup/api" },
-      { label: "Bank Account", component: "setup/bank" },
-      { label: "Complaint Subject", component: "setup/complaintsub" },
-      { label: "Operator Manager", component: "setup/operator" },
-      { label: "Portal Setting", component: "setup/portalsettings" },
-      { label: "Quick Links", component: "setup/links" },
-    ],
-  },
+ 
   {
     icon: <FiSettings />,
     label: "Account Setting",
     component: "",
     subItems: [{ label: "Profile Setting", component: "profile/view" }],
   },
-  {
-    icon: <FaUsersCog />,
-    label: "Roles & Permissions",
-    component: "",
-    subItems: [
-      { label: "Roles", component: "tools/roles" },
-      { label: "Permission", component: "tools/permissions" },
-    ],
-  },
+ 
 ];
 
 export default function Sidebar() {
@@ -222,31 +187,31 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="bg-primary dark:bg-darkBlue w-64 h-screen text-white flex flex-col px-4 py-6 2xl:w-150 text-3xl ">
+    <div className="bg-primary dark:bg-darkBlue w-64 h-screen text-white flex flex-col px-4 py-6">
       <h1 className="text-2xl font-bold mb-6">
-        <img src={Logo} className="w-20 mx-auto 2xl:w-40  2xl:text-[80px] " />
+        <img src={Logo} className="w-20 mx-auto " />
       </h1>
       <Link
         to="/"
         className="flex items-center gap-3 text-white font-extrabold mb-1 hover:bg-white hover:text-[#3B74A5] px-3 py-2 rounded cursor-pointer transition-colors"
       >
-        <HiOutlineClipboardList className="text-xl 2xl:text-[80px]" />
+        <HiOutlineClipboardList className="text-xl" />
         Dashboard
       </Link>
 
-      <ul className="space-y-1 overflow-y-auto flex-1 min-h-0 scrollbar-thin ">
+      <ul className="space-y-1 overflow-y-auto flex-1 min-h-0 scrollbar-thin">
         {menuItems.map((item, idx) => (
           <li key={idx}>
             <div
               onClick={() => item.subItems && toggleDropdown(item.label)}
-              className="flex items-center justify-between text-sm hover:bg-white hover:text-[#3B74A5] px-3 py-2 rounded cursor-pointer transition-colors  2xl:text-4xl font-semibold"
+              className="flex items-center justify-between text-sm hover:bg-white hover:text-[#3B74A5] px-3 py-2 rounded cursor-pointer transition-colors"
             >
               <Link
                 to={item?.component}
                 onClick={(e) => (!item.component ? e.preventDefault() : null)}
-                className="flex items-center gap-3 flex-1  2xl:text-[30px] "
+                className="flex items-center gap-3 flex-1"
               >
-                <span className="text-lg  2xl:text-4xl">{item.icon}</span>
+                <span className="text-lg">{item.icon}</span>
                 <span>{item.label}</span>
               </Link>
               {item.subItems && (
@@ -262,11 +227,11 @@ export default function Sidebar() {
 
             {/* Submenu */}
             {item.subItems && openDropdown === item.label && (
-              <ul className="ml-6 mt-1 space-y-2 transition-all duration-300 border-l border-white/20 pl-3 ">
+              <ul className="ml-6 mt-1 space-y-2 transition-all duration-300 border-l border-white/20 pl-3">
                 {item.subItems.map((sub, subIdx) => (
                   <li
                     key={subIdx}
-                    className="text-sm px-2 py-1 rounded hover:bg-white hover:text-[#3B74A5] transition-colors cursor-pointer  2xl:text-[30px]"
+                    className="text-sm px-2 py-1 rounded hover:bg-white hover:text-[#3B74A5] transition-colors cursor-pointer"
                   >
                     <Link to={sub?.component}>{sub.label}</Link>
                   </li>

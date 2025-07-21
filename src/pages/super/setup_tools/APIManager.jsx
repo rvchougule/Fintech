@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
-import { SuperModal } from "../../../components/super/SuperModel";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
+import { SuperModal } from "../../../components/utility/SuperModel";
 import APIManagerForm from "../../../components/super/setup_tools/APIManagerForm";
 import { ToggleButton } from "../../../components/utility/ToggleButton";
 

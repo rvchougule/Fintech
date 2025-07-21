@@ -54,7 +54,7 @@ const Loanrepayment = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8  dark:text-white dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4 bg-gray-100 dark:text-white dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       {
         <PaymentForm
           title="Bill Payment"
