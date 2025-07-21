@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { companyManagerData } from "../../../assets/assets";
-import { SuperModal } from "../../../components/super/SuperModel";
-import FilterField from "../../../components/FilterField";
-import FilterBar from "../../../components/FilterBar";
+import { SuperModal } from "../../../components/utility/SuperModel";
+import FilterField from "../../../components/utility/FilterField";
+import FilterBar from "../../../components/utility/FilterBar";
 import { ToggleButton } from "../../../components/utility/ToggleButton";
-import PaginatedTable from "../../../components/PaginatedTable";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 import CompanyForm from "../../../components/super/resource_tab/CompanyForm";
 
 export const CompanyManger = () => {

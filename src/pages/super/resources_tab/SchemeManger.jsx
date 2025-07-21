@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 import { UsersData } from "../../../assets/assets";
-import { SuperModal } from "../../../components/super/SuperModel";
-import FilterField from "../../../components/FilterField";
+import { SuperModal } from "../../../components/utility/SuperModel";
+import FilterField from "../../../components/utility/FilterField";
 import CommissionTable from "../../../components/super/resource_tab/CommisonTable";
 import { CommissionEditableForm } from "../../../components/super/resource_tab/CommissionEditableForm";
 import CommissionDropdown from "../../../components/super/resource_tab/CommissionDropdown";
-import FilterBar from "../../../components/FilterBar";
-import PaginatedTable from "../../../components/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 import { ToggleButton } from "../../../components/utility/ToggleButton";
 import SchemeForm from "../../../components/super/resource_tab/SchmeForm";
 
@@ -178,7 +178,7 @@ export const SchemeManager = () => {
       render: (row) => (
         <div className="space-x-2">
           <button className="btn-secondary" onClick={openEditModal}>
-          Edit
+            Edit
           </button>
           <button
             className="btn-secondary"

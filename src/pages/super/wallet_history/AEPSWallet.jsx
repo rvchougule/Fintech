@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
 
 export const AEPSWallet = () => {
   const Data = [];
@@ -16,7 +16,7 @@ export const AEPSWallet = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
 
-  // ✅ Generic input handler
+  
   const handleInputChange = (name, value) => {
     setFilters((prev) => ({
       ...prev,
@@ -154,17 +154,18 @@ export const AEPSWallet = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 
+    rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
             AEPS Wallet Statement
           </h2>
-          <div className="">
+          <div className="flex gap-2 md:gap-4">
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
+            <button className="btn-24 text-adminOffWhite  bg-accentGreen ">
               Export{" "}
             </button>
           </div>

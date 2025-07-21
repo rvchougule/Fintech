@@ -1,7 +1,7 @@
 import { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
-import { SuperModal } from "../../../components/super/SuperModel";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
+import { SuperModal } from "../../../components/utility/SuperModel";
 import { ToggleButton } from "../../../components/utility/ToggleButton";
 import { FiRepeat, FiSettings, FiUserPlus, FiShield } from "react-icons/fi";
 import ActionDropdown from "../../../components/utility/ActionDropDown";
@@ -12,6 +12,17 @@ import { Link } from "react-router";
 import ProfileSettings from "../../../components/super/members/utility_components/ProfileSettings";
 import SchemeManager from "../../../components/super/members/mds/SchemeManager";
 import StockTableForm from "../../../components/super/members/mds/StockTableForm";
+
+import {
+  FiFileText, // For BillPayment
+  FiSmartphone, // For Recharge
+  FiUserCheck, // For AEPS
+  FiSend, // For Money Transfer
+  FiCreditCard, // For UTI Pancard
+  FiBarChart2, // For Account Statement
+  FiDatabase, // For AEPS Wallet
+  FiTrendingUp, // For Commission Wallet
+} from "react-icons/fi";
 
 const data = [
   {
@@ -186,6 +197,49 @@ export const MasterDistributor = () => {
       onClick: (row) => handleEditClick("Kyc_Manager", row),
     },
   ];
+  // Report of user roles
+  const reports = [
+    {
+      label: "BillPayment",
+      icon: <FiFileText />,
+      onClick: (row) => handleEditClick("billpayment", row),
+    },
+    {
+      label: "Recharge",
+      icon: <FiSmartphone />,
+      onClick: (row) => handleEditClick("recharge", row),
+    },
+    {
+      label: "AEPS",
+      icon: <FiUserCheck />,
+      onClick: (row) => handleEditClick("aeps", row),
+    },
+    {
+      label: "Money Transfer",
+      icon: <FiSend />,
+      onClick: (row) => handleEditClick("money_transfer", row),
+    },
+    {
+      label: "UTI Pancard",
+      icon: <FiCreditCard />,
+      onClick: (row) => handleEditClick("uti_pancard", row),
+    },
+    {
+      label: "Account Statement",
+      icon: <FiBarChart2 />,
+      onClick: (row) => handleEditClick("account_statement", row),
+    },
+    {
+      label: "AEPS Wallet",
+      icon: <FiDatabase />,
+      onClick: (row) => handleEditClick("aeps_wallet", row),
+    },
+    {
+      label: "Commission Wallet",
+      icon: <FiTrendingUp />,
+      onClick: (row) => handleEditClick("commission_wallet", row),
+    },
+  ];
 
   const columns = [
     {
@@ -261,7 +315,7 @@ export const MasterDistributor = () => {
       render: (row) => (
         <div className="flex flex-col gap-2">
           <ActionDropdown items={actions} row={row} />
-          <button className="btn bg-secondary">Reports</button>
+          <ActionDropdown items={reports} row={row} buttonLabel="Reports" />
         </div>
       ),
     },
@@ -336,7 +390,7 @@ export const MasterDistributor = () => {
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-2">
         <div className=""></div>
         <Link to="create" className="btn-24 bg-accentGreen">
           Add New

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
 
 const CommissionRequest = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -88,7 +88,7 @@ const CommissionRequest = () => {
   };
 
   return (
-    <div className=" m-7 shadow-sm dark:text-white max-w-[90%] 2xl:max-w-[80%] mx-auto px-8 py-4 pb-6 dark:bg-darkBlue/70 rounded-2xl overflow-hidden overflow-y-auto">
+    <div className=" m-7 bg-white shadow-sm dark:text-white max-w-[90%] 2xl:max-w-[80%] mx-auto px-8 py-4 pb-6 dark:bg-darkBlue/70 rounded-2xl overflow-hidden overflow-y-auto">
       <h2 className="text-lg font-semibold mb-6">
         Commission Settlement Details
       </h2>

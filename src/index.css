@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: "Inter", system-ui;
 }
+
 @theme {
   --color-primary: #35669a;
   --color-secondary: #7776de;
@@ -54,6 +55,7 @@
   --breakpoint-2xl: 100rem;
   --breakpoint-3xl: 120rem;
 }
+
 .body {
   overflow-x: hidden;
 }

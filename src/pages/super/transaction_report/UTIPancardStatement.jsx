@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
 import { sampleData } from "../../../assets/assets";
 
 export const UTIPancardStatement = () => {

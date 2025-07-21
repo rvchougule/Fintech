@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 
 const dthRecharge = () => {
   const [formData, setFormData] = useState({
@@ -54,12 +54,15 @@ const dthRecharge = () => {
   };
 
   return (
-    <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-    
-      <h2 className="text-2xl font-semibold dark:text-white text-gray-700 mb-6">Dth Recharge</h2>
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+    <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue bg-white mt-2 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      <h2 className="text-2xl font-semibold dark:text-white text-gray-700 mb-6">
+        Dth Recharge
+      </h2>
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end"
+      >
         <div>
-          
           <label className="block dark:text-white text-gray-700 font-medium mb-1">
             Dth Number <span className="text-red-500">*</span>
           </label>
@@ -119,8 +122,11 @@ const dthRecharge = () => {
             />
           </div>
 
-          <a href="#" className="absolute left-0 -bottom-5 text-blue-500 text-sm">
-           Forgot Pin?
+          <a
+            href="#"
+            className="absolute left-0 -bottom-5 text-blue-500 text-sm"
+          >
+            Forgot Pin?
           </a>
         </div>
 
@@ -142,7 +148,9 @@ const dthRecharge = () => {
 
       {/* Recharge History Table */}
       <div className="mt-10">
-        <h3 className="text-xl font-semibold text-gray-700 mb-4 dark:text-white ">Recent Dth Recharge</h3>
+        <h3 className="text-xl font-semibold text-gray-700 mb-4 dark:text-white ">
+          Recent Dth Recharge
+        </h3>
         <PaginatedTable
           data={rechargeData}
           columns={columns}

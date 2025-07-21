@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
-import { SuperModal } from "../../../components/super/SuperModel";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
+import { SuperModal } from "../../../components/utility/SuperModel";
 import AddSubjectForm from "../../../components/super/setup_tools/AddSubjectForm";
 import PermissionForm from "../../../components/super/roles_permissions/PermissionForm";
 
@@ -196,7 +196,7 @@ export const Permissions = () => {
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-2">
         <div className=""></div>
         <button className="btn bg-accentGreen" onClick={handleAddClick}>
           + Add New

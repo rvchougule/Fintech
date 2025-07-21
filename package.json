@@ -13,6 +13,8 @@
     "@hookform/resolvers": "^5.1.1",
     "@tailwindcss/vite": "^4.1.10",
     "date-fns": "^4.1.0",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
     "formik": "^2.4.6",
     "react": "^19.1.0",
     "react-date-range": "^2.0.1",

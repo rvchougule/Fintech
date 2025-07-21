@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import FilterField from "../../../components/FilterField";
+import FilterField from "../../../components/utility/FilterField";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -109,7 +109,7 @@ const AepsRegistrationForm = () => {
     <div className=" flex justify-center dark:bg-darkBlue/70 px-4">
       <form
         onSubmit={formik.handleSubmit}
-        className="w-full  dark:bg-darkBlue/70 p-6 rounded-lg  m-7 shadow-sm"
+        className="w-full bg-white  dark:bg-darkBlue/70 p-6 rounded-lg  m-7 shadow-sm"
       >
         <h2 className="text-2xl font-semibold text-gray-800 mb-6 dark:text-white">
           AePS Service Registration

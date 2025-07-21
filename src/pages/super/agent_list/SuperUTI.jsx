@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import FilterBar from "../../../components/FilterBar";
+import FilterBar from "../../../components/utility/FilterBar";
 import { AEPSData } from "../../../assets/assets";
 
 const SuperUTI = () => {

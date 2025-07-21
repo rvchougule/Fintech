@@ -23,7 +23,7 @@ export const PortalSettingsCardForm = ({ title, label, placeholder }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col justify-between dark:text-white p-5 rounded-xl shadow-md w-full h-full dark:bg-darkBlue/80"
+      className="flex flex-col justify-between dark:text-white p-5 rounded-xl shadow-md w-full h-full dark:bg-darkBlue/80 bg-white"
     >
       <div className="flex flex-col gap-2 flex-grow">
         <h2 className="text-lg font-semibold">{title}</h2>

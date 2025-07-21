@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
 
 export const MatchingPercentage = () => {
   const Data = [];
@@ -56,7 +56,7 @@ export const MatchingPercentage = () => {
       data = data.filter(
         (d) =>
           d.remark.toLowerCase().includes(term) || // if you're using remark to store product info
-          d.depositDetails.bankName.toLowerC1234567891ase().includes(term) // optional based on assumption
+          d.depositDetails.bankName.toLowerCase().includes(term) // optional based on assumption
       );
     }
 
