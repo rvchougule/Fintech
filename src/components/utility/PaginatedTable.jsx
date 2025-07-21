@@ -37,8 +37,9 @@ const PaginatedTable = ({
 
   return (
     <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
-      <div className="relative overflow-visible">
-        <table className="w-full table-auto text-left text-sm">
+      {/* Table Wrapper with overflow fix */}
+      <div className="relative overflow-x-auto">
+        <table className="min-w-[1000px] w-full table-auto text-left text-sm">
           <thead>
             <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">
               {columns.map((col, idx) => (
@@ -76,8 +77,7 @@ const PaginatedTable = ({
       </div>
 
       {/* Pagination */}
-
-      <div className="mt-4 flex justify-between items-center text-sm dark:text-gray-300 pt-2">
+      <div className="mt-4 flex justify-between items-center text-sm text-gray-300 pt-2">
         <p>
           Showing {Math.min((currentPage - 1) * pageSize + 1, data.length)} to{" "}
           {Math.min(currentPage * pageSize, data.length)} of {data.length}{" "}

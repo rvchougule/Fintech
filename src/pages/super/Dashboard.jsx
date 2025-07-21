@@ -3,7 +3,9 @@ import { HiOutlineClipboardList } from "react-icons/hi";
 import { RiAdminFill } from "react-icons/ri";
 import { FiChevronDown } from "react-icons/fi";
 import WalletBalanceCard from "../../components/super/WalletBancedCard";
-import { CustomDatePicker } from "../../components/CustomDatePicker";
+import { CustomDatePicker } from "../../components/utility/CustomDatePicker";
+import { FaUser } from "react-icons/fa";
+import { Link } from "react-router";
 
 const serviceCards = [
   { label: "Recharge & Bill Payment", color: "bg-[#fddbd5] dark:bg-[#60A5FA]" },
@@ -74,30 +76,31 @@ const Dashboard = () => {
           {/* User Counts */}
           <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-md shadow p-4 space-y-2 text-sm">
             <p className="font-semibold">User Counts</p>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <RiAdminFill className="text-blue-500" /> Admin
+           
+            <Link to="members/ds">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <BsPersonBadge className="text-cyan-500" /> Distributer
+                </div>
+                <span>1</span>
               </div>
-              <span>1</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <BsBank className="text-purple-500" /> White Label
+            </Link>
+            <Link to="members/retail">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <FaUser className="text-amber-500" /> Retailer
+                </div>
+                <span>1</span>
               </div>
-              <span>2</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <BsShieldPlus className="text-pink-500" /> Master Distributer
+            </Link>
+            <Link to="members/customer">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <FaUser className="text-cyan-500" /> Customer
+                </div>
+                <span>1</span>
               </div>
-              <span>1</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <BsPersonBadge className="text-cyan-500" /> Distributer
-              </div>
-              <span>1</span>
-            </div>
+            </Link>
           </div>
 
           {/* Support Box */}

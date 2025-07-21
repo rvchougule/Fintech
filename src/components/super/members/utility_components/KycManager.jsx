@@ -25,13 +25,16 @@ const KycStatusForm = ({ onSubmit }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-white">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-4 dark:text-white"
+    >
       {/* KYC Status Select */}
       <div className="flex flex-col">
         <label className="text-xl font-medium mb-1">Kyc Status</label>
         <select
           {...register("kycStatus")}
-          className="bg-transparent border border-gray-600 rounded px-4 py-2 text-white"
+          className="bg-transparent border border-gray-600 rounded px-4 py-2 dark:text-white"
         >
           <option value="">Select Action</option>
           <option value="Pending" className="dark:bg-darkBlue">
@@ -57,7 +60,7 @@ const KycStatusForm = ({ onSubmit }) => {
         <input
           {...register("remark")}
           placeholder="Enter remark"
-          className="bg-transparent border border-gray-600 rounded px-4 py-2 text-white"
+          className="bg-transparent border border-gray-600 rounded px-4 py-2 dark:text-white"
         />
         {errors.remark && (
           <span className="text-xs text-red-400 mt-1">
@@ -68,7 +71,7 @@ const KycStatusForm = ({ onSubmit }) => {
 
       <button
         type="submit"
-        className="bg-secondary text-white px-6 py-2 rounded-md mt-4 hover:opacity-90 transition"
+        className="bg-secondary dark:text-white px-6 py-2 rounded-md mt-4 hover:opacity-90 transition"
       >
         Submit
       </button>

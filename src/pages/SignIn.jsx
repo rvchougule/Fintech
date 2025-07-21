@@ -1,6 +1,6 @@
-import CustomInput from "../components/CustomInput";
+import CustomInput from "../components/utility/CustomInput";
 import { MdEmail, MdLock } from "react-icons/md";
-import SwiperSlider from "../components/SwiperSlider";
+import SwiperSlider from "../components/utility/SwiperSlider";
 
 export const SignIN = () => {
   const SliderImages = [
@@ -10,7 +10,7 @@ export const SignIN = () => {
   ];
   return (
     <section className="flex h-[100vh]">
-      <div className="w-1/2 hidden md:block">
+    <div className="w-1/2 hidden md:block">
         <SwiperSlider SliderImages={SliderImages} />
       </div>
       <div className="w-full  md:w-1/2">

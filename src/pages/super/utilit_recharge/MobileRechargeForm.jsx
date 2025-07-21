@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import RechargeForm from "../../../components/super/Utility_Recharg_componant/RechargeForm";
-import PaginatedTable from "../../../components/PaginatedTable";
-
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 
 const history = [
   {
@@ -42,7 +41,6 @@ const MobileRechargeForm = () => {
       ),
     },
     {
-      
       header: "Amount/Commission",
       render: (row) => (
         <>
@@ -62,7 +60,8 @@ const MobileRechargeForm = () => {
   ];
 
   return (
-    <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue bg-white
+    mt-2 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <h2 className="text-2xl font-semibold mb-6">Mobile Recharge</h2>
 
       {/* Recharge Form */}

@@ -8,6 +8,7 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { IoMdSettings } from "react-icons/io";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
+import { MdRemoveRedEye } from "react-icons/md";
 
 // Fa Icons
 import {
@@ -32,6 +33,7 @@ import {
   FaSun,
   FaUserCircle,
   FaMoneyCheck,
+  
 } from "react-icons/fa";
 
 // Fa6 Icons (for unavailable icons in older sets)
@@ -107,9 +109,11 @@ export {
   // Pi
   PiPottedPlantFill,
   FaHome,
+  
 };
 
 import { FaNewspaper } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 
 export { FaNewspaper, FaPhone };
+export{MdRemoveRedEye };

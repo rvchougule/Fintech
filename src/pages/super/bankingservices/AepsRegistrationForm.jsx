@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import FilterField from "../../../components/FilterField";
+import FilterField from "../../../components/utility/FilterField";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -31,6 +31,7 @@ const AepsRegistrationForm = () => {
       pan: "",
       shopName: "",
       locationType: "",
+      
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
@@ -106,16 +107,17 @@ const AepsRegistrationForm = () => {
   ];
 
   return (
-    <div className=" flex justify-center dark:bg-darkBlue/70 px-4">
+    <div className="min-h-screen  items-center px-4 bg-gray-100 dark:bg-transparent ">
+
       <form
         onSubmit={formik.handleSubmit}
-        className="w-full  dark:bg-darkBlue/70 p-6 rounded-lg  m-7 shadow-sm"
+        className="w-full bg-white  dark:bg-darkBlue/70 p-6 rounded-lg   shadow-sm  mt-3"
       >
         <h2 className="text-2xl font-semibold text-gray-800 mb-6 dark:text-white">
           AePS Service Registration
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-4  gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3  gap-6">
           {fields.map((field) => (
             <div key={field.name}>
               <FilterField

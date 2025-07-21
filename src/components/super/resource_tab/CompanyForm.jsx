@@ -56,7 +56,7 @@ const CompanyForm = ({
   };
 
   return (
-    <div>
+    <div className="md:min-w-80">
       <div className="mb-4 text-lg font-semibold text-center">
         {editingCompany ? "Edit Company" : "Add Company"}
       </div>

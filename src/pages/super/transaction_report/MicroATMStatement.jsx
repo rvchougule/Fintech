@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PaginatedTable from "../../../components/PaginatedTable";
-import FilterBar from "../../../components/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
+import FilterBar from "../../../components/utility/FilterBar";
 import { sampleData } from "../../../assets/assets";
 
 export const MicroATMStatement = () => {
@@ -98,7 +98,7 @@ export const MicroATMStatement = () => {
     {
       name: "userId",
       type: "text",
-      placeholder: "Agent/Parent",
+      placeholder: "Agent/Parent id",
       value: filters.userId || "",
       onChange: (val) => handleInputChange("userId", val),
     },
@@ -175,7 +175,7 @@ export const MicroATMStatement = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
