@@ -26,7 +26,7 @@ import {
   FaHandHoldingDollar,
 } from "../../assets/react-icons";
 
-import { Logo } from "../../assets/assets";
+import Logo  from "./../../assets/img/logo.png";
 
 const menuItems = [
   {
@@ -98,29 +98,22 @@ const menuItems = [
     label: "Member",
     component: "",
     subItems: [
-     
       { label: "Retailer", component: "members/retail" },
       { label: "Customer", component: "members/customer" },
     ],
   },
- 
+
   {
     icon: <FaMoneyBillAlt />,
     label: "Fund",
     component: "",
-    subItems: [
-     
-      { label: "Request Report", component: "fund/requestviewall" },
-    ],
+    subItems: [{ label: "Request Report", component: "fund/requestviewall" }],
   },
   {
     icon: <FaListAlt />,
     label: "Agent List",
     component: "",
-    subItems: [
-      { label: "AePS", component: "/statement/aeps" },
-      
-    ],
+    subItems: [{ label: "AePS", component: "/statement/aeps" }],
   },
   {
     icon: <FaHandshake />,
@@ -141,7 +134,7 @@ const menuItems = [
     label: "Transaction Report",
     component: "/statement/transaction-history",
     subItems: [
-      {label: "All AEPS Transaction", component: "statement/aeps-txn"},
+      { label: "All AEPS Transaction", component: "statement/aeps-txn" },
       { label: "Bill Pay Statement", component: "statement/bill-pay" },
       { label: "Payout Statement", component: "statement/money" },
       { label: "Verification Statement", component: "statement/verification" },
@@ -152,7 +145,7 @@ const menuItems = [
       { label: "Credit Card Payment", component: "statement/credit" },
     ],
   },
-  
+
   {
     icon: <FaWallet />,
     label: "Wallet History",
@@ -164,15 +157,13 @@ const menuItems = [
     ],
   },
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },
- 
- 
+
   {
     icon: <FiSettings />,
     label: "Account Setting",
     component: "",
     subItems: [{ label: "Profile Setting", component: "profile/view" }],
   },
-
 ];
 
 export default function Sidebar() {
@@ -185,7 +176,7 @@ export default function Sidebar() {
   return (
     <div className="bg-primary dark:bg-darkBlue w-64 h-screen text-white flex flex-col px-4 py-6">
       <h1 className="text-2xl font-bold mb-6">
-        <img src={Logo} className="w-20 mx-auto " />
+        <img src={Logo} className="w-30 mx-auto " />
       </h1>
       <Link
         to="/"

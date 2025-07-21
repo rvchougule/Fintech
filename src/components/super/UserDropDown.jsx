@@ -1,6 +1,7 @@
 import React from "react";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const UserDropdown = () => {
   return (
@@ -17,7 +18,9 @@ const UserDropdown = () => {
         </div>
         <div>
           <h4 className="font-semibold">Hello Kishore</h4>
-          <p className="text-sm text-gray-300 dark:text-gray-500">Distributor</p>
+          <p className="text-sm text-gray-300 dark:text-gray-500">
+            Distributor
+          </p>
           <p className="text-sm text-gray-300 dark:text-gray-500">UserId-12</p>
         </div>
       </div>
@@ -28,15 +31,21 @@ const UserDropdown = () => {
       <div className="flex flex-col space-y-3">
         <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
           <FaUser className="text-lg" />
-          <span className="text-sm font-medium">My Profile</span>
+          <Link to="/profile/view">
+            <span className="text-sm font-medium">My Profile</span>
+          </Link>
         </button>
-         <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
-          <IoEyeSharp  className="text-lg" />
-          <span className="text-sm font-medium">View Commision</span>
+        <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
+          <IoEyeSharp className="text-lg" />
+          <Link to="#">
+            <span className="text-sm font-medium">View Commision</span>
+          </Link>
         </button>
         <button className="flex items-center space-x-3 hover:text-red-400 dark:hover:text-red-600 transition">
           <FaSignOutAlt className="text-lg" />
-          <span className="text-sm font-medium">Log Out</span>
+          <Link to="#">
+            <span className="text-sm font-medium">Log Out</span>
+          </Link>
         </button>
       </div>
     </div>
