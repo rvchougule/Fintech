@@ -176,7 +176,7 @@ export default function Sidebar() {
   return (
     <div className="bg-primary dark:bg-darkBlue w-64 h-screen text-white flex flex-col px-4 py-6">
       <h1 className="text-2xl font-bold mb-6">
-        <img src={Logo} className="w-30 mx-auto " />
+        <img src={Logo} className="w-25 mx-auto " />
       </h1>
       <Link
         to="/"

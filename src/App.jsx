@@ -75,6 +75,7 @@ import Uti from "./pages/super/PanCard/Uti";
 import CommissionRequest from "./pages/super/commision/CommisionRequest";
 import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
 import Affiliateservices from "./pages/super/affiliate/Affiliateservices";
+import ViewCommission from "./pages/super/ViewCommission";
 
 // admin
 
@@ -334,6 +335,15 @@ const App = () => {
           path: "profile/view",
           Component: AccountPortalSettings,
         },
+        
+        //viewcommision from header
+        {
+          path: "resources/commission",
+          Component: ViewCommission,
+        },
+
+        
+
 
         // members
 

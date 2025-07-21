@@ -37,7 +37,7 @@ const UserDropdown = () => {
         </button>
         <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
           <IoEyeSharp className="text-lg" />
-          <Link to="#">
+          <Link to="resources/commission">
             <span className="text-sm font-medium">View Commision</span>
           </Link>
         </button>
