@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-
 import { UsersData } from "../../../assets/assets";
 import { SuperModal } from "../../../components/utility/SuperModel";
-import FilterField from "../../../components/utility/FilterField";
 import CommissionTable from "../../../components/super/resource_tab/CommisonTable";
 import { CommissionEditableForm } from "../../../components/super/resource_tab/CommissionEditableForm";
 import CommissionDropdown from "../../../components/super/resource_tab/CommissionDropdown";
@@ -276,12 +274,13 @@ export const SchemeManager = () => {
               }
             >
               <div className="text-lg font-semibold mb-4">
-                {label} Commission
+                {label} Commission{" "}
               </div>
               {/* Replace with a dynamic component based on modalKey */}
               <CommissionEditableForm
                 serviceKey={modalKey}
                 commission={selectedCommission}
+                setSelectedCommission={setSelectedCommission}
                 onClose={() =>
                   setIsModal((prev) => ({ ...prev, [modalKey]: false }))
                 }

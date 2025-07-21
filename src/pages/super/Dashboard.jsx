@@ -50,13 +50,13 @@ const Dashboard = () => {
           <div className="flex-1 rounded-md shadow-md w-[60%]">
             <WalletBalanceCard />
           </div>
-          <div className=" bg-white rounded-md shadow p-4 text-center w-[40%]">
+          {/* <div className=" bg-white rounded-md shadow p-4 text-center w-[40%]">
             <div className="font-semibold text-sm">AEPS</div>
-          </div>
+          </div> */}
         </div>
 
         {/* MATM Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
           <div className="bg-green-100 dark:bg-accentGreen p-4 text-center rounded-md">
             <p className="font-semibold text-sm">Success</p>
             <p className="text-xs">0/₹0.00</p>
@@ -69,7 +69,7 @@ const Dashboard = () => {
             <p className="font-semibold text-sm">Failed</p>
             <p className="text-xs">0/₹0.00</p>
           </div>
-        </div>
+        </div> */}
 
         {/* User Counts & Support Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
