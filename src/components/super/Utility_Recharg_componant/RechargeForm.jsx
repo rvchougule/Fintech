@@ -184,7 +184,7 @@ const RechargeForm = () => {
         </a>
       </div>
 
-      <div className="col-span-full flex gap-4 mt-4">
+      <div className="col-span-full flex gap-4 justify-center">
         <button
           type="submit"
           className="bg-purple-500 text-white px-6 py-2 rounded-lg shadow hover:bg-purple-600 transition"

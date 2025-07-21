@@ -1,6 +1,5 @@
 import { useState } from "react";
 import BankDetails from "../../../../components/super/account_settings/BankDetails";
-import CertificateManager from "../../../../components/super/account_settings/CertificateManager";
 import KYCDetails from "../../../../components/super/account_settings/KYCDetails";
 import MappingManager from "../../../../components/super/account_settings/MappingManager";
 import PasswordManager from "../../../../components/super/account_settings/PasswordManager";

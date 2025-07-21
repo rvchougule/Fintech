@@ -43,7 +43,7 @@ const Uti = () => {
 
       {/* ✅ Modal UI */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center overflow-hidden md:overflow-y-auto pt-15 scrollbar-thin ">
           <div className="bg-[#1F2235] text-white p-6 rounded-lg w-full max-w-md mx-auto">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">Uti Pancard</h2>

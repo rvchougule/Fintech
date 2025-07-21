@@ -45,6 +45,7 @@ const PasswordManager = ({ initialData }) => {
         <input
           type="password"
           {...register("newPassword")}
+          
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
         <p className="text-red-500 text-xs mt-1">
@@ -58,6 +59,7 @@ const PasswordManager = ({ initialData }) => {
         <input
           type="password"
           {...register("confirmPassword")}
+         
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
         <p className="text-red-500 text-xs mt-1">
@@ -73,6 +75,7 @@ const PasswordManager = ({ initialData }) => {
           inputMode="numeric"
           maxLength="6"
           {...register("securityPin")}
+          
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
         <p className="text-red-500 text-xs mt-1">

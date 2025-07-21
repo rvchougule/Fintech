@@ -81,7 +81,7 @@ const PinManager = ({ initialData }) => {
           <button
             type="button"
             onClick={handleSendOtp}
-            className="text-xs text-violet-400 hover:underline"
+            className="text-xs text-violet-800 font-bold hover: cursor-pointer"
           >
             {otpSent ? "Resend OTP" : "Send OTP"}
           </button>

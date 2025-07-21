@@ -109,7 +109,7 @@ const KYCDetails = ({ initialData }) => {
       </div>
 
       {/* Security PIN */}
-      <div>
+      {/* <div>
         <label className="block text-sm mb-1">Security PIN</label>
         <input
           {...register("securityPin")}
@@ -120,25 +120,29 @@ const KYCDetails = ({ initialData }) => {
         <p className="text-red-500 text-xs mt-2">
           {errors.securityPin?.message}
         </p>
-      </div>
+      </div> */}
 
       {/* Passport Photo */}
+
       <div>
-        <label className="block text-sm mb-1">Passport Size Photo</label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImagePreview}
-          className="block text-sm text-gray-300 file:mr-4 file:py-2 file:px-3
+        <div></div>
+        <div>
+          <label className="block text-sm mb-1">Passport Size Photo</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImagePreview}
+            className="block text-sm text-gray-300 file:mr-4 file:py-2 file:px-3
               file:rounded file:border-0 file:text-sm file:font-semibold
               file:bg-gray-500 file:text-white hover:file:bg-gray-600"
-        />
-        <p className="text-red-500 text-xs mt-2">
-          {errors.passportPhoto?.message}
-        </p>
+          />
+          <p className="text-red-500 text-xs mt-2">
+            {errors.passportPhoto?.message}
+          </p>
+        </div>
 
         {!previewUrl && (
-          <div class=" dark:text-white p-4 rounded-md text-sm w-fit">
+          <div class=" dark:text-white rounded-md text-sm w-fit">
             <p class="font-semibold text-base">Note :-</p>
             <ul class="list-disc list-inside space-y-1 mt-1">
               <li>

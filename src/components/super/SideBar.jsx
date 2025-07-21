@@ -141,12 +141,10 @@ const menuItems = [
     label: "Transaction Report",
     component: "",
     subItems: [
-      {
-        label: "All AEPS Transaction",
-        component: "statement/aeps-txn",
-      },
-      { label: "Commision Statement", component: "statement/commision" },
+      {label: "All AEPS Transaction", component: "statement/aeps-txn",},
+      // { label: "Commision Statement", component: "statement/commision" },
       { label: "Bill Pay Statement", component: "statement/bill-pay" },
+      { label: "Payout Statement", component: "statement/money" },
       { label: "Verification Statement", component: "statement/verification" },
       { label: "Affilate Statement ", component: "statement/affiliate" },
       { label: "Micro ATM Statement", component: "statement/micro-atm" },

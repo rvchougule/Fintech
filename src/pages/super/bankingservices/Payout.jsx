@@ -14,7 +14,6 @@ const Payout = () => {
       .required("Mobile number is required"),
   });
 
-  // 2. Initialize useForm with validation
   const {
     register,
     handleSubmit,
@@ -23,7 +22,6 @@ const Payout = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  // 3. Submit handler
   const onSubmit = (data) => {
     toast.success("Form submitted successfully!", {
       autoClose: 2000,
@@ -32,82 +30,111 @@ const Payout = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="w-full bg-gray dark:bg-darkBlue rounded">
-          <div className="w-full h-70 bg-gray dark:bg-darkBlue rounded flex justify-start gap-12 ml-5 ">
-            <div className="w-90 h-60 rounded-xl shadow-sm px-4 mx-5 mt-4 bg-white dark:text-white dark:bg-darkBlue/70  dark:border border-white">
-              <p className="font-semibold text-3xl pt-4">Payout</p>
-              <p className="pb-1 pt-2 text-1xl mt-2 ">Mobile Number</p>
+    <div className="h-[90vh] bg-gray-100 dark:bg-darkBlue py-10 px-4 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Left: Form Card */}
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="bg-white dark:bg-darkBlue/80 border dark:border-white border-walletLabelGray shadow-md rounded-xl p-6 space-y-6"
+        >
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
+            Payout Form
+          </h2>
 
-              {/* 4. Register input */}
-              <input
-                type="text"
-                placeholder="Enter Mobile Number"
-                {...register("mobile")}
-                className="p-1 px-2 rounded border border-grey-800 w-full"
-              />
-              {/* 5. Show validation error */}
-              {errors.mobile && (
-                <p className="text-red-500 text-sm">{errors.mobile.message}</p>
-              )}
-
-              {/* Submit button */}
-              <button
-                type="submit"
-                className="mt-4 px-4 py-2 bg-[#7776DE] text-white rounded cursor-pointer"
-              >
-                Submit
-              </button>
-            </div>
-
-            <div className=" w-130 h-60 mt-4 rounded-xl shadow-sm bg-white mr-20 dark:text-white dark:bg-darkBlue/70 dark:border border-white">
-              <p className="font-semibold text-2xl mt-2 text-center mb-4 ">
-                Beneficiary List
-              </p>
-              <ul className="flex gap-18 items-center justify-center text-lg py-1 mt-6 bg-gray-300 mx-4 dark:text-black ">
-                <li>Name</li>
-                <li>Account Details</li>
-                <li>Action</li>
-              </ul>
-            </div>
+          <div className="space-y-2">
+            <label className="block font-medium dark:text-white">
+              Mobile Number
+            </label>
+            <input
+              type="text"
+              placeholder="Enter 10-digit mobile number"
+              {...register("mobile")}
+              className="w-full px-4 py-2 border border-walletLabelGray rounded-md focus:outline-none focus:ring-2 focus:ring-black dark:bg-darkBlue/70 dark:text-white"
+            />
+            {errors.mobile && (
+              <p className="text-sm text-red-500">{errors.mobile.message}</p>
+            )}
           </div>
-          {submittedData && (
-            <div className="w-90 h-52 rounded-xl bg-white px-4 ml-10 shadow-sm dark:text-white dark:bg-darkBlue/70 dark:border border-white ">
-              <div className="flex m-1 ml-4 gap-1 ">
-                <IoIosPerson size={40} className="mt-2 ml-10" />
-                <p className="text-blue-500  text-start font-semibold text-2xl mt-3">
-                  Kishor Babu
-                </p>
-              </div>
 
-              <div className="flex flex-row  justify-around">
-                <p className="text-1xl mt-2 ">
-                  <b>
-                    Mobile No. : <br />
-                    {submittedData.mobile}
-                  </b>
-                </p>
+          <button
+            type="submit"
+            className="w-20 bg-secondary hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-200"
+          >
+            Submit
+          </button>
+        </form>
 
-                <p className="text-1xl mt-2 ">
-                  <b>
-                    Total Limit : <br />
-                    {200000}
-                  </b>
-                </p>
-              </div>
-              <div className="flex flex-row  justify-around">
-                <p className="text-1xl mt-4 ">Used Limit : {0}</p>
-                <p className="text-1xl mt-4 ">Remain Limit : {200000}</p>
-              </div>
-              <button className="mt-3 px-4 py-2 bg-[#7776DE]  text-white rounded cursor-pointer ml-20">
-                New Beneficiary
-              </button>
+        {/* Right: Result or Placeholder */}
+        {submittedData ? (
+          <div className="bg-white dark:bg-darkBlue/80 border dark:border-white border-walletLabelGray shadow-md rounded-xl p-6 space-y-4">
+            <div className="flex items-center gap-3">
+              <IoIosPerson size={40} className="text-secondary" />
+              <h3 className="text-2xl font-semibold text-secondary">Kishor Babu</h3>
             </div>
-          )}
+
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              <div>
+                <p className="text-gray-500 dark:text-gray-300">Mobile No.</p>
+                <p className="text-lg font-bold dark:text-white">
+                  {submittedData.mobile}
+                </p>
+              </div>
+              <div>
+                <p className="text-gray-500 dark:text-gray-300">Total Limit</p>
+                <p className="text-lg font-bold dark:text-white">₹200000</p>
+              </div>
+              <div>
+                <p className="text-gray-500 dark:text-gray-300">Used Limit</p>
+                <p className="text-lg font-bold dark:text-white">₹0</p>
+              </div>
+              <div>
+                <p className="text-gray-500 dark:text-gray-300">Remain Limit</p>
+                <p className="text-lg font-bold dark:text-white">₹200000</p>
+              </div>
+            </div>
+
+            <button className="bg-secondary hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md mt-4">
+              New Beneficiary
+            </button>
+          </div>
+        ) : (
+          <div className="bg-white dark:bg-darkBlue/80 border dark:border-white border-walletLabelGray shadow-md rounded-xl p-6 flex flex-col justify-center items-center text-center text-gray-600 dark:text-white">
+            <p className="text-lg">No data submitted yet.</p>
+            <p className="text-sm mt-2">Fill the form to view beneficiary details.</p>
+          </div>
+        )}
+      </div>
+
+      {/* Beneficiary List Table */}
+      <div className="max-w-6xl mx-auto mt-10 bg-white dark:bg-darkBlue/80 border dark:border-white border-walletLabelGray shadow-md rounded-xl p-6">
+        <h3 className="text-2xl font-semibold mb-4 dark:text-white text-center">
+          Beneficiary List
+        </h3>
+        <div className="overflow-x-auto overflow-hidden h-[20vh] mb-5">
+          <table className="min-w-full text-sm text-left text-gray-700 dark:text-white">
+            <thead className="bg-gray-200 dark:bg-gray-700">
+              <tr>
+                <th className="px-4 py-2">Name</th>
+                <th className="px-4 py-2">Account Details</th>
+                <th className="px-4 py-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-t">
+                <td className="px-4 py-2">Kishor Babu</td>
+                <td className="px-4 py-2">XXXX-XXXX-1234</td>
+                <td className="px-4 py-2">
+                  <button className="text-blue-600] hover:underline">
+                    View
+                  </button>
+                </td>
+              </tr>
+              {/* Add more rows here */}
+            </tbody>
+          </table>
         </div>
-      </form>
-    </>
+      </div>
+    </div>
   );
 };
 

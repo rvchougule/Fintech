@@ -1,12 +1,10 @@
 import { useState } from "react";
 import BankDetails from "../../../components/super/account_settings/BankDetails";
-import CertificateManager from "../../../components/super/account_settings/CertificateManager";
 import KYCDetails from "../../../components/super/account_settings/KYCDetails";
-import MappingManager from "../../../components/super/account_settings/MappingManager";
-import PasswordManager from "../../../components/super/account_settings/PasswordManager";
 import PinManager from "../../../components/super/account_settings/PinManager";
 import ProfileDetails from "../../../components/super/account_settings/ProfileDetails";
-import RoleManager from "../../../components/super/account_settings/RoleManager";
+import CertificateandID from "../../../components/super/account_settings/CertificateandID";
+
 
 const AccountPortalSettings = () => {
   const [activePage, setActivePage] = useState("Profile Details");
@@ -14,23 +12,22 @@ const AccountPortalSettings = () => {
   const pages = [
     "Profile Details",
     "KYC Details",
-    "Password Manager",
     "Pin Manager",
     "Bank Details",
-    "Certificate Manager",
-    "Role Manager",
-    "Mapping Manager",
+    "Certificate And ID", 
+   
   ];
 
   const user = {
     Profile_Details: {
-      name: "BANDARU KISHORE BABU",
-      mobile: "7997991899",
+      name: "kishore babu bandara",
+      mobile: "8309207889",
+      email: "nktaxconsultancy4all@gmail.com",
       state: "Telangana",
       city: "HYDERABAD",
-      gender: "",
+      gender: "Select Gender",
       pinCode: "500089",
-      email: "support@phonepays.in",
+      
       securityPin: "",
       address: "7-15/62,PLOT NO 62,ROAD NO 4.SI",
     },
@@ -77,18 +74,13 @@ const AccountPortalSettings = () => {
         return <ProfileDetails initialData={user.Profile_Details} />;
       case "KYC Details":
         return <KYCDetails initialData={user.KYC_Profile} />;
-      case "Password Manager":
-        return <PasswordManager initialData={user.Password_Manager} />;
       case "Pin Manager":
         return <PinManager initialData={user.Pin_Manager} />;
       case "Bank Details":
         return <BankDetails initialData={user.Bank_Details} />;
-      case "Certificate Manager":
-        return <CertificateManager initialData={user.Cetificate_Manager} />;
-      case "Role Manager":
-        return <RoleManager initialData={user.Role_Manager} />;
-      case "Mapping Manager":
-        return <MappingManager initialData={user.Mapping_Manager} />;
+      case "Certificate And ID":
+        return <CertificateandID initialData={user.Cetificate_Manager} />;
+     
       default:
         return <div>Select a page</div>;
     }

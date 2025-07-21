@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import RechargeForm from "../../../components/super/Utility_Recharg_componant/RechargeForm";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
 
-
-
 const history = [
   {
     orderId: 103,
@@ -43,7 +41,6 @@ const MobileRechargeForm = () => {
       ),
     },
     {
-      
       header: "Amount/Commission",
       render: (row) => (
         <>
@@ -63,24 +60,32 @@ const MobileRechargeForm = () => {
   ];
 
   return (
-    <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 bg-white mt-2">
-      <h2 className="text-2xl font-semibold mb-6">Mobile Recharge</h2>
+    <>
+      <div className="h-[85vh]  2xl:max-w-[80%] p-4 mx-8 bg-transparent dark:bg-darkBlue/70 rounded 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200  mt-2">
+        <div className="dark:text-white dark:bg-darkBlue/70 bg-white mb-16  px-4 pb-6 pt-2  rounded">
+          <h2 className="text-2xl font-semibold mb-6">Mobile Recharge</h2>
 
-      {/* Recharge Form */}
-      <RechargeForm />
+          {/* Recharge Form */}
+          <RechargeForm />
+        </div>
 
-      {/* Recharge History Table */}
-      <div className="mt-12">
-        <h3 className="text-xl font-semibold mb-4">Recent Mobile Recharge</h3>
-        <PaginatedTable
-          data={history}
-          columns={columns}
-          pageSize={5}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
+        {/* Recharge History Table */}
+        <div className="bg-white dark:bg-transparent rounded ">
+          <div className="mt-2 dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue/70 rounded 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 bg-white">
+            <h3 className="text-xl font-semibold mb-4">
+              Recent Mobile Recharge
+            </h3>
+            <PaginatedTable
+              data={history}
+              columns={columns}
+              pageSize={5}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

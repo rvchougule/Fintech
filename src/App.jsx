@@ -11,9 +11,10 @@ import SuperAEPS from "./pages/super/agent_list/SuperAEPS";
 
 import { RequestReport } from "./pages/super/fund/RequestReport";
 import { AllAEPSTransaction } from "./pages/super/transaction_report/AllAEPSTransaction";
-import { CommissionStatement } from "./pages/super/transaction_report/CommissionStatement";
+
 import { BillPayStatement } from "./pages/super/transaction_report/BillPayStatement";
 import { VerificationStatement } from "./pages/super/transaction_report/VerificationStatement";
+import { PayoutStatement } from "./pages/super/transaction_report/PayoutStatement";
 import { AffiliateStatement } from "./pages/super/transaction_report/AffiliateStatement";
 import { MicroATMStatement } from "./pages/super/transaction_report/MicroATMStatement";
 import { RechargeStatement } from "./pages/super/transaction_report/RechargeStatement";
@@ -73,6 +74,7 @@ import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
 import Uti from "./pages/super/PanCard/Uti";
 import CommissionRequest from "./pages/super/commision/CommisionRequest";
 import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
+import Affiliateservices from "./pages/super/affiliate/Affiliateservices";
 
 // admin
 
@@ -88,6 +90,15 @@ const App = () => {
           Component: Dashboard,
         },
 
+        //  UTILITY
+        {
+          path: "utility/mobile-recharge",
+          Component: MobileRechargeForm,
+        },
+        {
+          path: "utility/dth-recharge",
+          Component: dthRecharge,
+        },
         // Bill Payment
         {
           path: "/billpay/electricity",
@@ -208,9 +219,15 @@ const App = () => {
           path: "/statement/aeps",
           Component: SuperAEPS,
         },
-       
 
         // Affiliate
+        {
+          path: "/affiliate/affiliateservices",
+          Component: Affiliateservices,
+        },
+       
+
+        
 
         // Fund
 
@@ -231,13 +248,14 @@ const App = () => {
           path: "statement/aeps-txn",
           Component: AllAEPSTransaction,
         },
-        {
-          path: "statement/commision",
-          Component: CommissionStatement,
-        },
+       
         {
           path: "statement/bill-pay",
           Component: BillPayStatement,
+        },
+        {
+          path: "statement/money",
+          Component: PayoutStatement,
         },
         {
           path: "statement/verification",
@@ -352,15 +370,7 @@ const App = () => {
           path: "Pancard/Uti",
           Component: Uti,
         },
-        //  UTILITY
-        {
-          path: "utility/mobile-recharge",
-          Component: MobileRechargeForm,
-        },
-        {
-          path: "utility/dth-recharge",
-          Component: dthRecharge,
-        },
+        
 
         // Commission  request
         {

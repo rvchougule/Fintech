@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
-import { sampleData } from "../../../assets/assets";
 import FilterBar from "../../../components/utility/FilterBar";
+import { sampleData } from "../../../assets/assets";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
-export const CommissionStatement = () => {
+export const PayoutStatement = () => {
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -20,6 +21,10 @@ export const CommissionStatement = () => {
       [name]: value,
     }));
   };
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFilteredData] = useState([]);
+  const pageSize = 10;
 
   // filters function
   const applyFilters = () => {
@@ -70,7 +75,8 @@ export const CommissionStatement = () => {
       });
     }
 
-    return data;
+    setFilteredData(data);
+    setCurrentPage(1);
   };
 
   const fields = [
@@ -111,27 +117,13 @@ export const CommissionStatement = () => {
       options: [
         { label: "success", value: "success" },
         { label: "pending", value: "pending" },
-        { label: "failed", value: "failed" },
-        { label: "approved", value: "approved" },
-        { label: "rejected", value: "rejected" },
-      ],
-    },
-    {
-      name: "product",
-      type: "select",
-      placeholder: "Select Product",
-      value: filters.product || "",
-      onChange: (val) => handleInputChange("product", val),
-      options: [
-        { label: "Select transacton", value: "" },
-        { label: "Move to Wallet", value: "Move to Wallet" },
-        { label: "Move to Bank", value: "Move to Bank" },
+        { label: "reversed", value: "reversed" },
       ],
     },
   ];
 
   const columns = [
-    { header: "#", accessor: "id" },
+    { header: "Order Id", accessor: "id" },
     {
       header: "User Details",
       accessor: "requestedBy",
@@ -144,7 +136,7 @@ export const CommissionStatement = () => {
       ),
     },
     {
-      header: "Settlement DETAILS",
+      header: "Provided Name",
       accessor: "depositDetails",
       render: (row) => (
         <div>
@@ -155,7 +147,7 @@ export const CommissionStatement = () => {
       ),
     },
     {
-      header: "Txn Details",
+      header: "Other Details",
       accessor: "referenceDetails",
       render: (row) => (
         <div>
@@ -165,17 +157,7 @@ export const CommissionStatement = () => {
       ),
     },
     {
-      header: "Description",
-      accessor: "wallet",
-      render: (row) => (
-        <div>
-          <p>Main: ₹{row.wallet.main}</p>
-          <p>Locked: ₹{row.wallet.locked}</p>
-        </div>
-      ),
-    },
-    {
-      header: "Remark",
+      header: "Amount/Commission",
       accessor: "remark",
     },
     {
@@ -195,22 +177,65 @@ export const CommissionStatement = () => {
     },
   ];
 
+  const handleExport = () => {
+    const exportData = filteredData.map((item) => ({
+      ID: item.id || "N/A",
+
+      // Requester Info
+      "Requested By": item.requestedBy?.name || "N/A",
+      "Requester Mobile": item.requestedBy?.mobile || "N/A",
+      "Requester Role": item.requestedBy?.role || "N/A",
+
+      // Bank/Deposit Info
+      "Bank Name": item.depositDetails?.bankName || "N/A",
+      "Account No": item.depositDetails?.accountNo || "N/A",
+      IFSC: item.depositDetails?.ifsc || "N/A",
+
+      // Reference Info
+      "Transaction ID": item.referenceDetails?.transactionId || "N/A",
+      "Transaction Date": item.referenceDetails?.dateTime || "N/A",
+
+      // Wallet Info
+      "Main Wallet": item.wallet?.main || 0,
+      "Locked Wallet": item.wallet?.locked || 0,
+
+      // Additional
+      Remark: item.remark || "N/A",
+      Action: item.action || "N/A",
+    }));
+
+    return exportData;
+  };
+
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-            Commission Settlement Details
+            Payout Statement
           </h2>
+          <div className="">
+            <button className="btn-24 text-adminOffWhite bg-accentRed ">
+              Refresh
+            </button>
+            <ExcelExportButton
+              buttonLabel="Export"
+              fileName="verification-statement.xlsx"
+              data={handleExport()}
+            />
+          </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
       <PaginatedTable
-        data={sampleData}
+        data={filteredData}
         filters={filters}
         onSearch={applyFilters}
         columns={columns}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pageSize={pageSize}
       />
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
+import { IoEyeSharp } from "react-icons/io5";
 
 const UserDropdown = () => {
   return (
@@ -15,7 +16,7 @@ const UserDropdown = () => {
           <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-white rounded-full"></span>
         </div>
         <div>
-          <h4 className="font-semibold">Hello BANDARU</h4>
+          <h4 className="font-semibold">Hello Kishore</h4>
           <p className="text-sm text-gray-300 dark:text-gray-500">Distributor</p>
           <p className="text-sm text-gray-300 dark:text-gray-500">UserId-12</p>
         </div>
@@ -28,6 +29,10 @@ const UserDropdown = () => {
         <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
           <FaUser className="text-lg" />
           <span className="text-sm font-medium">My Profile</span>
+        </button>
+         <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
+          <IoEyeSharp  className="text-lg" />
+          <span className="text-sm font-medium">View Commision</span>
         </button>
         <button className="flex items-center space-x-3 hover:text-red-400 dark:hover:text-red-600 transition">
           <FaSignOutAlt className="text-lg" />
