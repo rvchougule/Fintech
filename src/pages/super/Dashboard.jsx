@@ -14,6 +14,7 @@ import RechargeBillPaymentCard from "../../components/super/dashboard/cards/Rech
 import BankingServicesCard from "../../components/super/dashboard/cards/BankingServicesCard";
 import InsuranceLoanCard from "../../components/super/dashboard/cards/InsuranceLoanCard";
 import { ServiceCard } from "../../components/super/dashboard/ServiceCard";
+import TravelServicesCard from "../../components/super/dashboard/cards/TravelServicesCard";
 
 const serviceCards = [
   {

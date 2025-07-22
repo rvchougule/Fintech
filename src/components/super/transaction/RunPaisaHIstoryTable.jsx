@@ -118,7 +118,7 @@ const RunpaisaHistoryTable = ({ title, note, data, cols }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm ">
+    <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-lg shadow-md">
       {/* Header */}
       <div className="p-6 border-b border-gray-200 dark:border-gray-700">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
