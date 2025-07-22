@@ -4,7 +4,7 @@ import curve from "../assets/img/curve1.png";
 export { userIcon, curve };
 
 // logo
-import Logo from "./img/bandaru_pay_logo1.png";
+import Logo from "./img/bandaru_pay_logo.png";
 export { Logo };
 
 // service Card img
@@ -13,6 +13,15 @@ import dashFlowerPot from "./img/dashFlowerPot.png";
 import dashShield from "./img/dashShield.png";
 import dashUser from "./img/dashUser.png";
 import DashFemaleUser from "./img/DashFemaleUser.png";
+
+// dashboard bg's
+import bg_bank from "./img/bg-bank.jpg";
+import bg_checkout from "./img/bg-checkout.jpg";
+import bg_recharge from "./img/bg-recharge.jpg";
+import bg_travel from "./img/bg-travel.jpg";
+import bg_travel2 from "./img/bg-travel-2.jpg";
+
+export { bg_bank, bg_checkout, bg_recharge, bg_travel, bg_travel2 };
 
 export { dashFlower, dashFlowerPot, dashShield, dashUser, DashFemaleUser };
 

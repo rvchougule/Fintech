@@ -225,7 +225,7 @@ export const MainWallet = () => {
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
             Account Statement
           </h2>
-          <div className="">
+          <div className="flex items-center gap-2">
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>

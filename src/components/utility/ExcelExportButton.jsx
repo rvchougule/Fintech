@@ -1,6 +1,7 @@
 // components/ExcelExportButton.jsx
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
+import { FaDownload } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 const ExcelExportButton = ({
@@ -8,7 +9,7 @@ const ExcelExportButton = ({
   fileName = "export.xlsx",
   sheetName = "Sheet1",
   buttonLabel = "Export to Excel",
-  className = "btn-24 text-adminOffWhite bg-accentGreen",
+  className = "flex items-center gap-2 btn-24 text-adminOffWhite bg-accentGreen",
 }) => {
   const handleExport = async () => {
     if (!data || data.length === 0) {
@@ -42,6 +43,7 @@ const ExcelExportButton = ({
 
   return (
     <button onClick={handleExport} className={className}>
+      <FaDownload className="h-4 w-4" />
       {buttonLabel}
     </button>
   );

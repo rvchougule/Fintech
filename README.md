@@ -19,6 +19,12 @@ Meeting 19/7/2025 saturday => - DashBoard =>
     -POrtal Setting =>
         -> Add settings for the user to show the wallet to the parent user or not(It should hidden to parent by default)
 
+    - wallet
+        -> remove other wallet and maintain only one main wallet =>#DONE
+
+    - Complaint subject
+        -> remove it we are going to add it to the chatbot => #DONE
+
 ## Functionality
 
     - Parent should be gone to the childe's login or dashborad (And also add portal settingas for the child to hide things from the parent)

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaSearch, FaDownload, FaInfoCircle } from "react-icons/fa";
+import { FaSearch, FaDownload, FaInfoCircle, FaEdit } from "react-icons/fa";
 import PaginatedTable from "../../utility/PaginatedTable";
 import TransactionDetailsSection from "./TransactionDetailsSection";
 import { SuperModal } from "../../utility/SuperModel";
@@ -63,13 +63,24 @@ const RunpaisaHistoryTable = ({ title, note, data, cols }) => {
       header: "ACTION",
       accessor: "action",
       render: (row, idx) => (
-        <button
-          onClick={() => handleInfoClick(row)}
-          className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center gap-1"
-        >
-          <FaInfoCircle className="h-3 w-3" />
-          Info
-        </button>
+        <>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => handleInfoClick(row)}
+              className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center gap-1"
+            >
+              <FaInfoCircle className="h-3 w-3" />
+              Info
+            </button>
+            <button
+              onClick={() => handleEditClick(row)}
+              className="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 flex items-center gap-1"
+            >
+              <FaEdit className="h-3 w-3" />
+              Edit
+            </button>
+          </div>
+        </>
       ),
     },
   ];
