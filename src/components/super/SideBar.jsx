@@ -90,9 +90,8 @@ const menuItems = [
   },
   {
     icon: <FaWallet />,
-    label: "Wallet History",
+    label: "Main Wallet",
     component: "statement/account",
-    
   },
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },
   {
