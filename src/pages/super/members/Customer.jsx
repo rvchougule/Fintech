@@ -4,6 +4,8 @@ import FilterBar from "../../../components/utility/FilterBar";
 import { SuperModal } from "../../../components/utility/SuperModel";
 import { ToggleButton } from "../../../components/utility/ToggleButton";
 import { FiRepeat, FiSettings, FiUserPlus, FiShield } from "react-icons/fi";
+
+import { FaDownload } from "react-icons/fa";
 import ActionDropdown from "../../../components/utility/ActionDropDown";
 import FundActionForm from "../../../components/super/members/utility_components/FundActionForm";
 import { CheckBoxPermissionForm } from "../../../components/super/members/utility_components/CheckBoxPermissionForm";
@@ -395,9 +397,13 @@ export const Customer = () => {
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <ExcelExportButton
-              buttonLabel="Export"
-              fileName="whitelable.xlsx"
+            <ExcelExportButton 
+              buttonLabel={
+                <span className="flex items-center  text-adminOffWhite gap-1">
+                  <FaDownload size={16} /> Export
+                </span>
+              }
+              fileName="retail.xlsx"
               data={handleExport()}
             />
           </div>

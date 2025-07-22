@@ -414,9 +414,9 @@ export const Retail = () => {
             <button className="btn text-adminOffWhite bg-accentRed flex text-white  items-center ">
               
               <span>Refresh</span>
-              <span>
+              {/* <span>
                 <BiRefresh size={26} />
-              </span>
+              </span> */}
             </button>
 
             <ExcelExportButton 

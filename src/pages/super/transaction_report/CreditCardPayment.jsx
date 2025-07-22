@@ -3,6 +3,7 @@ import PaginatedTable from "../../../components/utility/PaginatedTable";
 import FilterBar from "../../../components/utility/FilterBar";
 import { sampleData } from "../../../assets/assets";
 import ExcelExportButton from "../../../components/utility/ExcelExportButton";
+import { FaDownload } from "react-icons/fa";
 
 export const CreditCardPayment = () => {
   const [filters, setFilters] = useState({
@@ -215,9 +216,13 @@ export const CreditCardPayment = () => {
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <ExcelExportButton
-              buttonLabel="Export"
-              fileName="cc-payment.xlsx"
+             <ExcelExportButton 
+              buttonLabel={
+                <span className="flex items-center  text-adminOffWhite gap-1">
+                  <FaDownload size={16} /> Export
+                </span>
+              }
+              fileName="retail.xlsx"
               data={handleExport()}
             />
           </div>

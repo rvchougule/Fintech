@@ -49,7 +49,9 @@ const BankDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">Account Number</label>
         <input
+          readOnly
           type="text"
+          value={50200071035081}
           inputMode="numeric"
           maxLength="18"
           placeholder="Enter your account number"
@@ -67,8 +69,9 @@ const BankDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">Bank Name</label>
         <input
+          readOnly
           type="text"
-          placeholder="Enter your bank name"
+          placeholder="hdfc"
           {...register("bankName")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
@@ -81,9 +84,10 @@ const BankDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">IFSC Code</label>
         <input
+          readOnly
           type="text"
           maxLength="11"
-          placeholder="e.g. SBIN0001234"
+          placeholder="HDFC0005853"
           className="w-full px-3 py-2 uppercase rounded  dark:text-white border border-gray-600"
           {...register("ifscCode")}
         />
@@ -92,17 +96,15 @@ const BankDetails = ({ initialData }) => {
         )}
       </div>
 
-
-
       {/* Submit Button */}
-      <div className="md:col-span-3">
+      {/* <div className="md:col-span-3">
         <button
           type="submit"
           className="px-6 py-2 bg-secondary text-white rounded hover:bg-violet-600 transition"
         >
           Update
         </button>
-      </div>
+      </div> */}
     </form>
   );
 };

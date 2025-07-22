@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -33,8 +32,8 @@ const ProfileDetails = ({ initialData }) => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      ...initialData,      
-       gender: "Select Gender",
+      ...initialData,
+      gender: "Select Gender",
     },
   });
 
@@ -51,6 +50,7 @@ const ProfileDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">Name</label>
         <input
+          readOnly
           type="text"
           {...register("name")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -61,6 +61,7 @@ const ProfileDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">Mobile</label>
         <input
+          readOnly
           type="text"
           {...register("mobile")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -71,6 +72,7 @@ const ProfileDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">Email</label>
         <input
+          readOnly
           type="email"
           {...register("email")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -78,10 +80,10 @@ const ProfileDetails = ({ initialData }) => {
         <p className="text-red-500 text-sm">{errors.email?.message}</p>
       </div>
 
-
       <div>
         <label className="block text-sm mb-1">State</label>
         <input
+          readOnly
           type="text"
           {...register("state")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -92,6 +94,7 @@ const ProfileDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">City</label>
         <input
+          readOnly
           type="text"
           {...register("city")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -99,9 +102,10 @@ const ProfileDetails = ({ initialData }) => {
         <p className="text-red-500 text-sm">{errors.city?.message}</p>
       </div>
 
-       <div>
+      <div>
         <label className="block text-sm mb-1">PIN Code</label>
         <input
+          readOnly
           type="text"
           {...register("pinCode")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -129,9 +133,8 @@ const ProfileDetails = ({ initialData }) => {
           </option>
         </select>
         <p className="text-red-500 text-sm">{errors.gender?.message}</p>
-      </div>     
+      </div>
 
-      
       {/* <div>
         <label className="block text-sm mb-1">Security PIN</label>
         <input
@@ -145,6 +148,7 @@ const ProfileDetails = ({ initialData }) => {
       <div className="md:col-span-2">
         <label className="block text-sm mb-1">Address</label>
         <input
+          readOnly
           type="text"
           {...register("address")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -152,14 +156,14 @@ const ProfileDetails = ({ initialData }) => {
         <p className="text-red-500 text-sm">{errors.address?.message}</p>
       </div>
 
-      <div className="md:col-span-2">
+      {/* <div className="md:col-span-2">
         <button
           type="submit"
           className="px-6 py-2 bg-secondary text-white rounded hover:bg-violet-600 transition"
         >
           Update Profile
         </button>
-      </div>
+      </div> */}
     </form>
   );
 };

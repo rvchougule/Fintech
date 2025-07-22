@@ -70,6 +70,7 @@ const KYCDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">Shop Name</label>
         <input
+          readOnly
           {...register("shopName")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
@@ -80,6 +81,7 @@ const KYCDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">GST Number</label>
         <input
+          readOnly
           {...register("gstNumber")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
@@ -90,6 +92,7 @@ const KYCDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">Aadhar Card Number</label>
         <input
+          readOnly
           {...register("aadharNumber")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
@@ -102,6 +105,7 @@ const KYCDetails = ({ initialData }) => {
       <div>
         <label className="block text-sm mb-1">PAN Card Number</label>
         <input
+        
           {...register("panNumber")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
@@ -168,14 +172,14 @@ const KYCDetails = ({ initialData }) => {
       </div>
 
       {/* Submit */}
-      <div className="md:col-span-2">
+      {/* <div className="md:col-span-2">
         <button
           type="submit"
           className="px-6 py-2 bg-secondary text-white rounded hover:bg-violet-600 transition"
         >
           Update Profile
         </button>
-      </div>
+      </div> */}
     </form>
   );
 };
