@@ -1,7 +1,8 @@
 import { Outlet } from "react-router";
-import Sidebar from "../components/super/SideBar";
-import Header from "../components/super/Header";
+
 import { ToastContainer } from "react-toastify";
+import Sidebar from "../components/SideBar";
+import Header from "../components/Header";
 
 export const SuperAdminLayout = () => {
   return (
