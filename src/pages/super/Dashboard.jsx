@@ -28,7 +28,7 @@ const serviceCards = [
     icon: <HiShieldCheck size={24} />,
     bgIcon: "bg-[#978ee1]",
     label: "Banking Services",
-    bgColor: "bg-[#00B89438]",
+    bgColor: "bg-[#00B89438] dark:bg-[#00B894]",
     name: "banking",
   },
   {
@@ -42,7 +42,7 @@ const serviceCards = [
     icon: <FaMoneyCheck size={24} />,
     bgIcon: "bg-[#978ee1]",
     label: "Loan Services",
-    bgColor: "bg-[#6C5CE738]",
+    bgColor: "bg-[#6C5CE738] dark:bg-[#6C5CE7]",
     name: "loan",
   },
   {
