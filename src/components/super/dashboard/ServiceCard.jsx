@@ -1,24 +1,22 @@
-import React from "react";
-
-const ServiceCard = ({ title, services }) => {
+// Subcomponent: Service Card
+export function ServiceCard({
+  icon,
+  label,
+  bgColor = "bg-white",
+  bgIcon = "bg-white",
+  name = "",
+  onClick = () => {},
+}) {
   return (
-    <div className="border border-dashed border-gray-400 rounded-xl p-4  ">
-      <h2 className=" font-semibold text-lg mb-4">{title}</h2>
-      <div className="grid grid-cols-4 gap-4">
-        {services.map((service, idx) => (
-          <div
-            key={idx}
-            className="flex flex-col items-center justify-center text-green-600 cursor-pointer hover:text-black transition-colors"
-          >
-            <div className="text-2xl bg-yellow-900/10 p-4 rounded-full mb-1">
-              {service.icon}
-            </div>
-            <span className="text-xs text-center">{service.label}</span>
-          </div>
-        ))}
+    <div
+      name={name}
+      className={`${bgColor} h-32 cursor-pointer text-black rounded-xl p-4 shadow-md flex items-center justify-center text-center`}
+      onClick={onClick}
+    >
+      <div className="flex flex-col items-center">
+        <div className={`${bgIcon} rounded-2xl p-2 mb-2`}>{icon}</div>
+        <p className="text-sm  font-bold">{label}</p>
       </div>
     </div>
   );
-};
-
-export default ServiceCard;
+}

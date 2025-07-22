@@ -1,57 +1,54 @@
 import { BsBank, BsShieldPlus, BsPersonBadge } from "react-icons/bs";
-import { HiOutlineClipboardList } from "react-icons/hi";
+import { HiOutlineClipboardList, HiShieldCheck } from "react-icons/hi";
 import { RiAdminFill } from "react-icons/ri";
-import { FiChevronDown } from "react-icons/fi";
 import WalletBalanceCard from "../../components/super/WalletBancedCard";
 import { CustomDatePicker } from "../../components/utility/CustomDatePicker";
-import { FaUser } from "react-icons/fa";
+import { FaMoneyCheck, FaPlaneDeparture, FaUser } from "react-icons/fa";
 import { Link } from "react-router";
-
-import {
-  bg_bank,
-  bg_checkout,
-  bg_recharge,
-  bg_travel,
-  bg_travel2,
-} from "../../assets/assets";
 import { SuperModal } from "../../components/utility/SuperModel";
-import { set } from "date-fns";
 import { useState } from "react";
-import RechargeBillPaymentCard from "../../components/super/dashboard/RechargeBillPaymentCard";
-import BankingServicesCard from "../../components/super/dashboard/BankingServicesCard";
-import InsuranceLoanCard from "../../components/super/dashboard/InsuranceLoanCard";
-import TravelServicesCard from "../../components/super/dashboard/TravelServicesCard";
+
+import { BiSolidUserRectangle } from "react-icons/bi";
+import { PiPottedPlantFill } from "react-icons/pi";
+import RechargeBillPaymentCard from "../../components/super/dashboard/cards/RechargeBillPaymentCard";
+import BankingServicesCard from "../../components/super/dashboard/cards/BankingServicesCard";
+import InsuranceLoanCard from "../../components/super/dashboard/cards/InsuranceLoanCard";
+import { ServiceCard } from "../../components/super/dashboard/ServiceCard";
 
 const serviceCards = [
   {
-    name: "recharge",
+    icon: <BiSolidUserRectangle size={24} />,
+    bgIcon: "bg-[#7fd3ec]",
     label: "Recharge & Bill Payment",
-    color: "bg-[#fddbd5] dark:bg-[#60A5FA]",
-    image: bg_recharge,
+    name: "recharge",
   },
   {
-    name: "banking",
+    icon: <HiShieldCheck size={24} />,
+    bgIcon: "bg-[#978ee1]",
     label: "Banking Services",
-    color: "bg-[#ecd7f2] dark:bg-[#8B5CF6] ",
-    image: bg_bank,
+    bgColor: "bg-[#00B89438]",
+    name: "banking",
   },
   {
-    name: "insurance",
+    icon: <PiPottedPlantFill size={24} />,
+    bgIcon: "bg-[#f4bdcf]",
     label: "Insurance",
-    color: "bg-[#e4cccc] dark:bg-cardGreenBlue",
-    image: bg_travel,
+    bgColor: "bg-[#FDE7EF]",
+    name: "insurance",
   },
   {
-    name: "loan",
+    icon: <FaMoneyCheck size={24} />,
+    bgIcon: "bg-[#978ee1]",
     label: "Loan Services",
-    color: "bg-[#e0d5e8] dark:bg-[#f69f9f]",
-    image: bg_checkout,
+    bgColor: "bg-[#6C5CE738]",
+    name: "loan",
   },
   {
+    icon: <FaPlaneDeparture size={24} />,
+    bgIcon: "bg-[#4db6ac]",
+    label: "Travel Services",
+    bgColor: "bg-[#e0f2f1]",
     name: "travel",
-    label: "Tours & Travels",
-    color: "bg-[#d5f2e2]",
-    image: bg_travel2,
   },
 ];
 
@@ -85,55 +82,39 @@ const Dashboard = () => {
       {/* Scrollable Content */}
       <div className="overflow-y-auto max-h-[calc(100vh-120px)] px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
         {/* Services */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-4">
-          {serviceCards.map((card, idx) => (
-            <div
-              key={idx}
-              className={`h-20  flex items-center justify-center text-center  text-sm font-semibold rounded-md cursor-pointer  `}
-              style={{
-                backgroundImage: `url(${card.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
-              <div
-                name={card.name}
-                className="relative bg-darkBlue/60 w-full h-full font-extrabold flex items-center justify-center text-white rounded group"
-                onClick={() => toggleCardVisibility(card.name)}
-              >
-                <span className="relative before:content-[''] before:absolute before:left-1/2 before:bottom-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 group-hover:before:w-full group-hover:before:left-0">
-                  {card.label}
-                </span>
-              </div>
+        <div className="">
+          <div className="grid grid-cols-4 gap-2">
+            <div className="col-span-3">
+              <WalletBalanceCard />
             </div>
-          ))}
+            <div className="col-span-1">
+              <ServiceCard
+                {...serviceCards[0]}
+                onClick={() => toggleCardVisibility("recharge")}
+              />
+            </div>
+          </div>
+          <div className="py-4">
+            <div className="grid grid-cols-4 gap-2 ">
+              <ServiceCard
+                {...serviceCards[1]}
+                onClick={() => toggleCardVisibility("banking")}
+              />
+              <ServiceCard
+                {...serviceCards[2]}
+                onClick={() => toggleCardVisibility("insurance")}
+              />
+              <ServiceCard
+                {...serviceCards[3]}
+                onClick={() => toggleCardVisibility("loan")}
+              />
+              <ServiceCard
+                {...serviceCards[4]}
+                onClick={() => toggleCardVisibility("travel")}
+              />
+            </div>
+          </div>
         </div>
-
-        {/* Wallet Section */}
-        <div className="flex flex-wrap gap-4 mb-4">
-          <div className="flex-1 rounded-md shadow-md w-[60%]">
-            <WalletBalanceCard />
-          </div>
-          {/* <div className=" bg-white rounded-md shadow p-4 text-center w-[40%]">
-            <div className="font-semibold text-sm">AEPS</div>
-          </div> */}
-        </div>
-
-        {/* MATM Stats */}
-        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-          <div className="bg-green-100 dark:bg-accentGreen p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Success</p>
-            <p className="text-xs">0/₹0.00</p>
-          </div>
-          <div className="bg-yellow-100  p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Pending</p>
-            <p className="text-xs">0/₹0.00</p>
-          </div>
-          <div className="bg-red-100 dark:bg-accentRed p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Failed</p>
-            <p className="text-xs">0/₹0.00</p>
-          </div>
-        </div> */}
 
         {/* User Counts & Support Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
