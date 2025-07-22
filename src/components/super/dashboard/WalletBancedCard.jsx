@@ -1,4 +1,4 @@
-import { curve } from "../../assets/assets";
+import { curve } from "../../../assets/assets";
 
 const WalletBalanceCard = () => {
   return (

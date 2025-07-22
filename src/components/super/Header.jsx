@@ -33,7 +33,7 @@ export default function Header() {
           onClick={() => setIsWalletOpen(true)}
           className="flex items-center bg-secondary text-white font-semibold px-4 py-1.5 rounded-md gap-2 shadow-md hover:bg-[#7a7bf0] transition cursor-pointer"
         >
-          <span>Super Admin wallet</span>
+          <span>Admin wallet</span>
           <FaWallet />
         </button>
 

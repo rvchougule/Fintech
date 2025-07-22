@@ -7,7 +7,7 @@ export function ServiceCard({
 }) {
   return (
     <div
-      className={`${bgColor} rounded-xl p-4 shadow-md flex items-center justify-center text-center`}
+      className={`${bgColor} text-black rounded-xl p-4 shadow-md flex items-center justify-center text-center`}
     >
       <div className="flex flex-col items-center">
         <div className={`${bgIcon} rounded-2xl p-2 mb-2`}>{icon}</div>

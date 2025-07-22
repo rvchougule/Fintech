@@ -50,13 +50,13 @@ export const CustomDatePicker = () => {
       </button>
 
       {showCalendar && (
-        <div className="absolute z-50 mt-2 dark:bg-cardOffWhite">
+        <div className="absolute z-50 mt-2 dark:bg-darkBlue bg-white ">
           <DateRange
             editableDateInputs={true}
             onChange={(item) => setDateRange([item.selection])}
             moveRangeOnFirstSelection={false}
             ranges={dateRange}
-            className="shadow-lg"
+            className="shadow-lg dark:bg-darkBlue/30"
           />
         </div>
       )}

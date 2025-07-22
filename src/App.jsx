@@ -37,7 +37,6 @@ import { QuickLinks } from "./pages/super/setup_tools/QuickLinks";
 import { Roles } from "./pages/super/roles_permissions/Roles";
 import { Permissions } from "./pages/super/roles_permissions/Permissions";
 import AccountPortalSettings from "./pages/super/account_settings/AccountPortalSettings";
-import { Admin } from "./pages/super/members/Admin";
 import { WhiteLabel } from "./pages/super/members/WhiteLabel";
 import { MasterDistributor } from "./pages/super/members/MasterDistributor";
 import { Distributor } from "./pages/super/members/Distributor";
@@ -52,8 +51,6 @@ import RetailerLayout from "./layouts/members/RetailerLayout";
 import CreateMDS from "./components/super/members/mds/CreateMDS";
 import CreateRetailerBYDs from "./components/super/members/ds/CreateRetailerBYDs";
 import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
-import CreateAdmin from "./components/super/members/admin/CreateAdmin";
-import MemberAdminLayout from "./layouts/members/MemberAdminLayout";
 import CreateCutsomerBYRetailer from "./components/super/members/retailer/CreateCustomerBYRetailer";
 
 // admin
@@ -215,21 +212,6 @@ const App = () => {
           Component: AccountPortalSettings,
         },
 
-        // members
-        {
-          path: "members/admin",
-          Component: MemberAdminLayout,
-          children: [
-            {
-              index: true,
-              Component: Admin,
-            },
-            {
-              path: "create",
-              Component: CreateAdmin,
-            },
-          ],
-        },
         {
           path: "members/whitelabel",
           Component: WhitelabelLayout,

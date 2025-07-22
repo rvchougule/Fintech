@@ -8,7 +8,7 @@ export function SummaryCard({ label, value, color }) {
 
   return (
     <div
-      className={`${bg} px-4 py-2 rounded-lg shadow-md text-center flex flex-col gap-2 items-center justify-center h-20`}
+      className={`${bg} px-4 py-2 rounded-lg text-black shadow-md text-center flex flex-col gap-2 items-center justify-center h-20`}
     >
       <h3 className="font-bold">{label}</h3>
       {value && <span className="">{value}</span>}
