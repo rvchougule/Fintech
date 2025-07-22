@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FaUser, FaSun, FaWallet } from "../../assets/react-icons";
 import LoadWalletModal from "./LoadWalletModel";
 import { useDarkTheme } from "../../hooks/useDarkTheme";
@@ -9,13 +9,34 @@ export default function Header() {
   const [isWalletOpen, setIsWalletOpen] = useState(false);
   const { isSuperDarkMode, toggleSuperTheme } = useDarkTheme();
   const [profile, setProfile] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setProfile(false);
+      }
+    };
+
+    if (profile) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [profile]);
+
   return (
-    <header className=" text-black bg-white dark:bg-transparent dark:text-adminOffWhite flex justify-between items-center px-6 py-3 rounded-t-lg shadow-sm ">
+    <header className="text-black bg-white dark:bg-transparent dark:text-adminOffWhite flex justify-between items-center px-6 py-3 rounded-t-lg shadow-sm">
       {/* Left: Welcome text */}
       <h2 className="text-sm font-bold">WELCOME TO NK TAX CONSULTANCY</h2>
 
       {/* Right: Action Items */}
-      <div className="flex items-center gap-4 ">
+      <div className="flex items-center gap-4">
         {isSuperDarkMode ? (
           <FaSun
             className="text-xl text-black dark:text-adminOffWhite"
@@ -43,13 +64,16 @@ export default function Header() {
           onClick={() => setProfile(!profile)}
         >
           <FaUser className="text-white text-xl" />
-          {/* <img src={userIcon} alt="" className="w-20" /> */}
         </div>
       </div>
+
+      {/* Modals */}
       {isWalletOpen && (
         <LoadWalletModal onClose={() => setIsWalletOpen(false)} />
       )}
-      {profile && <UserDropdown />}
+
+      {/* User Dropdown */}
+      {profile && <UserDropdown ref={dropdownRef} />}
     </header>
   );
 }
