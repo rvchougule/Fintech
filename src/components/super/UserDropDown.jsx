@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
+import { Link } from "react-router";
 
 const UserDropdown = ({ ref }) => {
   return (
@@ -30,7 +31,9 @@ const UserDropdown = ({ ref }) => {
       <div className="flex flex-col space-y-3">
         <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
           <FaUser className="text-lg" />
-          <span className="text-sm font-medium">My Profile</span>
+          <Link to="profile/view" className="text-sm font-medium">
+            My Profile
+          </Link>
         </button>
         <button className="flex items-center space-x-3 hover:text-red-400 dark:hover:text-red-600 transition">
           <FaSignOutAlt className="text-lg" />
