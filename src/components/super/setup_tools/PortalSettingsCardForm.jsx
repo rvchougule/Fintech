@@ -1,11 +1,18 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
-export const PortalSettingsCardForm = ({ title, label, placeholder }) => {
-  const validationSchema = Yup.object().shape({
-    input: Yup.string().required(`${label} is required`),
+export const PortalSettingsCardForm = ({
+  title,
+  label,
+  placeholder,
+  name = "input",
+  options = [],
+  defaultValue = "",
+}) => {
+  const validationSchema = z.object({
+    [name]: z.string().min(1, `${label} is required`),
   });
 
   const {
@@ -13,11 +20,14 @@ export const PortalSettingsCardForm = ({ title, label, placeholder }) => {
     handleSubmit,
     formState: { errors, touchedFields },
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: zodResolver(validationSchema),
+    defaultValues: {
+      [name]: defaultValue,
+    },
   });
 
   const onSubmit = (data) => {
-    alert(`${title}: ${data.input}`);
+    alert(`${title}: ${data[name]}`);
   };
 
   return (
@@ -29,18 +39,35 @@ export const PortalSettingsCardForm = ({ title, label, placeholder }) => {
         <h2 className="text-lg font-semibold">{title}</h2>
 
         <label className="text-sm dark:text-gray-300">{label}</label>
-        <input
-          type="text"
-          placeholder={placeholder}
-          {...register("input")}
-          className="w-full p-2 rounded-md border border-[#2A2D4A] dark:bg-transparent dark:text-white outline-none"
-        />
-        {touchedFields.input && errors.input && (
-          <div className="text-red-400 text-sm">{errors.input.message}</div>
+
+        {options.length > 0 ? (
+          <select
+            {...register(name)}
+            className="w-full p-2 rounded-md border border-[#2A2D4A] dark:bg-transparent dark:text-white outline-none"
+          >
+            <option value="" className="dark:bg-darkBlue/80">
+              Select {label}
+            </option>
+            {options.map((opt) => (
+              <option key={opt} value={opt} className="dark:bg-darkBlue/80">
+                {opt}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <input
+            type="text"
+            placeholder={placeholder}
+            {...register(name)}
+            className="w-full p-2 rounded-md border border-[#2A2D4A] dark:bg-transparent dark:text-white outline-none"
+          />
+        )}
+
+        {touchedFields[name] && errors[name] && (
+          <div className="text-red-400 text-sm">{errors[name]?.message}</div>
         )}
       </div>
 
-      {/* Button container pushed to bottom */}
       <div className="mt-auto pt-4">
         <button
           type="submit"

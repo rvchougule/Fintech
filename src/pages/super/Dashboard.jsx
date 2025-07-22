@@ -18,6 +18,9 @@ import { SuperModal } from "../../components/utility/SuperModel";
 import { set } from "date-fns";
 import { useState } from "react";
 import RechargeBillPaymentCard from "../../components/super/dashboard/RechargeBillPaymentCard";
+import BankingServicesCard from "../../components/super/dashboard/BankingServicesCard";
+import InsuranceLoanCard from "../../components/super/dashboard/InsuranceLoanCard";
+import TravelServicesCard from "../../components/super/dashboard/TravelServicesCard";
 
 const serviceCards = [
   {
@@ -210,6 +213,33 @@ const Dashboard = () => {
           }
         >
           <RechargeBillPaymentCard />
+        </SuperModal>
+      )}
+      {isCardsVisible.banking && (
+        <SuperModal
+          onClose={() =>
+            setIsCardsVisible((prev) => ({ ...prev, banking: false }))
+          }
+        >
+          <BankingServicesCard />
+        </SuperModal>
+      )}
+      {isCardsVisible.insurance && (
+        <SuperModal
+          onClose={() =>
+            setIsCardsVisible((prev) => ({ ...prev, insurance: false }))
+          }
+        >
+          <InsuranceLoanCard />
+        </SuperModal>
+      )}
+      {isCardsVisible.travel && (
+        <SuperModal
+          onClose={() =>
+            setIsCardsVisible((prev) => ({ ...prev, travel: false }))
+          }
+        >
+          <TravelServicesCard />
         </SuperModal>
       )}
     </div>
