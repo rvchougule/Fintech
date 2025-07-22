@@ -4,6 +4,7 @@ import LoadWalletModal from "./LoadWalletModel";
 import { useDarkTheme } from "../../hooks/useDarkTheme";
 import { FaMoon } from "react-icons/fa";
 import UserDropdown from "./UserDropDown";
+import { SuperModal } from "../utility/SuperModel";
 
 export default function Header() {
   const [isWalletOpen, setIsWalletOpen] = useState(false);
@@ -69,7 +70,9 @@ export default function Header() {
 
       {/* Modals */}
       {isWalletOpen && (
-        <LoadWalletModal onClose={() => setIsWalletOpen(false)} />
+        <SuperModal onClose={() => setIsWalletOpen(false)}>
+          <LoadWalletModal />
+        </SuperModal>
       )}
 
       {/* User Dropdown */}
