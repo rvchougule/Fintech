@@ -7,15 +7,64 @@ import { CustomDatePicker } from "../../components/utility/CustomDatePicker";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router";
 
+import {
+  bg_bank,
+  bg_checkout,
+  bg_recharge,
+  bg_travel,
+  bg_travel2,
+} from "../../assets/assets";
+import { SuperModal } from "../../components/utility/SuperModel";
+import { set } from "date-fns";
+import { useState } from "react";
+import RechargeBillPaymentCard from "../../components/super/dashboard/RechargeBillPaymentCard";
+// import RechargeBillPaymentCard from "../../components/super/dashboard/RechargeBillPaymentCard";
+
 const serviceCards = [
-  { label: "Recharge & Bill Payment", color: "bg-[#fddbd5] dark:bg-[#60A5FA]" },
-  { label: "Banking Services", color: "bg-[#ecd7f2] dark:bg-[#8B5CF6] " },
-  { label: "Insurance", color: "bg-[#e4cccc] dark:bg-cardGreenBlue" },
-  { label: "Loan Services", color: "bg-[#e0d5e8] dark:bg-[#f69f9f]" },
-  { label: "Tours & Travels", color: "bg-[#d5f2e2]" },
+  {
+    name: "recharge",
+    label: "Recharge & Bill Payment",
+    color: "bg-[#fddbd5] dark:bg-[#60A5FA]",
+    image: bg_recharge,
+  },
+  {
+    name: "banking",
+    label: "Banking Services",
+    color: "bg-[#ecd7f2] dark:bg-[#8B5CF6] ",
+    image: bg_bank,
+  },
+  {
+    name: "insurance",
+    label: "Insurance",
+    color: "bg-[#e4cccc] dark:bg-cardGreenBlue",
+    image: bg_travel,
+  },
+  {
+    name: "loan",
+    label: "Loan Services",
+    color: "bg-[#e0d5e8] dark:bg-[#f69f9f]",
+    image: bg_checkout,
+  },
+  {
+    name: "travel",
+    label: "Tours & Travels",
+    color: "bg-[#d5f2e2]",
+    image: bg_travel2,
+  },
 ];
 
 const Dashboard = () => {
+  const [isCardsVisible, setIsCardsVisible] = useState({
+    recharge: false,
+    banking: false,
+    insurance: false,
+    loan: false,
+    travel: false,
+  });
+
+  const toggleCardVisibility = (card) => {
+    setIsCardsVisible((prev) => ({ ...prev, [card]: !prev[card] }));
+  };
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8  bg-secondaryOne dark:bg-darkBlue/70  rounded-2xl  2xl:mx-auto text-gray-800 overflow-hidden">
       {/* Sticky Header */}
@@ -38,9 +87,22 @@ const Dashboard = () => {
           {serviceCards.map((card, idx) => (
             <div
               key={idx}
-              className={`h-20 p-2 flex items-center justify-center text-center  text-sm font-semibold rounded-md ${card.color} `}
+              className={`h-20  flex items-center justify-center text-center  text-sm font-semibold rounded-md cursor-pointer  `}
+              style={{
+                backgroundImage: `url(${card.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
             >
-              {card.label}
+              <div
+                name={card.name}
+                className="relative bg-darkBlue/60 w-full h-full font-extrabold flex items-center justify-center text-white rounded group"
+                onClick={() => toggleCardVisibility(card.name)}
+              >
+                <span className="relative before:content-[''] before:absolute before:left-1/2 before:bottom-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 group-hover:before:w-full group-hover:before:left-0">
+                  {card.label}
+                </span>
+              </div>
             </div>
           ))}
         </div>
@@ -50,14 +112,33 @@ const Dashboard = () => {
           <div className="flex-1 rounded-md shadow-md w-[60%]">
             <WalletBalanceCard />
           </div>
+          {/* <div className=" bg-white rounded-md shadow p-4 text-center w-[40%]">
+            <div className="font-semibold text-sm">AEPS</div>
+          </div> */}
         </div>
+
+        {/* MATM Stats */}
+        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+          <div className="bg-green-100 dark:bg-accentGreen p-4 text-center rounded-md">
+            <p className="font-semibold text-sm">Success</p>
+            <p className="text-xs">0/₹0.00</p>
+          </div>
+          <div className="bg-yellow-100  p-4 text-center rounded-md">
+            <p className="font-semibold text-sm">Pending</p>
+            <p className="text-xs">0/₹0.00</p>
+          </div>
+          <div className="bg-red-100 dark:bg-accentRed p-4 text-center rounded-md">
+            <p className="font-semibold text-sm">Failed</p>
+            <p className="text-xs">0/₹0.00</p>
+          </div>
+        </div> */}
 
         {/* User Counts & Support Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
           {/* User Counts */}
           <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-md shadow p-4 space-y-2 text-sm">
             <p className="font-semibold">User Counts</p>
-
+           
             <Link to="members/mds">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -107,6 +188,16 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      {isCardsVisible.recharge && (
+        <SuperModal
+          onClose={() =>
+            setIsCardsVisible((prev) => ({ ...prev, recharge: false }))
+          }
+        >
+          <RechargeBillPaymentCard />
+        </SuperModal>
+      )}
     </div>
   );
 };

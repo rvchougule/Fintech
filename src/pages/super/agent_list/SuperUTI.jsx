@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import FilterBar from "../../../components/utility/FilterBar";
 import { AEPSData } from "../../../assets/assets";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 
 const SuperUTI = () => {
-  //   // All modals open CLose State
-  //   const [isModal, setIsModal] = useState({
-  //     AddNew: false,
-  //   });
-
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -16,22 +13,9 @@ const SuperUTI = () => {
     status: "",
   });
 
-  //   //modales state
-  //   const [company, setCompany] = useState({
-  //     name: "",
-  //     website: "",
-  //     senderid: "",
-  //     smsuser: "",
-  //     smspwd: "",
-  //   });
-  //   const [editingCompany, setEditingCompany] = useState(null);
-
+  const [filteredData, setFilteredData] = useState([...AEPSData]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredData, setFilteredData] = useState([]);
-  const [displayData, setDisplayData] = useState([]);
-
   const pageSize = 10;
-  const maxVisiblePages = 5;
 
   // ✅ Generic input handler
   const handleInputChange = (name, value) => {
@@ -40,21 +24,6 @@ const SuperUTI = () => {
       [name]: value,
     }));
   };
-  //Modal input handler
-  //   const handlemodalInputChange = (name, value) => {
-  //     setCompany((prev) => ({
-  //       ...prev,
-  //       [name]: value,
-  //     }));
-  //   };
-
-  useEffect(() => {
-    applyFilters();
-  }, [filters]);
-
-  useEffect(() => {
-    paginateData();
-  }, [filteredData, currentPage]);
 
   // filters function
   const applyFilters = () => {
@@ -77,27 +46,6 @@ const SuperUTI = () => {
     }
     setFilteredData(data);
     setCurrentPage(1);
-  };
-
-  const paginateData = () => {
-    const start = (currentPage - 1) * pageSize;
-    const end = start + pageSize;
-    setDisplayData(filteredData.slice(start, end));
-  };
-
-  const totalPages = Math.ceil(filteredData.length / pageSize);
-
-  // Pagination
-  const getPaginationRange = () => {
-    let start = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1);
-    let end = start + maxVisiblePages - 1;
-
-    if (end > totalPages) {
-      end = totalPages;
-      start = Math.max(end - maxVisiblePages + 1, 1);
-    }
-
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
   };
 
   const fields = [
@@ -145,6 +93,85 @@ const SuperUTI = () => {
     },
   ];
 
+  const columns = [
+    {
+      header: "ID",
+      accessor: "id",
+      render: (row) => <span>{row.id}</span>,
+    },
+    {
+      header: "Date & Time",
+      accessor: "dateTime",
+      render: (row) => <span>{row.dateTime}</span>,
+    },
+    {
+      header: "User Info",
+      accessor: "userDetails",
+      render: (row) => (
+        <div className="flex flex-col">
+          <span className="font-medium">{row.userDetails?.name}</span>
+          <span>ID: {row.userDetails?.id}</span>
+          <span className="text-sm italic">{row.userDetails?.role}</span>
+        </div>
+      ),
+    },
+    {
+      header: "Agent Info",
+      accessor: "agentDetails",
+      render: (row) => (
+        <div className="flex flex-col">
+          <span>ID: {row.agentDetails?.agentId}</span>
+          <span className="text-blue-600">{row.agentDetails?.agentName}</span>
+        </div>
+      ),
+    },
+    {
+      header: "KYC Details",
+      accessor: "details",
+      render: (row) => (
+        <div className="flex flex-col">
+          <span>Mobile: {row.details?.mobile}</span>
+          <span>KYC: {row.details?.kycName}</span>
+        </div>
+      ),
+    },
+    {
+      header: "Status",
+      accessor: "status",
+      render: (row) => {
+        const statusColor = {
+          success: "text-green-600",
+          failed: "text-red-600",
+          pending: "text-yellow-600",
+          approved: "text-blue-600",
+          rejected: "text-gray-500",
+        };
+        return (
+          <span className={statusColor[row.status] || "text-black"}>
+            {row.status?.toUpperCase()}
+          </span>
+        );
+      },
+    },
+  ];
+
+  const handleExport = () => {
+    const exportData = filteredData.map((item) => ({
+      ID: item.id || "N/A",
+      DateTime: item.dateTime || "N/A",
+      "User ID": item.userDetails?.id || "N/A",
+      "User Name": item.userDetails?.name || "N/A",
+      "User Role": item.userDetails?.role || "N/A",
+      "Agent ID": item.agentDetails?.agentId || "N/A",
+      "Agent Name": item.agentDetails?.agentName || "N/A",
+      Mobile: item.details?.mobile || "N/A",
+      "KYC Name": item.details?.kycName || "N/A",
+      Status: item.status || "N/A",
+    }));
+
+    return exportData;
+  };
+
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
@@ -156,108 +183,25 @@ const SuperUTI = () => {
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
-              Export{" "}
-            </button>
+            <ExcelExportButton
+              buttonLabel="Export"
+              fileName="request.xlsx"
+              data={handleExport()}
+            />
           </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
-      <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto text-left text-sm">
-            <thead>
-              <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">
-                <th className="px-4 py-3">#</th>
-                <th className="px-4 py-3">User Details</th>
-                <th className="px-4 py-3">UTI ID Details</th>
-                <th className="px-4 py-3">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {displayData.map((entry, index) => (
-                <tr key={index} className="border-t border-[#3F425D]">
-                  <td className="px-4 py-3">
-                    <div className="">{entry.id}</div>
-                    <div className="">{entry.dateTime}</div>
-                  </td>
-                  <td className="px-4 py-3">
-                    <p>{entry?.userDetails?.name}</p>
-                    <p>{entry?.userDetails?.id}</p>
-                    <p>{entry?.userDetails?.role}</p>
-                  </td>
-                  <td className="px-4 py-3">
-                    <p>Agent ID -{entry?.agentDetails?.agentId}</p>
-                    <p>Agent Name -{entry?.agentDetails?.agentName}</p>
-                  </td>
-                  <td className="px-4 py-3 space-x-2">
-                    <button
-                      className={`px-3 py-2  w-24 rounded font-semibold text-white capitalize ${
-                        entry.status === "success"
-                          ? "bg-green-500"
-                          : entry.status === "pending"
-                          ? "bg-yellow-500"
-                          : entry.status === "failed"
-                          ? "bg-red-600"
-                          : entry.status === "approved"
-                          ? "bg-blue-500"
-                          : entry.status === "rejected"
-                          ? "bg-gray-500"
-                          : "bg-slate-400"
-                      }`}
-                    >
-                      {entry.status}
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-4 flex justify-between items-center text-sm text-gray-300">
-          <p>
-            Showing{" "}
-            {Math.min((currentPage - 1) * pageSize + 1, filteredData.length)} to{" "}
-            {Math.min(currentPage * pageSize, filteredData.length)} of{" "}
-            {filteredData.length} entries
-          </p>
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
-            >
-              ←
-            </button>
-
-            {getPaginationRange().map((pageNum) => (
-              <button
-                key={pageNum}
-                onClick={() => setCurrentPage(pageNum)}
-                className={`px-3 py-1 rounded ${
-                  currentPage === pageNum
-                    ? "bg-secondary text-white"
-                    : "bg-[#1F2235] text-gray-500"
-                }`}
-              >
-                {pageNum}
-              </button>
-            ))}
-
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
-            >
-              →
-            </button>
-          </div>
-        </div>
-      </div>
+      <PaginatedTable
+        data={filteredData}
+        filters={filters}
+        onSearch={applyFilters}
+        columns={columns}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pageSize={pageSize}
+      />
     </div>
   );
 };

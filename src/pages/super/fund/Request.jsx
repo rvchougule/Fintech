@@ -3,7 +3,6 @@ import FilterBar from "../../../components/utility/FilterBar";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
 import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
-
 export const Request = () => {
   const Data = [];
 
@@ -14,7 +13,7 @@ export const Request = () => {
     userId: "",
     status: "",
   });
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
   const pageSize = 10;
@@ -126,6 +125,7 @@ export const Request = () => {
       address: user.Profile_Details.address || "N/A",
       City: user.Profile_Details.city || "N/A",
       State: user.Profile_Details.state || "N/A",
+      
       Pincode: user.Profile_Details.pinCode || "N/A",
       Shopname: user.KYC_Profile.shopName || "N/A",
       "Gst Tin": user.KYC_Profile.gstNumber || "N/A",

@@ -10,6 +10,7 @@ const ExcelExportButton = ({
   buttonLabel = "Export to Excel",
   className = "btn-24 text-adminOffWhite bg-accentGreen",
 }) => {
+  console.log(data);
   const handleExport = async () => {
     if (!data || data.length === 0) {
       toast.success("No data available to export.");

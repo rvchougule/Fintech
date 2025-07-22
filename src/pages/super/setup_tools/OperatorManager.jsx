@@ -309,7 +309,7 @@ export const OperatorManager = () => {
       </div>
       <div className="flex justify-between">
         <div className=""></div>
-        <button className="btn bg-accentGreen" onClick={handleAddClick}>
+        <button className="btn bg-accentGreen mb-3" onClick={handleAddClick}>
           + Add New
         </button>
       </div>

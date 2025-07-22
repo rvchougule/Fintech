@@ -23,6 +23,7 @@ import {
   FiDatabase, // For AEPS Wallet
   FiTrendingUp, // For Commission Wallet
 } from "react-icons/fi";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
 const data = [
   {
@@ -370,6 +371,36 @@ export const MasterDistributor = () => {
       securityPin: "",
     },
   };
+  
+  const handleExport = () => {
+    const exportData = filteredData.map((item) => ({
+      Id: item.id || "N/A",
+      Date: item.date || "N/A",
+      Name: item.username || "N/A",
+      Email: item.email || "N/A",
+      Mobile: item.mobile || "N/A",
+      "Role Name": item.type || "N/A",
+      "Main Balance": item.mainBalance || "N/A",
+      "Aeps Balance": item.aepsBalance || "N/A",
+      Parent: item.parentName || "N/A",
+      Company: item.website || "N/A",
+      Status: item.status ? "Active" : "Inactive",
+      address: user.Profile_Details.address || "N/A",
+      City: user.Profile_Details.city || "N/A",
+      State: user.Profile_Details.state || "N/A",
+      
+      Pincode: user.Profile_Details.pinCode || "N/A",
+      Shopname: user.KYC_Profile.shopName || "N/A",
+      "Gst Tin": user.KYC_Profile.gstNumber || "N/A",
+      Pancard: user.KYC_Profile.panNumber || "N/A",
+      "Aadhar Card": user.KYC_Profile.aadharNumber || "N/A",
+      Account: user.Bank_Details.accountNUmber || "N/A",
+      Bank: user.Bank_Details.bankName || "N/A",
+      Ifsc: user.Bank_Details.ifscCode || "N/A",
+    }));
+
+    return exportData;
+  };
 
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
@@ -382,18 +413,20 @@ export const MasterDistributor = () => {
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
-              Export{" "}
-            </button>
+            <ExcelExportButton
+            buttonLabel="Export"
+            fileName="request.xlsx"
+            data={handleExport()}
+            />
           </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
-
+            
       <div className="flex items-center justify-between mb-2">
         <div className=""></div>
-        <Link to="create" className="btn-24 bg-accentGreen">
-          Add New
+        <Link to="create" className="btn-24 bg-[#22C55E] hover:bg-green-900 text-nowrap">
+          +Add New
         </Link>
       </div>
 

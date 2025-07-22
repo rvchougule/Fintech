@@ -30,7 +30,7 @@ import { MatchingPercentage } from "./pages/super/matching_percentage/MatchingPe
 import { MobileUserLogout } from "./pages/super/setup_tools/MobileUserLogout";
 import { APIManager } from "./pages/super/setup_tools/APIManager";
 import { BankAccount } from "./pages/super/setup_tools/BankAccount";
-import { ComplaintSubject } from "./pages/super/setup_tools/ComplaintSubject";
+
 import { OperatorManager } from "./pages/super/setup_tools/OperatorManager";
 import { PortalSetting } from "./pages/super/setup_tools/PortalSetting";
 import { QuickLinks } from "./pages/super/setup_tools/QuickLinks";
@@ -278,10 +278,10 @@ const App = () => {
         },
 
         // transaction report
-
+      
         {
           path: "statement/transaction-history",
-          Component: TransactionHistory, //transaction history
+          Component: TransactionHistory,
         },
         {
           path: "statement/aeps-txn",
@@ -350,10 +350,6 @@ const App = () => {
         {
           path: "setup/bank",
           Component: BankAccount,
-        },
-        {
-          path: "setup/complaintsub",
-          Component: ComplaintSubject,
         },
         {
           path: "setup/operator",

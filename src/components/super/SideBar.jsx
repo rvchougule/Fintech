@@ -68,11 +68,11 @@ const menuItems = [
       { label: "UTI", component: "/statement/uti" },
     ],
   },
- 
+
   {
     icon: <HiOutlineDocumentReport />,
     label: "Transaction Report",
-    component: "",
+    component: "/statement/transaction-history",
     subItems: [
       {
         label: "All AEPS Transaction",
@@ -91,12 +91,8 @@ const menuItems = [
   {
     icon: <FaWallet />,
     label: "Wallet History",
-    component: "",
-    subItems: [
-      { label: "Main Wallet", component: "statement/account" },
-      { label: "AEPS Wallet", component: "statement/aeps-wallet" },
-      { label: "Commision Wallet", component: "statement/commission-wallet" },
-    ],
+    component: "statement/account",
+    
   },
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },
   {
@@ -112,7 +108,6 @@ const menuItems = [
       { label: "Mobile User Logout", component: "setup/token" },
       { label: "API Manager", component: "setup/api" },
       { label: "Bank Account", component: "setup/bank" },
-      { label: "Complaint Subject", component: "setup/complaintsub" },
       { label: "Operator Manager", component: "setup/operator" },
       { label: "Portal Setting", component: "setup/portalsettings" },
       { label: "Quick Links", component: "setup/links" },

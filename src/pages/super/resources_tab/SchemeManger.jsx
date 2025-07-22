@@ -210,7 +210,7 @@ export const SchemeManager = () => {
         <div className="flex justify-between items-center mb-4">
           <div></div>
           <button
-            className="bg-[#22C55E] hover:bg-[#16a34a] text-white btn-md "
+            className="bg-[#22C55E] hover:bg-green-900 text-white btn-md "
             onClick={openAddModal}
           >
             + Add New

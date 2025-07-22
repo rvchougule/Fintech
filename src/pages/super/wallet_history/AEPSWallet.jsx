@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
 import FilterBar from "../../../components/utility/FilterBar";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
 export const AEPSWallet = () => {
   const Data = [];
@@ -153,6 +154,35 @@ export const AEPSWallet = () => {
     },
   ];
 
+  const handleExport = () => {
+    const exportData = filteredData.map((item) => ({
+      Id: item.id || "N/A",
+      Date: item.date || "N/A",
+      Name: item.username || "N/A",
+      Email: item.email || "N/A",
+      Mobile: item.mobile || "N/A",
+      "Role Name": item.type || "N/A",
+      "Main Balance": item.mainBalance || "N/A",
+      "Aeps Balance": item.aepsBalance || "N/A",
+      Parent: item.parentName || "N/A",
+      Company: item.website || "N/A",
+      Status: item.status ? "Active" : "Inactive",
+      address: user.Profile_Details.address || "N/A",
+      City: user.Profile_Details.city || "N/A",
+      State: user.Profile_Details.state || "N/A",
+      
+      Pincode: user.Profile_Details.pinCode || "N/A",
+      Shopname: user.KYC_Profile.shopName || "N/A",
+      "Gst Tin": user.KYC_Profile.gstNumber || "N/A",
+      Pancard: user.KYC_Profile.panNumber || "N/A",
+      "Aadhar Card": user.KYC_Profile.aadharNumber || "N/A",
+      Account: user.Bank_Details.accountNUmber || "N/A",
+      Bank: user.Bank_Details.bankName || "N/A",
+      Ifsc: user.Bank_Details.ifscCode || "N/A",
+    }));
+
+    return exportData;
+  };
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 bg-secondaryOne dark:bg-darkBlue/70 
     rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
@@ -165,9 +195,11 @@ export const AEPSWallet = () => {
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <button className="btn-24 text-adminOffWhite  bg-accentGreen ">
-              Export{" "}
-            </button>
+            <ExcelExportButton
+            buttonLabel="Export"
+            fileName="request.xlsx"
+            data={handleExport()}
+              />
           </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />
