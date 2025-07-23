@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import PaginatedTable from "../../../components/utility/PaginatedTable";
 import FilterBar from "../../../components/utility/FilterBar";
+import PaginatedTable from "../../../components/utility/PaginatedTable";
 
 const CommissionRequest = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [showModal, setShowModal] = useState(false);
 
   // Filter states
   const [fromDate, setFromDate] = useState(
@@ -11,6 +12,7 @@ const CommissionRequest = () => {
   );
   const [toDate, setToDate] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [userId, setUserId] = useState("");
   const [status, setStatus] = useState("");
 
   // Table columns
@@ -24,7 +26,7 @@ const CommissionRequest = () => {
     { header: "STATUS", accessor: "Status" },
   ];
 
-  // Dummy data (empty for now)
+  // Dummy data
   const data = [];
 
   // Fields for FilterBar
@@ -51,6 +53,13 @@ const CommissionRequest = () => {
       onChange: setSearchValue,
     },
     {
+      name: "userId",
+      type: "text",
+      placeholder: "User ID",
+      value: userId,
+      onChange: setUserId,
+    },
+    {
       name: "status",
       type: "select",
       placeholder: "Status",
@@ -73,28 +82,28 @@ const CommissionRequest = () => {
       fromDate,
       toDate,
       searchValue,
+      userId,
       status,
     });
   };
 
   return (
-    <div className="h-[90vh] bg-gray-100 dark:bg-transparent px-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      {/* Filter Section */}
-      <div className="my-3 shadow-sm w-full max-w-[95%] 2xl:max-w-[80%] mx-auto px-4 sm:px-8 py-6 bg-white dark:bg-darkBlue rounded overflow-x-auto dark:text-white">
-        <h2 className="text-lg font-semibold mb-6">
-          Commission Settlement Filters
-        </h2>
-        <FilterBar fields={filterFields} onSearch={handleSearch} />
-      </div>
+    <div className=" m-7 shadow-sm dark:text-white max-w-[90%] 2xl:max-w-[80%] mx-auto px-8 py-4 pb-6 dark:bg-darkBlue/70 rounded-2xl overflow-hidden overflow-y-auto  bg-white mt-2">
+      <h2 className="text-lg font-semibold mb-2">
+        Commission Settlement Details
+      </h2>
+
+      {/* FilterBar Component */}
+      <FilterBar fields={filterFields} onSearch={handleSearch} />
 
       {/* Table Section */}
-      <div className="w-full max-w-[95%] 2xl:max-w-[80%] mx-auto px-4 sm:px-8 py-6 mt-4 bg-white dark:bg-darkBlue rounded shadow-sm overflow-x-auto dark:text-white mb-4">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
+      <div className=" dark:text-white p-6 rounded-lg w-full  overflow-x-auto">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1">
           <h2 className="text-lg font-semibold">
             Commission Settlement Details
           </h2>
-          <button className="bg-secondary text-white px-4 py-2 rounded font-medium hover:opacity-90 transition cursor-pointer">
-            + New Request
+          <button className="bg-green-500 text-white px-4 py-2 rounded font-medium hover:opacity-90 transition sm:mt-0">
+            +New Request
           </button>
         </div>
 
@@ -103,6 +112,8 @@ const CommissionRequest = () => {
           columns={columns}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          showModal={showModal}
+          setShowModal={setShowModal}
           pageSize={5}
         />
       </div>
