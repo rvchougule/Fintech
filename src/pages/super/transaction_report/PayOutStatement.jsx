@@ -3,7 +3,7 @@ import PaginatedTable from "../../../components/utility/PaginatedTable";
 import { sampleData } from "../../../assets/assets";
 import FilterBar from "../../../components/utility/FilterBar";
 
-export const CommissionStatement = () => {
+export const PayOutStatement = () => {
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -95,13 +95,13 @@ export const CommissionStatement = () => {
       value: filters.searchValue || "",
       onChange: (val) => handleInputChange("searchValue", val),
     },
-    {
-      name: "userId",
-      type: "text",
-      placeholder: "Agent/Parent Id",
-      value: filters.userId || "",
-      onChange: (val) => handleInputChange("userId", val),
-    },
+    // {
+    //   name: "userId",
+    //   type: "text",
+    //   placeholder: "Agent/Parent Id",
+    //   value: filters.userId || "",
+    //   onChange: (val) => handleInputChange("userId", val),
+    // },
     {
       name: "status",
       type: "select",

@@ -16,7 +16,7 @@ const FilterBar = ({ fields, onSearch }) => {
           </div>
         ))}
 
-        <button className="bg-[#7A5AF8] text-white btn-md" onClick={onSearch}>
+        <button className="bg-secondary text-white btn-md cursor-pointer" onClick={onSearch}>
           Search
         </button>
       </div>

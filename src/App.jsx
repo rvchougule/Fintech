@@ -9,7 +9,7 @@ import { SignIN } from "./pages/SignIn";
 import SuperAEPS from "./pages/super/agent_list/SuperAEPS";
 import { RequestReport } from "./pages/super/fund/RequestReport";
 import { AllAEPSTransaction } from "./pages/super/transaction_report/AllAEPSTransaction";
-import { CommissionStatement } from "./pages/super/transaction_report/CommissionStatement";
+// import { CommissionStatement } from "./pages/super/transaction_report/CommissionStatement";
 import { BillPayStatement } from "./pages/super/transaction_report/BillPayStatement";
 import { VerificationStatement } from "./pages/super/transaction_report/VerificationStatement";
 import { AffiliateStatement } from "./pages/super/transaction_report/AffiliateStatement";
@@ -35,7 +35,7 @@ import AccountPortalSettings from "./pages/super/account_settings/AccountPortalS
 import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
 
 
-import CreateCutsomerBYRetailer from "./components/super/members/retailer/CreateCustomerBYRetailer";
+// import CreateCutsomerBYRetailer from "./components/super/members/retailer/CreateCustomerBYRetailer";
 
 import Electricity from "./pages/super/Bill_payment/Electricity";
 import Postpaid from "./pages/super/Bill_payment/Postpaid";
@@ -68,6 +68,8 @@ import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
 import Uti from "./pages/super/PanCard/Uti";
 import CommissionRequest from "./pages/super/commision/CommisionRequest";
 import CardPayment from "./pages/super/bankingservices/CardPayment";
+import { PayOutStatement } from "./pages/super/transaction_report/PayOutStatement";
+import CreditCardModal from "./components/super/affiliate/CreditCardModal";
 
 // admin
 
@@ -218,6 +220,12 @@ const App = () => {
           path: "/affiliate/affiliateservices",
           Component: Affiliateservices,
         },
+        
+        //Affilate Services Modal
+         {
+          path: "product/catgoryid-12",
+          Component: CreditCardModal,
+        },
 
         //PanCard
         {
@@ -250,8 +258,8 @@ const App = () => {
           Component: AllAEPSTransaction,
         },
         {
-          path: "statement/commision",
-          Component: CommissionStatement,
+          path: "statement/money",
+          Component: PayOutStatement,
         },
         {
           path: "statement/bill-pay",
@@ -346,7 +354,7 @@ const App = () => {
           Component: AccountPortalSettings,
         },
 
-        // members
+
        
       
        

@@ -4,7 +4,6 @@ import FilterBar from "../../../components/utility/FilterBar";
 
 const CommissionRequest = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [showModal, setShowModal] = useState(false);
 
   // Filter states
   const [fromDate, setFromDate] = useState(
@@ -12,7 +11,6 @@ const CommissionRequest = () => {
   );
   const [toDate, setToDate] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const [userId, setUserId] = useState("");
   const [status, setStatus] = useState("");
 
   // Table columns
@@ -26,7 +24,7 @@ const CommissionRequest = () => {
     { header: "STATUS", accessor: "Status" },
   ];
 
-  // Dummy data
+  // Dummy data (empty for now)
   const data = [];
 
   // Fields for FilterBar
@@ -52,7 +50,6 @@ const CommissionRequest = () => {
       value: searchValue,
       onChange: setSearchValue,
     },
-    ,
     {
       name: "status",
       type: "select",
@@ -76,45 +73,40 @@ const CommissionRequest = () => {
       fromDate,
       toDate,
       searchValue,
-      userId,
       status,
     });
   };
 
   return (
-    <div className="min-h-screen dark:bg-transparent bg-gray-100">
-      <div>
-      <div className=" m-3 shadow-sm dark:text-white max-w-[90%] 2xl:max-w-[100%] mx-auto px-8 py-4 pb-6 dark:bg-darkBlue/70 bg-white rounded overflow-hidden overflow-y-auto">
+    <div className="h-[90vh] bg-gray-100 dark:bg-transparent px-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      {/* Filter Section */}
+      <div className="my-3 shadow-sm w-full max-w-[95%] 2xl:max-w-[80%] mx-auto px-4 sm:px-8 py-6 bg-white dark:bg-darkBlue rounded overflow-x-auto dark:text-white">
         <h2 className="text-lg font-semibold mb-6">
-          Commission Settlement Details
+          Commission Settlement Filters
         </h2>
-
-        {/* FilterBar Component */}
         <FilterBar fields={filterFields} onSearch={handleSearch} />
-         </div>
-</div>
-        {/* Table Section */}
-        <div className=" dark:text-white p-6 rounded-lg w-full mt-8 overflow-x-auto">
-        
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-            <h2 className="text-lg font-semibold">
-              Commission Settlement Details
-            </h2>
-            <button className="bg-accentPurple text-white px-4 py-2 rounded font-medium hover:opacity-90 transition mt-2 sm:mt-0">
-              +New Request
-            </button>
-          </div>
-
-          <PaginatedTable
-            data={data}
-            columns={columns}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            pageSize={5}
-          />
-        </div>
       </div>
-   
+
+      {/* Table Section */}
+      <div className="w-full max-w-[95%] 2xl:max-w-[80%] mx-auto px-4 sm:px-8 py-6 mt-4 bg-white dark:bg-darkBlue rounded shadow-sm overflow-x-auto dark:text-white mb-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
+          <h2 className="text-lg font-semibold">
+            Commission Settlement Details
+          </h2>
+          <button className="bg-secondary text-white px-4 py-2 rounded font-medium hover:opacity-90 transition cursor-pointer">
+            + New Request
+          </button>
+        </div>
+
+        <PaginatedTable
+          data={data}
+          columns={columns}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          pageSize={5}
+        />
+      </div>
+    </div>
   );
 };
 

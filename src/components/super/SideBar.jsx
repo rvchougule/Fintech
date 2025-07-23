@@ -138,7 +138,7 @@ const menuItems = [
         label: "All AEPS Transaction",
         component: "statement/aeps-txn",
       },
-      { label: "PayOut Statement", component: "statement/commision" },
+      { label: "PayOut Statement", component: "statement/money" },
       { label: "Bill Pay Statement", component: "statement/bill-pay" },
       { label: "Verification Statement", component: "statement/verification" },
       { label: "Affilate Statement ", component: "statement/affiliate" },

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 import { HiCreditCard, HiOutlineCalendar } from "react-icons/hi2";
 import { MdAccountBalance, MdHomeWork, MdSpeed } from "react-icons/md";
 import {
@@ -17,6 +16,7 @@ import { TbExchange } from "react-icons/tb";
 import { TiShoppingCart } from "react-icons/ti";
 import { GiMedicines, GiTakeMyMoney } from "react-icons/gi";
 import { AiFillFileText, AiOutlineEye } from "react-icons/ai";
+import CreditCardModal from "../../../components/super/affiliate/CreditCardModal";
 
 const Affiliateservices = () => {
   return (
@@ -29,10 +29,13 @@ const Affiliateservices = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
-              <HiCreditCard size={30} className="text-lime-500" />
+              <Link to="/product/catgoryid-12">
+                <HiCreditCard size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Credit Card</p>
           </div>
+
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
               <MdAccountBalance size={30} className="text-lime-500" />
@@ -167,7 +170,7 @@ const Affiliateservices = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-md p-4 mb-4 shadow-sm dark:text-white dark:bg-darkBlue/70">
+      {/* <div className="bg-white rounded-md p-4 mb-4 shadow-sm dark:text-white dark:bg-darkBlue/70">
         <p className="font-semibold text-xl mb-4 dark:text-white ">
           Product List
         </p>
@@ -295,7 +298,7 @@ const Affiliateservices = () => {
             <p className="text-sm mt-1">Bike Insurance</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
