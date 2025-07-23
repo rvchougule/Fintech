@@ -62,7 +62,7 @@ import Creditcard from "./pages/super/Bill_payment/Creditcard";
 import Recurringdeposit from "./pages/super/Bill_payment/Recurringdeposit";
 import AepsRegistrationForm from "./pages/super/bankingservices/AepsRegistrationForm";
 import Payout from "./pages/super/bankingservices/Payout";
-import Affiliateservices from "./pages/super/affiliate/affiliateservices";
+import Affiliateservices from "./pages/super/affiliate/Affiliateservices";
 import MobileRechargeForm from "./pages/super/utilit_recharge/MobileRechargeForm";
 import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
 import Uti from "./pages/super/PanCard/Uti";
@@ -224,7 +224,7 @@ const App = () => {
         
         //Affilate Services Modal
          {
-          path: "product/catgoryid-12",
+          path: "product/catgoryid",
           Component: CreditCardModal,
         },
 
@@ -359,14 +359,7 @@ const App = () => {
         {
           path: "resources/commission",
           Component: ViewCommission,
-        },
-
-
-       
-      
-       
-        
-        
+        },  
       ],
     },
    
