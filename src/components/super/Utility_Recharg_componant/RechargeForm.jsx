@@ -1,11 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
-import { MdBlock } from "react-icons/md";
-import "react-toastify/dist/ReactToastify.css";
 
-// Constants
+// Constant options
 const OPERATORS = ["Jio", "Airtel", "Vi", "BSNL", "TOPVP", "VALIDITY"];
 const CIRCLES = [
   "Maharashtra",
@@ -50,7 +47,7 @@ const PLAN_TYPES = [
   "FRC",
 ];
 
-// Form field
+// Form input field
 const FormField = ({ label, name, type = "text", placeholder, formik }) => (
   <div>
     <label className="block mb-1 font-medium">
@@ -66,7 +63,7 @@ const FormField = ({ label, name, type = "text", placeholder, formik }) => (
       onBlur={formik.handleBlur}
       value={formik.values[name]}
       placeholder={placeholder}
-      className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2"
+      className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-400"
     />
     {formik.touched[name] && formik.errors[name] && (
       <p className="text-red-500 text-sm mt-1">{formik.errors[name]}</p>
@@ -74,7 +71,7 @@ const FormField = ({ label, name, type = "text", placeholder, formik }) => (
   </div>
 );
 
-// Dropdown
+// Dropdown select field
 const SelectField = ({ label, name, options, formik }) => (
   <div>
     <label className="block mb-1 font-medium">
@@ -83,12 +80,13 @@ const SelectField = ({ label, name, options, formik }) => (
         <span className="text-red-500">*</span>
       )}
     </label>
+
     <select
       name={name}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       value={formik.values[name]}
-      className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 dark:bg-gray dark:text-gray-400"
+      className="w-full  border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-400 dark:text-black  dark:bg-gray   dark:text-gray-400  "
     >
       <option className="dark:bg-darkBlue dark:text-white">
         Select {label}
@@ -109,7 +107,7 @@ const SelectField = ({ label, name, options, formik }) => (
   </div>
 );
 
-// Main Component
+// Main form component
 const RechargeForm = () => {
   const formik = useFormik({
     initialValues: {
@@ -125,6 +123,8 @@ const RechargeForm = () => {
         .matches(/^[0-9]{10}$/, "Must be a valid 10-digit mobile number")
         .required("Mobile number is required"),
       operator: Yup.string().required("Operator is required"),
+      circle: Yup.string().required("Operator is required"),
+      planType: Yup.string().required("Operator is required"),
       amount: Yup.number()
         .typeError("Amount must be a number")
         .positive("Amount must be positive")
@@ -138,39 +138,10 @@ const RechargeForm = () => {
     },
   });
 
-  //Handle Get Plan
-  const handleGetPlan = () => {
-    const { mobileNumber, operator, circle } = formik.values;
-
-    if (!mobileNumber || !operator || !circle) {
-      toast.error(
-        <div className="flex items-start">
-          <MdBlock className="text-red-600 text-xl mt-1 mr-2" />
-          <div>
-            <p className="font-medium">
-              Mobile number, operator and circle field required
-            </p>
-          </div>
-        </div>,
-        {
-          position: "top-right",
-          className:
-            "border-l-4 border-red-600 bg-white text-black font-medium",
-          icon: false,
-          closeOnClick: true,
-          autoClose: 5000,
-        }
-      );
-      return;
-    }
-
-   
-  };
-
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 "
     >
       <FormField
         name="mobileNumber"
@@ -215,21 +186,19 @@ const RechargeForm = () => {
         </a>
       </div>
 
-      <div className="col-span-full flex gap-4 mt-1  items-center justify-center ">
+      <div className="col-span-full flex gap-4 justify-center">
         <button
           type="submit"
-          className="bg-secondary text-white px-6 py-2 rounded-lg shadow hover:bg-[#7a7bf0] transition cursor-pointer"
+          className="bg-secondary text-white px-6 py-2 rounded-lg shadow hover:bg-purple-600 transition"
         >
           Pay Now
         </button>
         <button
           type="button"
-          className="bg-green-500 text-white px-6 py-2 rounded-lg shadow hover:bg-green-600 transition cursor-pointer"
-          onClick={handleGetPlan}
+          className="bg-green-500 text-white px-6 py-2 rounded-lg shadow hover:bg-green-600 transition"
         >
           GET Plan
         </button>
-        <ToastContainer />
       </div>
     </form>
   );
