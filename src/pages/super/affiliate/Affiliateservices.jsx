@@ -112,31 +112,41 @@ const Affiliateservices = () => {
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
-              <HiOutlineCalendar size={30} className="text-lime-500" />
+              <Link to="/product/catgoryid" state={cardData}>
+                <HiOutlineCalendar size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Subscription</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <TbExchange size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Mutual Funds</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <MdHomeWork size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Loan DSA</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <FaHandHoldingUsd size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Current Account</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <MdSpeed size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">CIBIL Score</p>
           </div>
@@ -151,25 +161,33 @@ const Affiliateservices = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <FaHotel size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Hotels</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <RiFlightTakeoffFill size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Flights</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <FaTicketAlt size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Movie Tickets</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <FaBus size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Bus</p>
           </div>
@@ -184,43 +202,57 @@ const Affiliateservices = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <TiShoppingCart size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Shopping</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <FaTags size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Brand Malls</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <GiMedicines size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Online Medicines</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <GiTakeMyMoney size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Order Food</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <FaCarCrash size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Car Insurance</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <FaShieldAlt size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Health Insurance</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
+               <Link to="/product/catgoryid" state={cardData}>
               <AiFillFileText size={30} className="text-lime-500" />
+              </Link>
             </div>
             <p className="text-sm mt-1">Bike Insurance</p>
           </div>

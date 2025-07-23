@@ -39,7 +39,7 @@ const CardPayment = () => {
   };
 
   return (
-    <div className="h-screen overflow-y-auto bg-gray-100 dark:bg-transparent py-10 px-4">
+    <div className="h-[92vh] overflow-y-auto bg-gray-100 dark:bg-transparent py-10 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
 
         {/* Left: Form */}
