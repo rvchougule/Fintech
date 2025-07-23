@@ -73,9 +73,9 @@ const menuItems = [
   },
   {
     icon: <FaRegAddressCard />,
-    label: "Pan Card",
-    component: "",
-    subItems: [{ label: "UTI", component: "Pancard/Uti" }],
+    label: "UTI Pan Card",
+    component: "Pancard/Uti",
+   
   },
   {
     icon: <FaFileInvoiceDollar />,
