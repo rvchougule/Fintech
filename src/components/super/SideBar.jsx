@@ -26,7 +26,7 @@ import {
   FaHandHoldingDollar,
 } from "../../assets/react-icons";
 
-import { Logo } from "../../assets/assets";
+import Logo from "../../assets/img/logo.png";
 
 const menuItems = [
   {
@@ -84,7 +84,7 @@ const menuItems = [
     subItems: [
       { label: "AEPS", component: "/bankingservices/aepsRegistrationForm" },
       { label: "Payout", component: "/bankingservices/payout" },
-      { label: "Card Payment", component:"bankingservices/CardPayment"},
+      { label: "Card Payment", component: "bankingservices/CardPayment" },
     ],
   },
   {
@@ -94,26 +94,17 @@ const menuItems = [
     subItems: [{ label: "Aadhaar Update", component: "" }],
   },
 
- 
- 
   {
     icon: <FaMoneyBillAlt />,
     label: "Fund",
     component: "",
-    subItems: [
-     
-      { label: "Request Report", component:"fund/requestviewall"  },
-      
-    ],
+    subItems: [{ label: "Request Report", component: "fund/requestviewall" }],
   },
   {
     icon: <FaListAlt />,
     label: "Agent List",
     component: "",
-    subItems: [
-      { label: "AePS", component: "/statement/aeps" },
-      
-    ],
+    subItems: [{ label: "AePS", component: "/statement/aeps" }],
   },
   {
     icon: <FaHandshake />,
@@ -159,14 +150,13 @@ const menuItems = [
     ],
   },
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },
- 
+
   {
     icon: <FiSettings />,
     label: "Account Settings",
     component: "",
     subItems: [{ label: "Profile Settings", component: "profile/view" }],
   },
- 
 ];
 
 export default function Sidebar() {

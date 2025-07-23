@@ -1,21 +1,70 @@
 import { BsBank, BsShieldPlus, BsPersonBadge } from "react-icons/bs";
-import { HiOutlineClipboardList } from "react-icons/hi";
+import { HiOutlineClipboardList, HiShieldCheck } from "react-icons/hi";
 import { RiAdminFill } from "react-icons/ri";
-import { FiChevronDown } from "react-icons/fi";
 import WalletBalanceCard from "../../components/super/WalletBancedCard";
 import { CustomDatePicker } from "../../components/utility/CustomDatePicker";
-import { FaUser } from "react-icons/fa";
+import { FaMoneyCheck, FaPlaneDeparture, FaUser } from "react-icons/fa";
 import { Link } from "react-router";
+import { SuperModal } from "../../components/utility/SuperModel";
+import { useState } from "react";
+
+import { BiSolidUserRectangle } from "react-icons/bi";
+import { PiPottedPlantFill } from "react-icons/pi";
+import { ServiceCard } from "./dashboard/ServiceCard";
+import BankingServicesCard from "./dashboard/Cards/BankingServicesCard";
+import RechargeBillPaymentCard from "./dashboard/Cards/RechargeBillPaymentCard";
+import InsuranceLoanCard from "./dashboard/Cards/InsuranceLoanCard";
+import TravelServicesCard from "./dashboard/Cards/TravelServicesCard";
 
 const serviceCards = [
-  { label: "Recharge & Bill Payment", color: "bg-[#fddbd5] dark:bg-[#60A5FA]" },
-  { label: "Banking Services", color: "bg-[#ecd7f2] dark:bg-[#8B5CF6] " },
-  { label: "Insurance", color: "bg-[#e4cccc] dark:bg-cardGreenBlue" },
-  { label: "Loan Services", color: "bg-[#e0d5e8] dark:bg-[#f69f9f]" },
-  { label: "Tours & Travels", color: "bg-[#d5f2e2]" },
+  {
+    icon: <BiSolidUserRectangle size={24} />,
+    bgIcon: "bg-[#7fd3ec]",
+    label: "Recharge & Bill Payment",
+    name: "recharge",
+  },
+  {
+    icon: <HiShieldCheck size={24} />,
+    bgIcon: "bg-[#978ee1]",
+    label: "Banking Services",
+    bgColor: "bg-[#00B89438]",
+    name: "banking",
+  },
+  {
+    icon: <PiPottedPlantFill size={24} />,
+    bgIcon: "bg-[#f4bdcf]",
+    label: "Insurance",
+    bgColor: "bg-[#FDE7EF]",
+    name: "insurance",
+  },
+  {
+    icon: <FaMoneyCheck size={24} />,
+    bgIcon: "bg-[#978ee1]",
+    label: "Loan Services",
+    bgColor: "bg-[#6C5CE738]",
+    name: "loan",
+  },
+  {
+    icon: <FaPlaneDeparture size={24} />,
+    bgIcon: "bg-[#4db6ac]",
+    label: "Travel Services",
+    bgColor: "bg-[#e0f2f1]",
+    name: "travel",
+  },
 ];
 
 const Dashboard = () => {
+  const [isCardsVisible, setIsCardsVisible] = useState({
+    recharge: false,
+    banking: false,
+    insurance: false,
+    loan: false,
+    travel: false,
+  });
+
+  const toggleCardVisibility = (card) => {
+    setIsCardsVisible((prev) => ({ ...prev, [card]: !prev[card] }));
+  };
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8  bg-secondaryOne dark:bg-darkBlue/70  rounded-2xl  2xl:mx-auto text-gray-800 overflow-hidden">
       {/* Sticky Header */}
@@ -34,49 +83,85 @@ const Dashboard = () => {
       {/* Scrollable Content */}
       <div className="overflow-y-auto max-h-[calc(100vh-120px)] px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
         {/* Services */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-4">
-          {serviceCards.map((card, idx) => (
-            <div
-              key={idx}
-              className={`h-20 p-2 flex items-center justify-center text-center  text-sm font-semibold rounded-md ${card.color} `}
-            >
-              {card.label}
+        <div className="">
+          <div className="grid grid-cols-4 gap-2">
+            <div className="col-span-3">
+              <WalletBalanceCard />
             </div>
-          ))}
-        </div>
-
-        {/* Wallet Section */}
-        <div className="flex flex-wrap gap-4 mb-4">
-          <div className="flex-1 rounded-md shadow-md w-[60%]">
-            <WalletBalanceCard />
+            <div className="col-span-1">
+              <ServiceCard
+                {...serviceCards[0]}
+                onClick={() => toggleCardVisibility("recharge")}
+              />
+            </div>
           </div>
-          <div className=" bg-white rounded-md shadow p-4 text-center w-[40%]">
-            <div className="font-semibold text-sm">AEPS</div>
-          </div>
-        </div>
-
-        {/* MATM Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-          <div className="bg-green-100 dark:bg-accentGreen p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Success</p>
-            <p className="text-xs">0/₹0.00</p>
-          </div>
-          <div className="bg-yellow-100  p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Pending</p>
-            <p className="text-xs">0/₹0.00</p>
-          </div>
-          <div className="bg-red-100 dark:bg-accentRed p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Failed</p>
-            <p className="text-xs">0/₹0.00</p>
+          <div className="py-4">
+            <div className="grid grid-cols-4 gap-2 ">
+              <ServiceCard
+                {...serviceCards[1]}
+                onClick={() => toggleCardVisibility("banking")}
+              />
+              <ServiceCard
+                {...serviceCards[2]}
+                onClick={() => toggleCardVisibility("insurance")}
+              />
+              <ServiceCard
+                {...serviceCards[3]}
+                onClick={() => toggleCardVisibility("loan")}
+              />
+              <ServiceCard
+                {...serviceCards[4]}
+                onClick={() => toggleCardVisibility("travel")}
+              />
+            </div>
           </div>
         </div>
 
         {/* User Counts & Support Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
           {/* User Counts */}
-          <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-md shadow p-4 space-y-2 text-sm">
-            <p className="font-semibold">User Counts</p>
-           
+          {/* <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-md shadow p-4 space-y-2 text-sm">
+            <p className="font-semibold">User Counts</p> */}
+            {/* <Link to="members/admin">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <RiAdminFill className="text-blue-500" /> Admin
+                </div>
+                <span>1</span>
+              </div>
+            </Link> */}
+            {/* <Link to="members/whitelabel">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <BsBank className="text-purple-500" /> White Label
+                </div>
+                <span>2</span>
+              </div>
+            </Link> */}
+            {/* <Link to="members/mds">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <BsShieldPlus className="text-pink-500" /> Master Distributer
+                </div>
+                <span>1</span>
+              </div>
+            </Link> */}
+            {/* <Link to="members/ds">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <BsPersonBadge className="text-cyan-500" /> Distributer
+                </div>
+                <span>1</span>
+              </div>
+            </Link> */}
+            {/* <Link to="members/retail">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <FaUser className="text-amber-500" /> Retailer
+                </div>
+                <span>1</span>
+              </div>
+            </Link>
             <Link to="members/customer">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -84,8 +169,8 @@ const Dashboard = () => {
                 </div>
                 <span>1</span>
               </div>
-            </Link>
-          </div>
+            </Link> */}
+          {/* </div> */}
 
           {/* Support Box */}
           <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-md shadow p-4 text-center text-sm">
@@ -102,6 +187,43 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      {isCardsVisible.recharge && (
+        <SuperModal
+          onClose={() =>
+            setIsCardsVisible((prev) => ({ ...prev, recharge: false }))
+          }
+        >
+          <RechargeBillPaymentCard />
+        </SuperModal>
+      )}
+      {isCardsVisible.banking && (
+        <SuperModal
+          onClose={() =>
+            setIsCardsVisible((prev) => ({ ...prev, banking: false }))
+          }
+        >
+          <BankingServicesCard />
+        </SuperModal>
+      )}
+      {isCardsVisible.insurance && (
+        <SuperModal
+          onClose={() =>
+            setIsCardsVisible((prev) => ({ ...prev, insurance: false }))
+          }
+        >
+          <InsuranceLoanCard />
+        </SuperModal>
+      )}
+      {isCardsVisible.travel && (
+        <SuperModal
+          onClose={() =>
+            setIsCardsVisible((prev) => ({ ...prev, travel: false }))
+          }
+        >
+          <TravelServicesCard />
+        </SuperModal>
+      )}
     </div>
   );
 };
