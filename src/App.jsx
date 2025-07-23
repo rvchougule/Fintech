@@ -68,6 +68,7 @@ import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
 import Uti from "./pages/super/PanCard/Uti";
 import CommissionRequest from "./pages/super/commision/CommisionRequest";
 import CardPayment from "./pages/super/bankingservices/CardPayment";
+import ViewCommission from "./components/super/ViewCommision";
 import { PayOutStatement } from "./pages/super/transaction_report/PayOutStatement";
 import CreditCardModal from "./components/super/affiliate/CreditCardModal";
 
@@ -352,6 +353,11 @@ const App = () => {
         {
           path: "profile/view",
           Component: AccountPortalSettings,
+        },
+         //viewcommision from header
+        {
+          path: "resources/commission",
+          Component: ViewCommission,
         },
 
 
