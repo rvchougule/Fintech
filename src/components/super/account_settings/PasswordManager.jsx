@@ -39,11 +39,24 @@ const PasswordManager = ({ initialData }) => {
       onSubmit={handleSubmit(onSubmit)}
       className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl"
     >
+      {/* Old Password */}
+      <div>
+        <label className="block text-sm mb-1 ">Old Password</label>
+        <input
+          type="password" placeholder="Enter Value"
+          {...register("oldPassword")}
+          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
+        />
+        <p className="text-red-500 text-xs mt-1">
+          {errors.oldPassword?.message}
+        </p>
+      </div>
+
       {/* New Password */}
       <div>
-        <label className="block text-sm mb-1 ">New Password</label>
+        <label className="block text-sm mb-1">New Password</label>
         <input
-          type="password"
+          type="password" placeholder="Enter Value"
           {...register("newPassword")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
@@ -52,31 +65,16 @@ const PasswordManager = ({ initialData }) => {
         </p>
       </div>
 
-      {/* Confirm Password */}
-      <div>
-        <label className="block text-sm mb-1">Confirm Password</label>
+      {/* Confirmed Password */}
+     <div>
+        <label className="block text-sm mb-1">Confirmed Password</label>
         <input
-          type="password"
-          {...register("confirmPassword")}
+          type="password" placeholder="Enter Value"
+          {...register("confirmedPassword")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
         <p className="text-red-500 text-xs mt-1">
           {errors.confirmPassword?.message}
-        </p>
-      </div>
-
-      {/* Security PIN */}
-      <div>
-        <label className="block text-sm mb-1">Security PIN</label>
-        <input
-          type="password"
-          inputMode="numeric"
-          maxLength="6"
-          {...register("securityPin")}
-          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
-        />
-        <p className="text-red-500 text-xs mt-1">
-          {errors.securityPin?.message}
         </p>
       </div>
 

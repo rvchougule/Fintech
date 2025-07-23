@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import { ToastContainer, toast } from "react-toastify";
 // ✅ Validation Schema
 const schema = yup.object().shape({
   newPin: yup
@@ -32,7 +32,7 @@ const PinManager = ({ initialData }) => {
   });
 
   const handleSendOtp = () => {
-    alert("OTP has been sent!");
+    toast.success("OTP sent successfully");
     setOtpSent(true);
   };
 
@@ -52,6 +52,7 @@ const PinManager = ({ initialData }) => {
         <input
           type="password"
           inputMode="numeric"
+          placeholder="Enter Value"
           maxLength="6"
           {...register("newPin")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -65,6 +66,7 @@ const PinManager = ({ initialData }) => {
         <input
           type="password"
           inputMode="numeric"
+          placeholder="Enter Value"
           maxLength="6"
           {...register("confirmPin")}
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
@@ -85,6 +87,7 @@ const PinManager = ({ initialData }) => {
           >
             {otpSent ? "Resend OTP" : "Send OTP"}
           </button>
+          <ToastContainer />
         </div>
         <input
           type="text"

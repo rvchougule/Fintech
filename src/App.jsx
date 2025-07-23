@@ -31,11 +31,7 @@ import { QuickLinks } from "./pages/super/setup_tools/QuickLinks";
 import { Roles } from "./pages/super/roles_permissions/Roles";
 import { Permissions } from "./pages/super/roles_permissions/Permissions";
 import AccountPortalSettings from "./pages/super/account_settings/AccountPortalSettings";
-import { Retail } from "./pages/super/members/Retail";
-import DSLayout from "./layouts/members/DSLayout";
-import RetailerLayout from "./layouts/members/RetailerLayout";
-import CreateMDS from "./components/super/members/mds/CreateMDS";
-import CreateRetailerBYDs from "./components/super/members/ds/CreateRetailerBYDs";
+
 import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
 
 
@@ -354,20 +350,7 @@ const App = () => {
        
       
        
-        {
-          path: "members/retail",
-          Component: RetailerLayout,
-          children: [
-            {
-              index: true,
-              Component: Retail,
-            },
-            {
-              path: "create",
-              Component: CreateCutsomerBYRetailer,
-            },
-          ],
-        },
+        
         
       ],
     },

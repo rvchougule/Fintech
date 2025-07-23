@@ -12,7 +12,7 @@ const paymentSchema = Yup.object().shape({
     .required("T-Pin is required"),
 });
 
-const PaymentForm = ({ title, formFields, onsubmit }) => {
+const PaymentForm = ({ title, formFields }) => {
   const {
     register,
     handleSubmit,
@@ -22,9 +22,9 @@ const PaymentForm = ({ title, formFields, onsubmit }) => {
   });
 
   return (
-    <div className="flex justify-between w-full gap-4 p-1 mt-9">
-      <div className="w-full  bg-white dark:bg-darkBlue max-w-1/2 rounded p-2  rounded shadow-xl">
-        <form onSubmit={handleSubmit(handleSubmit)}>
+    <div className="flex justify-between w-full gap-4 p-1 mt-9 dark:bg-transparent">
+      <div className="w-full  bg-white dark:bg-darkBlue max-w-1/2 p-2  rounded shadow-xl">
+        <form onSubmit={handleSubmit(handleSubmit)} class>
           <h1 className="text-xl px-3 py-1 font-semibold pt-3">{title}</h1>
 
           {formFields.map((field, idx) => (
@@ -48,7 +48,7 @@ const PaymentForm = ({ title, formFields, onsubmit }) => {
                   type={field.type}
                   placeholder={field.placeholder}
                   {...register(field.name)}
-                  className="w-full border rounded px-2 py-1 m-1"
+                  className="w-full border rounded px-2 py-1 m-1 dark:text-gray-500 "
                 />
               )}
 
@@ -59,19 +59,21 @@ const PaymentForm = ({ title, formFields, onsubmit }) => {
               )}
 
               {field.name === "tPin" && (
-                <a
-                  href="#"
-                  className="px-1 cursor-pointer text-purple-500 text-sm font-semibold"
-                >
-                  Forgot Pin?
-                </a>
+                <button className="transition cursor-pointer">
+                  <a
+                    href="/profile/view"
+                    className="px-1 cursor-pointer text-purple-500 text-sm font-semibold"
+                  >
+                    Generate or Forgot Pin?
+                  </a>
+                </button>
               )}
             </div>
           ))}
 
           <div className="flex justify-center space-x-2 mt-4">
             <button
-              type="button"
+              type="submit"
               className="bg-secondary shadow-md hover:bg-secondary-dark text-white px-5 py-1 rounded cursor-pointer"
             >
               Fetch

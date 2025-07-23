@@ -125,15 +125,15 @@ const SuperAEPS = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-transparent  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      <div className="my-4 p-4 rounded-md bg-white dark:bg-darkBlue/70 ">
         <h2 className="text-2xl font-bold dark:text-adminOffWhite">
           AEPS Agent List
         </h2>
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
-      <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
+      <div className="p-6 rounded-md w-full bg-white dark:bg-darkBlue/70 dark:text-white">
         <div className="overflow-x-auto">
           <table className="w-full table-auto text-left text-sm">
             <thead>

@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
+import { ToastContainer, toast } from "react-toastify";
+import { MdBlock } from "react-icons/md";
+import "react-toastify/dist/ReactToastify.css";
 
-const dthRecharge = () => {
+const DthRecharge = () => {
   const [formData, setFormData] = useState({
     dthNumber: "",
     operator: "",
@@ -53,104 +56,124 @@ const dthRecharge = () => {
     setFormData({ dthNumber: "", operator: "", amount: "", tPin: "" });
   };
 
+  const handleGetPlan = () => {
+    const { dthNumber, operator } = formData;
+
+    if (!dthNumber || !operator) {
+      toast.error(
+        <div className="flex items-start">
+          <MdBlock className="text-red-600 text-xl mt-1 mr-2" />
+          <div>
+            <p className="font-medium">
+              DTH number and operator fields are required
+            </p>
+          </div>
+        </div>,
+        {
+          position: "top-right",
+          className:
+            "border-l-4 border-red-600 bg-white text-black font-medium",
+          icon: false,
+          closeOnClick: true,
+          autoClose: 5000,
+        }
+      );
+    } else {
+      toast.success("Fetching plans...", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
+  };
+
   return (
-    <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue bg-white mt-2 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      <h2 className="text-2xl font-semibold dark:text-white text-gray-700 mb-6">
-        Dth Recharge
-      </h2>
-      <form
-        onSubmit={handleSubmit}
-        className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end"
-      >
-        <div>
-          <label className="block dark:text-white text-gray-700 font-medium mb-1">
-            Dth Number <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="dthNumber"
-            value={formData.dthNumber}
-            onChange={handleChange}
-            placeholder="Enter dth number"
-            className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2  dark:placeholder-white"
-          />
-        </div>
+    <div className="h-[100vh] dark:text-white 2xl:max-w-[90%] p-4 mx-8 dark:bg-transparent  mt-2 rounded-xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 ">
+      <div className="bg-white dark:bg-darkBlue rounded-lg p-6 shadow mb-10">
+        <h2 className="text-2xl font-semibold mb-6">DTH Recharge</h2>
 
-        <div>
-          <label className="block dark:text-white text-gray-700 font-medium mb-1">
-            Dth Operator <span className="text-red-500">*</span>
-          </label>
-          <select
-            name="operator"
-            value={formData.operator}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border  rounded-md  text-gray-500 focus:outline-none focus:ring-2 dark:placeholder-white"
-          >
-            <option value="">Select Operator</option>
-            <option value="Tata Sky">Tata Sky</option>
-            <option value="Airtel">Airtel</option>
-            <option value="D2H">D2H</option>
-          </select>
-        </div>
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        >
+          <div>
+            <label className="block font-medium mb-1">DTH Number *</label>
+            <input
+              type="text"
+              name="dthNumber"
+              value={formData.dthNumber}
+              onChange={handleChange}
+              placeholder="Enter DTH number"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
+            />
+          </div>
 
-        <div>
-          <label className="block dark:text-white text-gray-700 font-medium mb-1">
-            Recharge Amount <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="amount"
-            value={formData.amount}
-            onChange={handleChange}
-            placeholder="Enter amount"
-            className="w-full px-4 py-2 border  dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 dark:placeholder-white"
-          />
-        </div>
+          <div>
+            <label className="block font-medium mb-1">DTH Operator *</label>
+            <select
+              name="operator"
+              value={formData.operator}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
+            >
+              <option value="">Select Operator</option>
+              <option value="Tata Sky">Tata Sky</option>
+              <option value="Airtel">Airtel</option>
+              <option value="D2H">D2H</option>
+            </select>
+          </div>
 
-        <div className="relative">
-          <div className="flex flex-col">
-            <label className="block dark:text-white text-gray-700 font-medium mb-1 ">
-              T-Pin <span className="text-red-500">*</span>
-            </label>
+          <div>
+            <label className="block font-medium mb-1">Recharge Amount *</label>
+            <input
+              type="text"
+              name="amount"
+              value={formData.amount}
+              onChange={handleChange}
+              placeholder="Enter amount"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
+            />
+          </div>
+
+          <div className="relative">
+            <label className="block font-medium mb-1">T-Pin *</label>
             <input
               type="password"
               name="tPin"
               value={formData.tPin}
               onChange={handleChange}
               placeholder="Enter transaction pin"
-              className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2  dark:placeholder-white"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
             />
+            <a
+              href="#"
+              className="absolute left-0 -bottom-5 text-blue-500 text-sm"
+            >
+              Generate or Forgot Pin?
+            </a>
           </div>
 
-          <a
-            href="#"
-            className="absolute left-0 -bottom-5 text-blue-500 text-sm"
-          >
-            Forgot Pin?
-          </a>
-        </div>
+          <div className="col-span-full flex gap-4 justify-center mt-8">
+            <button
+              type="submit"
+              className="bg-secondary hover:bg-[#7a7bf0] text-white font-semibold px-6 py-2 rounded-md shadow"
+            >
+              Pay Now
+            </button>
+            <button
+              type="button"
+              className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-md shadow"
+              onClick={handleGetPlan}
+            >
+              GET Plan
+            </button>
+            <ToastContainer />
+          </div>
+        </form>
+      </div>
 
-        <div className="col-span-1 md:col-span-4 flex gap-4 justify-center mt-4">
-          <button
-            type="submit"
-            className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-2 rounded-md shadow"
-          >
-            Pay Now
-          </button>
-          <button
-            type="button"
-            className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-md shadow"
-          >
-            GET Plan
-          </button>
-        </div>
-      </form>
+      <div className="bg-white dark:bg-darkBlue rounded-lg p-6 shadow mt-2">
+        <h3 className="text-xl font-semibold mb-4">Recent DTH Recharge</h3>
 
-      {/* Recharge History Table */}
-      <div className="mt-10">
-        <h3 className="text-xl font-semibold text-gray-700 mb-4 dark:text-white ">
-          Recent Dth Recharge
-        </h3>
         <PaginatedTable
           data={rechargeData}
           columns={columns}
@@ -163,4 +186,4 @@ const dthRecharge = () => {
   );
 };
 
-export default dthRecharge;
+export default DthRecharge;

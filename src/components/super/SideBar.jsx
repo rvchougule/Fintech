@@ -94,17 +94,7 @@ const menuItems = [
     subItems: [{ label: "Aadhaar Update", component: "" }],
   },
 
-  {
-    icon: <FaUser />,
-    label: "Member",
-    component: "",
-    subItems: [
-     
-     
-      { label: "Customer",component:"members/Customer"},
-      
-    ],
-  },
+ 
  
   {
     icon: <FaMoneyBillAlt />,
@@ -172,9 +162,9 @@ const menuItems = [
  
   {
     icon: <FiSettings />,
-    label: "Account Setting",
+    label: "Account Settings",
     component: "",
-    subItems: [{ label: "Profile Setting", component: "profile/view" }],
+    subItems: [{ label: "Profile Settings", component: "profile/view" }],
   },
  
 ];

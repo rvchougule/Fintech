@@ -5,6 +5,16 @@ import "react-toastify/dist/ReactToastify.css";
 import PaymentForm from "../../../components/super/bill_payment/PaymentForm";
 
 const Postpaid = () => {
+  // Form data state
+  const [formData, setFormData] = useState({
+    operator: "",
+    mobile: "",
+    tPin: "",
+  });
+
+  // Error state
+  const [errors, setErrors] = useState({});
+
   // Yup validation schema
   const validationSchema = Yup.object().shape({
     operator: Yup.string().required("Select an Operator."),
@@ -16,6 +26,7 @@ const Postpaid = () => {
       .required("Enter Transaction-Pin."),
   });
 
+  // Form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,6 +42,8 @@ const Postpaid = () => {
       setErrors(newErrors);
     }
   };
+
+  // Form field configurations
   const formFields = [
     {
       label: "Postpaid Operator",
@@ -54,14 +67,15 @@ const Postpaid = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4 bg-gray-100 dark:text-white dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      {
-        <PaymentForm
-          title="Bill Payment"
-          formFields={formFields}
-          handleSubmit={handleSubmit}
-        />
-      }
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4 bg-gray-100 dark:text-white  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:bg-transparent">
+      <PaymentForm
+        title="Bill Payment"
+        formFields={formFields}
+        formData={formData}
+        setFormData={setFormData}
+        errors={errors}
+        onSubmit={handleSubmit}
+      />
     </div>
   );
 };

@@ -12,7 +12,6 @@ const history = [
     profit: "₹1.2",
     status: "Success",
   },
-  // Add more records as needed
 ];
 
 const MobileRechargeForm = () => {
@@ -60,15 +59,16 @@ const MobileRechargeForm = () => {
   ];
 
   return (
-    <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue bg-white
-    mt-2 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      <h2 className="text-2xl font-semibold mb-6">Mobile Recharge</h2>
+    <div className="h-[100vh] dark:text-white 2xl:max-w-[100%] p-4 mx-8 dark:bg-transparent  mt-2 rounded-xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      {/* Mobile Recharge Form   */}
+      <div className="bg-white dark:bg-darkBlue rounded-lg p-6 shadow mb-10">
+        <h2 className="text-2xl font-semibold mb-6 dark:text-white dark:bg-darkBlue">
+          Mobile Recharge
+        </h2>
+        <RechargeForm />
+      </div>
 
-      {/* Recharge Form */}
-      <RechargeForm />
-
-      {/* Recharge History Table */}
-      <div className="mt-12">
+      <div className="bg-white dark:bg-dark rounded-lg p-6 shadow mt-2 dark:text-white dark:bg-darkBlue text-black">
         <h3 className="text-xl font-semibold mb-4">Recent Mobile Recharge</h3>
         <PaginatedTable
           data={history}

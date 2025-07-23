@@ -109,18 +109,7 @@ const KYCDetails = ({ initialData }) => {
       </div>
 
       {/* Security PIN */}
-      <div>
-        <label className="block text-sm mb-1">Security PIN</label>
-        <input
-          {...register("securityPin")}
-          type="password"
-          inputMode="numeric"
-          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
-        />
-        <p className="text-red-500 text-xs mt-2">
-          {errors.securityPin?.message}
-        </p>
-      </div>
+     
 
       {/* Passport Photo */}
       <div>

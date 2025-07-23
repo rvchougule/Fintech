@@ -13,9 +13,10 @@ const PaginatedTable = ({
   const [displayData, setDisplayData] = useState([]);
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     const filtered = onSearch();
     setCurrentPage(1);
-  }, [filters]);
+  }, [filters, onSearch, setCurrentPage]);
 
   useEffect(() => {
     const start = (currentPage - 1) * pageSize;
@@ -36,14 +37,14 @@ const PaginatedTable = ({
   };
 
   return (
-    <div className="p-6 rounded-md w-full bg-white dark:bg-transparent dark:text-white">
+    <div className="p-6 rounded-md w-full bg-white dark:bg-darkBlue/70 dark:text-white">
       {/* Table Wrapper with overflow fix */}
-      <div className="relative overflow-x-auto">
-        <table className="min-w-[1000px] w-full table-auto text-left text-sm">
+      <div className="relative overflow-x-auto  ">
+        <table className="min-w-[1000px] w-full table-auto text-center text-sm ">
           <thead>
-            <tr className="bg-darkBlue/90 dark:bg-primaryBlue/30 text-white uppercase text-xs">
+            <tr className="bg-darkBlue/90 dark:bg-gray-500 text-white uppercase text-xs">
               {columns.map((col, idx) => (
-                <th key={idx} className="px-4 py-3">
+                <th key={idx} className="px-2 py-3">
                   {col.header}
                 </th>
               ))}
@@ -54,7 +55,7 @@ const PaginatedTable = ({
               displayData.map((row, rowIndex) => (
                 <tr key={rowIndex} className="border-b">
                   {columns.map((col, colIndex) => (
-                    <td key={colIndex} className="px-4 py-2">
+                    <td key={colIndex} className="px-2 py-2">
                       {col.render
                         ? col.render(row, rowIndex)
                         : row[col.accessor]}
@@ -68,7 +69,7 @@ const PaginatedTable = ({
                   colSpan={columns.length}
                   className="text-center py-4 text-gray-500 font-semibold w-full border-b-1 border-b-slate-400"
                 >
-                  No Rows Found
+                  No data available in table
                 </td>
               </tr>
             )}
@@ -87,7 +88,7 @@ const PaginatedTable = ({
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
+            className="px-3 py-1 bg-gray-500 text-white rounded disabled:opacity-30"
           >
             ←
           </button>
@@ -111,7 +112,7 @@ const PaginatedTable = ({
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className="px-3 py-1 bg-[#1F2235] text-gray-500 rounded disabled:opacity-30"
+            className="px-3 py-1 bg-gray-300 text-white rounded disabled:opacity-30"
           >
             →
           </button>

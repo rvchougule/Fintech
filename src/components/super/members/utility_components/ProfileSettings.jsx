@@ -1,12 +1,10 @@
 import { useState } from "react";
 import BankDetails from "../../../../components/super/account_settings/BankDetails";
-import CertificateManager from "../../../../components/super/account_settings/CertificateManager";
 import KYCDetails from "../../../../components/super/account_settings/KYCDetails";
-import MappingManager from "../../../../components/super/account_settings/MappingManager";
 import PasswordManager from "../../../../components/super/account_settings/PasswordManager";
 import PinManager from "../../../../components/super/account_settings/PinManager";
 import ProfileDetails from "../../../../components/super/account_settings/ProfileDetails";
-import RoleManager from "../../../../components/super/account_settings/RoleManager";
+
 
 const ProfileSettings = ({ user }) => {
   const [activePage, setActivePage] = useState("Profile Details");
@@ -17,9 +15,7 @@ const ProfileSettings = ({ user }) => {
     "Password Manager",
     "Pin Manager",
     "Bank Details",
-    "Certificate Manager",
-    "Role Manager",
-    "Mapping Manager",
+    "Certificate and ID",
   ];
 
   //   const user = {
@@ -84,19 +80,16 @@ const ProfileSettings = ({ user }) => {
         return <PinManager initialData={user.Pin_Manager} />;
       case "Bank Details":
         return <BankDetails initialData={user.Bank_Details} />;
-      case "Certificate Manager":
-        return <CertificateManager initialData={user.Cetificate_Manager} />;
-      case "Role Manager":
-        return <RoleManager initialData={user.Role_Manager} />;
-      case "Mapping Manager":
-        return <MappingManager initialData={user.Mapping_Manager} />;
+      case "Certificate and ID":
+        return <CertificateandID initialData={user.Certificate_and_ID} />;
+
       default:
         return <div>Select a page</div>;
     }
   };
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8  dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto dark:text-white overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div className="h-[90%] 2xl:max-w-[80%] p-4 mx-8  dark:bg-darkBlue/70 rounded dark:text-white overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <h1 className="text-2xl mb-4 font-bold">My Profile</h1>
 
       <div className="flex flex-wrap">

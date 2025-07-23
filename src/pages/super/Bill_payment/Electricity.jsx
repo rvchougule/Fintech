@@ -5,6 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import PaymentForm from "../../../components/super/bill_payment/PaymentForm";
 
 const Electricity = () => {
+  // State for form data and errors
+  const [formData, setFormData] = useState({
+    operator: "",
+    mobile: "",
+    tPin: "",
+  });
+  const [errors, setErrors] = useState({});
+
   // Yup validation schema
   const validationSchema = Yup.object().shape({
     operator: Yup.string().required("Select an Operator."),
@@ -16,6 +24,7 @@ const Electricity = () => {
       .required("Enter Transaction-Pin."),
   });
 
+  // Submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,6 +40,8 @@ const Electricity = () => {
       setErrors(newErrors);
     }
   };
+
+  // Form fields config
   const formFields = [
     {
       label: "Electricity Operator",
@@ -54,17 +65,16 @@ const Electricity = () => {
   ];
 
   return (
-    
-     <div className="h-[90vh] 2xl:max-w-[80%]  bg-gray-100 dark:text-white dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4  scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      {
-        <PaymentForm
-          title="Bill Payment"
-          formFields={formFields}
-          onsubmit={handleSubmit}
-        />
-      }
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4 bg-gray-100 dark:text-white dark:bg-transparent  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 ">
+      <PaymentForm
+        title="Bill Payment"
+        formFields={formFields}
+        onSubmit={handleSubmit}
+        formData={formData}
+        setFormData={setFormData}
+        errors={errors}
+      />
     </div>
-
   );
 };
 

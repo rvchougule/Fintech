@@ -4,8 +4,15 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentForm from "../../../components/super/bill_payment/PaymentForm";
 
-
 const Billpayment_dashboard = () => {
+  const [formData, setFormData] = useState({
+    operator: "",
+    mobile: "",
+    tPin: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
   // Yup validation schema
   const validationSchema = Yup.object().shape({
     operator: Yup.string().required("Select an Operator."),
@@ -32,9 +39,53 @@ const Billpayment_dashboard = () => {
       setErrors(newErrors);
     }
   };
+
+  // Validate only operator and mobile for Fetch
+  const handleFetch = async () => {
+    try {
+      await Yup.object({
+        operator: Yup.string().required("Select an Operator."),
+        mobile: Yup.string()
+          .matches(/^[6-9]\d{9}$/, "Enter a valid 10-digit mobile number.")
+          .required("Enter Mobile number."),
+      }).validate(formData, { abortEarly: false });
+
+      setErrors({});
+      toast.info("Fetch request initiated...");
+      console.log("Fetch for:", formData.operator, formData.mobile);
+    } catch (validationErrors) {
+      const newErrors = {};
+      validationErrors.inner.forEach((error) => {
+        newErrors[error.path] = error.message;
+      });
+      setErrors(newErrors);
+    }
+  };
+
+  // Just validate mobile number for Forget Pin
+  const handleForgetPin = async () => {
+    try {
+      await Yup.object({
+        mobile: Yup.string()
+          .matches(/^[6-9]\d{9}$/, "Enter a valid 10-digit mobile number.")
+          .required("Enter Mobile number."),
+      }).validate(formData, { abortEarly: false });
+
+      setErrors({});
+      toast.info("Forget Pin link sent!");
+      console.log("Forget Pin for:", formData.mobile);
+    } catch (validationErrors) {
+      const newErrors = {};
+      validationErrors.inner.forEach((error) => {
+        newErrors[error.path] = error.message;
+      });
+      setErrors(newErrors);
+    }
+  };
+
   const formFields = [
     {
-      label: "Dashboard Operator",
+      label: "Broadband Operator",
       type: "select",
       name: "operator",
       placeholder: "Select Operator",
@@ -55,14 +106,17 @@ const Billpayment_dashboard = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4   dark:text-white dark:bg-darkBlue/70 bg-gray-100  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 scrollbar-thin scrollbar-thumb-gray-100 scrollbar-track-gray-100">
-      {
-        <PaymentForm
-          title="Bill Payment"
-          formFields={formFields}
-          handleSubmit={handleSubmit}
-        />
-      }
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4 dark:text-white dark:bg-transparent bg-gray-100 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 scrollbar-thin scrollbar-thumb-gray-100 scrollbar-track-gray-100">
+      <PaymentForm
+        title="Bill Payment"
+        formFields={formFields}
+        formData={formData}
+        setFormData={setFormData}
+        errors={errors}
+        onSubmit={handleSubmit}
+        onFetch={handleFetch}
+        onForgetPin={handleForgetPin}
+      />
     </div>
   );
 };

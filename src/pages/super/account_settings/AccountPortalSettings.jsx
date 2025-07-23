@@ -1,12 +1,10 @@
 import { useState } from "react";
 import BankDetails from "../../../components/super/account_settings/BankDetails";
-import CertificateManager from "../../../components/super/account_settings/CertificateManager";
 import KYCDetails from "../../../components/super/account_settings/KYCDetails";
-import MappingManager from "../../../components/super/account_settings/MappingManager";
 import PasswordManager from "../../../components/super/account_settings/PasswordManager";
 import PinManager from "../../../components/super/account_settings/PinManager";
 import ProfileDetails from "../../../components/super/account_settings/ProfileDetails";
-import RoleManager from "../../../components/super/account_settings/RoleManager";
+import CertificateandID from "../../../components/super/account_settings/CertificateandID.JSX";
 
 const AccountPortalSettings = () => {
   const [activePage, setActivePage] = useState("Profile Details");
@@ -17,9 +15,9 @@ const AccountPortalSettings = () => {
     "Password Manager",
     "Pin Manager",
     "Bank Details",
-    "Certificate Manager",
-    "Role Manager",
-    "Mapping Manager",
+    "CertificateandID",
+    // "Role Manager",
+    // "Mapping Manager",
   ];
 
   const user = {
@@ -58,18 +56,18 @@ const AccountPortalSettings = () => {
       ifscCode: "",
       securityPin: "",
     },
-    Cetificate_Manager: {
+    Cetificate_and_ID: {
       cmo: "",
       coo: "",
     },
-    Role_Manager: {
-      membersRole: "",
-      securityPin: "",
-    },
-    Mapping_Manager: {
-      parentMember: "",
-      securityPin: "",
-    },
+    // Role_Manager: {
+    //   membersRole: "",
+    //   securityPin: "",
+    // },
+    // Mapping_Manager: {
+    //   parentMember: "",
+    //   securityPin: "",
+    // },
   };
   const renderPageContent = () => {
     switch (activePage) {
@@ -83,12 +81,12 @@ const AccountPortalSettings = () => {
         return <PinManager initialData={user.Pin_Manager} />;
       case "Bank Details":
         return <BankDetails initialData={user.Bank_Details} />;
-      case "Certificate Manager":
-        return <CertificateManager initialData={user.Cetificate_Manager} />;
-      case "Role Manager":
-        return <RoleManager initialData={user.Role_Manager} />;
-      case "Mapping Manager":
-        return <MappingManager initialData={user.Mapping_Manager} />;
+      case "CertificateandID":
+        return <CertificateandID initialData={user.Cetificate_and_ID} />;
+      // case "Role Manager":
+      //   return <RoleManager initialData={user.Role_Manager} />;
+      // case "Mapping Manager":
+      //   return <MappingManager initialData={user.Mapping_Manager} />;
       default:
         return <div>Select a page</div>;
     }

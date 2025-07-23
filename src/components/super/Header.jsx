@@ -31,9 +31,9 @@ export default function Header() {
         {/* Wallet Button */}
         <button
           onClick={() => setIsWalletOpen(true)}
-          className="flex items-center bg-secondary text-white font-semibold px-4 py-1.5 rounded-md gap-2 shadow-md hover:bg-[#7a7bf0] transition cursor-pointer"
+          className="flex items-center bg-trasparent    transition cursor-pointer"
         >
-          <span>Retailer Wallet</span>
+          {/* <span>Retailer Wallet</span> */}
           <FaWallet />
         </button>
 

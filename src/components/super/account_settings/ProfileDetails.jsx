@@ -68,6 +68,16 @@ const ProfileDetails = ({ initialData }) => {
       </div>
 
       <div>
+        <label className="block text-sm mb-1">Email</label>
+        <input
+          type="email"
+          {...register("email")}
+          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
+        />
+        <p className="text-red-500 text-sm">{errors.email?.message}</p>
+      </div>
+
+      <div>
         <label className="block text-sm mb-1">State</label>
         <input
           type="text"
@@ -85,6 +95,16 @@ const ProfileDetails = ({ initialData }) => {
           className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
         />
         <p className="text-red-500 text-sm">{errors.city?.message}</p>
+      </div>
+
+      <div>
+        <label className="block text-sm mb-1">PIN Code</label>
+        <input
+          type="text"
+          {...register("pinCode")}
+          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
+        />
+        <p className="text-red-500 text-sm">{errors.pinCode?.message}</p>
       </div>
 
       <div>
@@ -107,36 +127,6 @@ const ProfileDetails = ({ initialData }) => {
           </option>
         </select>
         <p className="text-red-500 text-sm">{errors.gender?.message}</p>
-      </div>
-
-      <div>
-        <label className="block text-sm mb-1">PIN Code</label>
-        <input
-          type="text"
-          {...register("pinCode")}
-          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
-        />
-        <p className="text-red-500 text-sm">{errors.pinCode?.message}</p>
-      </div>
-
-      <div>
-        <label className="block text-sm mb-1">Email</label>
-        <input
-          type="email"
-          {...register("email")}
-          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
-        />
-        <p className="text-red-500 text-sm">{errors.email?.message}</p>
-      </div>
-
-      <div>
-        <label className="block text-sm mb-1">Security PIN</label>
-        <input
-          type="password"
-          {...register("securityPin")}
-          className="w-full px-3 py-2 rounded  dark:text-white border border-gray-600"
-        />
-        <p className="text-red-500 text-sm">{errors.securityPin?.message}</p>
       </div>
 
       <div className="md:col-span-2">
