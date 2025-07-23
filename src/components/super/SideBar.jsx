@@ -3,24 +3,16 @@ import { Link } from "react-router";
 
 import { IoIosArrowDown, IoIosArrowForward } from "../../assets/react-icons";
 import { HiOutlineClipboardList } from "react-icons/hi";
-import { HiIdentification } from "react-icons/hi2";
-import { HiOutlineEnvelope } from "react-icons/hi2";
 
 import {
   FaUser,
   FiSettings,
   HiOutlineDocumentReport,
-  RiFileListLine,
   FaWallet,
-  FaUsersCog,
-  FaCogs,
   FaMoneyBillAlt,
   FaListAlt,
-  FaPercent,
-  BiSolidMessage,
   FaFileInvoiceDollar,
   FiLink,
-  FaRegSquare,
   FaRegAddressCard,
   FaHandshake,
   FaHandHoldingDollar,
@@ -73,9 +65,8 @@ const menuItems = [
   },
   {
     icon: <FaRegAddressCard />,
-    label: "Pan Card",
-    component: "",
-    subItems: [{ label: "UTI", component: "Pancard/Uti" }],
+    label: " UTI Pan Card",
+    component: "Pancard/Uti",
   },
   {
     icon: <FaFileInvoiceDollar />,
@@ -105,29 +96,24 @@ const menuItems = [
 
   {
     icon: <FaMoneyBillAlt />,
-    label: "Fund",
-    component: "",
-    subItems: [{ label: "Request Report", component: "fund/requestviewall" }],
+    label: "Request Report Fund",
+    component: "fund/requestviewall",
   },
   {
     icon: <FaListAlt />,
-    label: "Agent List",
-    component: "",
-    subItems: [{ label: "AePS", component: "/statement/aeps" }],
+    label: "AePS Agent List",
+    component: "/statement/aeps",
   },
   {
     icon: <FaHandshake />,
-    label: "Affiliate",
-    component: "",
-    subItems: [
-      { label: "Affiliate Service", component: "/affiliate/affiliateservices" },
-    ],
+    label: "Affiliate Service",
+    component: "/affiliate/affiliateservices",
+    
   },
   {
     icon: <FaHandHoldingDollar />,
-    label: "Commision",
-    component: "",
-    subItems: [{ label: "Request", component: "commission/request" }],
+    label: "Commision Request",
+    component: "commission/request",
   },
   {
     icon: <HiOutlineDocumentReport />,
@@ -148,15 +134,9 @@ const menuItems = [
 
   {
     icon: <FaWallet />,
-    label: "Wallet History",
-    component: "",
-    subItems: [
-      { label: "Main Wallet", component: "statement/account" },
-      { label: "AEPS Wallet", component: "statement/aeps-wallet" },
-      { label: "Commision Wallet", component: "statement/commission-wallet" },
-    ],
+    label: "Main Wallet",
+    component: "statement/account",
   },
-  { icon: <BiSolidMessage />, label: "Complaints", component: "" },
 
   {
     icon: <FiSettings />,

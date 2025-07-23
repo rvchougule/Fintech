@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
+import { ToastContainer, toast } from "react-toastify";
 
-const dthRecharge = () => {
+const DthRecharge = () => {
   const [formData, setFormData] = useState({
     dthNumber: "",
     operator: "",
@@ -40,24 +41,36 @@ const dthRecharge = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const newEntry = {
-      orderId: `ORD${Math.floor(Math.random() * 100000)}`,
-      rechargeDetails: `${formData.operator} - ${formData.dthNumber}`,
-      amountCommission: `₹${formData.amount} / ₹5`,
-      status: "Success",
-    };
+  const { dthNumber, operator, amount, tPin } = formData;
 
-    setRechargeData((prev) => [newEntry, ...prev]);
-    setFormData({ dthNumber: "", operator: "", amount: "", tPin: "" });
+  // Basic validation
+  if (!dthNumber || !operator || !amount || !tPin) {
+    toast.error("Please fill in all required fields.");
+    return;
+  }
+
+  const newEntry = {
+    orderId: `ORD${Math.floor(Math.random() * 100000)}`,
+    rechargeDetails: `${formData.operator} - ${formData.dthNumber}`,
+    amountCommission: `₹${formData.amount} / ₹5`,
+    status: "Success",
   };
+
+  setRechargeData((prev) => [newEntry, ...prev]);
+  setFormData({ dthNumber: "", operator: "", amount: "", tPin: "" });
+
+  // ✅ Show success toast
+  toast.success("Recharge submitted successfully!");
+};
+
 
   return (
     <>
-      <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue/70 rounded 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200  bg-transparent mt-2">
-        <div className="h-[40vh] dark:text-white p-4 px-4 pb-6  dark:bg-darkBlue/70 rounded text-gray-800  bg-white ">
-          <h2 className="text-2xl  font-semibold dark:text-white text-gray-700 mb-6">
+      <div className="h-[90vh] dark:text-white 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue/70 rounded 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 bg-transparent mt-2">
+        <div className="h-[40vh] dark:text-white p-4 px-4 pb-6 dark:bg-darkBlue/70 rounded text-gray-800 bg-white">
+          <h2 className="text-2xl font-semibold dark:text-white text-gray-700 mb-6">
             Dth Recharge
           </h2>
           <form
@@ -86,7 +99,7 @@ const dthRecharge = () => {
                 name="operator"
                 value={formData.operator}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border  rounded-md  text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
+                className="w-full px-4 py-2 border rounded-md text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
               >
                 <option value="">Select Operator</option>
                 <option value="Tata Sky">Tata Sky</option>
@@ -105,13 +118,13 @@ const dthRecharge = () => {
                 value={formData.amount}
                 onChange={handleChange}
                 placeholder="Enter amount"
-                className="w-full px-4 py-2 border  dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
+                className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
               />
             </div>
 
             <div className="relative">
               <div className="flex flex-col">
-                <label className="block dark:text-white text-gray-700 font-medium mb-1 ">
+                <label className="block dark:text-white text-gray-700 font-medium mb-1">
                   T-Pin <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -123,7 +136,6 @@ const dthRecharge = () => {
                   className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
                 />
               </div>
-
               <a
                 href="#"
                 className="absolute left-0 -bottom-5 text-blue-500 text-sm"
@@ -135,7 +147,7 @@ const dthRecharge = () => {
             <div className="col-span-1 md:col-span-4 flex gap-4 justify-center mt-2">
               <button
                 type="submit"
-                className="bg-indigo-500 hover:bg-secondary text-white font-semibold px-6 py-2 rounded-md shadow "
+                className="bg-indigo-500 hover:bg-secondary text-white font-semibold px-6 py-2 rounded-md shadow"
               >
                 Pay Now
               </button>
@@ -145,14 +157,14 @@ const dthRecharge = () => {
               >
                 GET Plan
               </button>
+              <ToastContainer />
             </div>
           </form>
         </div>
 
         {/* Recharge History Table */}
-
         <div className="mt-4 bg-white rounded p-4 mt-8 dark:bg-darkBlue/70">
-          <h3 className="text-xl font-semibold text-gray-700 mb-1 dark:text-white ">
+          <h3 className="text-xl font-semibold text-gray-700 mb-1 dark:text-white">
             Recent Dth Recharge
           </h3>
           <PaginatedTable
@@ -168,4 +180,4 @@ const dthRecharge = () => {
   );
 };
 
-export default dthRecharge;
+export default DthRecharge;

@@ -3,9 +3,10 @@ import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-const UserDropdown = () => {
+const UserDropdown = ({ref}) => {
   return (
-    <div className="z-30 absolute top-12 right-4 w-56 dark:bg-darkBlue dark:text-white bg-white text-black rounded-xl shadow-lg p-4 space-y-4">
+    <div ref={ref}
+    className="z-30 absolute top-12 right-4 w-56 dark:bg-darkBlue dark:text-white bg-white text-black rounded-xl shadow-lg p-4 space-y-4">
       {/* Profile Header */}
       <div className="flex items-center space-x-3">
         <div className="relative">
