@@ -67,7 +67,7 @@ export const AffiliateStatement = () => {
     fromDate: "",
     toDate: "",
     searchValue: "",
-    userId: "",
+    
     status: "",
     product: "",
   });
@@ -154,13 +154,13 @@ export const AffiliateStatement = () => {
       value: filters.searchValue || "",
       onChange: (val) => handleInputChange("searchValue", val),
     },
-    {
-      name: "userId",
-      type: "text",
-      placeholder: "Agent/Parent Id",
-      value: filters.userId || "",
-      onChange: (val) => handleInputChange("userId", val),
-    },
+    // {
+    //   name: "userId",
+    //   type: "text",
+    //   placeholder: "Agent/Parent Id",
+    //   value: filters.userId || "",
+    //   onChange: (val) => handleInputChange("userId", val),
+    // },
   ];
 
   const columns = [
@@ -220,8 +220,8 @@ export const AffiliateStatement = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-transparent  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      <div className="my-4 p-4 rounded-md bg-white dark:bg-darkBlue/70">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
             Affiliate List

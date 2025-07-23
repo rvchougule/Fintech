@@ -18,8 +18,8 @@ import { RechargeStatement } from "./pages/super/transaction_report/RechargeStat
 import { UTIPancardStatement } from "./pages/super/transaction_report/UTIPancardStatement";
 import { CreditCardPayment } from "./pages/super/transaction_report/CreditCardPayment";
 import { MainWallet } from "./pages/super/wallet_history/MainWallet";
-import { AEPSWallet } from "./pages/super/wallet_history/AEPSWallet";
-import { CommissionWallet } from "./pages/super/wallet_history/CommissionWallet";
+// import { AEPSWallet } from "./pages/super/wallet_history/AEPSWallet";
+// import { CommissionWallet } from "./pages/super/wallet_history/CommissionWallet";
 import { MatchingPercentage } from "./pages/super/matching_percentage/MatchingPercentage";
 import { MobileUserLogout } from "./pages/super/setup_tools/MobileUserLogout";
 import { APIManager } from "./pages/super/setup_tools/APIManager";
@@ -296,14 +296,15 @@ const App = () => {
           path: "statement/account",
           Component: MainWallet,
         },
-        {
-          path: "statement/aeps-wallet",
-          Component: AEPSWallet,
-        },
-        {
-          path: "statement/commission-wallet",
-          Component: CommissionWallet,
-        },
+        // {
+        //   path: "statement/aeps-wallet",
+        //   Component: AEPSWallet,
+        // },
+        // {
+        //   path: "statement/commission-wallet",
+        //   Component: CommissionWallet,
+        // },
+
         // Matching Percentage
         {
           path: "matchingpercent",

@@ -8,7 +8,7 @@ export const BillPayStatement = () => {
     fromDate: "",
     toDate: "",
     searchValue: "",
-    userId: "",
+
     status: "",
     product: "",
   });
@@ -95,7 +95,7 @@ export const BillPayStatement = () => {
       value: filters.searchValue || "",
       onChange: (val) => handleInputChange("searchValue", val),
     },
-   
+
     {
       name: "status",
       type: "select",
@@ -111,9 +111,9 @@ export const BillPayStatement = () => {
       ],
     },
     {
-      name: "product",
+      name: "bill",
       type: "select",
-      placeholder: "Select Product",
+      placeholder: "Select Bill",
       value: filters.product || "",
       onChange: (val) => handleInputChange("product", val),
       options: [
@@ -254,8 +254,11 @@ export const BillPayStatement = () => {
   ];
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
+    <div
+      className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-transparent
+      2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+    >
+      <div className="my-4 p-4 rounded-md bg-white dark:bg-darkBlue/70">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
             Bill Payment Statement

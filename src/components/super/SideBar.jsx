@@ -3,8 +3,8 @@ import { Link } from "react-router";
 
 import { IoIosArrowDown, IoIosArrowForward } from "../../assets/react-icons";
 import { HiOutlineClipboardList } from "react-icons/hi";
-import { HiIdentification } from "react-icons/hi2";
-import { HiOutlineEnvelope } from "react-icons/hi2";
+// import { HiIdentification } from "react-icons/hi2";
+// import { HiOutlineEnvelope } from "react-icons/hi2";
 
 import {
   FaUser,
@@ -145,8 +145,8 @@ const menuItems = [
     component: "",
     subItems: [
       { label: "Main Wallet", component: "statement/account" },
-      { label: "AEPS Wallet", component: "statement/aeps-wallet" },
-      { label: "Commision Wallet", component: "statement/commission-wallet" },
+      // { label: "AEPS Wallet", component: "statement/aeps-wallet" },
+      // { label: "Commision Wallet", component: "statement/commission-wallet" },
     ],
   },
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },

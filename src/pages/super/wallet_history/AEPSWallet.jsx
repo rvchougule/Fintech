@@ -115,17 +115,17 @@ export const AEPSWallet = () => {
     {
       header: "Refrences Details",
       accessor: "requestedBy",
-      render: (row) => <></>,
+      render: () => <></>,
     },
     {
       header: "Order ID",
       accessor: "depositDetails",
-      render: (row) => <div></div>,
+      render: () => <div></div>,
     },
     {
       header: "Transaction Details",
       accessor: "referenceDetails",
-      render: (row) => <div></div>,
+      render: () => <div></div>,
     },
     {
       header: "TXN Type",
@@ -180,6 +180,7 @@ export const AEPSWallet = () => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         pageSize={pageSize}
+        filteredData={filteredData}
       />
     </div>
   );
