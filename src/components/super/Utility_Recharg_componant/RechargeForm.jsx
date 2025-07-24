@@ -145,34 +145,45 @@ const RechargeForm = () => {
   });
 
   // ✅ PAY NOW Handler
-  const handlePayNow = () => {
-    const { mobileNumber, operator, circle, amount, tPin } = formik.values;
+  const handlePayNow = async () => {
+  const isValid = await formik.validateForm(); // triggers validation
+  formik.setTouched({
+    mobileNumber: true,
+    operator: true,
+    circle: true,
+    planType: true,
+    amount: true,
+    tPin: true,
+  });
 
-    if (!mobileNumber || !operator || !circle || !amount || !tPin) {
-      toast.error(
-        <div className="flex items-start">
-          <MdBlock className="text-red-600 text-xl mt-1 mr-2" />
-          <div>
-            <p className="font-medium">All fields are required.</p>
-          </div>
-        </div>,
-        {
-          position: "top-right",
-          className:
-            "border-l-4 border-red-600 bg-white text-black font-medium",
-          icon: false,
-          closeOnClick: true,
-          autoClose: 5000,
-        }
-      );
-      return;
-    }
+  if (!(await formik.validateForm()) || !formik.isValid) {
+    toast.error(
+      <div className="flex items-start">
+        <MdBlock className="text-red-600 text-xl mt-1 mr-2" />
+        <div>
+          <p className="font-medium">Please fill all required fields correctly.</p>
+        </div>
+      </div>,
+      {
+        position: "top-right",
+        className: "border-l-4 border-red-600 bg-white text-black font-medium",
+        icon: false,
+        closeOnClick: true,
+        autoClose: 5000,
+      }
+    );
+    return;
+  }
 
-    toast.success("Recharge submitted  successfully!", {
-      position: "top-right",
-      autoClose: 3000,
-    });
-  };
+  // ✅ If valid
+  toast.success("Recharge submitted successfully!", {
+    position: "top-right",
+    autoClose: 3000,
+  });
+
+  formik.handleSubmit(); // Call the onSubmit
+};
+
 
   // ✅ GET PLAN Handler
   const handleGetPlan = () => {
