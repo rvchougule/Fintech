@@ -140,7 +140,7 @@ const RechargeForm = () => {
       planType: Yup.string().required("Plan Type is required"),
     }),
     onSubmit: (values) => {
-      console.log("Form Submitted:", values);
+      ("Form Submitted:", values);
     },
   });
 
@@ -212,7 +212,7 @@ const RechargeForm = () => {
     }
 
     setShowModal(true);
-    toast.success("Fetching plan details...", {
+    toast.info("Fetching plan details...", {
       position: "top-right",
       autoClose: 3000,
     });

@@ -110,7 +110,7 @@ const DthRecharge = () => {
       );
       return;
     } else setShowModal(true);
-    toast.success("Fetching plan details...", {
+    toast.info("Fetching plan details...", {
       position: "top-right",
       autoClose: 3000,
     });
