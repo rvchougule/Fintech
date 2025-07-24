@@ -140,50 +140,39 @@ const RechargeForm = () => {
       planType: Yup.string().required("Plan Type is required"),
     }),
     onSubmit: (values) => {
-      ("Form Submitted:", values);
+      console.log("Form Submitted:", values);
     },
   });
 
   // ✅ PAY NOW Handler
-  const handlePayNow = async () => {
-  const isValid = await formik.validateForm(); // triggers validation
-  formik.setTouched({
-    mobileNumber: true,
-    operator: true,
-    circle: true,
-    planType: true,
-    amount: true,
-    tPin: true,
-  });
+  const handlePayNow = () => {
+    const { mobileNumber, operator, circle, amount, tPin } = formik.values;
 
-  if (!(await formik.validateForm()) || !formik.isValid) {
-    toast.error(
-      <div className="flex items-start">
-        <MdBlock className="text-red-600 text-xl mt-1 mr-2" />
-        <div>
-          <p className="font-medium">Please fill all required fields correctly.</p>
-        </div>
-      </div>,
-      {
-        position: "top-right",
-        className: "border-l-4 border-red-600 bg-white text-black font-medium",
-        icon: false,
-        closeOnClick: true,
-        autoClose: 5000,
-      }
-    );
-    return;
-  }
+    if (!mobileNumber || !operator || !circle || !amount || !tPin) {
+      toast.error(
+        <div className="flex items-start">
+          <MdBlock className="text-red-600 text-xl mt-1 mr-2" />
+          <div>
+            <p className="font-medium">All fields are required.</p>
+          </div>
+        </div>,
+        {
+          position: "top-right",
+          className:
+            "border-l-4 border-red-600 bg-white text-black font-medium",
+          icon: false,
+          closeOnClick: true,
+          autoClose: 5000,
+        }
+      );
+      return;
+    }
 
-  // ✅ If valid
-  toast.success("Recharge submitted successfully!", {
-    position: "top-right",
-    autoClose: 3000,
-  });
-
-  formik.handleSubmit(); // Call the onSubmit
-};
-
+    toast.success("Recharge submitted  successfully!", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+  };
 
   // ✅ GET PLAN Handler
   const handleGetPlan = () => {
@@ -262,7 +251,7 @@ const RechargeForm = () => {
             placeholder="Enter transaction pin"
             formik={formik}
           />
-          <a href="#" className="text-sm text-purple-600 mt-1 inline-block">
+          <a href="/profile/view" className="text-sm text-secondary mt-1 inline-block m-1">
             Generate Or Forgot Pin?
           </a>
         </div>
@@ -270,7 +259,7 @@ const RechargeForm = () => {
         <div className="col-span-full flex gap-4 mt-4 justify-center items-center">
           <button
             type="button"
-            className="bg-purple-500 text-white px-6 py-2 rounded-lg shadow hover:bg-purple-600 transition cursor-pointer"
+            className="bg-secondary text-white px-6 py-2 rounded-lg shadow hover:bg-purple-600 transition cursor-pointer"
             onClick={handlePayNow}
           >
             Pay Now

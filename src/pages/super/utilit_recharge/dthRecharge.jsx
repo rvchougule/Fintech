@@ -83,9 +83,13 @@ const DthRecharge = () => {
           autoClose: 3000,
         }
       );
-     
+      return;
     }
-   
+    //   setShowModal(true);
+    //   toast.success("Fetching plan deta...", {
+    //     position: "top-right",
+    //     autoClose: 3000,
+    //   });
   };
 
   const handleGetPlan = () => {
@@ -148,12 +152,12 @@ const DthRecharge = () => {
               name="operator"
               value={formik.values.operator}
               onChange={formik.handleChange}
-              className="w-full px-4 py-2 border rounded-md text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
+              className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
             >
-              <option value="">Select Operator</option>
-              <option value="Tata Sky">Tata Sky</option>
-              <option value="Airtel">Airtel</option>
-              <option value="D2H">D2H</option>
+              <option value="" className="dark:bg-darkBlue/70 dark:text-white">Select Operator</option>
+              <option value="Tata Sky" className="dark:bg-darkBlue/70 dark:text-white">Tata Sky</option>
+              <option value="Airtel" className="dark:bg-darkBlue/70 dark:text-white">Airtel</option>
+              <option value="D2H" className="dark:bg-darkBlue/70 dark:text-white">D2H</option>
             </select>
           </div>
 
@@ -167,7 +171,7 @@ const DthRecharge = () => {
               value={formik.values.amount}
               onChange={formik.handleChange}
               placeholder="Enter amount"
-              className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
+               className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
             />
           </div>
 
@@ -186,17 +190,17 @@ const DthRecharge = () => {
               />
             </div>
             <a
-              href="#"
-              className="absolute left-0 -bottom-5 text-blue-500 text-sm"
+              href="/profile/view"
+              className="absolute left-0 -bottom-5 text-secondary text-sm"
             >
-              Forgot Pin?
+              Generate or Forgot Pin?
             </a>
           </div>
 
           <div className="col-span-1 md:col-span-4 flex gap-4 justify-center mt-2">
             <button
               type="submit"
-              className="bg-indigo-500 hover:bg-secondary text-white font-semibold px-6 py-2 rounded-md shadow cursor-pointer"
+              className="bg-secondary hover:bg-secondary text-white font-semibold px-6 py-2 rounded-md shadow cursor-pointer"
               onClick={handlePayNow}
             >
               Pay Now
