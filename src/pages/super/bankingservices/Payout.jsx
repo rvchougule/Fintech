@@ -42,7 +42,7 @@ const Payout = () => {
                 type="text"
                 placeholder="Enter Mobile Number"
                 {...register("mobile")}
-                className="p-2 rounded border border-gray-400 w-full"
+                className="p-2 rounded border border-gray-400 w-full dark:bg-darkBlue"
               />
               {errors.mobile && (
                 <p className="text-red-500 text-sm mt-1">

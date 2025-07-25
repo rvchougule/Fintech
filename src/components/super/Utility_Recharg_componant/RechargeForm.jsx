@@ -68,7 +68,7 @@ const FormField = ({ label, name, type = "text", placeholder, formik }) => (
       onBlur={formik.handleBlur}
       value={formik.values[name]}
       placeholder={placeholder}
-      className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2"
+     className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 dark:bg-darkBlue/70 dark:text-white dark:placeholder-white placeholder-gray-900"
     />
     {formik.touched[name] && formik.errors[name] && (
       <p className="text-red-500 text-sm mt-1">{formik.errors[name]}</p>
@@ -90,7 +90,7 @@ const SelectField = ({ label, name, options, formik }) => (
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       value={formik.values[name]}
-      className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 dark:bg-gray dark:text-gray-400"
+      className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 dark:bg-darkBlue/70 dark:text-white dark:placeholder-white placeholder-gray-900"
     >
       <option className="dark:bg-darkBlue dark:text-white">
         Select {label}
@@ -211,7 +211,7 @@ const RechargeForm = () => {
     <div>
       <form
         onSubmit={formik.handleSubmit}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6  dark:placeholder:bg-gray-900"
       >
         <FormField
           name="mobileNumber"
@@ -251,7 +251,10 @@ const RechargeForm = () => {
             placeholder="Enter transaction pin"
             formik={formik}
           />
-          <a href="/profile/view" className="text-sm text-secondary mt-1 inline-block m-1">
+          <a
+            href="/profile/view"
+            className="text-sm text-secondary mt-1 inline-block m-1"
+          >
             Generate Or Forgot Pin?
           </a>
         </div>

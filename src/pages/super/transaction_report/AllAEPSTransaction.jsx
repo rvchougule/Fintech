@@ -8,7 +8,7 @@ export const AllAEPSTransaction = () => {
     fromDate: "",
     toDate: "",
     searchValue: "",
-    userId: "",
+    // userId: "",
     status: "",
     product: "",
   });

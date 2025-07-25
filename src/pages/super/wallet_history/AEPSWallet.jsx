@@ -8,7 +8,7 @@ export const AEPSWallet = () => {
     fromDate: "",
     toDate: "",
     searchValue: "",
-    userId: "",
+    // userId: "",
     status: "",
     product: "",
   });
@@ -101,13 +101,13 @@ export const AEPSWallet = () => {
       value: filters.searchValue || "",
       onChange: (val) => handleInputChange("searchValue", val),
     },
-    {
-      name: "userId",
-      type: "text",
-      placeholder: "Agent/Parent",
-      value: filters.userId || "",
-      onChange: (val) => handleInputChange("userId", val),
-    },
+    // {
+    //   name: "userId",
+    //   type: "text",
+    //   placeholder: "Agent/Parent",
+    //   value: filters.userId || "",
+    //   onChange: (val) => handleInputChange("userId", val),
+    // },
   ];
 
   const columns = [

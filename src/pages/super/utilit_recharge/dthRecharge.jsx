@@ -121,7 +121,7 @@ const DthRecharge = () => {
   };
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 dark:bg-darkBlue/70 rounded 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 bg-transparent mt-2">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 dark:bg-transparent rounded 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 bg-transparent mt-2">
       <div className="h-fit dark:text-white p-4 px-4 pb-6 dark:bg-darkBlue/70 rounded text-gray-800 bg-white">
         <h2 className="text-2xl font-semibold dark:text-white text-gray-700 mb-6">
           Dth Recharge
@@ -131,7 +131,7 @@ const DthRecharge = () => {
           className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end"
         >
           <div>
-            <label className="block dark:text-white text-gray-700 font-medium mb-1">
+            <label className="block dark:text-white  font-medium mb-1">
               Dth Number <span className="text-red-500">*</span>
             </label>
             <input
@@ -139,30 +139,50 @@ const DthRecharge = () => {
               name="dthNumber"
               value={formik.values.dthNumber}
               onChange={formik.handleChange}
-              placeholder="Enter dth number"
-              className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
+              placeholder="Enter Dth number"
+              className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white placeholder-gray-900 "
             />
           </div>
 
           <div>
-            <label className="block dark:text-white text-gray-700 font-medium mb-1">
+            <label className="block dark:text-white font-medium mb-1">
               Dth Operator <span className="text-red-500">*</span>
             </label>
             <select
               name="operator"
               value={formik.values.operator}
               onChange={formik.handleChange}
-              className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
+              className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white text-gray-700 dark:text-white  placeholder-gray-900 dark:placeholder:bg-darkBlue/70 "
             >
-              <option value="" className="dark:bg-darkBlue/70 dark:text-white">Select Operator</option>
-              <option value="Tata Sky" className="dark:bg-darkBlue/70 dark:text-white">Tata Sky</option>
-              <option value="Airtel" className="dark:bg-darkBlue/70 dark:text-white">Airtel</option>
-              <option value="D2H" className="dark:bg-darkBlue/70 dark:text-white">D2H</option>
+              <option
+                value=""
+                className="dark:bg-darkBlue dark:text-white text-black bg-white"
+              >
+                Select Operator
+              </option>
+              <option
+                value="Tata Sky"
+                className="dark:bg-darkBlue dark:text-white text-black bg-white"
+              >
+                Tata Sky
+              </option>
+              <option
+                value="Airtel"
+                className="dark:bg-darkBlue dark:text-white text-black bg-white"
+              > 
+                Airtel
+              </option>
+              <option
+                value="D2H"
+                className="dark:bg-darkBlue dark:text-white text-black bg-white"
+              >
+                D2H
+              </option>
             </select>
           </div>
 
           <div>
-            <label className="block dark:text-white text-gray-700 font-medium mb-1">
+            <label className="block dark:text-white  font-medium mb-1">
               Recharge Amount <span className="text-red-500">*</span>
             </label>
             <input
@@ -171,13 +191,13 @@ const DthRecharge = () => {
               value={formik.values.amount}
               onChange={formik.handleChange}
               placeholder="Enter amount"
-               className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
+              className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white  placeholder-gray-900 dark:placeholder:bg-darkBlue/70"
             />
           </div>
 
           <div className="relative">
             <div className="flex flex-col">
-              <label className="block dark:text-white text-gray-700 font-medium mb-1">
+              <label className="block dark:text-white  font-medium mb-1">
                 T-Pin <span className="text-red-500">*</span>
               </label>
               <input
@@ -186,7 +206,7 @@ const DthRecharge = () => {
                 value={formik.values.tPin}
                 onChange={formik.handleChange}
                 placeholder="Enter transaction pin"
-                className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white"
+                className="w-full px-4 py-2 border dark:border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:placeholder-white placeholder-gray-900"
               />
             </div>
             <a
@@ -223,16 +243,20 @@ const DthRecharge = () => {
       )}
 
       <div className="bg-white rounded p-4 mt-8 dark:bg-darkBlue/70">
-        <h3 className="text-xl font-semibold text-gray-700 mb-1 dark:text-white">
-          Recent Dth Recharge
-        </h3>
-        <PaginatedTable
-          data={rechargeData}
-          columns={columns}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          pageSize={5}
-        />
+        <div className="bg-white rounded p-4 mt-8 dark:bg-darkBlue/70 dark:text-white ">
+          <h3 className="text-xl font-semibold text-gray-700 mb-1 dark:text-white">
+            Recent Dth Recharge
+          </h3>
+        </div>
+        <div className="bg-white rounded  dark:bg-darkBlue/70 dark:text-white ">
+          <PaginatedTable
+            data={rechargeData}
+            columns={columns}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            pageSize={5}
+          />
+        </div>
       </div>
     </div>
   );

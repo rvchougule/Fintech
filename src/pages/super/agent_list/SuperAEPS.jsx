@@ -8,7 +8,7 @@ const SuperAEPS = () => {
     fromDate: "",
     toDate: "",
     searchValue: "",
-    userId: "",
+    // userId: "",
     status: "",
   });
 
@@ -101,13 +101,13 @@ const SuperAEPS = () => {
       value: filters.searchValue || "",
       onChange: (val) => handleInputChange("searchValue", val),
     },
-    {
-      name: "userId",
-      type: "text",
-      placeholder: "Agent/Parent Id",
-      value: filters.userId || "",
-      onChange: (val) => handleInputChange("userId", val),
-    },
+    // {
+    //   name: "userId",
+    //   type: "text",
+    //   placeholder: "Agent/Parent Id",
+    //   value: filters.userId || "",
+    //   onChange: (val) => handleInputChange("userId", val),
+    // },
     {
       name: "status",
       type: "select",

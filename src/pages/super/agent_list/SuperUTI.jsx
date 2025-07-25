@@ -12,7 +12,7 @@ const SuperUTI = () => {
     fromDate: "",
     toDate: "",
     searchValue: "",
-    userId: "",
+    // userId: "",
     status: "",
   });
 
@@ -122,13 +122,13 @@ const SuperUTI = () => {
       value: filters.searchValue || "",
       onChange: (val) => handleInputChange("searchValue", val),
     },
-    {
-      name: "userId",
-      type: "text",
-      placeholder: "Agent/Parent",
-      value: filters.userId || "",
-      onChange: (val) => handleInputChange("userId", val),
-    },
+    // {
+    //   name: "userId",
+    //   type: "text",
+    //   placeholder: "Agent/Parent",
+    //   value: filters.userId || "",
+    //   onChange: (val) => handleInputChange("userId", val),
+    // },
     {
       name: "status",
       type: "select",

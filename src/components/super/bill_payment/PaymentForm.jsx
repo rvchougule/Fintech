@@ -22,19 +22,22 @@ const PaymentForm = ({ title, formFields }) => {
   });
 
   return (
-    <div className="flex justify-between w-full gap-4 p-1 mt-9 dark:bg-transparent">
-      <div className="w-full  bg-white dark:bg-darkBlue max-w-1/2 p-2  rounded shadow-xl">
+    <div className="flex justify-between w-full gap-4 p-1 mt-9 ">
+      <div className="w-full  bg-white dark:bg-darkBlue/70 max-w-1/2 p-2  rounded shadow-xl">
         <form onSubmit={handleSubmit(handleSubmit)} class>
           <h1 className="text-xl px-3 py-1 font-semibold pt-3">{title}</h1>
 
           {formFields.map((field, idx) => (
-            <div className="mt-4 px-2" key={idx}>
-              <p className="text-1xl px-1 font-semibold">{field.label}</p>
+            <div
+              className="mt-4 px-2 placeholder-gray-900 dark:placeholder-white dark:bg-darkBlue  bg-white "
+              key={idx}
+            >
+              <p className="text-1xl px-1 font-semibold ">{field.label}</p>
 
               {field.type === "select" ? (
                 <select
                   {...register(field.name)}
-                  className="w-full border rounded px-2 py-1 m-1"
+                  className="w-full border rounded px-2 py-1 m-1 placeholder-gray-900 dark:placeholder-white dark:bg-darkBlue  bg-white"
                 >
                   <option value="">{field.placeholder}</option>
                   {field.options.map((opt, i) => (
@@ -48,7 +51,7 @@ const PaymentForm = ({ title, formFields }) => {
                   type={field.type}
                   placeholder={field.placeholder}
                   {...register(field.name)}
-                  className="w-full border rounded px-2 py-1 m-1 dark:text-gray-500 "
+                  className="w-full border rounded px-2 py-1 m-1 placeholder-gray-900 dark:placeholder-white dark:bg-darkBlue/70  bg-white"
                 />
               )}
 
