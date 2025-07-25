@@ -28,21 +28,21 @@ const FilterField = ({
         {placeholder}
       </label>
 
-      {/* Custom Select */}
+      {/* Select Input */}
       {type === "select" ? (
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="bg-transparent border border-gray-500 text-gray-700 dark:text-white dark:bg-darkBlue rounded-md px-3 py-2 w-full appearance-none"
+          className="bg-transparent border border-gray-500 text-black dark:text-white dark:bg-darkBlue rounded-md px-3 py-2 w-full appearance-none"
         >
           <option value="" disabled hidden></option>
           {options.map((opt) => (
             <option
               key={opt.value}
               value={opt.value}
-              className="text-black dark:text-white bg-white dark:bg-[#1e293b]"
+              className="text-black dark:text-white bg-white dark:bg-slate-800"
             >
               {opt.label}
             </option>
@@ -51,13 +51,15 @@ const FilterField = ({
       ) : type === "date" ? (
         <DatePicker
           selected={value ? new Date(value + "T00:00:00") : null}
-          onChange={(date) => onChange(date?.toISOString().split("T")[0])}
+          onChange={(date) =>
+            onChange(date ? date.toISOString().split("T")[0] : "")
+          }
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholderText=""
           dateFormat="yyyy-MM-dd"
-          className="bg-transparent border border-gray-500 text-gray-700 dark:text-white dark:bg-darkBlue rounded-md px-3 py-2 w-full"
-          calendarClassName="react-datepicker-custom"
+          className="bg-transparent border border-gray-500 text-gray-700 dark:text-white dark:bg-darkBlue rounded-md px-3 py-2 w-full placeholder-transparent"
+          calendarClassName="dark:bg-slate-800 dark:text-white bg-white text-black border-none"
           popperClassName="z-50"
         />
       ) : (
@@ -65,11 +67,11 @@ const FilterField = ({
           ref={inputRef}
           type={type}
           value={value}
-          onChange={(e) => onChange(e.target.value)} // ✅ Fix here
+          onChange={(e) => onChange(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder=" "
-          className="bg-transparent border border-gray-500 text-gray-700 dark:text-white dark:bg-darkBlue rounded-md px-3 py-2 w-full  placeholder-transparent"
+          className="bg-transparent border border-gray-500 text-gray-700 dark:text-white dark:bg-darkBlue rounded-md px-3 py-2 w-full placeholder-transparent"
         />
       )}
     </div>
