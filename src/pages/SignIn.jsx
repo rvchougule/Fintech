@@ -1,6 +1,6 @@
-import CustomInput from "../components/CustomInput";
+import CustomInput from "../components/utility/CustomInput";
 import { MdEmail, MdLock } from "react-icons/md";
-import SwiperSlider from "../components/SwiperSlider";
+import SwiperSlider from "../components/utility/SwiperSlider";
 
 export const SignIN = () => {
   const SliderImages = [
