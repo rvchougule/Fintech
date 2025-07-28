@@ -6,8 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { SuperAdminLayout } from "./layouts/SuperAdminLayout";
 import Dashboard from "./pages/super/Dashboard";
 import { SignIN } from "./pages/SignIn";
-import SuperAEPS from "./pages/super/agent_list/SuperAEPS";
-import { RequestReport } from "./pages/super/fund/RequestReport";
+
 import { AllAEPSTransaction } from "./pages/super/transaction_report/AllAEPSTransaction";
 import { CommissionStatement } from "./pages/super/transaction_report/CommissionStatement";
 import { BillPayStatement } from "./pages/super/transaction_report/BillPayStatement";
@@ -17,29 +16,8 @@ import { MicroATMStatement } from "./pages/super/transaction_report/MicroATMStat
 import { RechargeStatement } from "./pages/super/transaction_report/RechargeStatement";
 import { UTIPancardStatement } from "./pages/super/transaction_report/UTIPancardStatement";
 import { CreditCardPayment } from "./pages/super/transaction_report/CreditCardPayment";
-import { MainWallet } from "./pages/super/wallet_history/MainWallet";
-import { AEPSWallet } from "./pages/super/wallet_history/AEPSWallet";
-import { CommissionWallet } from "./pages/super/wallet_history/CommissionWallet";
-import { MatchingPercentage } from "./pages/super/matching_percentage/MatchingPercentage";
-import { MobileUserLogout } from "./pages/super/setup_tools/MobileUserLogout";
-import { APIManager } from "./pages/super/setup_tools/APIManager";
-import { BankAccount } from "./pages/super/setup_tools/BankAccount";
-import { ComplaintSubject } from "./pages/super/setup_tools/ComplaintSubject";
-import { OperatorManager } from "./pages/super/setup_tools/OperatorManager";
-import { PortalSetting } from "./pages/super/setup_tools/PortalSetting";
-import { QuickLinks } from "./pages/super/setup_tools/QuickLinks";
-import { Roles } from "./pages/super/roles_permissions/Roles";
-import { Permissions } from "./pages/super/roles_permissions/Permissions";
 import AccountPortalSettings from "./pages/super/account_settings/AccountPortalSettings";
-import { Retail } from "./pages/super/members/Retail";
-import DSLayout from "./layouts/members/DSLayout";
-import RetailerLayout from "./layouts/members/RetailerLayout";
-import CreateMDS from "./components/super/members/mds/CreateMDS";
-import CreateRetailerBYDs from "./components/super/members/ds/CreateRetailerBYDs";
 import TransactionHistory from "./pages/super/transaction_report/TransactionHistory";
-
-
-import CreateCutsomerBYRetailer from "./components/super/members/retailer/CreateCustomerBYRetailer";
 
 import Electricity from "./pages/super/Bill_payment/Electricity";
 import Postpaid from "./pages/super/Bill_payment/Postpaid";
@@ -70,7 +48,6 @@ import Affiliateservices from "./pages/super/affiliate/affiliateservices";
 import MobileRechargeForm from "./pages/super/utilit_recharge/MobileRechargeForm";
 import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
 import Uti from "./pages/super/PanCard/Uti";
-import CommissionRequest from "./pages/super/commision/CommisionRequest";
 import CardPayment from "./pages/super/bankingservices/CardPayment";
 
 // admin
@@ -97,11 +74,6 @@ const App = () => {
           Component: dthRecharge,
         },
 
-        // Commission  request
-        {
-          path: "commission/request",
-          Component: CommissionRequest,
-        },
         // Bill Payment
         {
           path: "/billpay/electricity",
@@ -214,8 +186,8 @@ const App = () => {
           Component: Payout,
         },
         {
-          path:"/bankingservices/CardPayment",
-          Component:CardPayment,
+          path: "/bankingservices/CardPayment",
+          Component: CardPayment,
         },
         // affiliate
         {
@@ -228,23 +200,8 @@ const App = () => {
           path: "Pancard/Uti",
           Component: Uti,
         },
-        // resources
-       
-        // Agent List
-
-        {
-          path: "/statement/aeps",
-          Component: SuperAEPS,
-        },
-
-        // Fund
-        {
-          path: "fund/requestviewall",
-          Component: RequestReport,
-        },
 
         // transaction report
-
         {
           path: "statement/transaction-history",
           Component: TransactionHistory, //transaction history
@@ -286,92 +243,14 @@ const App = () => {
           Component: CreditCardPayment,
         },
 
-        // Wallet History
-        {
-          path: "statement/account",
-          Component: MainWallet,
-        },
-        {
-          path: "statement/aeps-wallet",
-          Component: AEPSWallet,
-        },
-        {
-          path: "statement/commission-wallet",
-          Component: CommissionWallet,
-        },
-        // Matching Percentage
-        {
-          path: "matchingpercent",
-          Component: MatchingPercentage,
-        },
-        // Setup tools
-        {
-          path: "setup/token",
-          Component: MobileUserLogout,
-        },
-        {
-          path: "setup/api",
-          Component: APIManager,
-        },
-        {
-          path: "setup/bank",
-          Component: BankAccount,
-        },
-        {
-          path: "setup/complaintsub",
-          Component: ComplaintSubject,
-        },
-        {
-          path: "setup/operator",
-          Component: OperatorManager,
-        },
-        {
-          path: "setup/portalsettings",
-          Component: PortalSetting,
-        },
-        {
-          path: "setup/links",
-          Component: QuickLinks,
-        },
-
-        // Roles and Permission
-        {
-          path: "tools/roles",
-          Component: Roles,
-        },
-        {
-          path: "tools/permissions",
-          Component: Permissions,
-        },
-
         // account settings
         {
           path: "profile/view",
           Component: AccountPortalSettings,
         },
-
-        // members
-       
-      
-       
-        {
-          path: "members/retail",
-          Component: RetailerLayout,
-          children: [
-            {
-              index: true,
-              Component: Retail,
-            },
-            {
-              path: "create",
-              Component: CreateCutsomerBYRetailer,
-            },
-          ],
-        },
-        
       ],
     },
-   
+
     // sign up
     {
       path: "/signin",

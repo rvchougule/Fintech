@@ -45,48 +45,8 @@ const Dashboard = () => {
           ))}
         </div>
 
-        {/* Wallet Section */}
-        <div className="flex flex-wrap gap-4 mb-4">
-          <div className="flex-1 rounded-md shadow-md w-[60%]">
-            <WalletBalanceCard />
-          </div>
-          <div className=" bg-white rounded-md shadow p-4 text-center w-[40%]">
-            <div className="font-semibold text-sm">AEPS</div>
-          </div>
-        </div>
-
-        {/* MATM Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-          <div className="bg-green-100 dark:bg-accentGreen p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Success</p>
-            <p className="text-xs">0/₹0.00</p>
-          </div>
-          <div className="bg-yellow-100  p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Pending</p>
-            <p className="text-xs">0/₹0.00</p>
-          </div>
-          <div className="bg-red-100 dark:bg-accentRed p-4 text-center rounded-md">
-            <p className="font-semibold text-sm">Failed</p>
-            <p className="text-xs">0/₹0.00</p>
-          </div>
-        </div>
-
         {/* User Counts & Support Info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          {/* User Counts */}
-          <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-md shadow p-4 space-y-2 text-sm">
-            <p className="font-semibold">User Counts</p>
-           
-            <Link to="members/customer">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <FaUser className="text-cyan-500" /> Customer
-                </div>
-                <span>1</span>
-              </div>
-            </Link>
-          </div>
-
           {/* Support Box */}
           <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-md shadow p-4 text-center text-sm">
             <div className="flex justify-center mb-2">

@@ -84,45 +84,7 @@ const menuItems = [
     subItems: [
       { label: "AEPS", component: "/bankingservices/aepsRegistrationForm" },
       { label: "Payout", component: "/bankingservices/payout" },
-      { label: "Card Payment", component:"bankingservices/CardPayment"},
-    ],
-  },
-  {
-    icon: <FiLink />,
-    label: "Service Links",
-    component: "",
-    subItems: [{ label: "Aadhaar Update", component: "" }],
-  },
-
-  {
-    icon: <FaUser />,
-    label: "Member",
-    component: "",
-    subItems: [
-     
-     
-      { label: "Customer",component:"members/Customer"},
-      
-    ],
-  },
- 
-  {
-    icon: <FaMoneyBillAlt />,
-    label: "Fund",
-    component: "",
-    subItems: [
-     
-      { label: "Request Report", component:"fund/requestviewall"  },
-      
-    ],
-  },
-  {
-    icon: <FaListAlt />,
-    label: "Agent List",
-    component: "",
-    subItems: [
-      { label: "AePS", component: "/statement/aeps" },
-      
+      { label: "Card Payment", component: "bankingservices/CardPayment" },
     ],
   },
   {
@@ -133,12 +95,7 @@ const menuItems = [
       { label: "Affiliate Service", component: "/affiliate/affiliateservices" },
     ],
   },
-  {
-    icon: <FaHandHoldingDollar />,
-    label: "Commision",
-    component: "",
-    subItems: [{ label: "Request", component: "commission/request" }],
-  },
+
   {
     icon: <HiOutlineDocumentReport />,
     label: "Transaction Report",
@@ -158,25 +115,14 @@ const menuItems = [
       { label: "Credit Card Payment", component: "statement/credit" },
     ],
   },
-  {
-    icon: <FaWallet />,
-    label: "Wallet History",
-    component: "",
-    subItems: [
-      { label: "Main Wallet", component: "statement/account" },
-      { label: "AEPS Wallet", component: "statement/aeps-wallet" },
-      { label: "Commision Wallet", component: "statement/commission-wallet" },
-    ],
-  },
   { icon: <BiSolidMessage />, label: "Complaints", component: "" },
- 
+
   {
     icon: <FiSettings />,
     label: "Account Setting",
     component: "",
     subItems: [{ label: "Profile Setting", component: "profile/view" }],
   },
- 
 ];
 
 export default function Sidebar() {

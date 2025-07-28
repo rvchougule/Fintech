@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaUser, FaSun, FaWallet } from "../../assets/react-icons";
-import LoadWalletModal from "./LoadWalletModel";
 import { useDarkTheme } from "../../hooks/useDarkTheme";
 import { FaMoon } from "react-icons/fa";
 import UserDropdown from "./UserDropDown";
 
 export default function Header() {
-  const [isWalletOpen, setIsWalletOpen] = useState(false);
   const { isSuperDarkMode, toggleSuperTheme } = useDarkTheme();
   const [profile, setProfile] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setProfile(false);
+      }
+    };
+
+    if (profile) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [profile]);
+
   return (
     <header className=" text-black bg-white dark:bg-transparent dark:text-adminOffWhite flex justify-between items-center px-6 py-3 rounded-t-lg shadow-sm ">
       {/* Left: Welcome text */}
@@ -28,15 +47,6 @@ export default function Header() {
           />
         )}
 
-        {/* Wallet Button */}
-        <button
-          onClick={() => setIsWalletOpen(true)}
-          className="flex items-center bg-secondary text-white font-semibold px-4 py-1.5 rounded-md gap-2 shadow-md hover:bg-[#7a7bf0] transition cursor-pointer"
-        >
-          <span>Retailer Wallet</span>
-          <FaWallet />
-        </button>
-
         {/* Profile Icon */}
         <div
           className="w-8 h-8 rounded-full bg-gradient-to-b from-[#1c4ba1] to-[#002d62] flex items-center justify-center shadow-inner cursor-pointer"
@@ -46,10 +56,8 @@ export default function Header() {
           {/* <img src={userIcon} alt="" className="w-20" /> */}
         </div>
       </div>
-      {isWalletOpen && (
-        <LoadWalletModal onClose={() => setIsWalletOpen(false)} />
-      )}
-      {profile && <UserDropdown />}
+
+      {profile && <UserDropdown ref={dropdownRef} />}
     </header>
   );
 }

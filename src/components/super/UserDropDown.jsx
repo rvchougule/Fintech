@@ -1,10 +1,13 @@
 import React from "react";
-import { FaUser, FaSignOutAlt, } from "react-icons/fa";
+import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { MdRemoveRedEye } from "react-icons/md";
 
-const UserDropdown = () => {
+const UserDropdown = ({ ref }) => {
   return (
-    <div className="z-30 absolute top-12 border border-gray-500 right-4 w-56 dark:bg-darkBlue dark:text-white bg-white text-black rounded-xl shadow-lg p-4 space-y-4">
+    <div
+      ref={ref}
+      className="z-30 absolute top-12 border border-gray-500 right-4 w-56 dark:bg-darkBlue dark:text-white bg-white text-black rounded-xl shadow-lg p-4 space-y-4"
+    >
       {/* Profile Header */}
       <div className="flex items-center space-x-3">
         <div className="relative">
@@ -17,7 +20,7 @@ const UserDropdown = () => {
         </div>
         <div>
           <h4 className="font-semibold">Hello BANDARU</h4>
-          <p className="text-sm text-gray-300 dark:text-gray-500">Retailer</p>
+          <p className="text-sm text-gray-300 dark:text-gray-500">Customer</p>
           <p className="text-sm text-gray-300 dark:text-gray-500">UserId -1</p>
         </div>
       </div>
@@ -29,10 +32,6 @@ const UserDropdown = () => {
         <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
           <FaUser className="text-lg" />
           <span className="text-sm font-medium">My Profile</span>
-        </button>
-        <button className="flex items-center space-x-3 hover:text-red-400 dark:hover:text-red-600 transition">
-          < MdRemoveRedEye className="text-lg" />
-          <span className="text-sm font-medium">View Commission</span>
         </button>
 
         <button className="flex items-center space-x-3 hover:text-red-400 dark:hover:text-red-600 transition">
