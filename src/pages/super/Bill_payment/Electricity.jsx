@@ -1,71 +1,84 @@
-import React, { useState } from "react";
-import * as Yup from "yup";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useEffect, useMemo, useState } from "react";
 import PaymentForm from "../../../components/super/bill_payment/PaymentForm";
+import electricity_data from "./jsonData/elctricity_data.json";
 
 const Electricity = () => {
-  // Yup validation schema
-  const validationSchema = Yup.object().shape({
-    operator: Yup.string().required("Select an Operator."),
-    mobile: Yup.string()
-      .matches(/^[6-9]\d{9}$/, "Enter a valid 10-digit mobile number.")
-      .required("Enter Mobile number."),
-    tPin: Yup.string()
-      .min(4, "T-Pin must be at least 4 digits.")
-      .required("Enter Transaction-Pin."),
-  });
+  const [selectedOperator, setSelectedOperator] = useState(null);
+  const [billCoverage, setBillCoverage] = useState(""); // For bill coverage display
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await validationSchema.validate(formData, { abortEarly: false });
-      setErrors({});
-      toast.success("Form Submitted Successfully!");
-      console.log("Submitted Data:", formData);
-    } catch (validationErrors) {
-      const newErrors = {};
-      validationErrors.inner.forEach((error) => {
-        newErrors[error.path] = error.message;
+  const operators = useMemo(() => {
+    return electricity_data.map((item) => {
+      const parsedParams = JSON.parse(item.customParamResp || "[]");
+      const firstParam =
+        parsedParams.length > 0 ? JSON.parse(parsedParams[0]) : null;
+
+      return {
+        name: `${item.name} - Coverage: ${item.billerCoverage}`,
+        coverage: item.billerCoverage,
+        customReqParams: firstParam,
+      };
+    });
+  }, []);
+
+  const formFields = useMemo(() => {
+    const fields = [
+      {
+        label: "Electricity Operator",
+        type: "select",
+        name: "operator",
+        placeholder: "Select Operator",
+        options: operators.map((op) => ({
+          label: op.name,
+          value: op.name,
+          full: op,
+        })),
+        isSearchable: true,
+        show: true,
+      },
+      {
+        label: "Mobile Number",
+        type: "text",
+        name: "mobile",
+        placeholder: "Enter Mobile Number",
+        show: true,
+      },
+      {
+        label: "T-Pin",
+        type: "password",
+        name: "tPin",
+        placeholder: "Enter Transaction Pin",
+        show: true,
+      },
+    ];
+
+    if (selectedOperator?.customReqParams) {
+      fields.push({
+        label: selectedOperator.customReqParams.customParamName,
+        type: "text",
+        name: selectedOperator.customReqParams.customParamName.replace(
+          /\s+/g,
+          "_"
+        ),
+        placeholder: `Enter ${selectedOperator.customReqParams.customParamName}`,
+        show: true,
       });
-      setErrors(newErrors);
     }
-  };
-  const formFields = [
-    {
-      label: "Electricity Operator",
-      type: "select",
-      name: "operator",
-      placeholder: "Select Operator",
-      options: ["Tata Power", "BSES", "Adani"],
-    },
-    {
-      label: "Mobile Number",
-      type: "text",
-      name: "mobile",
-      placeholder: "Enter Mobile Number",
-    },
-    {
-      label: "T-Pin",
-      type: "password",
-      name: "tPin",
-      placeholder: "Enter Transaction Pin",
-    },
-  ];
+
+    return fields;
+  }, [selectedOperator, operators]);
 
   return (
-    
-     <div className="h-[90vh] 2xl:max-w-[80%]  bg-gray-100 dark:text-white dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4  scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      {
-        <PaymentForm
-          title="Bill Payment"
-          formFields={formFields}
-          onsubmit={handleSubmit}
-        />
-      }
+    <div className="p-4">
+      <PaymentForm
+        title="Electricity Bill Payment"
+        formFields={formFields}
+        setSelectOperator={setSelectedOperator}
+        setBillCoverage={setBillCoverage}
+        billCoverage={billCoverage}
+      />
     </div>
-
   );
 };
 
 export default Electricity;
+

@@ -1,10 +1,15 @@
 import React from "react";
-import { FaUser, FaSignOutAlt, } from "react-icons/fa";
+import { FaUser, FaSignOutAlt } from "react-icons/fa";
+import { IoEyeSharp } from "react-icons/io5";
+import { Link } from "react-router";
 import { MdRemoveRedEye } from "react-icons/md";
 
-const UserDropdown = () => {
+const UserDropdown = ({ ref }) => {
   return (
-    <div className="z-30 absolute top-12 right-4 w-56 dark:bg-darkBlue dark:text-white bg-white text-black rounded-xl shadow-lg p-4 space-y-4">
+    <div
+      ref={ref}
+      className="z-30 absolute top-12 right-4 w-56 dark:bg-darkBlue dark:text-white bg-white text-black rounded-xl shadow-lg p-4 space-y-4"
+    >
       {/* Profile Header */}
       <div className="flex items-center space-x-3">
         <div className="relative">
@@ -17,8 +22,8 @@ const UserDropdown = () => {
         </div>
         <div>
           <h4 className="font-semibold">Hello BANDARU</h4>
-          <p className="text-sm text-gray-300 dark:text-gray-500">Master Distributer</p>
-          <p className="text-sm text-gray-300 dark:text-gray-500">UserId -1</p>
+          <p className="text-sm text-gray-400 dark:text-gray-500">Master Distributor</p>
+          <p className="text-sm text-gray-400 dark:text-gray-500">UserId -1</p>
         </div>
       </div>
 
@@ -28,11 +33,15 @@ const UserDropdown = () => {
       <div className="flex flex-col space-y-3">
         <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
           <FaUser className="text-lg" />
-          <span className="text-sm font-medium">My Profile</span>
+          <Link to="profile/view" className="text-sm font-medium">
+            My Profile
+          </Link>
         </button>
-        <button className="flex items-center space-x-3 hover:text-red-400 dark:hover:text-red-600 transition">
-          < MdRemoveRedEye className="text-lg" />
-          <span className="text-sm font-medium">View Commission</span>
+       <button className="flex items-center space-x-3 hover:text-indigo-400 dark:hover:text-indigo-600 transition">
+          <IoEyeSharp className="text-lg" />
+          <Link to="resources/commission">
+            <span className="text-sm font-medium">View Commision</span>
+          </Link>
         </button>
 
         <button className="flex items-center space-x-3 hover:text-red-400 dark:hover:text-red-600 transition">

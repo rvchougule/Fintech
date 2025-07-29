@@ -72,12 +72,16 @@ import Creditcard from "./pages/super/Bill_payment/Creditcard";
 import Recurringdeposit from "./pages/super/Bill_payment/Recurringdeposit";
 import AepsRegistrationForm from "./pages/super/bankingservices/AepsRegistrationForm";
 import Payout from "./pages/super/bankingservices/Payout";
-import Affiliateservices from "./pages/super/affiliate/affiliateservices";
+
 
 import MobileRechargeForm from "./pages/super/utilit_recharge/MobileRechargeForm";
 import dthRecharge from "./pages/super/utilit_recharge/dthRecharge";
 import Uti from "./pages/super/PanCard/Uti";
 import CommissionRequest from "./pages/super/commision/CommisionRequest";
+import { Customer } from "./pages/super/members/Customer";
+import CreditCardModal from "./components/super/affiliate2/CreditCardModal";
+import Affiliateservices from "./pages/super/affiliate/Affiliateservices";
+import ViewCommission from "./components/super/ViewCommision";
 
 // admin
 
@@ -225,6 +229,11 @@ const App = () => {
           path: "/affiliate/affiliateservices",
           Component: Affiliateservices,
         },
+         //Affilate Services Modal
+         {
+          path: "product/catgoryid",
+          Component: CreditCardModal,
+        },
 
         //PanCard
         {
@@ -352,7 +361,10 @@ const App = () => {
           path: "profile/view",
           Component: AccountPortalSettings,
         },
-
+          {
+          path: "resources/commission",
+          Component: ViewCommission,
+        }, 
         // members
        
       
@@ -382,6 +394,20 @@ const App = () => {
               path: "create",
               Component: CreateCutsomerBYRetailer,
             },
+          ],
+        },
+         {
+          path: "members/customer",
+          Component: Customer,
+          children: [
+            {
+              index: true,
+              Component: Customer,
+            },
+            // {
+            //   path: "create",
+            //   Component: CreateWhitelabel,
+            // },
           ],
         },
         

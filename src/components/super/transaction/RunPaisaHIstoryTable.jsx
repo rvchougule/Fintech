@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaSearch, FaDownload, FaInfoCircle } from "react-icons/fa";
+import { FaSearch, FaDownload, FaInfoCircle, FaEdit } from "react-icons/fa";
 import PaginatedTable from "../../utility/PaginatedTable";
 import TransactionDetailsSection from "./TransactionDetailsSection";
 import { SuperModal } from "../../utility/SuperModel";
@@ -63,13 +63,24 @@ const RunpaisaHistoryTable = ({ title, note, data, cols }) => {
       header: "ACTION",
       accessor: "action",
       render: (row, idx) => (
-        <button
-          onClick={() => handleInfoClick(row)}
-          className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center gap-1"
-        >
-          <FaInfoCircle className="h-3 w-3" />
-          Info
-        </button>
+        <>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => handleInfoClick(row)}
+              className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center gap-1"
+            >
+              <FaInfoCircle className="h-3 w-3" />
+              Info
+            </button>
+            <button
+              onClick={() => handleEditClick(row)}
+              className="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 flex items-center gap-1"
+            >
+              <FaEdit className="h-3 w-3" />
+              Edit
+            </button>
+          </div>
+        </>
       ),
     },
   ];
@@ -107,51 +118,57 @@ const RunpaisaHistoryTable = ({ title, note, data, cols }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm ">
+    <div className="bg-white dark:bg-cardOffWhite dark:text-adminOffWhite rounded-lg shadow-md w-full">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div className="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          {/* Title & Note */}
           <div>
-            <h1 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
+            <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-white mb-1 sm:mb-2">
               {title}
             </h1>
             <p className="text-sm text-gray-600 dark:text-gray-400">{note}</p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex gap-2">
+
+          {/* Controls: Filters, Search, Export */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap lg:items-center">
+            {/* Date Inputs */}
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
               <input
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-blue-500 w-full sm:w-auto"
               />
               <input
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-blue-500 w-full sm:w-auto"
               />
             </div>
-            <div className="flex gap-2">
-              <div className="relative">
+
+            {/* Search and Export */}
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+              <div className="relative w-full sm:w-40">
                 <input
                   type="text"
                   placeholder="Search"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="px-3 py-2 pl-8 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-blue-500 w-32"
+                  className="px-3 py-2 pl-8 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-blue-500 w-full"
                 />
                 <FaSearch className="absolute left-2 top-2.5 h-4 w-4 text-gray-400 dark:text-gray-300" />
               </div>
               <button
                 onClick={handleSearch}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium"
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium w-full sm:w-auto"
               >
                 Search
               </button>
               <button
                 onClick={handleExport}
-                className="px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-900 font-medium flex items-center gap-2"
+                className="px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-900 font-medium flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <FaDownload className="h-4 w-4" />
                 Export

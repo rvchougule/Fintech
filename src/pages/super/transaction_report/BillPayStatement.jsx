@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { sampleData } from "../../../assets/assets";
 import FilterBar from "../../../components/utility/FilterBar";
 import PaginatedTable from "../../../components/utility/PaginatedTable";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
 export const BillPayStatement = () => {
   const [filters, setFilters] = useState({
@@ -13,7 +14,7 @@ export const BillPayStatement = () => {
     product: "",
   });
 
-  // ✅ Generic input handler
+  //  Generic input handler
   const handleInputChange = (name, value) => {
     setFilters((prev) => ({
       ...prev,
@@ -258,6 +259,27 @@ export const BillPayStatement = () => {
       ),
     },
   ];
+  const handleExport = () => {
+    const filtered = applyFilters();
+
+    const exportData = filtered.map((item) => ({
+      ID: item.id || "N/A",
+      "User Name": item.requestedBy?.name || "N/A",
+      "User Mobile": item.requestedBy?.mobile || "N/A",
+      Role: item.requestedBy?.role || "N/A",
+      "Bank Name": item.depositDetails?.bankName || "N/A",
+      "Account Number": item.depositDetails?.accountNo || "N/A",
+      IFSC: item.depositDetails?.ifsc || "N/A",
+      "Transaction ID": item.referenceDetails?.transactionId || "N/A",
+      "Date Time": item.referenceDetails?.dateTime || "N/A",
+      "Main Wallet": item.wallet?.main || "N/A",
+      "Locked Wallet": item.wallet?.locked || "N/A",
+      Remark: item.remark || "N/A",
+      Status: item.action || "N/A",
+    }));
+
+    return exportData;
+  };
 
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4  bg-gray-100 dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
@@ -266,13 +288,15 @@ export const BillPayStatement = () => {
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
             Bill Payment Statement
           </h2>
-          <div className="">
+          <div className="flex items-center gap-2">
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
               Refresh
             </button>
-            <button className="btn-24 text-adminOffWhite bg-accentGreen ">
-              Export{" "}
-            </button>
+           <ExcelExportButton
+              buttonLabel="Export"
+              fileName="CommissionStatement.xlsx"
+              data={handleExport()}
+            />
           </div>
         </div>
         <FilterBar fields={fields} onSearch={applyFilters} />

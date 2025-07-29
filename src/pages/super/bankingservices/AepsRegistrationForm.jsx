@@ -94,7 +94,7 @@ const AepsRegistrationForm = () => {
       name: "locationType",
       label: "Location Type",
       type: "select",
-      placeholder: "Select",
+      placeholder: "Select Location Type",
       value: formik.values.locationType,
       onChange: (val) => formik.setFieldValue("locationType", val),
       options: [

@@ -89,7 +89,7 @@ const CommissionRequest = () => {
 
   return (
 
-   <div className="min-h-screen bg-gray-100"> 
+   <div className="min-h-screen "> 
     <div className=" m-3 shadow-sm dark:text-white max-w-[90%] 2xl:max-w-[80%] mx-auto px-8 py-4 pb-6 dark:bg-darkBlue bg-white rounded-2xl overflow-hidden overflow-y-auto">
       <h2 className="text-lg font-semibold mb-6">
         Commission Settlement Details

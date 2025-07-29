@@ -10,9 +10,7 @@ import { CheckBoxPermissionForm } from "../../../components/super/members/utilit
 import KycStatusForm from "../../../components/super/members/utility_components/KycManager";
 import { Link } from "react-router";
 import ProfileSettings from "../../../components/super/members/utility_components/ProfileSettings";
-import StockTableForm from "../../../components/super/members/ds/StockTableForm";
-import SchemeManager from "../../../components/super/members/customer/SchemeManager";
-import ExcelExportButton from "../../../components/utility/ExcelExportButton";
+import SchemeManager from "../../../components/super/members/retailer/SchemeManager";
 
 import {
   FiFileText, // For BillPayment
@@ -24,6 +22,7 @@ import {
   FiDatabase, // For AEPS Wallet
   FiTrendingUp, // For Commission Wallet
 } from "react-icons/fi";
+import ExcelExportButton from "../../../components/utility/ExcelExportButton";
 
 const data = [
   {
@@ -47,7 +46,7 @@ const data = [
   },
 ];
 
-export const Distributor = () => {
+export const Customer = () => {
   const [filters, setFilters] = useState({
     fromDate: "",
     toDate: "",
@@ -178,11 +177,6 @@ export const Distributor = () => {
       onClick: (row) => handleEditClick("Scheme", row),
     },
     {
-      label: "Add Id Stock",
-      icon: <FiUserPlus />,
-      onClick: (row) => handleEditClick("Add_ID_Stock", row),
-    },
-    {
       label: "Permission",
       icon: <FiShield />,
       onClick: (row) => handleEditClick("Permission", row),
@@ -198,7 +192,6 @@ export const Distributor = () => {
       onClick: (row) => handleEditClick("Kyc_Manager", row),
     },
   ];
-
   // Report of user roles
   const reports = [
     {
@@ -301,17 +294,6 @@ export const Distributor = () => {
       ),
     },
     {
-      header: "ID STOCK",
-      accessor: "idStock",
-      render: (row) => (
-        <div className="flex flex-col">
-          <span>Md - {row.md}</span>
-          <span>Distributor - {row.distributor}</span>
-          <span>Retailer - {row.retailer}</span>
-        </div>
-      ),
-    },
-    {
       header: "ACTION",
       accessor: "action",
       render: (row) => (
@@ -372,23 +354,24 @@ export const Distributor = () => {
       securityPin: "",
     },
   };
-   const handleExport = () => {
+
+  const handleExport = () => {
     const exportData = filteredData.map((item) => ({
-      Id: item.id || "N/A",
-      Date: item.date || "N/A",
-      Name: item.username || "N/A",
+      Id: item.id,
+      Date: item.date,
+      Name: item.username,
       Email: item.email || "N/A",
-      Mobile: item.mobile || "N/A",
-      "Role Name": item.type || "N/A",
-      "Main Balance": item.mainBalance || "N/A",
-      "Aeps Balance": item.aepsBalance || "N/A",
-      Parent: item.parentName || "N/A",
-      Company: item.website || "N/A",
+      Mobile: item.mobile,
+      "Role Name": item.type,
+      "Main Balance": item.mainBalance,
+      "Aeps Balance": item.aepsBalance,
+      Parent: item.parentName,
+      Company: item.website,
       Status: item.status ? "Active" : "Inactive",
-      address: user.Profile_Details.address || "N/A",
-      City: user.Profile_Details.city || "N/A",
-      State: user.Profile_Details.state || "N/A",
-      Pincode: user.Profile_Details.pinCode || "N/A",
+      address: user.Profile_Details.address,
+      City: user.Profile_Details.city,
+      State: user.Profile_Details.state,
+      Pincode: user.Profile_Details.pinCode,
       Shopname: user.KYC_Profile.shopName || "N/A",
       "Gst Tin": user.KYC_Profile.gstNumber || "N/A",
       Pancard: user.KYC_Profile.panNumber || "N/A",
@@ -406,7 +389,7 @@ export const Distributor = () => {
       <div className="my-4 p-4 rounded-md bg-white dark:bg-transparent">
         <div className=" flex gap-3 justify-between">
           <h2 className="text-2xl font-bold dark:text-adminOffWhite">
-            Distributor List
+            KYC Pending List
           </h2>
           <div className="flex items-center gap-2">
             <button className="btn-24 text-adminOffWhite bg-accentRed ">
@@ -422,13 +405,6 @@ export const Distributor = () => {
         <FilterBar fields={fields} onSearch={applyFilters} />
       </div>
 
-      <div className="flex items-center justify-between mb-2">
-        <div className=""></div>
-        <Link to="create" className="btn-24 bg-[#22C55E] hover:bg-green-900 text-nowrap">
-          +Add New
-        </Link>
-      </div>
-
       <PaginatedTable
         data={filteredData}
         filters={filters}
@@ -441,7 +417,6 @@ export const Distributor = () => {
 
       {editModal != null && (
         <SuperModal onClose={() => setEditModal(null)}>
-          {/* <APIManagerForm initialData={editData} onSubmit={handleFormSubmit} /> */}
           {/* Fund Transfer */}
           {editModal == "fund_Transfer" && (
             <FundActionForm
@@ -453,14 +428,6 @@ export const Distributor = () => {
           {/* Scheme Manager */}
           {editModal == "Scheme" && (
             <SchemeManager onClose={() => setEditModal(null)} />
-          )}
-
-          {/* Stock table forms */}
-          {editModal == "Add_ID_Stock" && (
-            <StockTableForm
-              onClose={() => setEditModal(null)}
-              onSubmitRow={handleStockSubmit}
-            />
           )}
 
           {/* Permissions */}
