@@ -50,16 +50,13 @@ const BankDetailsForm = ({ initialData = {}, onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-3xl mx-auto p-6 rounded-lg"
+      className="max-w-3xl mx-auto p-6 rounded-lg "
     >
-      <h2 className="text-xl font-semibold mb-4 text-white">Bank Details</h2>
+      <h2 className="text-xl font-semibold mb-4 ">Bank Details</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {fields.map(({ name, label, type }) => (
           <div key={name} className="flex flex-col">
-            <label
-              htmlFor={name}
-              className="mb-1 text-sm font-medium text-white"
-            >
+            <label htmlFor={name} className="mb-1 text-sm font-medium ">
               {label}
             </label>
 
@@ -77,7 +74,7 @@ const BankDetailsForm = ({ initialData = {}, onSubmit }) => {
                       setFileName(file.name); // NEW
                     }
                   }}
-                  className={`bg-transparent border rounded-md px-3 py-2 text-sm text-white 
+                  className={`bg-transparent border rounded-md px-3 py-2 text-sm  
             ${errors[name] ? "border-red-500" : "border-gray-500"} 
             focus:outline-none focus:ring-1 ${
               errors[name] ? "focus:ring-red-500" : "focus:ring-purple-500"
@@ -103,7 +100,7 @@ const BankDetailsForm = ({ initialData = {}, onSubmit }) => {
                 type={type}
                 id={name}
                 {...register(name)}
-                className={`bg-transparent border rounded-md px-3 py-2 text-sm text-white 
+                className={`bg-transparent border rounded-md px-3 py-2 text-sm 
           ${errors[name] ? "border-red-500" : "border-gray-500"} 
           focus:outline-none focus:ring-1 ${
             errors[name] ? "focus:ring-red-500" : "focus:ring-purple-500"
@@ -123,7 +120,7 @@ const BankDetailsForm = ({ initialData = {}, onSubmit }) => {
       <div className="mt-6 text-center">
         <button
           type="submit"
-          className="px-6 py-2 bg-secondary text-white rounded-md hover:bg-purple-600 transition"
+          className="px-6 py-2 bg-secondary  rounded-md hover:bg-purple-600 transition"
         >
           Submit
         </button>
