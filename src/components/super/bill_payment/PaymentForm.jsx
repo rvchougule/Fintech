@@ -28,6 +28,7 @@ const PaymentForm = ({
     formState: { errors },
     watch,
     control,
+    setValue,
   } = useForm({
     resolver: yupResolver(paymentSchema),
   });
@@ -35,11 +36,16 @@ const PaymentForm = ({
   const selectedOperator = watch("operator");
 
   useEffect(() => {
-    if (selectedOperator) {
-      setSelectOperator(selectedOperator);
-      setBillCoverage(` ${selectedOperator.split(":")[1]}`); // Optional logic
-    }
-  }, [selectedOperator]);
+  if (selectedOperator) {
+    setSelectOperator(selectedOperator);
+
+    const coverage = selectedOperator.split(":")[1]?.trim() || "";
+    setBillCoverage(coverage);
+
+    // Set the value of billercoverage field
+    setValue("billercoverage", coverage);
+  }
+}, [selectedOperator]);
 
   const handleFetchData = (data) => {
     toast.info("Data fetched successfully!", {
@@ -175,3 +181,4 @@ const PaymentForm = ({
 };
 
 export default PaymentForm;
+// import elcticity_data from "./jsonData/elctricity_data.json";

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentForm from "../../../components/super/bill_payment/PaymentForm";
+import Subscription_data from "./jsonData/Subscription_data.json";
 
 const Subscription = () => {
-  // Yup validation schema
+  const [selectedOperator, setSelectedOperator] = useState("");
+  const [selectedProviderIndex, setSelectedProviderIndex] = useState(null);
+  const [billCoverage, setBillCoverage] = useState("");
+  const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState({});
+
   const validationSchema = Yup.object().shape({
     operator: Yup.string().required("Select an Operator."),
     mobile: Yup.string()
@@ -31,37 +37,102 @@ const Subscription = () => {
       setErrors(newErrors);
     }
   };
-  const formFields = [
-    {
-      label: "Subscription Operator",
-      type: "select",
-      name: "operator",
-      placeholder: "Select Operator",
-      options: ["Tata Power", "BSES", "Adani"],
-    },
-    {
-      label: "Mobile Number",
-      type: "text",
-      name: "mobile",
-      placeholder: "Enter Mobile Number",
-    },
-    {
-      label: "T-Pin",
-      type: "password",
-      name: "tPin",
-      placeholder: "Enter Transaction Pin",
-    },
-  ];
+
+  const operatorOptions = Subscription_data.providers.map((provider) => {
+    return `${provider.name} - Coverage: ${provider.billerCoverage}`;
+  });
+
+  const customParamResparray = Subscription_data.providers.map((provider) => {
+    const paramArray = JSON.parse(provider.customParamResp);
+    return paramArray.map((paramStr) => JSON.parse(paramStr));
+  });
+
+  const handleOperatorChange = (selectedValue) => {
+    setSelectedOperator(selectedValue);
+    const index = operatorOptions.indexOf(selectedValue);
+    setSelectedProviderIndex(index);
+
+    if (index !== -1) {
+      setBillCoverage(Subscription_data.providers[index].billerCoverage);
+    }
+  };
+
+  const dynamicFields = useMemo(() => {
+    if (selectedProviderIndex === null) return [];
+    return customParamResparray[selectedProviderIndex].map((field) => ({
+      label: field.customParamName,
+      type: field.dataType === "NUMERIC" ? "number" : "text",
+      name: field.customParamName.replace(/\s+/g, ""),
+      placeholder: `Enter ${field.customParamName}`,
+      show: true,
+      required: !field.optional,
+      minLength: field.minLength,
+      maxLength: field.maxLength,
+    }));
+  }, [selectedProviderIndex]);
+
+  const formFields = useMemo(() => {
+    const staticFields = [
+      {
+        label: "Subscription_data Operator",
+        type: "select",
+        name: "operator",
+        placeholder: "Select Operator",
+        options: operatorOptions,
+        isSearchable: true,
+        show: true,
+        onChange: handleOperatorChange,
+      },
+      {
+        label: "Mobile Number",
+        type: "text",
+        name: "mobile",
+        placeholder: "Enter Mobile Number",
+        show: true,
+      },
+      {
+        label: "T-Pin",
+        type: "password",
+        name: "tPin",
+        placeholder: "Enter Transaction Pin",
+        show: true,
+      },
+    ];
+
+    const additionalFields = [...dynamicFields];
+ 
+    if (selectedOperator !== "") {
+  additionalFields.unshift({
+    label: "Biller Coverage",
+    type: "text",
+    name: "billercoverage",
+    defaultValue: billCoverage,
+    readOnly: true,
+    show: true,
+  });
+}
+
+
+    return [
+      staticFields[0],           // Operator
+      staticFields[1],           // Mobile
+      ...additionalFields,       // Biller Coverage + Dynamic
+      staticFields[2],           // T-Pin
+    ];
+  }, [selectedOperator, billCoverage, dynamicFields]);
 
   return (
-    <div className="h-[90vh] 2xl:max-w-[80%] p-4 bg-gray-100  dark:text-white dark:bg-darkBlue/70  2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      {
-        <PaymentForm
-          title="Bill Payment"
-          formFields={formFields}
-          handleSubmit={handleSubmit}
-        />
-      }
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 dark:text-white dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      <PaymentForm
+        title="Bill Payment"
+        formFields={formFields}
+        handleSubmit={handleSubmit}
+        setSelectOperator={handleOperatorChange}
+        setBillCoverage={setBillCoverage}
+        setFormData={setFormData}
+        formData={formData}
+        errors={errors}
+      />
     </div>
   );
 };

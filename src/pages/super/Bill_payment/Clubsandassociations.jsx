@@ -1,13 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentForm from "../../../components/super/bill_payment/PaymentForm";
+import Clubsandassociations_data from "./jsonData/Clubsandassociations_data.json";
 
 const Clubsandassociations = () => {
-  const [selectedOperator, setSelectedOperator] = useState();
+  const [selectedOperator, setSelectedOperator] = useState("");
+  const [selectedProviderIndex, setSelectedProviderIndex] = useState(null);
+  const [billCoverage, setBillCoverage] = useState("");
+  const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState({});
 
-  // Yup validation schema
   const validationSchema = Yup.object().shape({
     operator: Yup.string().required("Select an Operator."),
     mobile: Yup.string()
@@ -34,27 +38,41 @@ const Clubsandassociations = () => {
     }
   };
 
-  const operatorOptions = [
-    "Adani Electricity Mumbai Limited - Coverage: IND-MAH-MUMBAI",
-    "Berhampore Swimming Club - Coverage: IND-WBL-MURSHIDABAD",
-    "Central University Of Tamil Nadu Alumni Association - Coverage: IND",
-    "Friends Arts And Sports Club - Coverage: IND-KER",
-    "Madhya Pradesh Chamber Of Commerce And Industry - Coverage: IND",
-    "MBC Connect Pvt Ltd - Coverage: IND-MAH",
-    "Naval Officers Institute - Coverage: IND-GOA-SOUTH_GOA",
-    "One Nation Foundation - Coverage: IND-MAH",
-    "Radheshyam Apartment Owners Welfare Association Vijayawada - Coverage: IND-ANP",
-    "Rajindra Gymkhana And Mahendra Club Ltd - Coverage: IND",
-    "Spring Valley Owners Association Vellore - Coverage: IND-TND",
-    "Sri Rama Buddha Welfare Association Madhurawada - Coverage: IND-ANP",
-    "St Pauls Club - Coverage: IND",
-    "The Institute Of Indian Foundrymen - Coverage: IND",
-    "United Service Club - Coverage: IND-MAH-MUMBAI",
-    "Youth Club Bejjipuram Ranasthalam - Coverage: IND-ANP",
-  ];
+  const operatorOptions = Clubsandassociations_data.providers.map((provider) => {
+    return `${provider.name} - Coverage: ${provider.billerCoverage}`;
+  });
+
+  const customParamResparray = Clubsandassociations_data.providers.map((provider) => {
+    const paramArray = JSON.parse(provider.customParamResp);
+    return paramArray.map((paramStr) => JSON.parse(paramStr));
+  });
+
+  const handleOperatorChange = (selectedValue) => {
+    setSelectedOperator(selectedValue);
+    const index = operatorOptions.indexOf(selectedValue);
+    setSelectedProviderIndex(index);
+
+    if (index !== -1) {
+      setBillCoverage(Clubsandassociations_data.providers[index].billerCoverage);
+    }
+  };
+
+  const dynamicFields = useMemo(() => {
+    if (selectedProviderIndex === null) return [];
+    return customParamResparray[selectedProviderIndex].map((field) => ({
+      label: field.customParamName,
+      type: field.dataType === "NUMERIC" ? "number" : "text",
+      name: field.customParamName.replace(/\s+/g, ""),
+      placeholder: `Enter ${field.customParamName}`,
+      show: true,
+      required: !field.optional,
+      minLength: field.minLength,
+      maxLength: field.maxLength,
+    }));
+  }, [selectedProviderIndex]);
 
   const formFields = useMemo(() => {
-    return [
+    const staticFields = [
       {
         label: "Clubsandassociations Operator",
         type: "select",
@@ -63,6 +81,7 @@ const Clubsandassociations = () => {
         options: operatorOptions,
         isSearchable: true,
         show: true,
+        onChange: handleOperatorChange,
       },
       {
         label: "Mobile Number",
@@ -72,26 +91,6 @@ const Clubsandassociations = () => {
         show: true,
       },
       {
-        label: "CA Number",
-        type: "text",
-        name: "caNumber",
-        placeholder: "Enter CA Number",
-        show: [
-          "Association of National Exchanges Members of India - Coverage: IND-MAH",
-          "Berhampore Swimming Club - Coverage: IND-WBL-MURSHIDABAD",
-        ].includes(selectedOperator),
-      },
-      {
-        label: "K Number",
-        type: "text",
-        name: "kNumber",
-        placeholder: "Enter K Number",
-        show: [
-          "Berhampore Swimming Club - Coverage: IND-WBL-MURSHIDABAD",
-          "Central University Of Tamil Nadu Alumni Association - Coverage: IND",
-        ].includes(selectedOperator),
-      },
-      {
         label: "T-Pin",
         type: "password",
         name: "tPin",
@@ -99,20 +98,43 @@ const Clubsandassociations = () => {
         show: true,
       },
     ];
-  }, [selectedOperator]);
+
+    const additionalFields = [...dynamicFields];
+ 
+    if (selectedOperator !== "") {
+  additionalFields.unshift({
+    label: "Biller Coverage",
+    type: "text",
+    name: "billercoverage",
+    defaultValue: billCoverage,
+    readOnly: true,
+    show: true,
+  });
+}
+
+
+    return [
+      staticFields[0],           // Operator
+      staticFields[1],           // Mobile
+      ...additionalFields,       // Biller Coverage + Dynamic
+      staticFields[2],           // T-Pin
+    ];
+  }, [selectedOperator, billCoverage, dynamicFields]);
 
   return (
     <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 dark:text-white dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      {
-        <PaymentForm
-          title="Bill Payment"
-          formFields={formFields}
-          handleSubmit={handleSubmit}
-          setSelectOperator={setSelectedOperator}
-        />
-      }
+      <PaymentForm
+        title="Bill Payment"
+        formFields={formFields}
+        handleSubmit={handleSubmit}
+        setSelectOperator={handleOperatorChange}
+        setBillCoverage={setBillCoverage}
+        setFormData={setFormData}
+        formData={formData}
+        errors={errors}
+      />
     </div>
   );
 };
 
-export default Clubsandassociations;
+export default  Clubsandassociations;

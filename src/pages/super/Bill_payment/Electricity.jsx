@@ -1,39 +1,87 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
+import * as Yup from "yup";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import PaymentForm from "../../../components/super/bill_payment/PaymentForm";
-import electricity_data from "./jsonData/elctricity_data.json";
+import elcticity_data from "./jsonData/elctricity_data.json";
 
 const Electricity = () => {
-  const [selectedOperator, setSelectedOperator] = useState(null);
-  const [billCoverage, setBillCoverage] = useState(""); // For bill coverage display
+  const [selectedOperator, setSelectedOperator] = useState("");
+  const [selectedProviderIndex, setSelectedProviderIndex] = useState(null);
+  const [billCoverage, setBillCoverage] = useState("");
+  const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState({});
 
-  const operators = useMemo(() => {
-    return electricity_data.map((item) => {
-      const parsedParams = JSON.parse(item.customParamResp || "[]");
-      const firstParam =
-        parsedParams.length > 0 ? JSON.parse(parsedParams[0]) : null;
+  const validationSchema = Yup.object().shape({
+    operator: Yup.string().required("Select an Operator."),
+    mobile: Yup.string()
+      .matches(/^[6-9]\d{9}$/, "Enter a valid 10-digit mobile number.")
+      .required("Enter Mobile number."),
+    tPin: Yup.string()
+      .min(4, "T-Pin must be at least 4 digits.")
+      .required("Enter Transaction-Pin."),
+  });
 
-      return {
-        name: `${item.name} - Coverage: ${item.billerCoverage}`,
-        coverage: item.billerCoverage,
-        customReqParams: firstParam,
-      };
-    });
-  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await validationSchema.validate(formData, { abortEarly: false });
+      setErrors({});
+      toast.success("Form Submitted Successfully!");
+      console.log("Submitted Data:", formData);
+    } catch (validationErrors) {
+      const newErrors = {};
+      validationErrors.inner.forEach((error) => {
+        newErrors[error.path] = error.message;
+      });
+      setErrors(newErrors);
+    }
+  };
+
+  const operatorOptions = elcticity_data.providers.map((provider) => {
+    return `${provider.name} - Coverage: ${provider.billerCoverage}`;
+  });
+
+  const customParamResparray = elcticity_data.providers.map((provider) => {
+    const paramArray = JSON.parse(provider.customParamResp);
+    return paramArray.map((paramStr) => JSON.parse(paramStr));
+  });
+
+  const handleOperatorChange = (selectedValue) => {
+    setSelectedOperator(selectedValue);
+    const index = operatorOptions.indexOf(selectedValue);
+    setSelectedProviderIndex(index);
+
+    if (index !== -1) {
+      setBillCoverage(elcticity_data.providers[index].billerCoverage);
+    }
+  };
+
+  const dynamicFields = useMemo(() => {
+    if (selectedProviderIndex === null) return [];
+    return customParamResparray[selectedProviderIndex].map((field) => ({
+      label: field.customParamName,
+      type: field.dataType === "NUMERIC" ? "number" : "text",
+      name: field.customParamName.replace(/\s+/g, ""),
+      placeholder: `Enter ${field.customParamName}`,
+      show: true,
+      required: !field.optional,
+      minLength: field.minLength,
+      maxLength: field.maxLength,
+    }));
+  }, [selectedProviderIndex]);
 
   const formFields = useMemo(() => {
-    const fields = [
+    const staticFields = [
       {
-        label: "Electricity Operator",
+        label: "Municipaltaxes Operator",
         type: "select",
         name: "operator",
         placeholder: "Select Operator",
-        options: operators.map((op) => ({
-          label: op.name,
-          value: op.name,
-          full: op,
-        })),
+        options: operatorOptions,
         isSearchable: true,
         show: true,
+        onChange: handleOperatorChange,
       },
       {
         label: "Mobile Number",
@@ -51,34 +99,42 @@ const Electricity = () => {
       },
     ];
 
-    if (selectedOperator?.customReqParams) {
-      fields.push({
-        label: selectedOperator.customReqParams.customParamName,
-        type: "text",
-        name: selectedOperator.customReqParams.customParamName.replace(
-          /\s+/g,
-          "_"
-        ),
-        placeholder: `Enter ${selectedOperator.customReqParams.customParamName}`,
-        show: true,
-      });
-    }
+    const additionalFields = [...dynamicFields];
+ 
+    if (selectedOperator !== "") {
+  additionalFields.unshift({
+    label: "Biller Coverage",
+    type: "text",
+    name: "billercoverage",
+    defaultValue: billCoverage,
+    readOnly: true,
+    show: true,
+  });
+}
 
-    return fields;
-  }, [selectedOperator, operators]);
+
+    return [
+      staticFields[0],           // Operator
+      staticFields[1],           // Mobile
+      ...additionalFields,       // Biller Coverage + Dynamic
+      staticFields[2],           // T-Pin
+    ];
+  }, [selectedOperator, billCoverage, dynamicFields]);
 
   return (
-    <div className="p-4">
+    <div className="h-[90vh] 2xl:max-w-[80%] p-4 mx-8 dark:text-white dark:bg-darkBlue/70 rounded-2xl 2xl:mx-auto text-gray-800 overflow-hidden overflow-y-auto px-4 pb-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       <PaymentForm
-        title="Electricity Bill Payment"
+        title="Bill Payment"
         formFields={formFields}
-        setSelectOperator={setSelectedOperator}
+        handleSubmit={handleSubmit}
+        setSelectOperator={handleOperatorChange}
         setBillCoverage={setBillCoverage}
-        billCoverage={billCoverage}
+        setFormData={setFormData}
+        formData={formData}
+        errors={errors}
       />
     </div>
   );
 };
 
 export default Electricity;
-
