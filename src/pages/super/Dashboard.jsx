@@ -47,7 +47,7 @@ const serviceCards = [
   {
     icon: <FaPlaneDeparture size={24} />,
     bgIcon: "bg-[#4db6ac]",
-    label: "Travel Services",
+    label: "Turse and Travel Services",
     bgColor: "bg-[#e0f2f1]",
     name: "travel",
   },

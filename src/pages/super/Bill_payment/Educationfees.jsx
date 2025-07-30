@@ -106,7 +106,7 @@ const Educationfees = () => {
     label: "Biller Coverage",
     type: "text",
     name: "billercoverage",
-    defaultValue: billCoverage,
+    placeholder: "Auto-filled from operator",
     readOnly: true,
     show: true,
   });

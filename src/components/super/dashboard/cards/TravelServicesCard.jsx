@@ -9,5 +9,5 @@ const travelServices = [
 ];
 
 export default function TravelServicesCard() {
-  return <ServiceCard title="Travel Services" services={travelServices} />;
+  return <ServiceCard title=" Turse and Travel Services" services={travelServices} />;
 }

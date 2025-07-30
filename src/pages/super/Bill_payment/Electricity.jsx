@@ -74,7 +74,7 @@ const Electricity = () => {
   const formFields = useMemo(() => {
     const staticFields = [
       {
-        label: "Municipaltaxes Operator",
+        label: "Electricity Operator",
         type: "select",
         name: "operator",
         placeholder: "Select Operator",

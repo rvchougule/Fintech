@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { MdBlock } from "react-icons/md";
+import { MdBlock, MdDarkMode } from "react-icons/md";
 import Select from "react-select";
 
 const paymentSchema = Yup.object().shape({
@@ -35,17 +35,15 @@ const PaymentForm = ({
 
   const selectedOperator = watch("operator");
 
-  useEffect(() => {
+ useEffect(() => {
   if (selectedOperator) {
+    const coverage = ` ${selectedOperator.split(":")[1]}`;
     setSelectOperator(selectedOperator);
-
-    const coverage = selectedOperator.split(":")[1]?.trim() || "";
     setBillCoverage(coverage);
-
-    // Set the value of billercoverage field
-    setValue("billercoverage", coverage);
+    setValue("billercoverage", coverage); 
   }
-}, [selectedOperator]);
+}, [selectedOperator, setValue]);
+
 
   const handleFetchData = (data) => {
     toast.info("Data fetched successfully!", {
@@ -66,7 +64,8 @@ const PaymentForm = ({
         </div>,
         {
           position: "top-right",
-          className: "border-l-4 border-red-600 bg-white text-black font-medium",
+          className:
+            "border-l-4 border-red-600 bg-white text-black font-medium",
           icon: false,
           closeOnClick: true,
           autoClose: 2000,
@@ -81,9 +80,22 @@ const PaymentForm = ({
     });
   };
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="flex flex-col lg:flex-row justify-between w-full gap-4 p-1 mt-1">
-      <div className="w-full lg:w-1/2 bg-white dark:bg-darkBlue/70 p-2 rounded shadow-xl">
+    <div className="flex flex-col lg:flex-row justify-between w-full gap-4 p-1 mt-1 dark:bg-transparent">
+      <div className="w-full lg:w-1/2 bg-white dark:bg-darkBlue p-2 rounded shadow-xl">
         <form onSubmit={handleSubmit(handlePay)}>
           <h1 className="text-xl px-3 py-1 font-semibold pt-3">{title}</h1>
 
@@ -93,55 +105,86 @@ const PaymentForm = ({
               key={idx}
             >
               {field.show && (
-                <p className="text-1xl px-1 font-semibold">{field.label}</p>
+                <p className="text-1xl px-1 font-semibold ">{field.label}</p>
               )}
-
               {field.type === "select" ? (
                 <Controller
                   name={field.name}
                   control={control}
-                  render={({ field: { onChange, value, ref } }) => (
-                    <Select
-                      inputRef={ref}
-                      value={value ? { label: value, value } : null}
-                      onChange={(selectedOption) =>
-                        onChange(selectedOption.value)
-                      }
-                      options={field.options.map((opt) => ({
-                        label: opt,
-                        value: opt,
-                      }))}
-                      placeholder={field.placeholder}
-                      isSearchable
-                      noOptionsMessage={() => "No match found"}
-                      styles={{
-                        menu: (provided) => ({
-                          ...provided,
-                          maxHeight: "150px",
-                          overflowY: "auto",
-                        }),
-                      }}
-                    />
-                  )}
+                  render={({ field: { onChange, value, ref } }) => {
+                    const isDarkMode =
+                      document.documentElement.classList.contains("dark");
+
+                    return (
+                      <div className="rounded">
+                        <Select
+                          inputRef={ref}
+                          value={value ? { label: value, value } : null}
+                          onChange={(selectedOption) =>
+                            onChange(selectedOption.value)
+                          }
+                          options={field.options.map((opt) => ({
+                            label: opt,
+                            value: opt,
+                          }))}
+                          placeholder={field.placeholder}
+                          isSearchable
+                          noOptionsMessage={() => "No match found"}
+                          classNamePrefix="custom-select"
+                          styles={{
+                            control: (base, state) => ({
+                              ...base,
+                              backgroundColor: isDarkMode
+                                ? "#182740ff"
+                                : "#fff",
+                              borderColor: state.isFocused
+                                ? "#3b82f6"
+                                : "#d1d5db",
+                              color: isDarkMode ? "#fff" : "#000",
+                              boxShadow: "none",
+                            }),
+                            menu: (base) => ({
+                              ...base,
+                              backgroundColor: isDarkMode ? "#1e293b" : "#fff",
+                              color: isDarkMode ? "#fff" : "#000",
+                            }),
+                            singleValue: (base) => ({
+                              ...base,
+                              color: isDarkMode ? "#fff" : "#000",
+                            }),
+                            option: (base, { isFocused }) => ({
+                              ...base,
+                              backgroundColor: isFocused
+                                ? isDarkMode
+                                  ? "#334155"
+                                  : "#e0e7ff"
+                                : isDarkMode
+                                ? "#1e293b"
+                                : "#fff",
+                              color: isDarkMode ? "#fff" : "#000",
+                            }),
+                          }}
+                        />
+                      </div>
+                    );
+                  }}
                 />
               ) : (
                 <input
                   type={field.type}
                   placeholder={field.placeholder}
                   {...register(field.name)}
-                  className="w-full border rounded px-2 py-1 m-1 bg-white dark:bg-darkBlue"
+                  className="w-full border rounded px-2 py-1 m-1 bg-white dark:bg-darkBlue/70 dark:text-white"
                   hidden={!field.show}
                   value={field.value}
                   readOnly={field.readOnly}
                 />
               )}
-
               {errors[field.name] && (
-                <p className="text-red-500 text-sm">
+                <p className="text-red-500 text-sm ">
                   {errors[field.name].message}
                 </p>
               )}
-
               {field.name === "tPin" && (
                 <button className="transition cursor-pointer">
                   <a
@@ -181,4 +224,3 @@ const PaymentForm = ({
 };
 
 export default PaymentForm;
-// import elcticity_data from "./jsonData/elctricity_data.json";
