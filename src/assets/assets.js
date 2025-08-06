@@ -4,7 +4,7 @@ import curve from "../assets/img/curve1.png";
 export { userIcon, curve };
 
 // logo
-import Logo from "./img/bandaru_pay_logo1.png";
+import Logo from "./img/bandaru_pay_logo.png";
 export { Logo };
 
 // service Card img
